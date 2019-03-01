@@ -1,0 +1,112 @@
+{
+	"tabs": [
+		{
+			"title": "root",
+			"rows": [
+				[
+					{
+						"id": "1",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					}
+				],
+				[
+					{
+						"id": "1",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					},
+					{
+						"id": "2",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				],
+				[
+					{
+						"id": "1",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					},
+					{
+						"id": "2",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					},
+					{
+						"id": "2",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					}
+				],
+				[
+					{
+						"id": "1",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					},
+					{
+						"id": "2",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					},
+					{
+						"id": "2",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					},
+					{
+						"id": "2",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"dark": true
+					}
+				]
+			]
+		},
+		{
+			"title": "cli",
+			"rows": [
+				[
+					{
+						"id": "1",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		},
+		{
+			"title": "client",
+			"rows": [
+				[
+					{
+						"id": "1",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		}
+	]
+}

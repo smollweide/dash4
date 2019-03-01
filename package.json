@@ -1,0 +1,66 @@
+{
+  "name": "dash4",
+  "description": "The dashboard for developers",
+  "version": "0.1.0",
+  "author": "Simon Mollweide <simon.mollweide@gmail.com>",
+  "repository": "https://github.com/smollweide/dash4",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=10"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx,ts,tsx,json}": [
+        "prettier --list-different --write"
+      ],
+      "*.{ts,tsx}": [
+        "tslint"
+      ]
+    }
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "cz": "git-cz",
+    "lint": "npm-run-all lint:*",
+    "lint:ts": "tslint \"**/*.{ts,tsx}\" -c tslint.json",
+    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
+    "build": "lerna run build",
+    "watch-dist": "lerna-terminal watch-dist",
+    "watch-build": "lerna-terminal watch-build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@namics/commitlint-conventional-changelog"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@namics/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "7.5.0",
+    "@namics/commitlint-conventional-changelog": "1.0.0",
+    "@namics/cz-conventional-changelog": "1.0.1",
+    "@namics/prettier-config": "0.2.0",
+    "@namics/ts-config": "0.2.0",
+    "@namics/tslint-config": "0.2.0",
+    "commitizen": "3.0.5",
+    "husky": "1.3.1",
+    "lerna": "2.0.0",
+    "lint-staged": "8.1.3",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.16.3",
+    "tslint": "5.12.1",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.3.1",
+    "lerna-terminal": "1.4.2"
+  }
+}

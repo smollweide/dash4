@@ -1,0 +1,5 @@
+# ~/.huskyrc
+# Note: it will run in /bin/sh shell
+if command -v nodenv >/dev/null 2>&1; then
+  eval "$(nodenv init -)"
+fi
