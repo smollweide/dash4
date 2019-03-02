@@ -1,10 +1,4 @@
 {
-	"extends": "./node_modules/@namics/ts-config/tsconfig.json",
-	"exclude": ["dist", "build", "node_modules", "__tests__", "src/client"],
-	"compilerOptions": {
-		"outDir": "build",
-		"module": "commonjs",
-		"esModuleInterop": true,
-		"target": "ES2016"
-	}
+	"extends": "./node_modules/@dash4/config/tsconfig.server.json",
+	"exclude": ["dist", "build", "node_modules", "__tests__", "src/client"]
 }

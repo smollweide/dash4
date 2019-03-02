@@ -22,6 +22,9 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "cz": "git-cz",
+    "clean": "npx npm-run-all clean:lerna clean:rimraf",
+    "clean:lerna": "npx lerna clean --yes",
+    "clean:rimraf": "npx rimraf node_modules package-lock.json lerna-debug.log npm-debug.log **/package-lock.json **/build **/coverage",
     "lint": "npm-run-all lint:*",
     "lint:ts": "tslint \"**/*.{ts,tsx}\" -c tslint.json",
     "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
