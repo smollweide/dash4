@@ -11,11 +11,13 @@ async function getConfig() {
 							id: '1',
 							cmd: 'node ./bin/chalk.js',
 							dark: true,
+							autostart: true,
 						}),
 						new PluginTerminal({
 							id: '2',
 							cmd: 'node ./bin/ora.js',
 							dark: true,
+							autostart: true,
 						}),
 					],
 					[
@@ -23,11 +25,13 @@ async function getConfig() {
 							id: '3',
 							cmd: 'node ./bin/sparkly.js',
 							dark: true,
+							autostart: true,
 						}),
 						new PluginTerminal({
 							id: '4',
 							cmd: 'node ./bin/columnify.js',
 							dark: true,
+							autostart: true,
 						}),
 					],
 				],

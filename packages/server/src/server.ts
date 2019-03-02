@@ -95,6 +95,14 @@ export const start = ({ port }: IOptions, config: IConfig): Promise<ISocketAbstr
 			let indexHtml = fs.readFileSync(require.resolve('@dash4/client/dist/index.html'), 'utf8');
 			indexHtml = indexHtml.replace(
 				'</body>',
+				`<script type="text/javascript">
+					window.dash4 = window.dash4 || {};
+					window.dash4.port = ${config.port || 8080};
+				</script>
+				</body>`
+			);
+			indexHtml = indexHtml.replace(
+				'</body>',
 				Object.keys(pluginScripts)
 					.map((key) => `<script type="text/javascript" src="/${pluginScripts[key].src}"></script>`)
 					.join('\n') + '</body>'

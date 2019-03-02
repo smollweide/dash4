@@ -1,5 +1,5 @@
-const ws = new WebSocket('ws://localhost:8080');
 const win = window as any;
+const ws = new WebSocket(`ws://localhost:${win.dash4.port}`);
 // tslint:disable-next-line
 const log = console.log;
 

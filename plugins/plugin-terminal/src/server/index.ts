@@ -8,6 +8,7 @@ export interface IOptions {
 	cmd: string;
 	cwd?: string;
 	dark?: boolean;
+	autostart?: boolean;
 }
 
 export class PluginTerminal implements IPlugin<IAdditionals> {
@@ -23,12 +24,12 @@ export class PluginTerminal implements IPlugin<IAdditionals> {
 	private _send?: (id: string, data?: any) => void;
 	private stopProcessingTriggered: boolean = false;
 
-	constructor({ cmd, id, cwd, dark = false }: IOptions) {
+	constructor({ cmd, id, cwd, dark = false, autostart = false }: IOptions) {
 		this.cmd = cmd;
-		// this.cmdArr = cmd.split(' ');
 		this.id = id;
 		this.cwd = cwd;
 		this.dark = dark;
+		this.autostart = autostart;
 
 		this.create();
 
