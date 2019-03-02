@@ -1,6 +1,6 @@
 import { IPlugin, TOn, TSend } from '@dash4/server';
 import path from 'path';
-import { IAdditionals } from '../src/shared-types';
+import { IAdditionals } from '../shared-types';
 import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
@@ -64,7 +64,14 @@ export class PluginTerminal implements IPlugin<IAdditionals> {
 	}
 
 	public get clientFiles() {
-		return [path.join(__dirname, '../../dist/main.js'), path.join(__dirname, '../../dist/main.css')];
+		return [
+			path.join(__dirname, '../../dist/plugins/plugin-terminal/main.js'),
+			path.join(__dirname, '../../dist/plugins/plugin-terminal/main.css'),
+			path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.css'),
+			path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.js'),
+			path.join(__dirname, '../../dist/plugins/plugin-terminal/term.css'),
+			path.join(__dirname, '../../dist/plugins/plugin-terminal/term.js'),
+		];
 	}
 
 	public send = (eventName: string, data?: string) => {

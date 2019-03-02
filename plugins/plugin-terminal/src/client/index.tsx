@@ -1,17 +1,20 @@
-/* global fetch, WebSocket, location */
+// tslint:disable-next-line
+// /* global fetch, WebSocket, location */
 import { IWidgetConfig } from '@dash4/client/build';
 import { Icon } from '@dash4/client/build/components/Icon';
 import { Window, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { socket } from '@dash4/client/build/socket';
-import React, { SyntheticEvent } from 'react';
+import React, { lazy, Suspense, SyntheticEvent } from 'react';
 import { Button, ButtonGroup, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap';
 import { IAdditionals } from '../shared-types';
-import { Term } from './components/Xterm';
+import { Term as ITerm } from './components/Xterm';
 import './index.scss';
 
+const Term = lazy(() => import(/* webpackChunkName: "term" */ './components/Xterm'));
+
 interface IState {
-	term?: Term;
+	term?: ITerm;
 	stopped: boolean;
 	send?: (name: string, data?: string) => void;
 }
@@ -80,14 +83,16 @@ class Terminal extends React.Component<IProps, IState> {
 						</OverlayTrigger>
 					</ButtonGroup>
 				</WindowHeader>
-				<Term
-					ref_={(id: string, term: Term) => {
-						this.setState({
-							term,
-						});
-					}}
-					uid={this.props.id}
-				/>
+				<Suspense fallback={<div>Loading…</div>}>
+					<Term
+						ref_={(id: string, term: ITerm) => {
+							this.setState({
+								term,
+							});
+						}}
+						uid={this.props.id}
+					/>
+				</Suspense>
 			</Window>
 		);
 	}

@@ -416,3 +416,5 @@ export class Term extends React.PureComponent<IProps, any> {
 		);
 	}
 }
+
+export default Term;
