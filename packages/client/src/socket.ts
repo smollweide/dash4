@@ -3,10 +3,23 @@ const ws = new WebSocket(`ws://localhost:${win.dash4.port}`);
 // tslint:disable-next-line
 const log = console.log;
 
-win.socket = win.socket || {};
-win.socket.isReady = false;
-win.socket.readyList = [];
-win.socket.listeners = [];
+interface ISocketListeners {
+	[key: string]: {
+		id: string;
+		callback: (data: any) => void;
+	};
+}
+
+win.dash4 = win.dash4 || {};
+win.dash4.socket = win.dash4.socket || {};
+win.dash4.socket.isReady = false;
+win.dash4.socket.readyList = [];
+win.dash4.socket.listeners = {};
+
+const listeners: ISocketListeners = win.dash4.socket.listeners;
+let isReady: boolean = win.dash4.socket.isReady;
+const readyList: Array<(value?: ISocketAbstract | PromiseLike<ISocketAbstract> | undefined) => void> =
+	win.dash4.socket.readyList;
 
 export interface ISocketAction<Data = {}> {
 	id: string;
@@ -16,6 +29,7 @@ export interface ISocketAction<Data = {}> {
 export interface ISocketAbstract {
 	send: (id: string, data?: any) => void;
 	on: (id: string, callback: any) => void;
+	off: (id: string) => void;
 }
 
 function socketAbstract(wsInstace: WebSocket): ISocketAbstract {
@@ -28,22 +42,26 @@ function socketAbstract(wsInstace: WebSocket): ISocketAbstract {
 				})
 			);
 		},
-		on: <CallbackType = any>(id: string, callback: (data: CallbackType) => {}) => {
-			win.socket.listeners.push({ id, callback });
+		on: <CallbackType = any>(id: string, callback: (data: CallbackType) => void) => {
+			listeners[id] = { id, callback };
+		},
+		off: (id: string) => {
+			delete listeners[id];
 		},
 	};
 }
 
 function connected() {
 	log('[socket]: connection established');
-	win.socket.isReady = true;
-	win.socket.readyList.forEach((resolve: (sk: ISocketAbstract) => void) => {
+	isReady = true;
+	readyList.forEach((resolve: (sk: ISocketAbstract) => void) => {
 		resolve(socketAbstract(ws));
 	});
 	ws.onmessage = (rawData: any) => {
 		const data = JSON.parse(rawData.data) as ISocketAction;
 
-		win.socket.listeners.forEach(({ id, callback }) => {
+		Object.keys(listeners).forEach((key) => {
+			const { id, callback } = listeners[key];
 			if (id !== data.id) {
 				return;
 			}
@@ -54,12 +72,12 @@ function connected() {
 
 function disconnected() {
 	log('[socket]: connection closed');
-	win.socket.isReady = false;
+	isReady = false;
 }
 
 function error() {
 	log('[socket]: connection could not be established');
-	win.socket.isReady = false;
+	isReady = false;
 }
 
 ws.onerror = error;
@@ -68,11 +86,11 @@ ws.onclose = disconnected;
 
 export async function socket(): Promise<ISocketAbstract> {
 	return new Promise((resolve) => {
-		if (win.socket.isReady) {
+		if (isReady) {
 			resolve(socketAbstract(ws));
 			return;
 		}
 		// if socket is not yet ready store resolve function in array
-		win.socket.readyList.push(resolve);
+		readyList.push(resolve);
 	});
 }

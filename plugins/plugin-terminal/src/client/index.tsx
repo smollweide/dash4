@@ -2,7 +2,7 @@
 // /* global fetch, WebSocket, location */
 import { IWidgetConfig } from '@dash4/client/build';
 import { Icon } from '@dash4/client/build/components/Icon';
-import { Window, WindowHeader } from '@dash4/client/build/components/Window';
+import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { socket } from '@dash4/client/build/socket';
 import React, { lazy, Suspense, SyntheticEvent } from 'react';
@@ -42,6 +42,17 @@ async function subscribeToTerminalDataChanges(id: string, onChange: (data: strin
 	return send;
 }
 
+async function unsubscribeToTerminalDataChanges(id: string) {
+	const socketData = await socket();
+	const off = (name: string) => {
+		socketData.off(`plugin-terminal-${id}_${name}`);
+	};
+
+	off('conntected');
+	off('recieve');
+	off('stopped');
+}
+
 class Terminal extends React.Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
@@ -60,6 +71,10 @@ class Terminal extends React.Component<IProps, IState> {
 				),
 			});
 		})();
+	}
+
+	public componentWillUnmount() {
+		unsubscribeToTerminalDataChanges(this.props.id);
 	}
 
 	public render() {
@@ -83,16 +98,18 @@ class Terminal extends React.Component<IProps, IState> {
 						</OverlayTrigger>
 					</ButtonGroup>
 				</WindowHeader>
-				<Suspense fallback={<div>Loading…</div>}>
-					<Term
-						ref_={(id: string, term: ITerm) => {
-							this.setState({
-								term,
-							});
-						}}
-						uid={this.props.id}
-					/>
-				</Suspense>
+				<WindowBody>
+					<Suspense fallback={<div>Loading…</div>}>
+						<Term
+							ref_={(id: string, term: ITerm) => {
+								this.setState({
+									term,
+								});
+							}}
+							uid={this.props.id}
+						/>
+					</Suspense>
+				</WindowBody>
 			</Window>
 		);
 	}
