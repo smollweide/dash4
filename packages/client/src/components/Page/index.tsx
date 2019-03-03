@@ -8,7 +8,7 @@ const styles = {
 		},
 	},
 	main: {
-		padding: 30,
+		padding: 15,
 	},
 };
 

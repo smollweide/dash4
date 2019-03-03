@@ -4,9 +4,9 @@ import withStyles, { WithStyles } from 'react-jss';
 const styles = {
 	cell: ({ amountOfCells = 1 }: ICellProps) => {
 		const defWidth = (amount: number) => ({
-			flexBasis: `calc(${100 / amount}% - 30px)`,
-			maxWidth: `calc(${100 / amount}% - 30px)`,
-			minWidth: `calc(${100 / amount}% - 30px)`,
+			flexBasis: `calc(${100 / amount}% - 15px)`,
+			maxWidth: `calc(${100 / amount}% - 15px)`,
+			minWidth: `calc(${100 / amount}% - 15px)`,
 		});
 
 		let mediaQueries = {};
@@ -43,12 +43,12 @@ const styles = {
 			...mediaQueries,
 			...defWidth(amountOfCells),
 			flexWrap: 'wrap',
-			marginLeft: 30,
+			marginLeft: 15,
 			flexGrow: 0,
 			flexShrink: 1,
 			position: 'relative',
 			overflow: 'hidden',
-			marginBottom: 30,
+			marginBottom: 15,
 		};
 	},
 };

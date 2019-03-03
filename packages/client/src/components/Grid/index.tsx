@@ -8,7 +8,7 @@ const styles = {
 		alignItems: 'flex-start',
 		flexDirection: 'row',
 		flexWrap: 'wrap',
-		marginLeft: -30,
+		marginLeft: -15,
 	},
 };
 

@@ -30,6 +30,7 @@ interface IProps extends WithStyles<typeof styles> {
 }
 
 export * from './Header';
+export * from './Body';
 export const Window = withStyles(styles)(({ classes, header, children, dark = false }: IProps) => {
 	return (
 		<div className={`${classes.widget} ${dark ? classes.widgetDark : classes.widgetLight}`}>
