@@ -30,7 +30,8 @@
     "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
     "build": "lerna run build",
     "watch-dist": "lerna-terminal watch-dist",
-    "watch-build": "lerna-terminal watch-build"
+    "watch-build": "lerna-terminal watch-build",
+    "update": "node ./bin/update.js"
   },
   "husky": {
     "hooks": {
@@ -49,21 +50,26 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "7.5.0",
+    "@commitlint/cli": "7.5.2",
     "@namics/commitlint-conventional-changelog": "1.0.0",
     "@namics/cz-conventional-changelog": "1.0.1",
     "@namics/prettier-config": "0.2.0",
     "@namics/ts-config": "0.2.0",
     "@namics/tslint-config": "0.2.0",
-    "commitizen": "3.0.5",
+    "commitizen": "3.0.7",
     "husky": "1.3.1",
-    "lerna": "2.0.0",
-    "lint-staged": "8.1.3",
+    "lerna": "3.13.1",
+    "lint-staged": "8.1.5",
     "npm-run-all": "4.1.5",
-    "prettier": "1.16.3",
-    "tslint": "5.12.1",
+    "prettier": "1.16.4",
+    "tslint": "5.13.1",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.3.1",
-    "lerna-terminal": "1.4.2"
+    "typescript": "3.3.3333",
+    "lerna-terminal": "1.4.2",
+    "globby": "9.1.0",
+    "enquirer": "2.3.0",
+    "latest-version": "4.0.0",
+    "ora": "3.2.0",
+    "chalk": "2.4.2"
   }
 }
