@@ -1,0 +1,1 @@
+export const DURATION_HIDE_ANIMATION = 1000;

@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles, { WithStyles } from 'react-jss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import logo from './dash4.png';
+import logo from './dash4_512.png';
 
 const styles = {
 	header: {
@@ -12,7 +12,7 @@ const styles = {
 	logo: {
 		position: 'absolute',
 		width: 45,
-		margin: 15,
+		margin: '13px 15px',
 	},
 	menuWrap: {
 		position: 'relative',

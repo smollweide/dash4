@@ -6,7 +6,7 @@
 <br />
 <br />
 
-[![NPM version](https://badge.fury.io/js/server.svg)](https://www.npmjs.com/package/server) [![Travis](https://img.shields.io/travis/namics/server/master.svg)](https://travis-ci.org/namics/server)
+[![NPM version](https://badge.fury.io/js/@dash4/server.svg)](https://www.npmjs.com/package/@dash4/server)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Prettier](https://img.shields.io/badge/Code%20Style-Prettier-green.svg)](https://github.com/prettier/prettier) <!--IF(ts)-->![TypeScript-ready](https://img.shields.io/npm/types/server.svg)<!--/IF-->
 

@@ -1,27 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { IConfig } from '../..';
-import { useEffectAsync } from '../../react-hooks';
-import { getArePluginsRegistered } from '../../register-plugin';
-import { getConfig } from '../../services/config';
+import { AppLoader } from '../AppLoader';
 import { Header } from '../Header';
 import { Page } from '../Page';
 import { Widgets } from '../Widgets';
-
-const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
+import { useConfig, useLoading, usePluginsRegistered } from './hooks';
 
 export function App() {
-	const [config, setConfig] = useState<undefined | IConfig>(undefined);
-	useEffectAsync(async () => {
-		setConfig(await getConfig());
-	}, []);
-
-	const [arePluginsRegistered, setArePluginsRegistered] = useState(false);
-	useEffectAsync(async () => {
-		const areAvailable = await getArePluginsRegistered();
-		await wait(100);
-		setArePluginsRegistered(areAvailable);
-	}, []);
+	const config = useConfig();
+	const arePluginsRegistered = usePluginsRegistered();
+	const isLoading = useLoading({ config, arePluginsRegistered });
 
 	return (
 		<Router>
@@ -45,6 +33,7 @@ export function App() {
 							);
 						})}
 				</Page>
+				<AppLoader visible={isLoading} />
 			</>
 		</Router>
 	);
