@@ -1,15 +1,14 @@
 
 <div align="center">
+<h1>Dash4 config</h1>
+Set of configurations and scripts for creating a `Dash4 Plugin`.
+<br />
 <br />
 
 [![NPM version](https://badge.fury.io/js/@dash4/client.svg)](https://www.npmjs.com/package/@dash4/client)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Prettier](https://img.shields.io/badge/Code%20Style-Prettier-green.svg)](https://github.com/prettier/prettier) <!--IF(ts)-->![TypeScript-ready](https://img.shields.io/npm/types/@dash4/client.svg)<!--/IF-->
 
-<h1>Dash4 config</h1>
-<br />
-Set of configurations and scripts for creating a `Dash4 Plugin`.
-<br />
 <br />
 </div>
 
@@ -46,7 +45,7 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
 
 ```json
 {
-	"extends": "./node_modules/@dash4/config/tsconfig.json",
+	"extends": "@dash4/config/tsconfig.json",
 	"exclude": ["dist", "build", "node_modules", "__tests__", "src/server"]
 }
 ```
@@ -55,7 +54,7 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
 
 ```json
 {
-	"extends": "./node_modules/@dash4/config/tsconfig.server.json",
+	"extends": "@dash4/config/tsconfig.server.json",
 	"exclude": ["dist", "build", "node_modules", "__tests__", "src/client"]
 }
 ```
@@ -68,4 +67,4 @@ module.exports = require('@dash4/config/webpack.config.js')('###PLUGIN_NAME###')
 
 ## <a name="license">License</a>
 
-The client is [MIT licensed](./LICENSE)
+The dash4 config is [MIT licensed](./LICENSE)

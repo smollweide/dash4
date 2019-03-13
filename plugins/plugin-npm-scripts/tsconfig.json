@@ -1,5 +1,5 @@
 {
-	"extends": "./node_modules/@dash4/config/tsconfig.json",
+	"extends": "@dash4/config/tsconfig.json",
 	"exclude": ["dist", "build", "node_modules", "__tests__", "src/server"],
 	"paths": {
 		"@dash4/*": ["node_modules/@dash4/*"]
