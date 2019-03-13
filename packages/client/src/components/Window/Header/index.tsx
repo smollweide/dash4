@@ -28,12 +28,13 @@ const styles = {
 interface IProps extends WithStyles<typeof styles> {
 	title: string;
 	subTitle?: string;
+	className?: string;
 	children?: React.ReactNode;
 }
 
-export const WindowHeader = withStyles(styles)(({ classes, title, subTitle, children }: IProps) => {
+export const WindowHeader = withStyles(styles)(({ className, classes, title, subTitle, children }: IProps) => {
 	return (
-		<div className={classes.header}>
+		<div className={`${className || ''} ${classes.header}`}>
 			<p className={`${classes.title}`}>
 				{title.replace(/^Plugin/, '')}
 				{subTitle && (

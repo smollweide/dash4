@@ -2,18 +2,22 @@ import React from 'react';
 import withStyles, { WithStyles } from 'react-jss';
 
 const styles = {
-	widget: {
-		minHeight: 100,
+	window: {
+		display: 'flex',
+		flexDirection: 'column',
 		position: 'relative',
 	},
-	widgetLight: {
+	windowAutoStretch: {
+		height: '100%',
+	},
+	windowBright: {
 		color: '#000',
 		whiteSpace: 'pre',
 		background: '#fff',
 		boxShadow: 'rgba(0, 0, 0, 0.16) 0px 2px 4px',
 		borderRadius: 6,
 	},
-	widgetDark: {
+	windowDark: {
 		color: '#fff',
 		whiteSpace: 'pre',
 		background: '#000',
@@ -26,16 +30,24 @@ const styles = {
 interface IProps extends WithStyles<typeof styles> {
 	header?: React.ReactNode;
 	children: React.ReactNode;
+	className?: string;
 	dark?: boolean;
+	autoStretch?: boolean;
 }
 
 export * from './Header';
 export * from './Body';
-export const Window = withStyles(styles)(({ classes, header, children, dark = false }: IProps) => {
-	return (
-		<div className={`${classes.widget} ${dark ? classes.widgetDark : classes.widgetLight}`}>
-			{header && header}
-			{children}
-		</div>
-	);
-});
+export const Window = withStyles(styles)(
+	({ className, classes, header, children, dark = false, autoStretch = true }: IProps) => {
+		return (
+			<div
+				className={`${className || ''} ${classes.window} ${dark ? classes.windowDark : classes.windowBright} ${
+					autoStretch ? classes.windowAutoStretch : ''
+				}`}
+			>
+				{header && header}
+				{children}
+			</div>
+		);
+	}
+);

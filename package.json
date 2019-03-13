@@ -31,7 +31,8 @@
     "build": "lerna run build",
     "watch-dist": "lerna-terminal watch-dist",
     "watch-build": "lerna-terminal watch-build",
-    "update": "node ./bin/update.js"
+    "update": "node ./bin/update.js",
+    "start": "node ./packages/server/bin/index.js --port=8888"
   },
   "husky": {
     "hooks": {

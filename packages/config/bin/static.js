@@ -2,4 +2,4 @@
 
 const { execute } = require('../lib/process');
 
-execute(`node ./node_modules/@dash4/server/build`);
+execute(`node ./node_modules/@dash4/server/bin`);

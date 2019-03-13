@@ -27,6 +27,42 @@ const styles = {
 	'size-i-l': {
 		fontSize: 24,
 	},
+	'@keyframes rotation-clockwise': {
+		from: {
+			transform: 'rotate(0deg)',
+		},
+		to: {
+			transform: 'rotate(359deg)',
+		},
+	},
+	'anim-rotation-clockwise': {
+		animation: '$rotation-clockwise 1.5s infinite linear',
+	},
+	'@keyframes rotation-counter-clockwise': {
+		from: {
+			transform: 'rotate(359deg)',
+		},
+		to: {
+			transform: 'rotate(0deg)',
+		},
+	},
+	'anim-rotation-counter-clockwise': {
+		animation: '$rotation-counter-clockwise 1.5s infinite linear',
+	},
+	'align-center-in-content': {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		height: '100%',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		'&::before': {
+			content: `' '`,
+			display: 'block',
+			paddingTop: '100%' /* initial ratio of 1:1*/,
+		},
+	},
 };
 
 export const sizeMap = {
@@ -44,21 +80,43 @@ export const colorMap = {
 
 export type TColor = keyof typeof colorMap;
 
+export const alignMap = {
+	'center-in-content': 'center-in-content' as 'center-in-content',
+};
+
+export type TAlign = keyof typeof alignMap;
+
+export const animationMap = {
+	'rotation-clockwise': 'rotation-clockwise' as 'rotation-clockwise',
+	'rotation-counter-clockwise': 'rotation-counter-clockwise' as 'rotation-counter-clockwise',
+};
+
+export type TAnimation = keyof typeof animationMap;
+
 interface IProps extends WithStyles<typeof styles> {
 	name: string;
+	className?: string;
 	size?: TSize;
 	color?: TColor;
+	animation?: TAnimation;
+	align?: TAlign;
 }
 
-export const Icon = withStyles(styles)(({ classes, name, size }: IProps) => {
+export const Icon = withStyles(styles)(({ className, classes, name, size, animation, align }: IProps) => {
 	const classNames: string[] = [classes.root];
 	const classNamesI: string[] = ['material-icons'];
 	if (size) {
 		classNames.push(classes[`size-${size}`]);
 		classNamesI.push(classes[`size-i-${size}`]);
 	}
+	if (animation) {
+		classNamesI.push(classes[`anim-${animation}`]);
+	}
+	if (align) {
+		classNames.push(classes[`align-${align}`]);
+	}
 	return (
-		<span className={classNames.join(' ')}>
+		<span className={`${className} ${classNames.join(' ')}`}>
 			<i className={classNamesI.join(' ')}>{name}</i>
 		</span>
 	);

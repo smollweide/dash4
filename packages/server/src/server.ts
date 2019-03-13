@@ -5,7 +5,7 @@ import { createServer } from 'http';
 import { contentType as getContentType } from 'mime-types';
 import path from 'path';
 import WebSocket from 'ws';
-import { IConfig } from './index';
+import { IClientFile, IConfig, TClientFile } from './index';
 
 // tslint:disable-next-line
 const log = console.log;
@@ -49,7 +49,8 @@ const getClientConfigFromConfig = (config: IConfig): IClientConfig => {
 							name: plugin.name,
 							lowerCaseName: plugin.lowerCaseName,
 							dark: plugin.dark,
-							additionals: plugin.additionals,
+							width: plugin.width,
+							clientConfig: plugin.clientConfig,
 						};
 					});
 				}),
@@ -58,29 +59,41 @@ const getClientConfigFromConfig = (config: IConfig): IClientConfig => {
 	};
 };
 
+const hasExtname = (url: string) => {
+	return path.extname(url) !== '';
+};
+
 export const start = ({ port }: IOptions, config: IConfig): Promise<ISocketAbstract> => {
 	const pluginScripts: IScripts = {};
 	const pluginStyles: IScripts = {};
+	const pluginFiles: IScripts = {};
 
 	config.tabs.forEach((tab) => {
 		tab.rows.forEach((cells) => {
 			cells.forEach((plugin: any) => {
-				plugin.clientFiles.forEach((clientFile: string) => {
-					const src = `plugins/${plugin.lowerCaseName}/${path.basename(clientFile)}`;
+				plugin.clientFiles.forEach((clientFile: TClientFile) => {
+					const { pathName, scriptTag = true }: IClientFile =
+						typeof clientFile === 'string' ? { pathName: clientFile } : clientFile;
 
-					if (path.extname(clientFile) === '.js' && !pluginScripts[src]) {
+					const src = `plugins/${plugin.lowerCaseName}/${path.basename(pathName)}`;
+
+					if (path.extname(pathName) === '.js' && !pluginScripts[src] && scriptTag) {
 						pluginScripts[src] = {
 							src,
-							pathName: clientFile,
+							pathName,
 						};
-						return;
 					}
-					if (path.extname(clientFile) === '.css' && !pluginStyles[src]) {
+					if (path.extname(pathName) === '.css' && !pluginStyles[src] && scriptTag) {
 						pluginStyles[src] = {
 							src,
-							pathName: clientFile,
+							pathName,
 						};
-						return;
+					}
+					if (!pluginFiles[src]) {
+						pluginFiles[src] = {
+							src,
+							pathName,
+						};
 					}
 				});
 			});
@@ -90,7 +103,7 @@ export const start = ({ port }: IOptions, config: IConfig): Promise<ISocketAbstr
 	const server = createServer((req, res) => {
 		const url = req.url;
 
-		if (!url || url === '/') {
+		if (!url || url === '/' || !hasExtname(url)) {
 			res.writeHead(200, { 'Content-Type': 'text/html' });
 			let indexHtml = fs.readFileSync(require.resolve('@dash4/client/dist/index.html'), 'utf8');
 			indexHtml = indexHtml.replace(
@@ -127,20 +140,13 @@ export const start = ({ port }: IOptions, config: IConfig): Promise<ISocketAbstr
 			return;
 		}
 
-		Object.keys(pluginScripts).forEach((key) => {
-			const pluginScript = pluginScripts[key];
-			if (url === `/${pluginScript.src}`) {
-				res.writeHead(200, { 'Content-Type': getContentType(path.extname(pluginScript.pathName)) || '' });
-				res.end(fs.readFileSync(pluginScript.pathName));
-				return;
-			}
-		});
-
-		Object.keys(pluginStyles).forEach((key) => {
-			const pluginStyle = pluginStyles[key];
-			if (url === `/${pluginStyle.src}`) {
-				res.writeHead(200, { 'Content-Type': getContentType(path.extname(pluginStyle.pathName)) || '' });
-				res.end(fs.readFileSync(pluginStyle.pathName));
+		Object.keys(pluginFiles).forEach((key) => {
+			const pluginFile = pluginFiles[key];
+			if (url === `/${pluginFile.src}`) {
+				res.writeHead(200, {
+					'Content-Type': getContentType(path.extname(pluginFile.pathName)) || '',
+				});
+				res.end(fs.readFileSync(pluginFile.pathName));
 				return;
 			}
 		});

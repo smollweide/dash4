@@ -1,6 +1,7 @@
-import { IPlugin, TOn, TSend } from '@dash4/server';
+import { Dash4Plugin, IDash4Plugin, TOn, TSend } from '@dash4/server';
+import fs from 'fs';
 import path from 'path';
-import { IAdditionals } from '../shared-types';
+import { IClientConfig } from '../shared-types';
 import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
@@ -9,97 +10,88 @@ export interface IOptions {
 	cwd?: string;
 	dark?: boolean;
 	autostart?: boolean;
+	width?: number[];
 }
 
-export class PluginTerminal implements IPlugin<IAdditionals> {
-	public id: string;
-	public cmd: string;
-	public dark: boolean;
-	public cwd?: string;
-	private terminalLog: string = '';
-	private autostart: boolean = true;
-	private term: ITerm;
-	private recievedCounter: number = 0;
-	private _on?: (id: string, callback: any) => void;
-	private _send?: (id: string, data?: any) => void;
-	private stopProcessingTriggered: boolean = false;
+const processCwd = fs.realpathSync(process.cwd());
 
-	constructor({ cmd, id, cwd, dark = false, autostart = false }: IOptions) {
-		this.cmd = cmd;
-		this.id = id;
-		this.cwd = cwd;
-		this.dark = dark;
-		this.autostart = autostart;
+export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
+	private _cmd: string;
+	private _cwd: string;
+	private _terminalLog: string = '';
+	private _autostart: boolean;
+	private _term: ITerm;
+	private _stopProcessingTriggered: boolean = false;
+
+	constructor({ id, dark = true, width, cmd, cwd, autostart = true }: IOptions) {
+		super({
+			id,
+			dark,
+			width,
+			name: 'PluginTerminal',
+			lowerCaseName: 'plugin-terminal',
+		});
+
+		this._cmd = cmd;
+		this._cwd = cwd ? path.join(processCwd, cwd) : processCwd;
+		this._autostart = autostart;
 
 		this.create();
 
-		if (this.autostart) {
+		if (this._autostart) {
 			this.start();
 		}
 	}
 
 	public create() {
-		this.term = terminalEmulator({
-			cwd: this.cwd || process.cwd(),
+		this._term = terminalEmulator({
+			cwd: this._cwd || process.cwd(),
 			onData: this.recieveData,
 			onStopProcessing: () => {
-				this.stopProcessingTriggered = true;
+				this._stopProcessingTriggered = true;
 				this.send('stopped');
 			},
 		});
 	}
 
-	public get additionals() {
+	public get clientConfig() {
 		return {
-			cmd: this.cmd,
-			cwd: this.cwd,
+			cmd: this._cmd,
+			cwd: this._cwd,
 		};
-	}
-
-	public get name() {
-		return 'PluginTerminal';
-	}
-
-	public get lowerCaseName() {
-		return 'plugin-terminal';
 	}
 
 	public get clientFiles() {
 		return [
 			path.join(__dirname, '../../dist/plugins/plugin-terminal/main.js'),
 			path.join(__dirname, '../../dist/plugins/plugin-terminal/main.css'),
-			path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.css'),
-			path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.js'),
-			path.join(__dirname, '../../dist/plugins/plugin-terminal/term.css'),
-			path.join(__dirname, '../../dist/plugins/plugin-terminal/term.js'),
+			{
+				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.css'),
+				scriptTag: false,
+			},
+			{
+				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.js'),
+				scriptTag: false,
+			},
+			{
+				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/term.css'),
+				scriptTag: false,
+			},
+			{
+				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/term.js'),
+				scriptTag: false,
+			},
 		];
 	}
 
-	public send = (eventName: string, data?: string) => {
-		if (!this._send) {
-			return;
-		}
-		this._send(`plugin-terminal-${this.id}_${eventName}`, data);
-	};
-
-	public on = <CbData = undefined>(eventName: string, cb: (data?: CbData) => void) => {
-		if (!this._on) {
-			return;
-		}
-		this._on(`plugin-terminal-${this.id}_${eventName}`, cb);
-	};
-
-	public connect = (on: TOn, send: TSend) => {
-		this._on = on;
-		this._send = send;
-
-		if (!this._on) {
+	public connected = () => {
+		if (!this.on) {
 			return;
 		}
 
 		this.on('conntected', () => {
-			this.send('conntected', this.terminalLog);
-			if (this.stopProcessingTriggered) {
+			this.send('conntected', this._terminalLog);
+			if (this._stopProcessingTriggered) {
 				this.send('stopped');
 			}
 		});
@@ -109,11 +101,7 @@ export class PluginTerminal implements IPlugin<IAdditionals> {
 	};
 
 	private recieveData = (data: string) => {
-		this.recievedCounter += 1;
-		if (this.recievedCounter === 1) {
-			return;
-		}
-		this.terminalLog += data.toString();
+		this._terminalLog += data.toString();
 		if (!this.send) {
 			return;
 		}
@@ -121,17 +109,17 @@ export class PluginTerminal implements IPlugin<IAdditionals> {
 	};
 
 	private stop = () => {
-		this.term.kill();
+		this._term.kill();
 		this.create();
 	};
 
 	private clean = () => {
-		this.term.write('\x1Bc');
-		this.terminalLog = '';
+		this._term.write('\x1Bc');
+		this._terminalLog = '';
 	};
 
 	private start = async () => {
-		this.stopProcessingTriggered = false;
-		this.term.write(`${this.cmd}\r`);
+		this._stopProcessingTriggered = false;
+		this._term.write(`${this._cmd}\r`);
 	};
 }

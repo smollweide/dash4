@@ -1,21 +1,75 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import withStyles, { WithStyles } from 'react-jss';
 
+const getPercentFromGridWidth = (width: number) => {
+	if (width === 12) {
+		return 100;
+	}
+	return (100 * width) / 12;
+};
+
+const defWidth = (width: number) => ({
+	flexBasis: `calc(${width}% - 15px)`,
+	maxWidth: `calc(${width}% - 15px)`,
+	minWidth: `calc(${width}% - 15px)`,
+});
+
 const styles = {
-	cell: ({ amountOfCells = 1 }: ICellProps) => {
-		const defWidth = (amount: number) => ({
-			flexBasis: `calc(${100 / amount}% - 15px)`,
-			maxWidth: `calc(${100 / amount}% - 15px)`,
-			minWidth: `calc(${100 / amount}% - 15px)`,
-		});
+	cell: ({ amountOfCells = 1, width }: ICellProps) => {
+		const baseStyles = {
+			flexWrap: 'wrap',
+			marginLeft: 15,
+			flexGrow: 0,
+			flexShrink: 1,
+			position: 'relative',
+			marginBottom: 15,
+		};
 
 		let mediaQueries = {};
+
+		if (Array.isArray(width)) {
+			mediaQueries = {
+				...defWidth(getPercentFromGridWidth(width[0])),
+			};
+
+			if (width[1]) {
+				mediaQueries = {
+					...mediaQueries,
+					'@media (min-width: 768px)': {
+						...defWidth(getPercentFromGridWidth(width[1])),
+					},
+				};
+			}
+
+			if (width[2]) {
+				mediaQueries = {
+					...mediaQueries,
+					'@media (min-width: 992px)': {
+						...defWidth(getPercentFromGridWidth(width[2])),
+					},
+				};
+			}
+
+			if (width[3]) {
+				mediaQueries = {
+					...mediaQueries,
+					'@media (min-width: 1200px)': {
+						...defWidth(getPercentFromGridWidth(width[3])),
+					},
+				};
+			}
+
+			return {
+				...mediaQueries,
+				...baseStyles,
+			};
+		}
 
 		if (amountOfCells >= 4) {
 			mediaQueries = {
 				...mediaQueries,
 				'@media screen and (max-width: 900px)': {
-					...defWidth(2),
+					...defWidth(100 / 2),
 				},
 			};
 		}
@@ -24,9 +78,9 @@ const styles = {
 			mediaQueries = {
 				...mediaQueries,
 				'@media screen and (max-width: 700px)': {
-					...defWidth(2),
+					...defWidth(100 / 2),
 					'&:first-child': {
-						...defWidth(1),
+						...defWidth(100 / 1),
 					},
 				},
 			};
@@ -35,27 +89,22 @@ const styles = {
 		mediaQueries = {
 			...mediaQueries,
 			'@media screen and (max-width: 550px)': {
-				...defWidth(1),
+				...defWidth(100 / 1),
 			},
 		};
 
 		return {
 			...mediaQueries,
-			...defWidth(amountOfCells),
-			flexWrap: 'wrap',
-			marginLeft: 15,
-			flexGrow: 0,
-			flexShrink: 1,
-			position: 'relative',
-			overflow: 'hidden',
-			marginBottom: 15,
+			...defWidth(100 / amountOfCells),
+			...baseStyles,
 		};
 	},
 };
 
 export interface ICellProps extends WithStyles<typeof styles> {
-	children: React.ReactNode;
+	children: ReactElement;
 	amountOfCells?: number;
+	width?: number[];
 }
 
 export const Cell = withStyles(styles)(({ classes, children }: ICellProps) => {

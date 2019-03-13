@@ -35,12 +35,12 @@ module.exports = (pluginName) => (_some, { mode }) => {
 		config.externals = {
 			react: 'React',
 			'react-dom': 'ReactDOM',
-			// 'react-jss': 'ReactJss',
-			// 'react-bootstrap': 'ReactBootstrap',
 			bootstrap: 'bootstrap',
 			'core-js': 'coreJs',
 		};
 	}
+
+	config.devtool = 'eval';
 
 	if (process.env.NODE_ENV === 'development') {
 		config.optimization.minimize = false;

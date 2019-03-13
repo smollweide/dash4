@@ -8,6 +8,8 @@ import { Header } from '../Header';
 import { Page } from '../Page';
 import { Widgets } from '../Widgets';
 
+const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
+
 export function App() {
 	const [config, setConfig] = useState<undefined | IConfig>(undefined);
 	useEffectAsync(async () => {
@@ -16,7 +18,9 @@ export function App() {
 
 	const [arePluginsRegistered, setArePluginsRegistered] = useState(false);
 	useEffectAsync(async () => {
-		setArePluginsRegistered(await getArePluginsRegistered());
+		const areAvailable = await getArePluginsRegistered();
+		await wait(100);
+		setArePluginsRegistered(areAvailable);
 	}, []);
 
 	return (

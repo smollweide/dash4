@@ -1,5 +1,5 @@
 /* global Blob,URL,requestAnimationFrame,ResizeObserver */
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { Terminal } from 'xterm';
 import 'xterm/dist/xterm.css';
 import * as fit from 'xterm/lib/addons/fit/fit';
@@ -91,6 +91,7 @@ const getTermOptions = (props: IProps) => {
 	// Set a background color only if it is opaque
 	// const needTransparency = Color(props.backgroundColor).alpha() < 1;
 	const needTransparency = false;
+	const colors = props.colors || {};
 	const backgroundColor = props.backgroundColor || defaultConfig.config.backgroundColor;
 
 	let useWebGL = false;
@@ -109,10 +110,6 @@ const getTermOptions = (props: IProps) => {
 		}
 	}
 	Term.reportRenderer(props.uid, useWebGL ? 'WebGL' : 'Canvas');
-
-	if (!props.colors) {
-		props.colors = {};
-	}
 
 	return {
 		macOptionIsMeta: (props.modifierKeys || {}).altIsMeta || true,
@@ -138,22 +135,22 @@ const getTermOptions = (props: IProps) => {
 			cursor: props.cursorColor || defaultConfig.config.cursorColor,
 			cursorAccent: props.cursorAccentColor || defaultConfig.config.cursorAccentColor,
 			selection: props.selectionColor || defaultConfig.config.selectionColor,
-			black: props.colors.black || defaultConfig.config.colors.black,
-			red: props.colors.red || defaultConfig.config.colors.red,
-			green: props.colors.green || defaultConfig.config.colors.green,
-			yellow: props.colors.yellow || defaultConfig.config.colors.yellow,
-			blue: props.colors.blue || defaultConfig.config.colors.blue,
-			magenta: props.colors.magenta || defaultConfig.config.colors.magenta,
-			cyan: props.colors.cyan || defaultConfig.config.colors.cyan,
-			white: props.colors.white || defaultConfig.config.colors.white,
-			brightBlack: props.colors.lightBlack || defaultConfig.config.colors.lightBlack,
-			brightRed: props.colors.lightRed || defaultConfig.config.colors.lightRed,
-			brightGreen: props.colors.lightGreen || defaultConfig.config.colors.lightGreen,
-			brightYellow: props.colors.lightYellow || defaultConfig.config.colors.lightYellow,
-			brightBlue: props.colors.lightBlue || defaultConfig.config.colors.lightBlue,
-			brightMagenta: props.colors.lightMagenta || defaultConfig.config.colors.lightMagenta,
-			brightCyan: props.colors.lightCyan || defaultConfig.config.colors.lightCyan,
-			brightWhite: props.colors.lightWhite || defaultConfig.config.colors.lightWhite,
+			black: colors.black || defaultConfig.config.colors.black,
+			red: colors.red || defaultConfig.config.colors.red,
+			green: colors.green || defaultConfig.config.colors.green,
+			yellow: colors.yellow || defaultConfig.config.colors.yellow,
+			blue: colors.blue || defaultConfig.config.colors.blue,
+			magenta: colors.magenta || defaultConfig.config.colors.magenta,
+			cyan: colors.cyan || defaultConfig.config.colors.cyan,
+			white: colors.white || defaultConfig.config.colors.white,
+			brightBlack: colors.lightBlack || defaultConfig.config.colors.lightBlack,
+			brightRed: colors.lightRed || defaultConfig.config.colors.lightRed,
+			brightGreen: colors.lightGreen || defaultConfig.config.colors.lightGreen,
+			brightYellow: colors.lightYellow || defaultConfig.config.colors.lightYellow,
+			brightBlue: colors.lightBlue || defaultConfig.config.colors.lightBlue,
+			brightMagenta: colors.lightMagenta || defaultConfig.config.colors.lightMagenta,
+			brightCyan: colors.lightCyan || defaultConfig.config.colors.lightCyan,
+			brightWhite: colors.lightWhite || defaultConfig.config.colors.lightWhite,
 		},
 	};
 };
@@ -183,9 +180,6 @@ export class Term extends React.PureComponent<IProps, any> {
 		this.termRef = null;
 		this.termWrapperRef = null;
 		this.termRect = null;
-		this.onWindowPaste = this.onWindowPaste.bind(this);
-		this.onTermWrapperRef = this.onTermWrapperRef.bind(this);
-		this.onMouseUp = this.onMouseUp.bind(this);
 		this.termOptions = {};
 		this.disposableListeners = [];
 	}
@@ -273,13 +267,13 @@ export class Term extends React.PureComponent<IProps, any> {
 
 	// intercepting paste event for any necessary processing of
 	// clipboard data, if result is falsy, paste event continues
-	public onWindowPaste(e) {
+	public onWindowPaste(e: Event) {
 		// tslint:disable-next-line
 	}
 
-	public onMouseUp(e) {
+	public onMouseUp = (e: SyntheticEvent) => {
 		// tslint:disable-next-line
-	}
+	};
 
 	public write(data: string) {
 		this.term.write(data);
@@ -366,7 +360,7 @@ export class Term extends React.PureComponent<IProps, any> {
 		}
 	}
 
-	public onTermWrapperRef(component) {
+	public onTermWrapperRef = (component: any) => {
 		this.termWrapperRef = component;
 
 		if (component) {
@@ -383,7 +377,7 @@ export class Term extends React.PureComponent<IProps, any> {
 		} else {
 			this.resizeObserver.disconnect();
 		}
-	}
+	};
 
 	public componentWillUnmount() {
 		// terms[this.props.uid] = null;

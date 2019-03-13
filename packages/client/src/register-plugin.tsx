@@ -10,6 +10,9 @@ win.dash4 = win.dash4 || {};
 win.dash4.plugins = win.dash4.plugins || {};
 
 export function registerPlugin(name: string, PluginComponent: TPluginComponent) {
+	// tslint:disable-next-line
+	console.log(`[plugin]: ${name} registered`);
+
 	win.dash4.plugins[name] = PluginComponent;
 }
 

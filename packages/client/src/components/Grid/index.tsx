@@ -5,7 +5,6 @@ import { Cell as _Cell } from './Cell';
 const styles = {
 	root: {
 		display: 'flex',
-		alignItems: 'flex-start',
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		marginLeft: -15,

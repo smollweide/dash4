@@ -1,13 +1,14 @@
 // tslint:disable-next-line
 // /* global fetch, WebSocket, location */
 import { IWidgetConfig } from '@dash4/client/build';
+import { ErrorBoundary } from '@dash4/client/build/components/ErrorBoundary';
 import { Icon } from '@dash4/client/build/components/Icon';
 import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { socket } from '@dash4/client/build/socket';
 import React, { lazy, Suspense, SyntheticEvent } from 'react';
 import { Button, ButtonGroup, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap';
-import { IAdditionals } from '../shared-types';
+import { IClientConfig } from '../shared-types';
 import { Term as ITerm } from './components/Xterm';
 import './index.scss';
 
@@ -19,7 +20,7 @@ interface IState {
 	send?: (name: string, data?: string) => void;
 }
 
-type IProps = IWidgetConfig<IAdditionals>;
+type IProps = IWidgetConfig<IClientConfig>;
 
 async function subscribeToTerminalDataChanges(id: string, onChange: (data: string) => void, onStopped: () => void) {
 	const socketData = await socket();
@@ -80,7 +81,7 @@ class Terminal extends React.Component<IProps, IState> {
 	public render() {
 		return (
 			<Window dark={this.props.dark}>
-				<WindowHeader title={this.props.name} subTitle={this.props.additionals.cmd}>
+				<WindowHeader title={this.props.name} subTitle={this.props.clientConfig.cmd}>
 					<ButtonGroup aria-label="Basic example">
 						{this.state.stopped ? (
 							<Button onClick={this.handleClickStart} variant="outline-primary" size="sm">
@@ -99,16 +100,18 @@ class Terminal extends React.Component<IProps, IState> {
 					</ButtonGroup>
 				</WindowHeader>
 				<WindowBody>
-					<Suspense fallback={<div>Loading…</div>}>
-						<Term
-							ref_={(id: string, term: ITerm) => {
-								this.setState({
-									term,
-								});
-							}}
-							uid={this.props.id}
-						/>
-					</Suspense>
+					<ErrorBoundary>
+						<Suspense fallback={<div>Loading…</div>}>
+							<Term
+								ref_={(id: string, term: ITerm) => {
+									this.setState({
+										term,
+									});
+								}}
+								uid={this.props.id}
+							/>
+						</Suspense>
+					</ErrorBoundary>
 				</WindowBody>
 			</Window>
 		);

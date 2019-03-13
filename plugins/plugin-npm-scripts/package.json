@@ -1,0 +1,51 @@
+{
+  "name": "@dash4/plugin-npm-scripts",
+  "description": "dash4 plugin npm scripts",
+  "version": "0.1.0",
+  "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "main": "./build/server/index.js",
+  "typings": "./build/server/index.d.ts",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "scripts": {
+    "prepublishOnly": "node ./node_modules/.bin/dash4-prepublish-only",
+    "prebuild": "node ./node_modules/.bin/dash4-prebuild",
+    "build": "dash4-run-s build:*",
+    "build:client": "node ./node_modules/.bin/dash4-build-client",
+    "build:server": "node ./node_modules/.bin/dash4-build-server",
+    "static": "node ./node_modules/.bin/dash4-static",
+    "start": "node ./node_modules/.bin/dash4-start",
+    "analyze-bundle-size": "node ./node_modules/.bin/dash4-analyze-bundle-size",
+    "watch-build": "node ./node_modules/.bin/dash4-watch-build",
+    "watch-dist": "node ./node_modules/.bin/dash4-watch-dist"
+  },
+  "devDependencies": {
+    "@dash4/config": "0.1.0",
+    "@types/node": "11.10.4",
+    "@types/core-js": "2.5.0",
+    "@types/react": "16.8.6",
+    "@types/react-dom": "16.8.2",
+    "@types/react-bootstrap": "0.32.17",
+    "core-js": "2.6.5",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-bootstrap": "1.0.0-beta.5",
+    "react-jss": "10.0.0-alpha.10",
+    "chalk": "2.4.2",
+    "ora": "3.1.0",
+    "sparkly": "4.0.0",
+    "columnify": "1.5.4"
+  },
+  "dependencies": {
+    "@dash4/client": "0.1.0",
+    "@dash4/server": "0.1.0",
+    "xterm": "3.11.0",
+    "node-pty": "0.8.1",
+    "os": "0.1.1"
+  }
+}

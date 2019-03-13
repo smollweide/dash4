@@ -1,4 +1,4 @@
-export interface IAdditionals {
+export interface IClientConfig {
 	cmd: string;
 	cwd?: string;
 }

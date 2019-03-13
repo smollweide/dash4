@@ -14,14 +14,14 @@
 				],
 				[
 					{
-						"id": "1",
+						"id": "2",
 						"cmd": "node bin/example-01",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
 						"dark": true
 					},
 					{
-						"id": "2",
+						"id": "3",
 						"cmd": "node bin/example-02",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal"
@@ -29,21 +29,21 @@
 				],
 				[
 					{
-						"id": "1",
+						"id": "4",
 						"cmd": "node bin/example-01",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
 						"dark": true
 					},
 					{
-						"id": "2",
+						"id": "5",
 						"cmd": "node bin/example-02",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
 						"dark": true
 					},
 					{
-						"id": "2",
+						"id": "6",
 						"cmd": "node bin/example-02",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
@@ -52,28 +52,28 @@
 				],
 				[
 					{
-						"id": "1",
+						"id": "7",
 						"cmd": "node bin/example-01",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
 						"dark": true
 					},
 					{
-						"id": "2",
+						"id": "8",
 						"cmd": "node bin/example-02",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
 						"dark": true
 					},
 					{
-						"id": "2",
+						"id": "9",
 						"cmd": "node bin/example-02",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
 						"dark": true
 					},
 					{
-						"id": "2",
+						"id": "10",
 						"cmd": "node bin/example-02",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal",
@@ -83,14 +83,23 @@
 			]
 		},
 		{
-			"title": "cli",
+			"title": "definedWidth",
 			"rows": [
 				[
 					{
-						"id": "1",
+						"id": "11",
 						"cmd": "node bin/example-01",
 						"name": "PluginTerminal",
-						"lowerCaseName": "plugin-terminal"
+						"lowerCaseName": "plugin-terminal",
+						"dark": true,
+						"width": [12, 7, 8, 9]
+					},
+					{
+						"id": "12",
+						"cmd": "node bin/example-02",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal",
+						"width": [12, 5, 4, 9]
 					}
 				]
 			]
@@ -100,7 +109,7 @@
 			"rows": [
 				[
 					{
-						"id": "1",
+						"id": "13",
 						"cmd": "node bin/example-01",
 						"name": "PluginTerminal",
 						"lowerCaseName": "plugin-terminal"

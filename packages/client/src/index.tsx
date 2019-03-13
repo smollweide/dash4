@@ -4,12 +4,13 @@ import ReactDOM from 'react-dom';
 import { App } from './components/App';
 import './polyfill';
 
-export interface IWidgetConfig<IAdditionals = {}> {
+export interface IWidgetConfig<IClientConfig = {}> {
 	id: string;
 	name: string;
 	lowerCaseName: string;
 	dark?: boolean;
-	additionals: IAdditionals;
+	width?: number[];
+	clientConfig: IClientConfig;
 }
 
 export interface IConfigTab {
