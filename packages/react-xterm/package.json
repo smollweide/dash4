@@ -18,7 +18,7 @@
 		"build:lib": "webpack --config webpack.library.config.js --mode production",
 		"build:ts": "dash4-tsc --outDir build",
 		"postinstall": "npm rebuild node-sass",
-		"start": "webpack-dev-server --mode development"
+		"start": "webpack-dev-server --mode development --port 9000"
 	},
 	"browserslist": [
 		"> 1%",

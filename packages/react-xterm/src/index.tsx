@@ -116,7 +116,7 @@ const getTermOptions = (props: IProps) => {
 
 	return {
 		macOptionIsMeta: (props.modifierKeys || {}).altIsMeta || true,
-		scrollback: props.scrollback || true,
+		scrollback: props.scrollback,
 		cursorStyle: CURSOR_STYLES[props.cursorShape || 'BEAM'],
 		cursorBlink: props.cursorBlink || defaultConfig.config.cursorBlink,
 		fontFamily: props.fontFamily || defaultConfig.config.fontFamily,
@@ -192,6 +192,8 @@ export class Term extends React.PureComponent<IProps, any> {
 
 		this.termOptions = getTermOptions(props);
 		this.term = props.term || new Terminal(this.termOptions);
+		// console.log(this.termOptions);
+		// this.term = props.term || new Terminal();
 
 		// The parent element for the terminal is attached and removed manually so
 		// that we can preserve it across mounts and unmounts of the component

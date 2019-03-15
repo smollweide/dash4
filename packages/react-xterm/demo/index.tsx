@@ -14,13 +14,18 @@ const MyComponent = ({ id }: { id: string }) => {
 		if (!term) {
 			return;
 		}
-		counter += 1;
-		term.write(`counter = ${counter}\n`);
+		let i = 0;
+		for (i = 0; i < 40; i += 1) {
+			counter += 1;
+			term.write(`counter = ${counter}\n`);
+		}
 	}
 
 	return (
 		<>
-			<Term ref_={handleTermRef} uid={id} />
+			<div style={{ width: '75%', height: '50vh' }}>
+				<Term ref_={handleTermRef} uid={id} />
+			</div>
 			<button onClick={handleStart}>start</button>
 		</>
 	);
