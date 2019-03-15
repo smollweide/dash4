@@ -9,6 +9,7 @@ import { socket } from '@dash4/client/build/socket';
 import { Term } from '@dash4/react-xterm';
 import React, { SyntheticEvent } from 'react';
 import { Button, ButtonGroup, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap';
+import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig } from '../shared-types';
 
 type ITerm = Term;
@@ -17,9 +18,16 @@ interface IState {
 	term?: ITerm;
 	stopped: boolean;
 	send?: (name: string, data?: string) => void;
+	fullscreen: boolean;
 }
 
-type IProps = IWidgetConfig<IClientConfig>;
+const styles = {
+	windowBody: {
+		height: 250,
+	},
+};
+
+type IProps = WithStyles<typeof styles> & IWidgetConfig<IClientConfig>;
 
 async function subscribeToTerminalDataChanges(id: string, onChange: (data: string) => void, onStopped: () => void) {
 	const socketData = await socket();
@@ -58,6 +66,7 @@ class Terminal extends React.Component<IProps, IState> {
 		super(props);
 		this.state = {
 			stopped: false,
+			fullscreen: false,
 		};
 	}
 
@@ -79,8 +88,12 @@ class Terminal extends React.Component<IProps, IState> {
 
 	public render() {
 		return (
-			<Window dark={this.props.dark}>
-				<WindowHeader title={this.props.name} subTitle={this.props.clientConfig.cmd}>
+			<Window fullscreen={this.state.fullscreen} dark={this.props.dark}>
+				<WindowHeader
+					onDoubleClick={this.handleHeaderDoubleClick}
+					title={this.props.name}
+					subTitle={this.props.clientConfig.cmd}
+				>
 					<ButtonGroup aria-label="Basic example">
 						{this.state.stopped ? (
 							<Button onClick={this.handleClickStart} variant="outline-primary" size="sm">
@@ -98,9 +111,8 @@ class Terminal extends React.Component<IProps, IState> {
 						</OverlayTrigger>
 					</ButtonGroup>
 				</WindowHeader>
-				<WindowBody>
+				<WindowBody className={this.props.classes.windowBody}>
 					<ErrorBoundary>
-						{/* <Suspense fallback={<div>Loading…</div>}> */}
 						<Term
 							ref_={(id: string, term: ITerm) => {
 								this.setState({
@@ -109,11 +121,20 @@ class Terminal extends React.Component<IProps, IState> {
 							}}
 							uid={this.props.id}
 						/>
-						{/* </Suspense> */}
 					</ErrorBoundary>
 				</WindowBody>
 			</Window>
 		);
+	}
+
+	private handleHeaderDoubleClick = () => {
+		this.toggleFullscreen();
+	};
+
+	private toggleFullscreen() {
+		this.setState({
+			fullscreen: !this.state.fullscreen,
+		});
 	}
 
 	private get popover() {
@@ -175,4 +196,4 @@ class Terminal extends React.Component<IProps, IState> {
 	};
 }
 
-registerPlugin('PluginTerminal', Terminal);
+registerPlugin('PluginTerminal', withStyles(styles)(Terminal));

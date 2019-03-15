@@ -30,21 +30,24 @@ interface IProps extends WithStyles<typeof styles> {
 	subTitle?: string;
 	className?: string;
 	children?: React.ReactNode;
+	onDoubleClick?: (event: React.SyntheticEvent<HTMLDivElement>) => void;
 }
 
-export const WindowHeader = withStyles(styles)(({ className, classes, title, subTitle, children }: IProps) => {
-	return (
-		<div className={`${className || ''} ${classes.header}`}>
-			<p className={`${classes.title}`}>
-				{title.replace(/^Plugin/, '')}
-				{subTitle && (
-					<>
-						<br />
-						<small className="text-muted">&nbsp;{subTitle}</small>
-					</>
-				)}
-			</p>
-			{children && <div className={classes.button}>{children}</div>}
-		</div>
-	);
-});
+export const WindowHeader = withStyles(styles)(
+	({ className, classes, title, subTitle, children, onDoubleClick }: IProps) => {
+		return (
+			<div onDoubleClick={onDoubleClick} className={`${className || ''} ${classes.header}`}>
+				<p className={`${classes.title}`}>
+					{title.replace(/^Plugin/, '')}
+					{subTitle && (
+						<>
+							<br />
+							<small className="text-muted">&nbsp;{subTitle}</small>
+						</>
+					)}
+				</p>
+				{children && <div className={classes.button}>{children}</div>}
+			</div>
+		);
+	}
+);

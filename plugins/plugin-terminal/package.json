@@ -29,7 +29,8 @@
     "@dash4/react-xterm": "0.1.0",
     "@dash4/server": "0.1.0",
     "node-pty": "0.8.1",
-    "os": "0.1.1"
+    "os": "0.1.1",
+    "react-jss": "10.0.0-alpha.10"
   },
   "devDependencies": {
     "@dash4/config": "0.1.0",
