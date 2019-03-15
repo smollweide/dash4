@@ -1,16 +1,19 @@
 /* global Blob,URL,requestAnimationFrame,ResizeObserver */
 import React, { SyntheticEvent } from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
 import { Terminal } from 'xterm';
 import 'xterm/dist/xterm.css';
 import * as fit from 'xterm/lib/addons/fit/fit';
 import * as webLinks from 'xterm/lib/addons/webLinks/webLinks';
 import * as winptyCompat from 'xterm/lib/addons/winptyCompat/winptyCompat';
 import defaultConfig from './default-config';
-import './xterm.scss';
+import './xterm.css';
 
 Terminal.applyAddon(fit);
 Terminal.applyAddon(webLinks);
 Terminal.applyAddon(winptyCompat);
+
+const WebGL2RenderingContext = (window as any).WebGL2RenderingContext;
 
 // map old hterm constants to xterm.js
 const CURSOR_STYLES = {
@@ -21,12 +24,12 @@ const CURSOR_STYLES = {
 export type TCursorStyles = keyof typeof CURSOR_STYLES;
 
 const isWebgl2Supported = (() => {
-	let isSupported = window.WebGL2RenderingContext ? undefined : false;
+	let isSupported = WebGL2RenderingContext ? undefined : false;
 	return () => {
 		if (isSupported === undefined) {
 			const canvas = document.createElement('canvas');
 			const gl = canvas.getContext('webgl2', { depth: false, antialias: false });
-			isSupported = gl instanceof window.WebGL2RenderingContext;
+			isSupported = gl instanceof WebGL2RenderingContext;
 		}
 		return isSupported;
 	};

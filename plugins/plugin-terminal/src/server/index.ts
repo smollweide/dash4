@@ -1,4 +1,4 @@
-import { Dash4Plugin, IDash4Plugin, TOn, TSend } from '@dash4/server';
+import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import fs from 'fs';
 import path from 'path';
 import { IClientConfig } from '../shared-types';
@@ -62,26 +62,7 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 	}
 
 	public get clientFiles() {
-		return [
-			path.join(__dirname, '../../dist/plugins/plugin-terminal/main.js'),
-			path.join(__dirname, '../../dist/plugins/plugin-terminal/main.css'),
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.css'),
-				scriptTag: false,
-			},
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/vendors~term.js'),
-				scriptTag: false,
-			},
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/term.css'),
-				scriptTag: false,
-			},
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-terminal/term.js'),
-				scriptTag: false,
-			},
-		];
+		return [path.join(__dirname, '../../dist/plugins/plugin-terminal/main.js')];
 	}
 
 	public connected = () => {

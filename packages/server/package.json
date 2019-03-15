@@ -1,35 +1,35 @@
 {
   "name": "@dash4/server",
-  "description": "dash4 server",
   "version": "0.1.0",
-  "author": "Simon Mollweide<simon.mollweide@gmail.com>",
-  "license": "MIT",
   "private": false,
+  "description": "dash4 server",
+  "license": "MIT",
+  "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
   "bin": {
     "dash4": "./bin/index.js"
   },
-  "main": "./build/index.js",
-  "typings": "./build/index.d.ts",
-  "devDependencies": {
-    "@types/ws": "6.0.1",
-    "@types/commander": "2.12.2",
-    "@types/mime-types": "2.1.0",
-    "@namics/ts-config": "0.2.0",
-    "typescript": "3.3.3333"
-  },
-  "dependencies": {
-    "@dash4/client": "0.1.0",
-    "commander": "2.19.0",
-    "ws": "6.1.4",
-    "mime-types": "2.1.22"
+  "scripts": {
+    "build": "tsc --outDir build",
+    "watch-build": "tsc --watch --outDir build"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 10"
   ],
-  "scripts": {
-    "build": "tsc --outDir build",
-    "watch-build": "tsc --watch --outDir build"
+  "dependencies": {
+    "@dash4/client": "0.1.0",
+    "commander": "2.19.0",
+    "mime-types": "2.1.22",
+    "ws": "6.1.4"
+  },
+  "devDependencies": {
+    "@namics/ts-config": "0.2.0",
+    "@types/commander": "2.12.2",
+    "@types/mime-types": "2.1.0",
+    "@types/ws": "6.0.1",
+    "typescript": "3.3.3333"
   }
 }

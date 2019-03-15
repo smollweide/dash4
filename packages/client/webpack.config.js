@@ -16,6 +16,10 @@ module.exports = (_some, { mode }) => {
 		optimization: {
 			minimize: true,
 		},
+		externals: {
+			react: 'React',
+			'react-dom': 'ReactDOM',
+		},
 		plugins: [
 			new AssetConfigWebpackPlugin(),
 			new CleanWebpackPlugin(['dist']),
@@ -35,13 +39,6 @@ module.exports = (_some, { mode }) => {
 		],
 	};
 
-	if (process.env.NODE_ENV !== 'development') {
-		config.externals = {
-			react: 'React',
-			'react-dom': 'ReactDOM',
-		};
-	}
-
 	if (process.env.NODE_ENV === 'development') {
 		config.optimization.minimize = false;
 	}
@@ -51,7 +48,7 @@ module.exports = (_some, { mode }) => {
 			new BundleAnalyzerPlugin({
 				analyzerMode: 'static',
 				generateStatsFile: true,
-				openAnalyzer: false,
+				openAnalyzer: true,
 			})
 		);
 		config.optimization.minimize = true;

@@ -2,13 +2,11 @@
 // /* global fetch, WebSocket, location */
 import { IWidgetConfig } from '@dash4/client/build';
 import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
-import withStyles from '@dash4/client/build/react-jss';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import React from 'react';
-import { WithStyles } from 'react-jss';
+import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig } from '../shared-types';
 import { NpmScript } from './components/Script';
-import './index.scss';
 
 const styles = {
 	ul: {

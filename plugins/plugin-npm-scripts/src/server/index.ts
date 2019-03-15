@@ -1,4 +1,5 @@
 import { Dash4Plugin, IDash4Plugin, TOn, TSend } from '@dash4/server';
+import fs from 'fs';
 import path from 'path';
 import { IClientConfig, IScript, IScriptWithId } from '../shared-types';
 import { PluginNpmScript } from './plugin-npm-script';
@@ -9,6 +10,8 @@ export interface IOptions {
 	width?: number[];
 	scripts: IScript[];
 }
+
+const processCwd = fs.realpathSync(process.cwd());
 
 export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
 	public id: string;
@@ -25,7 +28,11 @@ export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClien
 			name: 'PluginNpmScripts',
 			lowerCaseName: 'plugin-npm-scripts',
 		});
-		this.scripts = scripts.map((script, index) => ({ ...script, id: index.toString() }));
+		this.scripts = scripts.map((script, index) => ({
+			...script,
+			id: index.toString(),
+			cwd: script.cwd ? path.join(processCwd, script.cwd) : processCwd,
+		}));
 		this.instances = this.scripts.map((script) => {
 			return new PluginNpmScript({
 				id,
@@ -41,26 +48,7 @@ export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClien
 	}
 
 	public get clientFiles() {
-		return [
-			path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/main.js'),
-			path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/main.css'),
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/vendors~term.css'),
-				scriptTag: false,
-			},
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/vendors~term.js'),
-				scriptTag: false,
-			},
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/term.css'),
-				scriptTag: false,
-			},
-			{
-				pathName: path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/term.js'),
-				scriptTag: false,
-			},
-		];
+		return [path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/main.js')];
 	}
 
 	public connect = (on: TOn, send: TSend) => {

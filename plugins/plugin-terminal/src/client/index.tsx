@@ -6,13 +6,12 @@ import { Icon } from '@dash4/client/build/components/Icon';
 import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { socket } from '@dash4/client/build/socket';
-import React, { lazy, Suspense, SyntheticEvent } from 'react';
+import { Term } from '@dash4/react-xterm';
+import React, { SyntheticEvent } from 'react';
 import { Button, ButtonGroup, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap';
 import { IClientConfig } from '../shared-types';
-import { Term as ITerm } from './components/Xterm';
-import './index.scss';
 
-const Term = lazy(() => import(/* webpackChunkName: "term" */ './components/Xterm'));
+type ITerm = Term;
 
 interface IState {
 	term?: ITerm;
@@ -101,16 +100,16 @@ class Terminal extends React.Component<IProps, IState> {
 				</WindowHeader>
 				<WindowBody>
 					<ErrorBoundary>
-						<Suspense fallback={<div>Loading…</div>}>
-							<Term
-								ref_={(id: string, term: ITerm) => {
-									this.setState({
-										term,
-									});
-								}}
-								uid={this.props.id}
-							/>
-						</Suspense>
+						{/* <Suspense fallback={<div>Loading…</div>}> */}
+						<Term
+							ref_={(id: string, term: ITerm) => {
+								this.setState({
+									term,
+								});
+							}}
+							uid={this.props.id}
+						/>
+						{/* </Suspense> */}
 					</ErrorBoundary>
 				</WindowBody>
 			</Window>

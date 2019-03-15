@@ -1,8 +1,19 @@
+import * as ReactXterm from '@dash4/react-xterm';
+import '@dash4/react-xterm/lib/ReactXterm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import * as ReactBootstrap from 'react-bootstrap';
 import ReactDOM from 'react-dom';
+import * as ReactJSS from 'react-jss';
+import * as tslib from 'tslib';
 import { App } from './components/App';
 import './polyfill';
+
+// public available libraries
+(window as any).ReactBootstrap = ReactBootstrap;
+(window as any).ReactJSS = ReactJSS;
+(window as any).tslib = tslib;
+(window as any).ReactXterm = ReactXterm;
 
 export interface IWidgetConfig<IClientConfig = {}> {
 	id: string;

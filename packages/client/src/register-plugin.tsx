@@ -23,7 +23,7 @@ export async function getArePluginsRegistered(): Promise<boolean> {
 		if (pluginsAvailable()) {
 			resolve(true);
 		}
-		setTimeout(() => check(resolve), 100);
+		setTimeout(() => check(resolve), 10);
 	}
 
 	return new Promise((resolve) => {

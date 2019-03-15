@@ -84,6 +84,10 @@ async function getConfig() {
 									cmd: 'npm run prettier',
 								},
 								{
+									title: 'sort-package-json',
+									cmd: 'npm run sort-package-json',
+								},
+								{
 									title: 'build',
 									cmd: 'npm run build',
 								},
@@ -126,13 +130,13 @@ async function getConfig() {
 							id: 'client-3',
 							cmd: 'npm run watch-build',
 							cwd: '/packages/client',
-							autostart: false,
+							autostart: true,
 						}),
 						new PluginTerminal({
 							id: 'client-4',
 							cmd: 'npm run watch-dist',
 							cwd: '/packages/client',
-							autostart: false,
+							autostart: true,
 						}),
 					],
 				],
@@ -145,11 +149,11 @@ async function getConfig() {
 							id: 'server-1',
 							cmd: 'npm run watch-build',
 							cwd: '/packages/server',
-							autostart: false,
+							autostart: true,
 							width: [12, 6, 8],
 						}),
 						new PluginNpmScripts({
-							id: 'client-3',
+							id: 'server-2',
 							scripts: [
 								{
 									title: 'build',
@@ -160,6 +164,31 @@ async function getConfig() {
 									title: 'analyze-bundle-size',
 									cmd: 'npm run analyze-bundle-size',
 									cwd: '/packages/server',
+								},
+							],
+							width: [12, 6, 4],
+						}),
+					],
+				],
+			},
+			{
+				title: 'react-xterm',
+				rows: [
+					[
+						new PluginTerminal({
+							id: 'react-xterm-1',
+							cmd: 'npm run start',
+							cwd: '/packages/react-xterm',
+							autostart: false,
+							width: [12, 6, 8],
+						}),
+						new PluginNpmScripts({
+							id: 'react-xterm-2',
+							scripts: [
+								{
+									title: 'build',
+									cmd: 'npm run build',
+									cwd: '/packages/react-xterm',
 								},
 							],
 							width: [12, 6, 4],

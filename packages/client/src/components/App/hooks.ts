@@ -19,6 +19,7 @@ export function usePluginsRegistered() {
 	const [arePluginsRegistered, setArePluginsRegistered] = useState(false);
 	useEffectAsync(async () => {
 		const areAvailable = await getArePluginsRegistered();
+		// FIXME: make sure all plugins are registered and remove wait
 		await wait(100);
 		setArePluginsRegistered(areAvailable);
 	}, []);

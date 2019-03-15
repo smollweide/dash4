@@ -2,15 +2,15 @@
 // /* global fetch, WebSocket, location */
 import { Icon } from '@dash4/client/build/components/Icon';
 import { WindowHeader } from '@dash4/client/build/components/Window';
-import withStyles from '@dash4/client/build/react-jss';
 import { socket } from '@dash4/client/build/socket';
-import React, { lazy, Suspense, SyntheticEvent } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { WithStyles } from 'react-jss';
+import { Term } from '@dash4/react-xterm';
+import React, { SyntheticEvent } from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import withStyles, { WithStyles } from 'react-jss';
 import { IScriptWithId } from '../../../shared-types';
 import { ErrorBoundary } from '../ErrorBoundary';
-import Term, { ITerm } from '../Xterm';
+
+type ITerm = Term;
 
 const styles = {
 	button: {

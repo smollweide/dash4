@@ -1,6 +1,4 @@
 import { TOn, TSend } from '@dash4/server';
-import fs from 'fs';
-import path from 'path';
 import { IScriptWithId } from '../shared-types';
 import { ITerm, terminalEmulator } from './terminal-emulator';
 
@@ -8,8 +6,6 @@ interface IOptions {
 	id: string;
 	script: IScriptWithId;
 }
-
-const processCwd = fs.realpathSync(process.cwd());
 
 export class PluginNpmScript {
 	private id: string;
@@ -22,10 +18,7 @@ export class PluginNpmScript {
 
 	constructor({ id, script }: IOptions) {
 		this.id = id;
-		this.script = {
-			...script,
-			cwd: script.cwd ? path.join(processCwd, script.cwd) : processCwd,
-		};
+		this.script = script;
 	}
 
 	public connect = (on: TOn, send: TSend) => {

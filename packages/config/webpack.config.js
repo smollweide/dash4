@@ -19,6 +19,16 @@ module.exports = (pluginName) => (_some, { mode }) => {
 			filename: '[name].js',
 			chunkFilename: '[name].js',
 		},
+		externals: {
+			react: 'React',
+			'react-dom': 'ReactDOM',
+			bootstrap: 'bootstrap',
+			'core-js': 'coreJs',
+			'react-bootstrap': 'ReactBootstrap',
+			'react-jss': 'ReactJSS',
+			tslib: 'tslib',
+			'@dash4/react-xterm': 'ReactXterm',
+		},
 		plugins: [
 			new AssetConfigWebpackPlugin(),
 			new CleanWebpackPlugin(['dist']),
@@ -31,15 +41,6 @@ module.exports = (pluginName) => (_some, { mode }) => {
 		],
 	};
 
-	if (process.env.NODE_ENV !== 'development') {
-		config.externals = {
-			react: 'React',
-			'react-dom': 'ReactDOM',
-			bootstrap: 'bootstrap',
-			'core-js': 'coreJs',
-		};
-	}
-
 	config.devtool = 'eval';
 
 	if (process.env.NODE_ENV === 'development') {
@@ -51,7 +52,7 @@ module.exports = (pluginName) => (_some, { mode }) => {
 			new BundleAnalyzerPlugin({
 				analyzerMode: 'static',
 				generateStatsFile: true,
-				openAnalyzer: false,
+				openAnalyzer: true,
 			})
 		);
 		config.optimization.minimize = true;

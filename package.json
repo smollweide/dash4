@@ -1,13 +1,38 @@
 {
   "name": "dash4",
-  "description": "The dashboard for developers",
   "version": "0.1.0",
-  "author": "Simon Mollweide <simon.mollweide@gmail.com>",
+  "private": false,
+  "description": "The dashboard for developers",
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
-  "private": false,
-  "engines": {
-    "node": ">=10"
+  "author": "Simon Mollweide <simon.mollweide@gmail.com>",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "clean": "npx npm-run-all clean:lerna clean:rimraf clean:build",
+    "clean:build": "npx rimraf packages/*/build plugins/*/build packages/*/dist packages/*/build",
+    "clean:lerna": "npx lerna clean --yes",
+    "clean:rimraf": "npx rimraf node_modules package-lock.json lerna-debug.log npm-debug.log **/package-lock.json **/coverage",
+    "cz": "git-cz",
+    "lint": "npm-run-all lint:*",
+    "lint:ts": "tslint \"**/*.{ts,tsx}\" -c tslint.json",
+    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
+    "sort-package-json": "sort-package-json packages/*/package.json plugins/*/package.json package.json",
+    "start": "node ./packages/server/bin/index.js --port=8888",
+    "update": "node ./bin/update.js",
+    "watch-build": "lerna-terminal watch-build",
+    "watch-dist": "lerna-terminal watch-dist"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run sort-package-json",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@namics/commitlint-conventional-changelog"
+    ]
   },
   "lint-staged": {
     "linters": {
@@ -18,32 +43,6 @@
         "tslint"
       ]
     }
-  },
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "cz": "git-cz",
-    "clean": "npx npm-run-all clean:lerna clean:rimraf",
-    "clean:lerna": "npx lerna clean --yes",
-    "clean:rimraf": "npx rimraf node_modules package-lock.json lerna-debug.log npm-debug.log **/package-lock.json **/build **/coverage",
-    "lint": "npm-run-all lint:*",
-    "lint:ts": "tslint \"**/*.{ts,tsx}\" -c tslint.json",
-    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
-    "build": "lerna run build",
-    "watch-dist": "lerna-terminal watch-dist",
-    "watch-build": "lerna-terminal watch-build",
-    "update": "node ./bin/update.js",
-    "start": "node ./packages/server/bin/index.js --port=8888"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@namics/commitlint-conventional-changelog"
-    ]
   },
   "config": {
     "commitizen": {
@@ -57,21 +56,25 @@
     "@namics/prettier-config": "0.2.0",
     "@namics/ts-config": "0.2.0",
     "@namics/tslint-config": "0.2.0",
-    "fs-extra": "7.0.1",
+    "chalk": "2.4.2",
     "commitizen": "3.0.7",
+    "enquirer": "2.3.0",
+    "fs-extra": "7.0.1",
+    "globby": "9.1.0",
     "husky": "1.3.1",
+    "latest-version": "4.0.0",
     "lerna": "3.13.1",
+    "lerna-terminal": "1.4.2",
     "lint-staged": "8.1.5",
     "npm-run-all": "4.1.5",
+    "ora": "3.2.0",
     "prettier": "1.16.4",
+    "sort-package-json": "1.21.0",
     "tslint": "5.13.1",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.3.3333",
-    "lerna-terminal": "1.4.2",
-    "globby": "9.1.0",
-    "enquirer": "2.3.0",
-    "latest-version": "4.0.0",
-    "ora": "3.2.0",
-    "chalk": "2.4.2"
+    "typescript": "3.3.3333"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
