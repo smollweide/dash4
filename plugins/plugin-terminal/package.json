@@ -13,7 +13,7 @@
     "build": "dash4-run-s build:*",
     "build:client": "node ./node_modules/.bin/dash4-build-client",
     "build:server": "node ./node_modules/.bin/dash4-build-server",
-    "prepublishOnly": "node ./node_modules/.bin/dash4-prepublish-only",
+    "prepublishOnly": "dash4-run-s build",
     "start": "node ./node_modules/.bin/dash4-start",
     "static": "node ./node_modules/.bin/dash4-static",
     "watch-build": "node ./node_modules/.bin/dash4-watch-build",
@@ -35,16 +35,16 @@
   "devDependencies": {
     "@dash4/config": "0.1.0",
     "@types/core-js": "2.5.0",
-    "@types/node": "11.10.4",
-    "@types/react": "16.8.6",
+    "@types/node": "11.11.3",
+    "@types/react": "16.8.8",
     "@types/react-dom": "16.8.2",
     "chalk": "2.4.2",
     "columnify": "1.5.4",
     "core-js": "2.6.5",
     "ora": "3.1.0",
-    "react": "16.8.3",
+    "react": "16.8.4",
     "react-bootstrap": "1.0.0-beta.5",
-    "react-dom": "16.8.3",
+    "react-dom": "16.8.4",
     "sparkly": "4.0.0"
   }
 }

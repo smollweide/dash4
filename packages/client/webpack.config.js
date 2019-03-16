@@ -22,7 +22,7 @@ module.exports = (_some, { mode }) => {
 		},
 		plugins: [
 			new AssetConfigWebpackPlugin(),
-			new CleanWebpackPlugin(['dist']),
+			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
 				title: 'Dash4',
 				template: 'src/index.html',

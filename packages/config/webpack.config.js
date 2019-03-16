@@ -31,7 +31,7 @@ module.exports = (pluginName) => (_some, { mode }) => {
 		},
 		plugins: [
 			new AssetConfigWebpackPlugin(),
-			new CleanWebpackPlugin(['dist']),
+			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin(),
 			new ScssConfigWebpackPlugin(),
 			new TsConfigWebpackPlugin(),
