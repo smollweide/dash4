@@ -21,14 +21,12 @@ async function getConfig() {
 		rows: [
 			[
 				new PluginTerminal({
-					id: `${pluginName}-1`,
 					cmd: 'npm start',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
 					width: [12, 6, 8],
 				}),
 				new PluginNpmScripts({
-					id: `${pluginName}-2`,
 					scripts: [
 						{
 							title: 'build',
@@ -46,13 +44,11 @@ async function getConfig() {
 			],
 			[
 				new PluginTerminal({
-					id: `${pluginName}-3`,
 					cmd: 'npm run watch-build',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
 				}),
 				new PluginTerminal({
-					id: `${pluginName}-4`,
 					cmd: 'npm run watch-dist',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
@@ -68,7 +64,6 @@ async function getConfig() {
 				rows: [
 					[
 						new PluginNpmScripts({
-							id: 'root-1',
 							dark: false,
 							scripts: [
 								{
@@ -102,14 +97,12 @@ async function getConfig() {
 				rows: [
 					[
 						new PluginTerminal({
-							id: 'client-1',
 							cmd: 'npm start',
 							cwd: '/packages/client',
 							autostart: false,
 							width: [12, 6, 8],
 						}),
 						new PluginNpmScripts({
-							id: 'client-2',
 							scripts: [
 								{
 									title: 'build',
@@ -127,13 +120,11 @@ async function getConfig() {
 					],
 					[
 						new PluginTerminal({
-							id: 'client-3',
 							cmd: 'npm run watch-build',
 							cwd: '/packages/client',
 							autostart: true,
 						}),
 						new PluginTerminal({
-							id: 'client-4',
 							cmd: 'npm run watch-dist',
 							cwd: '/packages/client',
 							autostart: true,
@@ -146,14 +137,12 @@ async function getConfig() {
 				rows: [
 					[
 						new PluginTerminal({
-							id: 'server-1',
 							cmd: 'npm run watch-build',
 							cwd: '/packages/server',
 							autostart: true,
 							width: [12, 6, 8],
 						}),
 						new PluginNpmScripts({
-							id: 'server-2',
 							scripts: [
 								{
 									title: 'build',
@@ -176,14 +165,12 @@ async function getConfig() {
 				rows: [
 					[
 						new PluginTerminal({
-							id: 'react-xterm-1',
 							cmd: 'npm run start',
 							cwd: '/packages/react-xterm',
 							autostart: false,
 							width: [12, 6, 8],
 						}),
 						new PluginNpmScripts({
-							id: 'react-xterm-2',
 							scripts: [
 								{
 									title: 'build',

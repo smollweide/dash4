@@ -1,3 +1,5 @@
+import uuid from 'uuid/v1';
+
 export type TOn = (id: string, callback: any) => void;
 export type TSend = (id: string, data?: any) => void;
 
@@ -34,7 +36,6 @@ export interface IConfig {
 }
 
 export interface IPluginOptions {
-	id: string;
 	name: string;
 	lowerCaseName: string;
 	dark?: boolean;
@@ -50,8 +51,8 @@ export class Dash4Plugin {
 	private _on?: (id: string, callback: any) => void;
 	private _send?: (id: string, data?: any) => void;
 
-	constructor({ id, dark = false, width, lowerCaseName, name }: IPluginOptions) {
-		this._id = id;
+	constructor({ dark = false, width, lowerCaseName, name }: IPluginOptions) {
+		this._id = uuid();
 		this._dark = dark;
 		this._width = width;
 		this._lowerCaseName = lowerCaseName;

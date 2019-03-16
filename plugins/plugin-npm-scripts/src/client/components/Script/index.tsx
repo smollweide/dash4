@@ -1,5 +1,6 @@
 // tslint:disable-next-line
 // /* global fetch, WebSocket, location */
+import { ErrorBoundary } from '@dash4/client/build/components/ErrorBoundary';
 import { Icon } from '@dash4/client/build/components/Icon';
 import { WindowHeader } from '@dash4/client/build/components/Window';
 import { socket } from '@dash4/client/build/socket';
@@ -8,7 +9,6 @@ import React, { SyntheticEvent } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';
 import { IScriptWithId } from '../../../shared-types';
-import { ErrorBoundary } from '../ErrorBoundary';
 
 type ITerm = Term;
 
@@ -64,7 +64,6 @@ interface IState {
 
 export interface IProps extends WithStyles<typeof styles> {
 	id: string;
-	index: number;
 	script: IScriptWithId;
 }
 
@@ -181,7 +180,7 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 											}
 										);
 									}}
-									uid={`npm-scripts-${this.props.id}-${this.props.index}`}
+									uid={`npm-scripts-${this.props.id}-${this.props.script.id}`}
 								/>
 							</ErrorBoundary>
 						)}

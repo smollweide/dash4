@@ -16,8 +16,8 @@ export function App() {
 			<>
 				<Header tabs={config ? config.tabs.map((tab) => tab.title) : []} />
 				<Page>
-					{config &&
-						arePluginsRegistered &&
+					{!isLoading &&
+						config &&
 						config.tabs.map((tab, index) => {
 							let pathName = `/${tab.title.toLowerCase()}`;
 							if (index === 0) {

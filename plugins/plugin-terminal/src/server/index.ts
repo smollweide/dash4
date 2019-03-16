@@ -5,7 +5,6 @@ import { IClientConfig } from '../shared-types';
 import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
-	id: string;
 	cmd: string;
 	cwd?: string;
 	dark?: boolean;
@@ -23,9 +22,8 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 	private _term: ITerm;
 	private _stopProcessingTriggered: boolean = false;
 
-	constructor({ id, dark = true, width, cmd, cwd, autostart = true }: IOptions) {
+	constructor({ dark = true, width, cmd, cwd, autostart = true }: IOptions) {
 		super({
-			id,
 			dark,
 			width,
 			name: 'PluginTerminal',

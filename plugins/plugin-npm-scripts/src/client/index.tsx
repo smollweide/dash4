@@ -26,20 +26,22 @@ export interface IProps extends WithStyles<typeof styles>, IWidgetConfig<IClient
 	// tslint:disable-next-line
 }
 
-const NpmScripts = ({ dark, classes, clientConfig, id }: IProps) => (
-	<Window dark={dark}>
-		<WindowHeader title={'Npm Scripts'} />
-		<WindowBody>
-			<ul className={classes.ul}>
-				{clientConfig.scripts.map((script, index) => (
-					<li key={script.id} className={classes.li}>
-						<NpmScript index={index} id={id} script={script} />
-					</li>
-				))}
-			</ul>
-		</WindowBody>
-	</Window>
-);
+const NpmScripts = ({ dark, classes, clientConfig, id }: IProps) => {
+	return (
+		<Window dark={dark}>
+			<WindowHeader title={'Npm Scripts'} />
+			<WindowBody>
+				<ul className={classes.ul}>
+					{clientConfig.scripts.map((script) => (
+						<li key={script.id} className={classes.li}>
+							<NpmScript id={id} script={script} />
+						</li>
+					))}
+				</ul>
+			</WindowBody>
+		</Window>
+	);
+};
 
 // tslint:disable-next-line
 registerPlugin('PluginNpmScripts', withStyles(styles)(NpmScripts));

@@ -14,15 +14,13 @@ export interface IOptions {
 const processCwd = fs.realpathSync(process.cwd());
 
 export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
-	public id: string;
 	public dark: boolean;
 	public width: number[];
 	private scripts: IScriptWithId[];
 	private instances: PluginNpmScript[];
 
-	constructor({ id, scripts, width, dark = false }: IOptions) {
+	constructor({ scripts, width, dark = false }: IOptions) {
 		super({
-			id,
 			width,
 			dark,
 			name: 'PluginNpmScripts',
@@ -35,7 +33,7 @@ export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClien
 		}));
 		this.instances = this.scripts.map((script) => {
 			return new PluginNpmScript({
-				id,
+				id: this.id,
 				script,
 			});
 		});

@@ -8,7 +8,6 @@ async function getConfig() {
 				rows: [
 					[
 						new PluginNpmScripts({
-							id: '1',
 							dark: true,
 							scripts: [
 								{
@@ -37,7 +36,6 @@ async function getConfig() {
 					],
 					[
 						new PluginNpmScripts({
-							id: '2',
 							dark: false,
 							scripts: [
 								{
