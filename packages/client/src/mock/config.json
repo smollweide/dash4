@@ -116,6 +116,58 @@
 					}
 				]
 			]
+		},
+		{
+			"title": "plugin-a-1",
+			"rows": [
+				[
+					{
+						"id": "14",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		},
+		{
+			"title": "plugin-a-2",
+			"rows": [
+				[
+					{
+						"id": "15",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		},
+		{
+			"title": "plugin-a-3",
+			"rows": [
+				[
+					{
+						"id": "16",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		},
+		{
+			"title": "plugin-a-4",
+			"rows": [
+				[
+					{
+						"id": "17",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
 		}
 	]
 }

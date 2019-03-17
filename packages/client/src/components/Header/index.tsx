@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 import withStyles, { WithStyles } from 'react-jss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from './dash4_512.png';
@@ -17,9 +18,12 @@ const styles = {
 	menuWrap: {
 		position: 'relative',
 		marginLeft: 75,
-		marginRight: 75,
-		padding: '20px 0 10px 0',
+		marginRight: 15,
+		padding: '18px 0 18px 0',
 		textAlign: 'left',
+		'& .menu-item-wrapper': {
+			padding: '5px 0',
+		},
 	},
 	menu: {
 		position: 'relative',
@@ -53,32 +57,55 @@ interface IProps extends WithStyles<typeof styles>, RouteComponentProps<{}> {
 	tabs: string[];
 }
 
-const RawHeader = ({ classes, location, tabs }: IProps) => {
+function getInitialSelected({ tabs, location }: IProps) {
+	let selected = tabs[0];
+	tabs.forEach((tab, index) => {
+		if (
+			location.pathname === `/${tab}` ||
+			location.pathname.indexOf(`/${tab}/`) === 0 ||
+			(location.pathname === '/' && index === 0)
+		) {
+			selected = tabs[index];
+		}
+	});
+	return selected;
+}
+
+const RawHeader = (props: IProps) => {
+	const { classes, location, tabs } = props;
+	const [selected, setSelected] = useState(getInitialSelected(props));
+
+	function handleSelect(key: string) {
+		setSelected(key);
+	}
+
 	return (
 		<header className={classes.header}>
 			<Link to={'/'}>
 				<img className={classes.logo} src={logo} alt="Dash4 Logo" />
 			</Link>
 			<div className={classes.menuWrap}>
-				<ul className={classes.menu}>
-					<li className={classes.menuItem}>
-						{tabs.map((tab, index) => {
-							const classNames = [classes.menuLink];
-							if (
-								location.pathname === `/${tab}` ||
-								location.pathname.indexOf(`/${tab}/`) === 0 ||
-								(location.pathname === '/' && index === 0)
-							) {
-								classNames.push(classes.menuLinkActive);
-							}
-							return (
-								<Link key={tab} className={classNames.join(' ')} to={index === 0 ? '/' : `/${tab}`}>
-									{tab}
-								</Link>
-							);
-						})}
-					</li>
-				</ul>
+				<ScrollMenu
+					hideArrows
+					scrollToSelected
+					selected={selected}
+					data={tabs.map((tab, index) => {
+						const classNames = [classes.menuLink];
+						if (
+							location.pathname === `/${tab}` ||
+							location.pathname.indexOf(`/${tab}/`) === 0 ||
+							(location.pathname === '/' && index === 0)
+						) {
+							classNames.push(classes.menuLinkActive);
+						}
+						return (
+							<Link key={tab} className={classNames.join(' ')} to={index === 0 ? '/' : `/${tab}`}>
+								{tab}
+							</Link>
+						);
+					})}
+					onSelect={handleSelect}
+				/>
 			</div>
 		</header>
 	);

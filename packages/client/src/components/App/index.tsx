@@ -14,25 +14,28 @@ export function App() {
 	return (
 		<Router>
 			<>
-				<Header tabs={config ? config.tabs.map((tab) => tab.title) : []} />
-				<Page>
-					{!isLoading &&
-						config &&
-						config.tabs.map((tab, index) => {
-							let pathName = `/${tab.title.toLowerCase()}`;
-							if (index === 0) {
-								pathName = '/';
-							}
-							return (
-								<Route
-									exact={index === 0}
-									key={pathName}
-									path={pathName}
-									component={() => <Widgets tab={tab} />}
-								/>
-							);
-						})}
-				</Page>
+				{!isLoading && (
+					<>
+						<Header tabs={config ? config.tabs.map((tab) => tab.title) : []} />
+						<Page>
+							{config &&
+								config.tabs.map((tab, index) => {
+									let pathName = `/${tab.title.toLowerCase()}`;
+									if (index === 0) {
+										pathName = '/';
+									}
+									return (
+										<Route
+											exact={index === 0}
+											key={pathName}
+											path={pathName}
+											component={() => <Widgets tab={tab} />}
+										/>
+									);
+								})}
+						</Page>
+					</>
+				)}
 				<AppLoader visible={isLoading} />
 			</>
 		</Router>
