@@ -1,62 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import withStyles, { WithStyles } from 'react-jss';
-
-const fullScreenOffset = 5;
-
-const styles = {
-	window: {
-		display: 'flex',
-		flexDirection: 'column',
-		position: 'relative',
-	},
-	windowAutoStretch: {
-		height: '100%',
-	},
-	windowBright: {
-		color: '#000',
-		whiteSpace: 'pre',
-		background: '#fff',
-		boxShadow: 'rgba(0, 0, 0, 0.16) 0px 2px 4px',
-		borderRadius: 6,
-	},
-	windowDark: {
-		color: '#fff',
-		whiteSpace: 'pre',
-		background: '#000',
-		border: '1px solid rgb(51, 51, 51)',
-		boxShadow: 'rgba(0, 0, 0, 0.2) 0px 20px 50px 0px',
-		borderRadius: 5,
-	},
-	windowFullscreen: {
-		position: 'fixed',
-		width: `calc(100vw - ${fullScreenOffset * 2}px)`,
-		height: `calc(100vh - ${fullScreenOffset * 2}px)`,
-		left: fullScreenOffset,
-		top: fullScreenOffset,
-		zIndex: 99,
-	},
-};
+import { styles } from './styles';
 
 interface IProps extends WithStyles<typeof styles> {
-	header?: React.ReactNode;
 	children: React.ReactNode;
 	className?: string;
+	// enable / disable dark mode (default=false)
 	dark?: boolean;
+	// automatical stretches to height of neighbour window (default=true)
 	autoStretch?: boolean;
+	// enable / disable fullscreen mode (default=false)
 	fullscreen?: boolean;
 }
 
 export * from './Header';
 export * from './Body';
 export const Window = withStyles(styles)(
-	({ className, classes, header, children, dark = false, autoStretch = true, fullscreen = false }: IProps) => {
+	({ className, classes, children, dark = false, autoStretch = true, fullscreen = false }: IProps) => {
+		useEffect(() => {
+			const body = document.getElementsByTagName('body')[0];
+			if (fullscreen) {
+				body.className += 'prevent-body-scroll';
+			} else {
+				body.className = body.className.replace('prevent-body-scroll', '');
+			}
+		}, [fullscreen]);
+
 		return (
 			<div
 				className={`${className || ''} ${classes.window} ${dark ? classes.windowDark : classes.windowBright} ${
 					autoStretch ? classes.windowAutoStretch : ''
 				} ${fullscreen ? classes.windowFullscreen : ''}`}
 			>
-				{header && header}
 				{children}
 			</div>
 		);

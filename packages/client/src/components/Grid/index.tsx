@@ -8,6 +8,7 @@ const styles = {
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		marginLeft: -15,
+		justifyContent: 'center',
 	},
 };
 

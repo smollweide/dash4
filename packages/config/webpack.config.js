@@ -26,6 +26,7 @@ module.exports = (pluginName) => (_some, { mode }) => {
 			'core-js': 'coreJs',
 			'react-bootstrap': 'ReactBootstrap',
 			'react-jss': 'ReactJSS',
+			'react-container-query': 'ReactContainerQuery',
 			tslib: 'tslib',
 			'@dash4/react-xterm': 'ReactXterm',
 		},

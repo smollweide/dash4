@@ -32,6 +32,7 @@ async function getConfig() {
 									buttonVariant: 'outline-secondary',
 								},
 							],
+							width: [8, 6, 6],
 						}),
 					],
 					[
@@ -54,6 +55,7 @@ async function getConfig() {
 									cmd: 'node ./bin/columnify.js',
 								},
 							],
+							width: [8, 6, 6],
 						}),
 					],
 				],

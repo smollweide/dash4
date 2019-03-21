@@ -5,6 +5,12 @@
   "description": "dash4 server",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "files": [
+    "bin",
+    "build",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "bin": {

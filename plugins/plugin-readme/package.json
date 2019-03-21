@@ -1,0 +1,47 @@
+{
+  "name": "@dash4/plugin-readme",
+  "version": "0.1.0",
+  "private": false,
+  "description": "dash4 plugin readme",
+  "license": "MIT",
+  "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "main": "./build/server/index.js",
+  "typings": "./build/server/index.d.ts",
+  "scripts": {
+    "analyze-bundle-size": "node ./node_modules/.bin/dash4-analyze-bundle-size",
+    "prebuild": "node ./node_modules/.bin/dash4-prebuild",
+    "build": "dash4-run-s build:*",
+    "build:client": "node ./node_modules/.bin/dash4-build-client",
+    "build:server": "node ./node_modules/.bin/dash4-build-server",
+    "prepublishOnly": "dash4-run-s build",
+    "start": "node ./node_modules/.bin/dash4-start",
+    "static": "node ./node_modules/.bin/dash4-static",
+    "watch-build": "node ./node_modules/.bin/dash4-watch-build",
+    "watch-dist": "node ./node_modules/.bin/dash4-watch-dist"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "@dash4/client": "0.1.0",
+    "@dash4/server": "0.1.0",
+    "fs-extra": "7.0.1",
+    "markdown-to-jsx": "6.9.3",
+    "mime-types": "2.1.22"
+  },
+  "devDependencies": {
+    "@dash4/config": "0.1.0",
+    "@types/fs-extra": "5.0.5",
+    "@types/mime-types": "2.1.0",
+    "@types/node": "11.11.3",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.2",
+    "react": "16.8.4",
+    "react-bootstrap": "1.0.0-beta.5",
+    "react-container-query": "0.11.0",
+    "react-dom": "16.8.4",
+    "react-jss": "10.0.0-alpha.10"
+  }
+}

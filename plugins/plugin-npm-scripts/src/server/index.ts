@@ -5,8 +5,10 @@ import { IClientConfig, IScript, IScriptWithId } from '../shared-types';
 import { PluginNpmScript } from './plugin-npm-script';
 
 export interface IOptions {
-	id: string;
+	// enable/disable dark mode
 	dark?: boolean;
+	// grid with per breakpoint
+	// [12,6,3] means 100% width on small viewports, 50% on medium viewports and 33.3% on large viewports
 	width?: number[];
 	scripts: IScript[];
 }

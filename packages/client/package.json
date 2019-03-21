@@ -2,10 +2,16 @@
   "name": "@dash4/client",
   "version": "0.1.0",
   "private": false,
-  "description": "dash4 client",
+  "description": "Dash4 webapp client application",
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "files": [
+    "build",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "./dist/main.js",
   "scripts": {
     "analyze-bundle-size": "cross-env NODE_ENV=production ANALYZE_ENV=bundle webpack --mode production",
@@ -28,6 +34,7 @@
     "bootstrap": "4.3.1",
     "core-js": "2.6.5",
     "react-bootstrap": "1.0.0-beta.5",
+    "react-container-query": "0.11.0",
     "react-horizontal-scrolling-menu": "0.5.6",
     "react-jss": "10.0.0-alpha.10",
     "react-router-dom": "4.4.0"

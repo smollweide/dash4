@@ -18,9 +18,13 @@ export type TButtonVariant =
 	| 'outline-light';
 
 export interface IScript {
+	// title which should be displayed above the scripts
 	title?: string;
+	// command which should be executed
 	cmd: string;
+	// current working directory of the child process
 	cwd?: string;
+	// bootstrap button variant https://react-bootstrap.github.io/components/buttons/
 	buttonVariant?: TButtonVariant;
 }
 

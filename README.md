@@ -19,7 +19,7 @@ The dashboard for developers
 ## Table of Contents
 
 * [Usage](#usage)
-* [Contributing](#Contributing)
+* [Contributing](#contributing)
 * [Thanks](#thanks)
 * [License](#license)
 

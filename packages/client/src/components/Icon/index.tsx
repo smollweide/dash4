@@ -94,11 +94,16 @@ export const animationMap = {
 export type TAnimation = keyof typeof animationMap;
 
 interface IProps extends WithStyles<typeof styles> {
+	// icon name defined by [material ui icons](https://material.io/tools/icons/?style=baseline)
 	name: string;
 	className?: string;
+	// type TSize = "s" | "m" | "l"
 	size?: TSize;
+	// type TColor = "dark" | "light"
 	color?: TColor;
+	// type TAnimation = "rotation-clockwise" | "rotation-counter-clockwise"
 	animation?: TAnimation;
+	// type TAlign = "center-in-content"
 	align?: TAlign;
 }
 

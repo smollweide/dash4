@@ -1,7 +1,8 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { PluginNpmScripts } = require('./plugins/plugin-npm-scripts/build/server');
-const { PluginTerminal } = require('./plugins/plugin-terminal/build/server');
+const { PluginNpmScripts } = require('./plugins/plugin-npm-scripts');
+const { PluginTerminal } = require('./plugins/plugin-terminal');
+const { PluginReadme, PluginReadmeList } = require('./plugins/plugin-readme');
 
 const getPluginPathes = async () => {
 	const cwd = await fs.realpath(process.cwd());
@@ -20,11 +21,10 @@ async function getConfig() {
 		title: pluginName,
 		rows: [
 			[
-				new PluginTerminal({
-					cmd: 'npm start',
-					cwd: path.join('plugins', pluginName),
-					autostart: false,
+				new PluginReadme({
+					file: path.join('plugins', pluginName, 'README.md'),
 					width: [12, 6, 8],
+					height: 400,
 				}),
 				new PluginNpmScripts({
 					scripts: [
@@ -43,6 +43,11 @@ async function getConfig() {
 				}),
 			],
 			[
+				new PluginTerminal({
+					cmd: 'npm start',
+					cwd: path.join('plugins', pluginName),
+					autostart: false,
+				}),
 				new PluginTerminal({
 					cmd: 'npm run watch-build',
 					cwd: path.join('plugins', pluginName),
@@ -63,6 +68,11 @@ async function getConfig() {
 				title: 'Root',
 				rows: [
 					[
+						new PluginReadme({
+							file: 'README.md',
+							width: [12, 6, 8],
+							height: 400,
+						}),
 						new PluginNpmScripts({
 							dark: false,
 							scripts: [
@@ -96,11 +106,10 @@ async function getConfig() {
 				title: 'client',
 				rows: [
 					[
-						new PluginTerminal({
-							cmd: 'npm start',
-							cwd: '/packages/client',
-							autostart: false,
+						new PluginReadme({
+							file: '/packages/client/README.md',
 							width: [12, 6, 8],
+							height: 400,
 						}),
 						new PluginNpmScripts({
 							scripts: [
@@ -119,6 +128,11 @@ async function getConfig() {
 						}),
 					],
 					[
+						new PluginTerminal({
+							cmd: 'npm start',
+							cwd: '/packages/client',
+							autostart: false,
+						}),
 						new PluginTerminal({
 							cmd: 'npm run watch-build',
 							cwd: '/packages/client',
@@ -136,11 +150,10 @@ async function getConfig() {
 				title: 'server',
 				rows: [
 					[
-						new PluginTerminal({
-							cmd: 'npm run watch-build',
-							cwd: '/packages/server',
-							autostart: true,
+						new PluginReadme({
+							file: '/packages/server/README.md',
 							width: [12, 6, 8],
+							height: 400,
 						}),
 						new PluginNpmScripts({
 							scripts: [
@@ -158,17 +171,24 @@ async function getConfig() {
 							width: [12, 6, 4],
 						}),
 					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-build',
+							cwd: '/packages/server',
+							autostart: true,
+							width: [12, 6, 6],
+						}),
+					],
 				],
 			},
 			{
 				title: 'react-xterm',
 				rows: [
 					[
-						new PluginTerminal({
-							cmd: 'npm run start',
-							cwd: '/packages/react-xterm',
-							autostart: false,
+						new PluginReadme({
+							file: '/packages/react-xterm/README.md',
 							width: [12, 6, 8],
+							height: 400,
 						}),
 						new PluginNpmScripts({
 							scripts: [
@@ -179,6 +199,14 @@ async function getConfig() {
 								},
 							],
 							width: [12, 6, 4],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run start',
+							cwd: '/packages/react-xterm',
+							autostart: false,
+							width: [12, 6, 6],
 						}),
 					],
 				],

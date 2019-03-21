@@ -2,7 +2,7 @@ import React, { ErrorInfo } from 'react';
 
 // tslint:disable-next-line
 interface IProps {
-	// tslint:disable-next-line
+	children: React.ReactNode;
 }
 
 interface IState {

@@ -1,3 +1,4 @@
+import { IncomingMessage, ServerResponse } from 'http';
 import uuid from 'uuid/v1';
 
 export type TOn = (id: string, callback: any) => void;
@@ -18,11 +19,15 @@ export interface IDash4Plugin<IClientConfig = {}> {
 	connected: () => void;
 }
 
+export type TServerRequest = (req: IncomingMessage, res: ServerResponse) => Promise<boolean>;
+
 export interface IConfigPlugin extends IDash4Plugin {
 	id: string;
 	name: string;
 	lowerCaseName: string;
 	connect: (on: TOn, send: TSend) => void;
+	serverRequest?: TServerRequest;
+	serverRequests?: TServerRequest[];
 }
 
 export interface IConfigTab {

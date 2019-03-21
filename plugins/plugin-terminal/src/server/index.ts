@@ -5,10 +5,16 @@ import { IClientConfig } from '../shared-types';
 import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
+	// command which should be executed
 	cmd: string;
+	// current working directory of the child process.
 	cwd?: string;
+	// enable/disable dark mode
 	dark?: boolean;
+	// the given command will be executed on start
 	autostart?: boolean;
+	// grid with per breakpoint
+	// [12,6,3] means 100% width on small viewports, 50% on medium viewports and 33.3% on large viewports
 	width?: number[];
 }
 

@@ -159,8 +159,8 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 					<Modal.Header className={this.props.classes.modalHeader} closeButton>
 						<WindowHeader
 							className={this.props.classes.modalWindowHeader}
-							title={script.title || script.cmd}
-							subTitle={script.cwd}
+							title="Terminal"
+							subTitle={script.title || script.cmd}
 						/>
 					</Modal.Header>
 					<Modal.Body className={this.props.classes.modalBody}>

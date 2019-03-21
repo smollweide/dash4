@@ -5,7 +5,7 @@ import { createServer } from 'http';
 import { contentType as getContentType } from 'mime-types';
 import path from 'path';
 import WebSocket from 'ws';
-import { IClientFile, IConfig, TClientFile } from './index';
+import { IClientFile, IConfig, TClientFile, TServerRequest } from './index';
 
 // tslint:disable-next-line
 const log = console.log;
@@ -18,6 +18,7 @@ g.socket.listeners = [];
 
 export interface IOptions {
 	port: number;
+	serverRequestListeners: TServerRequest[];
 }
 
 export interface ISocketAction<Data = {}> {
@@ -63,7 +64,7 @@ const hasExtname = (url: string) => {
 	return path.extname(url) !== '';
 };
 
-export const start = ({ port }: IOptions, config: IConfig): Promise<ISocketAbstract> => {
+export const start = ({ port, serverRequestListeners }: IOptions, config: IConfig): Promise<ISocketAbstract> => {
 	const pluginScripts: IScripts = {};
 	const pluginStyles: IScripts = {};
 	const pluginFiles: IScripts = {};
@@ -100,8 +101,16 @@ export const start = ({ port }: IOptions, config: IConfig): Promise<ISocketAbstr
 		});
 	});
 
-	const server = createServer((req, res) => {
+	const server = createServer(async (req, res) => {
 		const url = req.url;
+
+		// catch plugin responses
+		let i = 0;
+		for (i = 0; i < serverRequestListeners.length; i += 1) {
+			if (await serverRequestListeners[i](req, res)) {
+				return;
+			}
+		}
 
 		if (!url || url === '/' || !hasExtname(url)) {
 			res.writeHead(200, { 'Content-Type': 'text/html' });
