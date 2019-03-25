@@ -29,8 +29,7 @@
     "@dash4/react-xterm": "0.1.0",
     "@dash4/server": "0.1.0",
     "node-pty": "0.8.1",
-    "os": "0.1.1",
-    "react-jss": "10.0.0-alpha.10"
+    "os": "0.1.1"
   },
   "devDependencies": {
     "@dash4/config": "0.1.0",
@@ -43,8 +42,9 @@
     "core-js": "2.6.5",
     "ora": "3.1.0",
     "react": "16.8.4",
-    "react-bootstrap": "1.0.0-beta.5",
+    "react-bootstrap": "1.0.0-beta.6",
     "react-dom": "16.8.4",
+    "react-jss": "10.0.0-alpha.10",
     "sparkly": "4.0.0"
   }
 }

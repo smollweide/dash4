@@ -1,8 +1,8 @@
 {
-  "name": "@dash4/plugin-npm-scripts",
+  "name": "@dash4/plugin-code-coverage",
   "version": "0.1.0",
   "private": false,
-  "description": "dash4 plugin npm scripts",
+  "description": "Displays current code coverage",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
   "main": "./build/server/index.js",
@@ -16,6 +16,8 @@
     "prepublishOnly": "dash4-run-s build",
     "start": "node ./node_modules/.bin/dash4-start",
     "static": "node ./node_modules/.bin/dash4-static",
+    "test-watch:server": "jest --coverage --watch --config=jest.server.config.js",
+    "test:server": "jest --coverage --config=jest.server.config.js",
     "watch-build": "node ./node_modules/.bin/dash4-watch-build",
     "watch-dist": "node ./node_modules/.bin/dash4-watch-dist"
   },
@@ -28,24 +30,28 @@
     "@dash4/client": "0.1.0",
     "@dash4/react-xterm": "0.1.0",
     "@dash4/server": "0.1.0",
-    "node-pty": "0.8.1",
-    "os": "0.1.1",
-    "xterm": "3.12.0"
+    "fs-extra": "7.0.1",
+    "htmlparser2": "3.10.1",
+    "make-dir": "2.1.0",
+    "opn": "5.5.0",
+    "react-jss": "10.0.0-alpha.10",
+    "recharts": "1.5.0",
+    "watch": "1.0.2"
   },
   "devDependencies": {
     "@dash4/config": "0.1.0",
-    "@types/core-js": "2.5.0",
+    "@types/fs-extra": "5.0.5",
+    "@types/jest": "24.0.11",
     "@types/node": "11.11.3",
+    "@types/opn": "5.1.0",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.2",
-    "chalk": "2.4.2",
-    "columnify": "1.5.4",
-    "core-js": "2.6.5",
-    "ora": "3.1.0",
+    "@types/recharts": "1.1.14",
+    "@types/watch": "1.0.0",
+    "jest": "24.5.0",
     "react": "16.8.4",
     "react-bootstrap": "1.0.0-beta.6",
     "react-dom": "16.8.4",
-    "react-jss": "10.0.0-alpha.10",
-    "sparkly": "4.0.0"
+    "ts-jest": "24.0.0"
   }
 }

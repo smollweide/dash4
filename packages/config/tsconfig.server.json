@@ -5,6 +5,7 @@
 		"outDir": "build",
 		"module": "commonjs",
 		"esModuleInterop": true,
-		"target": "ES2016"
+		"target": "ES2016",
+		"types": ["node", "jest"]
 	}
 }

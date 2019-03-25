@@ -96,7 +96,7 @@ export class Dash4Plugin {
 		// override
 	};
 
-	protected send = (eventName: string, data?: string) => {
+	protected send = <CbData = undefined>(eventName: string, data?: CbData) => {
 		if (!this._send) {
 			return;
 		}

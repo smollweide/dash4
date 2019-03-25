@@ -94,7 +94,7 @@ class Terminal extends React.Component<IProps, IState> {
 					title={this.props.name}
 					subTitle={this.props.clientConfig.cmd}
 				>
-					<ButtonGroup aria-label="Basic example">
+					<ButtonGroup>
 						{this.state.stopped ? (
 							<Button onClick={this.handleClickStart} variant="outline-primary" size="sm">
 								<Icon name="play_arrow" size="m" />
