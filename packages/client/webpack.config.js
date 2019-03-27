@@ -16,10 +16,6 @@ module.exports = (_some, { mode }) => {
 		optimization: {
 			minimize: true,
 		},
-		externals: {
-			react: 'React',
-			'react-dom': 'ReactDOM',
-		},
 		plugins: [
 			new AssetConfigWebpackPlugin(),
 			new CleanWebpackPlugin(),

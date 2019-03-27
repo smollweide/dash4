@@ -2,7 +2,8 @@ const path = require('path');
 const fs = require('fs-extra');
 const { PluginNpmScripts } = require('./plugins/plugin-npm-scripts');
 const { PluginTerminal } = require('./plugins/plugin-terminal');
-const { PluginReadme, PluginReadmeList } = require('./plugins/plugin-readme');
+const { PluginReadme } = require('./plugins/plugin-readme');
+const { PluginCodeCoverage } = require('./plugins/plugin-code-coverage');
 
 const getPluginPathes = async () => {
 	const cwd = await fs.realpath(process.cwd());
@@ -34,6 +35,16 @@ async function getConfig() {
 							cwd: path.join('plugins', pluginName),
 						},
 						{
+							title: 'run client-side tests',
+							cmd: 'npm run test:client',
+							cwd: path.join('plugins', pluginName),
+						},
+						{
+							title: 'run server-side tests',
+							cmd: 'npm run test:server',
+							cwd: path.join('plugins', pluginName),
+						},
+						{
 							title: 'analyze-bundle-size',
 							cmd: 'npm run analyze-bundle-size',
 							cwd: path.join('plugins', pluginName),
@@ -57,6 +68,29 @@ async function getConfig() {
 					cmd: 'npm run watch-dist',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
+				}),
+			],
+			[
+				new PluginTerminal({
+					cmd: 'npm run watch-test-client',
+					cwd: path.join('plugins', pluginName),
+					autostart: false,
+				}),
+				new PluginCodeCoverage({
+					title: 'Client-side code coverage',
+					cwd: path.join('plugins', pluginName),
+				}),
+			],
+			[
+				new PluginTerminal({
+					cmd: 'npm run watch-test-server',
+					cwd: path.join('plugins', pluginName),
+					autostart: false,
+				}),
+				new PluginCodeCoverage({
+					title: 'Server-side code coverage',
+					cwd: path.join('plugins', pluginName),
+					lcovHtmlPath: 'coverage-server/lcov-report/index.html',
 				}),
 			],
 		],
@@ -136,12 +170,12 @@ async function getConfig() {
 						new PluginTerminal({
 							cmd: 'npm run watch-build',
 							cwd: '/packages/client',
-							autostart: true,
+							autostart: false,
 						}),
 						new PluginTerminal({
 							cmd: 'npm run watch-dist',
 							cwd: '/packages/client',
-							autostart: true,
+							autostart: false,
 						}),
 					],
 				],
@@ -162,11 +196,6 @@ async function getConfig() {
 									cmd: 'npm run build',
 									cwd: '/packages/server',
 								},
-								{
-									title: 'analyze-bundle-size',
-									cmd: 'npm run analyze-bundle-size',
-									cwd: '/packages/server',
-								},
 							],
 							width: [12, 6, 4],
 						}),
@@ -175,7 +204,7 @@ async function getConfig() {
 						new PluginTerminal({
 							cmd: 'npm run watch-build',
 							cwd: '/packages/server',
-							autostart: true,
+							autostart: false,
 							width: [12, 6, 6],
 						}),
 					],

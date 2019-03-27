@@ -11,6 +11,8 @@ import { App } from './components/App';
 import './polyfill';
 
 // public available libraries
+(window as any).React = React;
+(window as any).ReactDOM = ReactDOM;
 (window as any).ReactBootstrap = ReactBootstrap;
 (window as any).ReactJSS = ReactJSS;
 (window as any).tslib = tslib;

@@ -16,7 +16,7 @@
   "scripts": {
     "analyze-bundle-size": "cross-env NODE_ENV=production ANALYZE_ENV=bundle webpack --mode production",
     "prebuild": "rimraf build dist",
-    "build": "run-s build:*",
+    "build": "npm-run-all build:*",
     "build:build": "cross-env MOCK_ENV=false NODE_ENV=production tsc --outDir build",
     "build:dist": "cross-env MOCK_ENV=false NODE_ENV=production webpack --mode production",
     "prepublishOnly": "run-s build",
@@ -37,7 +37,7 @@
     "react-container-query": "0.11.0",
     "react-horizontal-scrolling-menu": "0.5.6",
     "react-jss": "10.0.0-alpha.10",
-    "react-router-dom": "4.4.0"
+    "react-router-dom": "4.3.1"
   },
   "devDependencies": {
     "@namics/ts-config": "0.2.0",
