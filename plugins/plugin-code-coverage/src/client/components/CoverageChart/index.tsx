@@ -52,3 +52,5 @@ export const CoverageChart = withStyles(styles)(
 		);
 	}
 );
+
+export default CoverageChart;

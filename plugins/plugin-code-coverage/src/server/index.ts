@@ -11,6 +11,8 @@ import { htmlToDom } from './html-to-dom';
 // import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
+	// custom title (default=Code coverage)
+	title?: string;
 	// current working directory of the child process.
 	cwd?: string;
 	// directory of coverage json file (default=coverage/lcov-report/index.html)
@@ -33,6 +35,7 @@ const processCwd = fs.realpathSync(process.cwd());
 
 export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
 	private _lcovHtmlPath: string;
+	private _title: string;
 	private _cwd: string;
 	private _threshold: IThresholdGuaranteed;
 
@@ -54,17 +57,29 @@ export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<ICli
 			functions: threshold.functions || [60, 80],
 			lines: threshold.lines || [60, 80],
 		};
+		this._title = options.title || 'Code coverage';
 	}
 
 	public get clientConfig() {
 		return {
+			title: this._title,
 			cwd: this._cwd,
 			threshold: this._threshold,
 		};
 	}
 
 	public get clientFiles() {
-		return [path.join(__dirname, '../../dist/plugins/plugin-code-coverage/main.js')];
+		return [
+			path.join(__dirname, '../../dist/plugins/plugin-code-coverage/main.js'),
+			{
+				pathName: path.join(__dirname, '../../dist/plugins/plugin-code-coverage/coverage-chart.js'),
+				scriptTag: false,
+			},
+			{
+				pathName: path.join(__dirname, '../../dist/plugins/plugin-code-coverage/vendors~coverage-chart.js'),
+				scriptTag: false,
+			},
+		];
 	}
 
 	public connected = () => {

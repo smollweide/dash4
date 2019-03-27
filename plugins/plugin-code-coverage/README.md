@@ -60,6 +60,8 @@ module.exports = getConfig;
 *options:*
 
 ```ts
+// custom title (default=Code coverage)
+title?: string;
 // current working directory of the child process.
 cwd?: string;
 // directory of coverage json file (default=coverage/lcov-report/index.html)

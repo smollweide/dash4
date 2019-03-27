@@ -29,6 +29,7 @@ export interface ICoverage {
 }
 
 export interface IClientConfig {
+	title: string;
 	cwd: string;
 	dark?: boolean;
 	threshold: IThresholdGuaranteed;
