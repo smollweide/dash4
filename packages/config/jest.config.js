@@ -7,7 +7,7 @@ module.exports = {
 	setupFilesAfterEnv: [path.join(__dirname, 'rtl.setup.js')],
 	globals: {
 		'ts-jest': {
-			tsConfig: 'tsconfig.json',
+			tsConfig: 'tsconfig.test.json',
 		},
 	},
 };

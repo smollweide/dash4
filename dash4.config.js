@@ -55,17 +55,19 @@ async function getConfig() {
 			],
 			[
 				new PluginTerminal({
-					cmd: 'npm start',
-					cwd: path.join('plugins', pluginName),
-					autostart: false,
-				}),
-				new PluginTerminal({
 					cmd: 'npm run watch-build',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
 				}),
 				new PluginTerminal({
 					cmd: 'npm run watch-dist',
+					cwd: path.join('plugins', pluginName),
+					autostart: false,
+				}),
+			],
+			[
+				new PluginTerminal({
+					cmd: 'npm start',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
 				}),

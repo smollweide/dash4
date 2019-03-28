@@ -10,10 +10,10 @@
   "scripts": {
     "analyze-bundle-size": "node ./node_modules/.bin/dash4-analyze-bundle-size",
     "prebuild": "node ./node_modules/.bin/dash4-prebuild",
-    "build": "dash4-run-s build:*",
+    "build": "dash4-npm-run-all build:*",
     "build:client": "node ./node_modules/.bin/dash4-build-client",
     "build:server": "node ./node_modules/.bin/dash4-build-server",
-    "prepublishOnly": "dash4-run-s build",
+    "prepublishOnly": "dash4-npm-run-all build",
     "start": "node ./node_modules/.bin/dash4-start",
     "static": "node ./node_modules/.bin/dash4-static",
     "watch-build": "node ./node_modules/.bin/dash4-watch-build",

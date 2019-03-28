@@ -1,9 +1,1 @@
-module.exports = {
-	preset: 'ts-jest',
-	testEnvironment: 'node',
-	globals: {
-		'ts-jest': {
-			tsConfig: 'tsconfig.server.json',
-		},
-	},
-};
+module.exports = require('@dash4/config/jest.server.config');

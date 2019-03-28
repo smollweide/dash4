@@ -34,3 +34,4 @@ lerna-debug.log
 dist
 build
 coverage
+coverage-server

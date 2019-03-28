@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const { getBinPath, execute } = require('../lib/process');
+const { execute } = require('../lib/process');
 
-execute(`${getBinPath('jest')} --coverage --config=jest.server.config.js`);
+execute(`jest --coverage --config=jest.server.config.js`);

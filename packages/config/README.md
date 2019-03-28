@@ -18,7 +18,7 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
 * [License](#license)
 
 ## <a name="installation">Installation</a>
-`npm i -D @dash4/config`
+`npm i -D @dash4/config @types/jest jest ts-jest react-testing-library`
 
 ## <a name="usage">Usage</a>
 
@@ -26,16 +26,21 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
 ```json
 {
   "scripts": {
-    "prepublishOnly": "dash4-run-s build",
+    "analyze-bundle-size": "dash4-analyze-bundle-size",
     "prebuild": "dash4-prebuild",
-    "build": "dash4-run-s build:*",
+    "build": "dash4-npm-run-all build:*",
     "build:client": "dash4-build-client",
     "build:server": "dash4-build-server",
-    "static": "dash4-static",
+    "prepublishOnly": "dash4-npm-run-all build",
     "start": "dash4-start",
-    "analyze-bundle-size": "dash4-analyze-bundle-size",
+    "static": "dash4-static",
+    "test": "dash4-npm-run-all test:*",
+    "test:client": "dash4-test-client",
+    "test:server": "dash4-test-server",
     "watch-build": "dash4-watch-build",
-    "watch-dist": "dash4-watch-dist"
+    "watch-dist": "dash4-watch-dist",
+    "watch-test-client": "dash4-watch-test-client",
+    "watch-test-server": "dash4-watch-test-server"
   }
 }
 ```
@@ -49,6 +54,15 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
 }
 ```
 
+*tsconfig.test.json*
+
+```json
+{
+  "extends": "@dash4/config/tsconfig.test.json",
+  "exclude": ["dist", "build", "node_modules", "__tests__", "src/server"]
+}
+```
+
 *tsconfig.server.json*
 
 ```json
@@ -56,6 +70,18 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
   "extends": "@dash4/config/tsconfig.server.json",
   "exclude": ["dist", "build", "node_modules", "__tests__", "src/client"]
 }
+```
+
+*jest.config.js*
+
+```js
+module.exports = require('@dash4/config/jest.config');
+```
+
+*jest.server.config.js*
+
+```js
+module.exports = require('@dash4/config/jest.server.config');
 ```
 
 *webpack.config.js*

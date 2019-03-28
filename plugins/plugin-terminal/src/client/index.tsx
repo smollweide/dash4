@@ -5,12 +5,13 @@ import { ErrorBoundary } from '@dash4/client/build/components/ErrorBoundary';
 import { Icon } from '@dash4/client/build/components/Icon';
 import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
-import { socket } from '@dash4/client/build/socket';
 import { Term } from '@dash4/react-xterm';
-import React, { SyntheticEvent } from 'react';
+import React, { Component, SyntheticEvent } from 'react';
 import { Button, ButtonGroup, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig } from '../shared-types';
+import { subscribeToTerminalDataChanges, unsubscribeToTerminalDataChanges } from './services';
+import { styles } from './styles';
 
 type ITerm = Term;
 
@@ -21,47 +22,9 @@ interface IState {
 	fullscreen: boolean;
 }
 
-const styles = {
-	windowBody: {
-		height: 250,
-	},
-};
-
 type IProps = WithStyles<typeof styles> & IWidgetConfig<IClientConfig>;
 
-async function subscribeToTerminalDataChanges(id: string, onChange: (data: string) => void, onStopped: () => void) {
-	const socketData = await socket();
-	const on = (name: string, callback: (data: string) => void) => {
-		socketData.on(`plugin-terminal-${id}_${name}`, callback);
-	};
-	const send = (name: string, data?: string) => {
-		socketData.send(`plugin-terminal-${id}_${name}`, data);
-	};
-
-	send('conntected');
-	on('conntected', (data: string) => {
-		onChange(data);
-	});
-	on('recieve', (data: string) => {
-		onChange(data);
-	});
-	on('stopped', onStopped);
-
-	return send;
-}
-
-async function unsubscribeToTerminalDataChanges(id: string) {
-	const socketData = await socket();
-	const off = (name: string) => {
-		socketData.off(`plugin-terminal-${id}_${name}`);
-	};
-
-	off('conntected');
-	off('recieve');
-	off('stopped');
-}
-
-class Terminal extends React.Component<IProps, IState> {
+class PluginTerminalRaw extends Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
@@ -196,4 +159,6 @@ class Terminal extends React.Component<IProps, IState> {
 	};
 }
 
-registerPlugin('PluginTerminal', withStyles(styles)(Terminal));
+export const PluginTerminal = withStyles(styles)(PluginTerminalRaw);
+
+registerPlugin('PluginTerminal', PluginTerminal);

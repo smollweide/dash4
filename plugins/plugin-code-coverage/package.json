@@ -10,16 +10,19 @@
   "scripts": {
     "analyze-bundle-size": "node ./node_modules/.bin/dash4-analyze-bundle-size",
     "prebuild": "node ./node_modules/.bin/dash4-prebuild",
-    "build": "dash4-run-s build:*",
+    "build": "dash4-npm-run-all build:*",
     "build:client": "node ./node_modules/.bin/dash4-build-client",
     "build:server": "node ./node_modules/.bin/dash4-build-server",
-    "prepublishOnly": "dash4-run-s build",
+    "prepublishOnly": "dash4-npm-run-all build",
     "start": "node ./node_modules/.bin/dash4-start",
     "static": "node ./node_modules/.bin/dash4-static",
-    "test-watch:server": "jest --coverage --watch --config=jest.server.config.js",
-    "test:server": "jest --coverage --config=jest.server.config.js",
+    "test": "dash4-npm-run-all test:*",
+    "test:client": "node ./node_modules/.bin/dash4-test-client",
+    "test:server": "node ./node_modules/.bin/dash4-test-server",
     "watch-build": "node ./node_modules/.bin/dash4-watch-build",
-    "watch-dist": "node ./node_modules/.bin/dash4-watch-dist"
+    "watch-dist": "node ./node_modules/.bin/dash4-watch-dist",
+    "watch-test-client": "node ./node_modules/.bin/dash4-watch-test-client",
+    "watch-test-server": "node ./node_modules/.bin/dash4-watch-test-server"
   },
   "browserslist": [
     "> 1%",
@@ -52,6 +55,7 @@
     "react": "16.8.4",
     "react-bootstrap": "1.0.0-beta.6",
     "react-dom": "16.8.4",
+    "react-testing-library": "6.0.3",
     "ts-jest": "24.0.0"
   }
 }
