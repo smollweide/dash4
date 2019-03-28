@@ -9,10 +9,10 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "npm-run-all build:*",
-    "build:build": "lerna run build:build",
-    "build:client": "lerna run build:client",
-    "build:dist": "lerna run build:dist",
     "build:lib": "lerna run build:lib",
+    "build:build": "lerna run build:build",
+    "build:dist": "lerna run build:dist",
+    "build:client": "lerna run build:client",
     "build:server": "lerna run build:server",
     "clean": "npx npm-run-all clean:lerna clean:installed clean:build",
     "clean:build": "npx rimraf packages/*/build plugins/*/build packages/*/dist plugins/*/build packages/react-xterm/lib **/coverage **/coverage-server",

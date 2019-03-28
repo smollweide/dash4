@@ -15,8 +15,8 @@
 	"typings": "./build/index.d.ts",
 	"scripts": {
 		"build": "dash4-npm-run-all build:*",
+		"build:build": "dash4-tsc --outDir build",
 		"build:lib": "webpack --config webpack.library.config.js --mode production",
-		"build:ts": "dash4-tsc --outDir build",
 		"postinstall": "npm rebuild node-sass",
 		"start": "webpack-dev-server --mode development --port 9000"
 	},
