@@ -81,8 +81,8 @@ async function subscribeToNpmScriptDataChanges(
 		socketData.send(`plugin-npm-scripts-${id}-${scriptId}_${name}`, data);
 	};
 
-	send('conntected');
-	on('conntected', (data: string) => {
+	send('connected');
+	on('connected', (data: string) => {
 		onChange(data, true);
 	});
 	on('recieve', (data: string) => {
@@ -99,7 +99,7 @@ async function unsubscribeToNpmScriptDataChanges(id: string, scriptId: string) {
 		socketData.off(`plugin-npm-scripts-${id}-${scriptId}_${name}`);
 	};
 
-	off('conntected');
+	off('connected');
 	off('recieve');
 	off('stopped');
 }

@@ -9,7 +9,7 @@ export async function subscribeToReadme(id: string, onChange: (data: string) => 
 		socketData.send(`plugin-readme-${id}_${name}`, data);
 	};
 
-	send('conntected');
+	send('connected');
 	on('data', (data: string) => {
 		onChange(data);
 	});
@@ -23,5 +23,5 @@ export async function unsubscribeToReadme(id: string) {
 		socketData.off(`plugin-terminal-${id}_${name}`);
 	};
 
-	off('conntected');
+	off('connected');
 }

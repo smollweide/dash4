@@ -29,8 +29,8 @@ export class PluginNpmScript {
 			return;
 		}
 
-		this.on('conntected', () => {
-			this.send('conntected', this.terminalLog);
+		this.on('connected', () => {
+			this.send('connected', this.terminalLog);
 			if (this.stopProcessingTriggered) {
 				this.send('stopped');
 			}

@@ -2,6 +2,7 @@
 	"extends": "./node_modules/@namics/ts-config/tsconfig.json",
 	"exclude": ["dist", "build", "node_modules", "__tests__", "src/server"],
 	"compilerOptions": {
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"allowJs": true
 	}
 }

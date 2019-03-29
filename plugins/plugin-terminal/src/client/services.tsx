@@ -12,8 +12,8 @@ export async function subscribeToTerminalDataChanges(
 	const send = (name: string, data?: string) => {
 		socketData.send(`plugin-terminal-${id}_${name}`, data);
 	};
-	send('conntected');
-	on('conntected', (data: string) => {
+	send('connected');
+	on('connected', (data: string) => {
 		onChange(data);
 	});
 	on('recieve', (data: string) => {
@@ -27,7 +27,7 @@ export async function unsubscribeToTerminalDataChanges(id: string) {
 	const off = (name: string) => {
 		socketData.off(`plugin-terminal-${id}_${name}`);
 	};
-	off('conntected');
+	off('connected');
 	off('recieve');
 	off('stopped');
 }

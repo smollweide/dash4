@@ -76,7 +76,7 @@ async function subscribe(id: string, onChange: (data: string) => void) {
     socketData.send(`plugin-name-${id}_${name}`, data);
   };
 
-  send('conntected');
+  send('connected');
   on('data', (data: string) => {
     onChange(data);
   });
@@ -94,7 +94,7 @@ async function unsubscribe(id: string) {
     socketData.off(`plugin-name-${id}_${name}`);
   };
 
-  off('conntected');
+  off('connected');
   off('data');
 }
 ```

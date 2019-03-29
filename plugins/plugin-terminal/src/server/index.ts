@@ -28,7 +28,7 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 	private _term: ITerm;
 	private _stopProcessingTriggered: boolean = false;
 
-	constructor({ dark = true, width, cmd, cwd, autostart = true }: IOptions) {
+	constructor({ dark = true, width, cmd, cwd, autostart = false }: IOptions) {
 		super({
 			dark,
 			width,
@@ -49,12 +49,9 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 
 	public create() {
 		this._term = terminalEmulator({
-			cwd: this._cwd || process.cwd(),
+			cwd: this._cwd,
 			onData: this.recieveData,
-			onStopProcessing: () => {
-				this._stopProcessingTriggered = true;
-				this.send('stopped');
-			},
+			onStopProcessing: this.handleTermStopProcessing,
 		});
 	}
 
@@ -74,15 +71,22 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 			return;
 		}
 
-		this.on('conntected', () => {
-			this.send('conntected', this._terminalLog);
-			if (this._stopProcessingTriggered) {
-				this.send('stopped');
-			}
-		});
+		this.on('connected', this.handleConnected);
 		this.on('start', this.start);
 		this.on('stop', this.stop);
 		this.on('clean', this.clean);
+	};
+
+	private handleConnected = () => {
+		this.send('connected', this._terminalLog);
+		if (this._stopProcessingTriggered) {
+			this.send('stopped');
+		}
+	};
+
+	private handleTermStopProcessing = () => {
+		this._stopProcessingTriggered = true;
+		this.send('stopped');
 	};
 
 	private recieveData = (data: string) => {

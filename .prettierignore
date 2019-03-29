@@ -13,6 +13,7 @@
 **/public
 **/lib
 **/coverage
+**/coverage-server
 **/storybook-static
 
 # Nitro

@@ -52,7 +52,7 @@
     "react-bootstrap": "1.0.0-beta.6",
     "react-dom": "16.8.4",
     "react-jss": "10.0.0-alpha.10",
-    "react-testing-library": "6.0.2",
+    "react-testing-library": "6.0.3",
     "sparkly": "4.0.0",
     "ts-jest": "24.0.0"
   }

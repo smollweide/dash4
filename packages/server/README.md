@@ -90,7 +90,7 @@ class PluginName extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
       return;
     }
 
-    this.on('conntected', () => {
+    this.on('connected', () => {
       this.send('data', 'some conntent');
     });
   };

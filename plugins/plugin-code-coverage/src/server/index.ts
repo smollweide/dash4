@@ -88,7 +88,7 @@ export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<ICli
 		}
 
 		this.watchForChangeCoverage();
-		this.on('conntected', async () => {
+		this.on('connected', async () => {
 			this.send('data', await this.fetchCoverage());
 		});
 		this.on('open-report', this.openReport);

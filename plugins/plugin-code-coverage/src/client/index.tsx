@@ -23,17 +23,18 @@ function getCoverageSectionValue(coverageSection: ICoverageSection | undefined, 
 	return coverageSection[value];
 }
 
-let send: ISend | undefined;
+// let send: ISend | undefined;
+const sendMap: { [key: string]: ISend } = {};
 
 export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) => {
 	const data = useCoverageData(id, (_send) => {
-		send = _send;
+		sendMap[id] = _send;
 	});
 	const { threshold } = clientConfig;
 
 	function handleClick() {
-		if (send) {
-			send('open-report');
+		if (sendMap[id]) {
+			sendMap[id]('open-report');
 		}
 	}
 

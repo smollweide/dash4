@@ -10,7 +10,7 @@ export async function subscribe(id: string, onChange: (data: ICoverage) => void)
 		socketData.send(`plugin-code-coverage-${id}_${name}`, data);
 	};
 
-	send('conntected');
+	send('connected');
 	on('data', (data: ICoverage) => {
 		onChange(data);
 	});
@@ -24,6 +24,6 @@ export async function unsubscribe(id: string) {
 		socketData.off(`plugin-code-coverage-${id}_${name}`);
 	};
 
-	off('conntected');
+	off('connected');
 	off('data');
 }

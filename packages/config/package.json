@@ -42,6 +42,7 @@
 		"os": "0.1.1",
 		"react": "16.8.4",
 		"react-dom": "16.8.4",
+		"react-hooks-testing-library": "0.3.8",
 		"react-testing-library": "6.0.3",
 		"rimraf": "2.6.3",
 		"scss-config-webpack-plugin": "1.3.1",
