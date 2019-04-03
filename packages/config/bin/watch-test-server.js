@@ -2,4 +2,4 @@
 
 const { getBinPath, execute } = require('../lib/process');
 
-execute(`jest --coverage --watch --config=jest.server.config.js`);
+execute(`jest --coverage --watchAll --config=jest.server.config.js`);

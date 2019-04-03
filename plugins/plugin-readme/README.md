@@ -8,7 +8,7 @@ Show readme files on your Dash4 Dashboard
 <br />
 
 [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-readme.svg)](https://www.npmjs.com/package/@dash4/plugin-readme)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Prettier](https://img.shields.io/badge/Code%20Style-Prettier-green.svg)](https://github.com/prettier/prettier) [![TypeScript-ready](https://img.shields.io/npm/types/@dash4/plugin-readme.svg)](https://www.npmjs.com/package/@dash4/plugin-readme)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Prettier](https://img.shields.io/badge/Code%20Style-Prettier-green.svg)](https://github.com/prettier/prettier)
 
 <br />
 <img src="https://user-images.githubusercontent.com/2912007/54718716-70e9fa00-4b5b-11e9-9c76-da9a41b3a177.gif" style="max-width:400px; width:100%" alt="Dash4 Plugin Readme screencast" />

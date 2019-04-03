@@ -1,56 +1,13 @@
-// tslint:disable-next-line
-// /* global fetch, WebSocket, location */
-import { ErrorBoundary } from '@dash4/client/build/components/ErrorBoundary';
-import { Icon } from '@dash4/client/build/components/Icon';
-import { WindowHeader } from '@dash4/client/build/components/Window';
-import { socket } from '@dash4/client/build/socket';
 import { Term } from '@dash4/react-xterm';
+import { ErrorBoundary, Icon, WindowHeader } from '@dash4/ui';
 import React, { SyntheticEvent } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';
 import { IScriptWithId } from '../../../shared-types';
+import { subscribeToNpmScriptDataChanges, unsubscribeToNpmScriptDataChanges } from './services';
+import { styles } from './styles';
 
 type ITerm = Term;
-
-const styles = {
-	button: {
-		position: 'relative',
-		width: '100%',
-	},
-	modal: {
-		'& .modal-dialog': {
-			maxWidth: 'calc(100vw - 30px)',
-		},
-		'& .modal-content': {
-			border: 0,
-		},
-	},
-	modalBody: {
-		background: '#000',
-		paddingTop: 0,
-		paddingBottom: 0,
-		paddingRight: 0,
-	},
-	modalHeader: {
-		background: '#000',
-		color: '#fff',
-		borderBottom: 0,
-		'& .close': {
-			color: '#fff',
-			textShadow: 'none',
-			opacity: 1,
-			fontSize: 18,
-		},
-	},
-	modalFooter: {
-		background: '#000',
-		border: 0,
-	},
-	modalWindowHeader: {
-		padding: 0,
-		width: '100%',
-	},
-};
 
 interface IState {
 	alreadyStarted: boolean;
@@ -67,44 +24,7 @@ export interface IProps extends WithStyles<typeof styles> {
 	script: IScriptWithId;
 }
 
-async function subscribeToNpmScriptDataChanges(
-	id: string,
-	scriptId: string,
-	onChange: (data: string, initial?: boolean) => void,
-	onStopped: () => void
-) {
-	const socketData = await socket();
-	const on = (name: string, callback: (data: string) => void) => {
-		socketData.on(`plugin-npm-scripts-${id}-${scriptId}_${name}`, callback);
-	};
-	const send = (name: string, data?: number) => {
-		socketData.send(`plugin-npm-scripts-${id}-${scriptId}_${name}`, data);
-	};
-
-	send('connected');
-	on('connected', (data: string) => {
-		onChange(data, true);
-	});
-	on('recieve', (data: string) => {
-		onChange(data);
-	});
-	on('stopped', onStopped);
-
-	return send;
-}
-
-async function unsubscribeToNpmScriptDataChanges(id: string, scriptId: string) {
-	const socketData = await socket();
-	const off = (name: string) => {
-		socketData.off(`plugin-npm-scripts-${id}-${scriptId}_${name}`);
-	};
-
-	off('connected');
-	off('recieve');
-	off('stopped');
-}
-
-const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
+export const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
 
 export class NpmScriptRaw extends React.Component<IProps, IState> {
 	constructor(props: IProps) {

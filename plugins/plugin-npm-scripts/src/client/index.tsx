@@ -1,8 +1,8 @@
 // tslint:disable-next-line
 // /* global fetch, WebSocket, location */
 import { IWidgetConfig } from '@dash4/client/build';
-import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
+import { Window, WindowBody, WindowHeader } from '@dash4/ui';
 import React from 'react';
 import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig } from '../shared-types';

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary render default 1`] = `"received is not a function"`;
+
+exports[`ErrorBoundary render error with custom message 1`] = `"received is not a function"`;
+
+exports[`ErrorBoundary render error with custom title 1`] = `"received is not a function"`;

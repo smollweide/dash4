@@ -29,18 +29,22 @@ export class PluginNpmScript {
 			return;
 		}
 
-		this.on('connected', () => {
-			this.send('connected', this.terminalLog);
-			if (this.stopProcessingTriggered) {
-				this.send('stopped');
-			}
-		});
-		this.on('request-terminal-data', () => {
-			this.send('recieve', this.terminalLog);
-		});
+		this.on('connected', this.handleConnected);
+		this.on('request-terminal-data', this.handleRequestData);
 		this.on('start', this.start);
 		this.on('stop', this.stop);
 		this.on('clean', this.clean);
+	};
+
+	private handleRequestData = () => {
+		this.send('recieve', this.terminalLog);
+	};
+
+	private handleConnected = () => {
+		this.send('connected', this.terminalLog);
+		if (this.stopProcessingTriggered) {
+			this.send('stopped');
+		}
 	};
 
 	private send = (eventName: string, data?: string) => {
@@ -57,11 +61,8 @@ export class PluginNpmScript {
 		this._on(`plugin-npm-scripts-${this.id}-${this.script.id}_${eventName}`, cb);
 	};
 
-	private recieveData = (data: string) => {
+	private handleRecieveData = (data: string) => {
 		this.terminalLog += data.toString();
-		if (!this.send) {
-			return;
-		}
 		this.send('recieve', data.toString());
 	};
 
@@ -71,14 +72,16 @@ export class PluginNpmScript {
 		}
 		this.term = terminalEmulator({
 			cwd: this.script.cwd,
-			onData: this.recieveData,
-			onStopProcessing: () => {
-				this.stopProcessingTriggered = true;
-				this.send('stopped');
-			},
+			onData: this.handleRecieveData,
+			onStopProcessing: this.handleTerminalProcessStopped,
 		});
 		return true;
 	}
+
+	private handleTerminalProcessStopped = () => {
+		this.stopProcessingTriggered = true;
+		this.send('stopped');
+	};
 
 	private stop = () => {
 		if (!this.term) {
@@ -98,11 +101,12 @@ export class PluginNpmScript {
 	};
 
 	private start = async () => {
-		this.create();
 		if (!this.term) {
-			return;
+			this.create();
 		}
 		this.stopProcessingTriggered = false;
-		this.term.write(`${this.script.cmd}\r`);
+		if (this.term) {
+			this.term.write(`${this.script.cmd}\r`);
+		}
 	};
 }

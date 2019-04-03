@@ -31,13 +31,12 @@
   ],
   "dependencies": {
     "@dash4/client": "0.1.0",
-    "@dash4/react-xterm": "0.1.0",
     "@dash4/server": "0.1.0",
+    "@dash4/ui": "0.1.0",
     "fs-extra": "7.0.1",
     "htmlparser2": "3.10.1",
     "make-dir": "2.1.0",
     "opn": "5.5.0",
-    "react-jss": "10.0.0-alpha.10",
     "recharts": "1.5.0",
     "watch": "1.0.2"
   },
@@ -52,10 +51,13 @@
     "@types/recharts": "1.1.14",
     "@types/watch": "1.0.0",
     "jest": "24.5.0",
-    "react": "16.8.4",
-    "react-bootstrap": "1.0.0-beta.6",
-    "react-dom": "16.8.4",
     "react-testing-library": "6.0.3",
     "ts-jest": "24.0.0"
+  },
+  "peerDependencies": {
+    "react": "16.8.6",
+    "react-bootstrap": "1.0.0-beta.6",
+    "react-dom": "16.8.6",
+    "react-jss": "10.0.0-alpha.10"
   }
 }

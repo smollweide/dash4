@@ -3,10 +3,24 @@ const AssetConfigWebpackPlugin = require('asset-config-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ScssConfigWebpackPlugin = require('scss-config-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (libraryName) => {
 	const config = {
 		entry: './src/index.tsx',
+		optimization: {
+			minimize: true,
+		},
+		externals: {
+			react: 'React',
+			'react-dom': 'ReactDOM',
+			bootstrap: 'bootstrap',
+			'core-js': 'coreJs',
+			'react-bootstrap': 'ReactBootstrap',
+			// 'react-jss': 'ReactJSS',
+			'react-container-query': 'ReactContainerQuery',
+			tslib: 'tslib',
+		},
 		output: {
 			path: path.join(process.cwd(), '/lib'),
 			filename: `${libraryName}.js`,
@@ -30,6 +44,16 @@ module.exports = (libraryName) => {
 			new TsConfigWebpackPlugin(),
 		],
 	};
+
+	if (process.env.ANALYZE_ENV === 'bundle') {
+		config.plugins.push(
+			new BundleAnalyzerPlugin({
+				analyzerMode: 'static',
+				generateStatsFile: true,
+				openAnalyzer: true,
+			})
+		);
+	}
 
 	return config;
 };

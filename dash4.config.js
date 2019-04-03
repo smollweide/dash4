@@ -17,8 +17,8 @@ const getPluginPathes = async () => {
 	)).filter((value) => typeof value === 'string');
 };
 
-async function getConfig() {
-	const pluginTabs = (await getPluginPathes()).map((pluginName) => ({
+const pluginTabs = async () => {
+	return (await getPluginPathes()).map((pluginName) => ({
 		title: pluginName,
 		rows: [
 			[
@@ -37,6 +37,11 @@ async function getConfig() {
 						{
 							title: 'run client-side tests',
 							cmd: 'npm run test:client',
+							cwd: path.join('plugins', pluginName),
+						},
+						{
+							title: 'update client-side snapshots',
+							cmd: 'npm run test-update-snapshots:client',
 							cwd: path.join('plugins', pluginName),
 						},
 						{
@@ -97,7 +102,9 @@ async function getConfig() {
 			],
 		],
 	}));
+};
 
+async function getConfig() {
 	return {
 		tabs: [
 			{
@@ -115,6 +122,10 @@ async function getConfig() {
 								{
 									title: 'bootstrap',
 									cmd: 'npm run bootstrap',
+								},
+								{
+									title: 'test',
+									cmd: 'npm run test',
 								},
 								{
 									title: 'lint',
@@ -213,20 +224,40 @@ async function getConfig() {
 				],
 			},
 			{
-				title: 'react-xterm',
+				title: 'ui',
 				rows: [
 					[
 						new PluginReadme({
-							file: '/packages/react-xterm/README.md',
+							file: '/packages/ui/README.md',
 							width: [12, 6, 8],
 							height: 400,
 						}),
 						new PluginNpmScripts({
 							scripts: [
 								{
+									title: 'test',
+									cmd: 'npm run test',
+									cwd: '/packages/ui',
+								},
+								{
+									title: 'test-update-snapshots',
+									cmd: 'npm run test-update-snapshots',
+									cwd: '/packages/ui',
+								},
+								{
 									title: 'build',
 									cmd: 'npm run build',
-									cwd: '/packages/react-xterm',
+									cwd: '/packages/ui',
+								},
+								{
+									title: 'build storybook',
+									cmd: 'npm run build-storybook',
+									cwd: '/packages/ui',
+								},
+								{
+									title: 'analyze-bundle-size',
+									cmd: 'npm run analyze-bundle-size',
+									cwd: '/packages/ui',
 								},
 							],
 							width: [12, 6, 4],
@@ -234,15 +265,29 @@ async function getConfig() {
 					],
 					[
 						new PluginTerminal({
-							cmd: 'npm run start',
-							cwd: '/packages/react-xterm',
+							cmd: 'npm start',
+							cwd: '/packages/ui',
 							autostart: false,
-							width: [12, 6, 6],
+						}),
+						new PluginTerminal({
+							cmd: 'npm run watch-build',
+							cwd: '/packages/ui',
+							autostart: false,
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-test',
+							cwd: '/packages/ui',
+							autostart: false,
+						}),
+						new PluginCodeCoverage({
+							cwd: '/packages/ui',
 						}),
 					],
 				],
 			},
-		].concat(pluginTabs),
+		].concat(await pluginTabs()),
 	};
 }
 

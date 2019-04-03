@@ -13,6 +13,10 @@ module.exports = (_some, { mode }) => {
 		output: {
 			publicPath: '/',
 		},
+		// externals: {
+		// 	react: 'React',
+		// 	'react-dom': 'ReactDOM',
+		// },
 		optimization: {
 			minimize: true,
 		},

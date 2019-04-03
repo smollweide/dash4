@@ -33,3 +33,6 @@ lerna-debug.log
 # build
 dist
 build
+
+#other
+todos.md

@@ -46,10 +46,6 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	}
 
 	public connected = async () => {
-		if (!this.on) {
-			return;
-		}
-
 		this.on('connected', this.sendFile);
 	};
 

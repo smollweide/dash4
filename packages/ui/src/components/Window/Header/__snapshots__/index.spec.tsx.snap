@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WindowHeader render default 1`] = `
+<div
+  class=" Component-header-0-1-1"
+>
+  <p
+    class="Component-title-0-1-3"
+  >
+    title
+  </p>
+  <div
+    class="Component-button-0-1-2"
+  >
+    Hello
+  </div>
+</div>
+`;
+
+exports[`WindowHeader render with subtitle 1`] = `
+<div
+  class=" Component-header-0-1-1"
+>
+  <p
+    class="Component-title-0-1-3"
+  >
+    title
+    <br />
+    <small
+      class="text-muted"
+    >
+       
+      subtitle
+    </small>
+  </p>
+  <div
+    class="Component-button-0-1-2"
+  >
+    Hello
+  </div>
+</div>
+`;

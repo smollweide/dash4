@@ -1,7 +1,7 @@
+import { ErrorBoundary } from '@dash4/ui';
 import React from 'react';
 import withStyles, { WithStyles } from 'react-jss';
 import { IConfigTab } from '../..';
-import { ErrorBoundary } from '../ErrorBoundary';
 import { Cell, Grid } from '../Grid';
 
 const styles = {};
@@ -49,7 +49,9 @@ export const Widgets = withStyles(styles)(({ classes, tab }: IProps) => {
 								}
 								return (
 									<Cell width={config.width} key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`}>
-										<Plugin {...config} />
+										<ErrorBoundary>
+											<Plugin {...config} />
+										</ErrorBoundary>
 									</Cell>
 								);
 							} catch (err) {

@@ -402,12 +402,9 @@ export class Term extends React.PureComponent<IProps, any> {
 	}
 
 	public render() {
+		const className = `term_fit ${this.props.isTermActive ? 'term_active' : ''}`;
 		return (
-			<div
-				className={`term_fit ${this.props.isTermActive ? 'term_active' : ''}`}
-				style={{ padding: this.props.padding }}
-				onMouseUp={this.onMouseUp}
-			>
+			<div className={className} style={{ padding: this.props.padding }} onMouseUp={this.onMouseUp}>
 				{this.props.customChildrenBefore}
 				<div ref={this.onTermWrapperRef} className="term_fit term_wrapper" />
 				{this.props.customChildren}

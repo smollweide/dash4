@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WindowBody render default 1`] = `
+<div
+  class=" Component-body-0-1-1"
+>
+  Hello
+</div>
+`;

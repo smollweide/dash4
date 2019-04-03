@@ -1,8 +1,7 @@
+import { Icon, Window, WindowBody, WindowHeader } from '@dash4/ui';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { IWidgetConfig } from '..';
-import { Icon } from '../components/Icon';
-import { Window, WindowBody, WindowHeader } from '../components/Window';
 import { registerPlugin } from '../register-plugin';
 
 export const MockPlugin = (config: IWidgetConfig) => {

@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": "Simon Mollweide <simon.mollweide@gmail.com>",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "build": "npm-run-all build:lib build:build build:dist build:client build:server",
     "build:build": "lerna run build:build",
     "build:client": "lerna run build:client",
@@ -24,6 +24,7 @@
     "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
     "sort-package-json": "sort-package-json packages/*/package.json plugins/*/package.json package.json",
     "start": "node ./packages/server/bin/index.js --port=8888",
+    "test": "lerna run test",
     "update": "node ./bin/update.js",
     "watch-build": "lerna-terminal watch-build",
     "watch-dist": "lerna-terminal watch-dist"

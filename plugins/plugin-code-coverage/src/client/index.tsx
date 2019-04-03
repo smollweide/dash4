@@ -1,6 +1,6 @@
 import { IWidgetConfig } from '@dash4/client/build';
-import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
+import { Window, WindowBody, WindowHeader } from '@dash4/ui';
 import React, { lazy, Suspense } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import withStyles, { WithStyles } from 'react-jss';
@@ -39,59 +39,61 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) 
 	}
 
 	return (
-		<Window dark={dark}>
-			<WindowHeader title="Code coverage" />
-			<WindowBody className={classes.windowBody}>
-				{data && data.error ? (
-					<p>Error: {data.message}</p>
-				) : data ? (
-					<Suspense fallback={<div>Loading ...</div>}>
-						<div onClick={handleClick} className={classes.box}>
-							<div className={classes.chartRow}>
-								<div className={classes.chart}>
-									<CoverageChart
-										dark={dark}
-										title="Statements"
-										threshold={threshold.statements}
-										coverage={getCoverageSectionValue(data.statements, 'coverage')}
-									/>
+		<>
+			<Window dark={dark}>
+				<WindowHeader title="Code coverage" />
+				<WindowBody className={classes.windowBody}>
+					{data && data.error ? (
+						<p>Error: {data.message}</p>
+					) : data ? (
+						<Suspense fallback={<div>Loading ...</div>}>
+							<div onClick={handleClick} className={classes.box}>
+								<div className={classes.chartRow}>
+									<div className={classes.chart}>
+										<CoverageChart
+											dark={dark}
+											title="Statements"
+											threshold={threshold.statements}
+											coverage={getCoverageSectionValue(data.statements, 'coverage')}
+										/>
+									</div>
+									<div className={classes.chart}>
+										<CoverageChart
+											dark={dark}
+											title="Branches"
+											threshold={threshold.branches}
+											coverage={getCoverageSectionValue(data.branches, 'coverage')}
+										/>
+									</div>
 								</div>
-								<div className={classes.chart}>
-									<CoverageChart
-										dark={dark}
-										title="Branches"
-										threshold={threshold.branches}
-										coverage={getCoverageSectionValue(data.branches, 'coverage')}
-									/>
+								<div className={classes.chartRow}>
+									<div className={classes.chart}>
+										<CoverageChart
+											dark={dark}
+											title="Functions"
+											threshold={threshold.functions}
+											coverage={getCoverageSectionValue(data.functions, 'coverage')}
+										/>
+									</div>
+									<div className={classes.chart}>
+										<CoverageChart
+											dark={dark}
+											title="Lines"
+											threshold={threshold.lines}
+											coverage={getCoverageSectionValue(data.lines, 'coverage')}
+										/>
+									</div>
 								</div>
 							</div>
-							<div className={classes.chartRow}>
-								<div className={classes.chart}>
-									<CoverageChart
-										dark={dark}
-										title="Functions"
-										threshold={threshold.functions}
-										coverage={getCoverageSectionValue(data.functions, 'coverage')}
-									/>
-								</div>
-								<div className={classes.chart}>
-									<CoverageChart
-										dark={dark}
-										title="Lines"
-										threshold={threshold.lines}
-										coverage={getCoverageSectionValue(data.lines, 'coverage')}
-									/>
-								</div>
-							</div>
+						</Suspense>
+					) : (
+						<div className={classes.spinner}>
+							<Spinner animation="grow" />
 						</div>
-					</Suspense>
-				) : (
-					<div className={classes.spinner}>
-						<Spinner animation="grow" />
-					</div>
-				)}
-			</WindowBody>
-		</Window>
+					)}
+				</WindowBody>
+			</Window>
+		</>
 	);
 };
 

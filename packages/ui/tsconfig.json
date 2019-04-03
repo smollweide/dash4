@@ -1,0 +1,15 @@
+{
+	"extends": "./node_modules/@dash4/config/tsconfig.json",
+	"exclude": [
+		"dist",
+		"build",
+		"node_modules",
+		"__tests__",
+		"src/server",
+		"demo",
+		"src/**/*.spec.ts",
+		"src/**/*.spec.tsx",
+		"src/**/*.stories.ts",
+		"src/**/*.stories.tsx"
+	]
+}

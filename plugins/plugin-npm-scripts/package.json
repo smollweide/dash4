@@ -16,8 +16,14 @@
     "prepublishOnly": "dash4-npm-run-all build",
     "start": "node ./node_modules/.bin/dash4-start",
     "static": "node ./node_modules/.bin/dash4-static",
+    "test": "dash4-npm-run-all test:*",
+    "test-update-snapshots:client": "node ./node_modules/.bin/dash4-test-client-update-snapshots",
+    "test:client": "node ./node_modules/.bin/dash4-test-client",
+    "test:server": "node ./node_modules/.bin/dash4-test-server",
     "watch-build": "node ./node_modules/.bin/dash4-watch-build",
-    "watch-dist": "node ./node_modules/.bin/dash4-watch-dist"
+    "watch-dist": "node ./node_modules/.bin/dash4-watch-dist",
+    "watch-test-client": "node ./node_modules/.bin/dash4-watch-test-client",
+    "watch-test-server": "node ./node_modules/.bin/dash4-watch-test-server"
   },
   "browserslist": [
     "> 1%",
@@ -26,7 +32,6 @@
   ],
   "dependencies": {
     "@dash4/client": "0.1.0",
-    "@dash4/react-xterm": "0.1.0",
     "@dash4/server": "0.1.0",
     "node-pty": "0.8.1",
     "os": "0.1.1",
@@ -34,18 +39,25 @@
   },
   "devDependencies": {
     "@dash4/config": "0.1.0",
+    "@dash4/react-xterm": "0.1.0",
+    "@dash4/ui": "0.1.0",
     "@types/core-js": "2.5.0",
+    "@types/jest": "24.0.11",
     "@types/node": "11.11.3",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.2",
     "chalk": "2.4.2",
     "columnify": "1.5.4",
     "core-js": "2.6.5",
-    "ora": "3.1.0",
-    "react": "16.8.4",
+    "jest": "24.5.0",
+    "ora": "3.2.0",
+    "react": "16.8.6",
     "react-bootstrap": "1.0.0-beta.6",
-    "react-dom": "16.8.4",
+    "react-dom": "16.8.6",
+    "react-hooks-testing-library": "0.3.8",
     "react-jss": "10.0.0-alpha.10",
-    "sparkly": "4.0.0"
+    "react-testing-library": "6.0.3",
+    "sparkly": "4.0.0",
+    "ts-jest": "24.0.0"
   }
 }

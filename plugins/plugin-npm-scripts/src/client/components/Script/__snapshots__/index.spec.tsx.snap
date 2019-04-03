@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PluginNpmScripts NpmScript open and close overlay 1`] = `
+<p
+  class="Component-title-0-1-9"
+>
+  Terminal
+  <br />
+  <small
+    class="text-muted"
+  >
+     
+    npm run test
+  </small>
+</p>
+`;
+
+exports[`PluginNpmScripts NpmScript open and close overly 1`] = `
+<p
+  class="Component-title-0-1-9"
+>
+  Terminal
+  <br />
+  <small
+    class="text-muted"
+  >
+     
+    npm run test
+  </small>
+</p>
+`;
+
+exports[`PluginNpmScripts NpmScript open and close overly 2`] = `
+<p
+  class="Component-title-0-1-9"
+>
+  Terminal
+  <br />
+  <small
+    class="text-muted"
+  >
+     
+    npm run test
+  </small>
+</p>
+`;
+
+exports[`PluginNpmScripts NpmScript render default 1`] = `
+<button
+  class="NpmScriptRaw-button-0-1-1 btn btn-outline-primary btn-sm"
+  type="button"
+>
+  npm run test
+</button>
+`;

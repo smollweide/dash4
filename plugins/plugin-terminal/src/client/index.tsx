@@ -1,11 +1,9 @@
 // tslint:disable-next-line
 // /* global fetch, WebSocket, location */
 import { IWidgetConfig } from '@dash4/client/build';
-import { ErrorBoundary } from '@dash4/client/build/components/ErrorBoundary';
-import { Icon } from '@dash4/client/build/components/Icon';
-import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { Term } from '@dash4/react-xterm';
+import { ErrorBoundary, Icon, Window, WindowBody, WindowHeader } from '@dash4/ui';
 import React, { Component, SyntheticEvent } from 'react';
 import { Button, ButtonGroup, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';

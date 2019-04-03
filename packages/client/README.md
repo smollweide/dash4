@@ -21,9 +21,6 @@ The following documentation is just relevant for dash4 plugin development. For i
   * [socket](#util-socket)
   * [useEffectAsync](#util-use-effect-async)
 * [Components](#components)
-  * [Window](#component-window)
-  * [Icon](#component-icon)
-  * [ErrorBoundary](#component-error-boundary)
 * [License](#license)
 
 ## <a name="installation">Installation</a>
@@ -148,93 +145,7 @@ export function useSocket(id: string) {
 
 
 ## <a name="components">Components</a>
-
-### <a name="component-window">Window</a>
-
-```tsx
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { Icon } from '@dash4/client/build/components/Icon';
-import { Window, WindowBody, WindowHeader } from '@dash4/client/build/components/Window';
-
-export const YourComponent = () => {
-  return (
-    <Window dark>
-      <WindowHeader title="Title" subTitle="Subtitle">
-        <Button variant="outline-primary" size="sm">
-          <Icon name="play_arrow" size="m" />
-        </Button>
-      </WindowHeader>
-      <WindowBody>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-        ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-      </WindowBody>
-    </Window>
-  );
-};
-```
-
-*props (Window):*
-
-```ts
-children: React.ReactNode;
-className?: string;
-// enable / disable dark mode (default=false)
-dark?: boolean;
-// automatically stretches to height of neighbour window (default=true)
-autoStretch?: boolean;
-// enable / disable fullscreen mode (default=false)
-fullscreen?: boolean;
-```
-
-*props (WindowHeader):*
-
-```ts
-title: string;
-subTitle?: string;
-className?: string;
-children?: React.ReactNode;
-onDoubleClick?: (event: React.SyntheticEvent<HTMLDivElement>) => void;
-```
-
-*props (WindowBody):*
-
-```ts
-children: React.ReactNode;
-className?: string;
-```
-
-### <a name="component-icon">Icon</a>
-
-> Render a [material ui](https://material.io/tools/icons/?style=baseline) icon 
-
-```tsx
-import React from 'react';
-import { Icon } from '@dash4/client/build/components/Icon';
-
-export const YourComponent = () => {
-  return (
-    <Icon name="play_arrow" size="m" />
-  );
-};
-```
-
-*props:*
-
-```ts
-// icon name defined by material ui icons
-name: string;
-className?: string;
-// type TSize = "s" | "m" | "l"
-size?: TSize;
-// type TColor = "dark" | "light"
-color?: TColor;
-// type TAnimation = "rotation-clockwise" | "rotation-counter-clockwise"
-animation?: TAnimation;
-// type TAlign = "center-in-content"
-align?: TAlign;
-```
+[@dash4/ui](https://github.com/smollweide/dash4/blob/master/packages/ui/README.md)
 
 ### <a name="component-error-boundary">ErrorBoundary</a>
 
@@ -256,6 +167,9 @@ export const YourComponent = () => {
 ```ts
 children: React.ReactNode;
 ```
+
+### <a name="component-xterm">Xterm</a>
+[@dash4/react-xterm](https://github.com/smollweide/dash4/blob/master/packages/react-xterm/README.md)
 
 ## <a name="license">License</a>
 
