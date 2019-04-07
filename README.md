@@ -20,13 +20,14 @@ The dashboard for developers
 
 * [Usage](#usage)
 * [Plugins](#plugins)
+* [Motivation](#motivation)
 * [Contributing](#contributing)
 * [Thanks](#thanks)
 * [License](#license)
 
 ## <a name="usage">Usage</a>
 
-### [WIP] Installation by using the CLI
+### Installation by using the CLI
 
 ```shell
 npx @dash4/cli
@@ -99,15 +100,33 @@ run `npm start`
 | [PluginNpmScripts](https://github.com/smollweide/dash4/blob/master/plugins/plugin-npm-scripts/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-npm-scripts.svg)](https://www.npmjs.com/package/@dash4/plugin-npm-scripts) |
 | [PluginReadme](https://github.com/smollweide/dash4/blob/master/plugins/plugin-readme/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-readme.svg)](https://www.npmjs.com/package/@dash4/plugin-readme) |
 | [PluginCodeCoverage](https://github.com/smollweide/dash4/blob/master/plugins/plugin-code-coverage/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-code-coverage.svg)](https://www.npmjs.com/package/@dash4/plugin-code-coverage) |
+
+### Community plugins
+
+> Your wrote a plugin for Dash4? Feel free to add PR with your plugin in this list.
+
+### Planned plugins
+
+| Name          |        |
+| ------------- |-------------|
 | PluginDependencies | ⌛Coming soon |
 | PluginAction | ⌛Coming soon |
 | PluginBundleSize | ⌛Coming soon |
-| PluginTypescriptCoverage | ⌛Coming soon |
 | PluginEmbed | ⌛Coming soon |
 | PluginTodos | ⌛Coming soon |
 | PluginNote | ⌛Coming soon |
-| PluginGitBranch | ⌛Coming soon |
-| PluginLighthouse | ⌛Coming soon |
+| PluginGitBranch | 💡Idea |
+| PluginLighthouse | 💡Idea |
+| PluginTypescriptCoverage | 💡Idea |
+| PluginCommitizen | 💡Idea |
+
+## <a name="motivation">Motivation</a>
+
+Okay you are right there are a lot of webdashboards available. So why is another one needed? A while ago I started with a new project which was a monorepository using lerna. I like the monorepository approach but there are also cons. For example the start command. You can do it by running `lerna run start --parallel` but this is quite a mess. That's why I started to search for a solution which allowes you to start multiple terminal instances with a single command. I found nothing helpful (Ping me if you know something). What I found was [webdash](https://github.com/jadjoubran/webdash) which is close to what I'm looking for (not close enough). The second one, most of you may aready know, is [hyper](https://github.com/zeit/hyper). Hyper is using web technologies with electron. Which means it's easy to run hyper in the browser. Some hours later a prototype was born and the idea of combining webdash with hyper.
+
+Long story short Dash4 is build for providing you a terminal (explicit commands) in the dashboard and support for monorepositories.
+
+From technical point of view, Dash4 uses [react](https://reactjs.org/), [websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API), [node-pty](https://github.com/Microsoft/node-pty) and [Xterm](https://github.com/xtermjs/xterm.js). It's build plugin based, easy to configure and flexible.
 
 
 ## <a name="contributing">Contributing</a>
