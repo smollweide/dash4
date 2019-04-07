@@ -150,6 +150,52 @@ async function getConfig() {
 				],
 			},
 			{
+				title: 'cli',
+				rows: [
+					[
+						new PluginReadme({
+							file: '/packages/cli/README.md',
+							width: [12, 6, 8],
+							height: 400,
+						}),
+						new PluginNpmScripts({
+							scripts: [
+								{
+									title: 'build',
+									cmd: 'npm run build',
+									cwd: '/packages/cli',
+								},
+								{
+									title: 'test',
+									cmd: 'npm run test',
+									cwd: '/packages/cli',
+								},
+							],
+							width: [12, 6, 4],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-build',
+							cwd: '/packages/cli',
+							autostart: false,
+							width: [12, 6, 8],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-test',
+							cwd: '/packages/cli',
+							autostart: false,
+						}),
+						new PluginCodeCoverage({
+							cwd: '/packages/cli',
+							lcovHtmlPath: 'coverage-server/lcov-report/index.html',
+						}),
+					],
+				],
+			},
+			{
 				title: 'client',
 				rows: [
 					[

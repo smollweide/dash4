@@ -11,6 +11,8 @@ Set of configurations and scripts for creating a `Dash4 Plugin`.
 <br />
 </div>
 
+The following documentation is just relevant for dash4 plugin development. For informations on how to use Dash4 please read this: [Dash4 documentation](https://github.com/smollweide/dash4/blob/master/README.md)
+
 ## Table of Contents
 
 * [Installation](#installation)
@@ -92,4 +94,4 @@ module.exports = require('@dash4/config/webpack.config.js')('###PLUGIN_NAME###')
 
 ## <a name="license">License</a>
 
-The dash4 config is [MIT licensed](./LICENSE)
+The @dash4/config is [MIT licensed](./LICENSE)

@@ -12,6 +12,8 @@
 <br />
 </div>
 
+The following documentation is just relevant for dash4 plugin development. For informations on how to use Dash4 please read this: [Dash4 documentation](https://github.com/smollweide/dash4/blob/master/README.md)
+
 ## Installation
 
 ```shell

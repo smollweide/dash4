@@ -33,7 +33,7 @@ npm i @dash4/client
 
 ### <a name="util-register-plugin">registerPlugin</a>
 
-> register your Plugin for make it accessible for the Dash4 client application
+> register your Plugin to make it accessible for the Dash4 client application
 
 ```tsx
 import React from 'react';
@@ -57,7 +57,7 @@ PluginComponent: JSX.Element;
 
 ### <a name="util-socket">socket</a>
 
-> use (web) sockets for communication with the Dash4 server application
+> use (web) sockets to communicate with the Dash4 server application
 
 * [Read here how to implement the socket on serverside](https://github.com/smollweide/dash4/blob/master/packages/server/README.md)
 
@@ -146,27 +146,6 @@ export function useSocket(id: string) {
 
 ## <a name="components">Components</a>
 [@dash4/ui](https://github.com/smollweide/dash4/blob/master/packages/ui/README.md)
-
-### <a name="component-error-boundary">ErrorBoundary</a>
-
-```tsx
-import React from 'react';
-import { ErrorBoundary } from '@dash4/client/build/components/ErrorBoundary';
-
-export const YourComponent = () => {
-  return (
-    <ErrorBoundary>
-      {`render something`}
-    </ErrorBoundary>
-  );
-};
-```
-
-*props:*
-
-```ts
-children: React.ReactNode;
-```
 
 ### <a name="component-xterm">Xterm</a>
 [@dash4/react-xterm](https://github.com/smollweide/dash4/blob/master/packages/react-xterm/README.md)

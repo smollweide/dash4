@@ -8,14 +8,6 @@ Window component for Dash4
 
 <!-- STORY -->
 
-## Installation
-
-```shell
-npm install @dash4/ui --save
-```
-
-## Usage
-
 ```tsx
 import React from 'react';
 import { Button } from 'react-bootstrap';
@@ -70,7 +62,3 @@ onDoubleClick?: (event: React.SyntheticEvent<HTMLDivElement>) => void;
 children: React.ReactNode;
 className?: string;
 ```
-
-## License
-
-The @dash4/ui is [MIT licensed](./LICENSE)

@@ -1,0 +1,8 @@
+{
+	"scripts": {
+		"bootstrap": "npm run bootstrap",
+		"build": "lerna run build",
+		"test": "lerna run test",
+		"lint": "lerna run lint"
+	}
+}
