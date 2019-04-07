@@ -56,6 +56,7 @@ const styles = {
 		animation: '$rotation-counter-clockwise 1.5s infinite linear',
 	},
 	'align-center-in-content': {
+		position: 'absolute',
 		top: 0,
 		left: 0,
 		height: '100%',
