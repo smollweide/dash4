@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "description": "Displays current code coverage",
+  "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
   "main": "./build/server/index.js",

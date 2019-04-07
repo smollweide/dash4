@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "description": "dash4 react ui component",
+  "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
   "files": [

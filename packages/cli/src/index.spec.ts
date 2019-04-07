@@ -1,8 +1,27 @@
 /// <reference types="@types/jest" />
 const execaMock = jest.fn();
 jest.mock('execa', () => ({
-	__esModule: true, // this property makes it work
+	__esModule: true,
 	default: execaMock,
+}));
+const oraFailMock = jest.fn();
+jest.mock('ora', () => ({
+	__esModule: true,
+	default: () => ({
+		start: () => ({
+			fail: oraFailMock,
+			succeed: jest.fn(),
+			text: '',
+		}),
+	}),
+}));
+jest.mock('chalk', () => ({
+	__esModule: true,
+	default: {
+		white: (text: string) => text,
+		red: (text: string) => text,
+		bold: (text: string) => text,
+	},
 }));
 
 import cpy from 'cpy';
@@ -75,10 +94,9 @@ describe('cli', () => {
 		const cwd = path.join(tempDir, 'empty');
 		await makeDir(cwd);
 
-		const spyConsole = jest.spyOn(console, 'log');
 		const spyProcess = jest.spyOn(process, 'kill');
 		await init(cwd, getOptions(cwd));
-		expect(spyConsole).toHaveBeenCalledWith('package.json not found!');
+		expect(oraFailMock).toHaveBeenCalledWith('package.json not found!');
 		expect(spyProcess).toHaveBeenCalledWith(1);
 	});
 	test('execute in directory where config exist', async () => {
@@ -87,10 +105,9 @@ describe('cli', () => {
 		await fs.writeFile(path.join(cwd, 'package.json'), '{ "scripts": { "start": "dash4" } }');
 		await fs.writeFile(path.join(cwd, 'dash4.config.js'), '');
 
-		const spyConsole = jest.spyOn(console, 'log');
 		const spyProcess = jest.spyOn(process, 'kill');
 		await init(cwd, getOptions(cwd));
-		expect(spyConsole).toHaveBeenCalledWith('Dash4 is already installed!');
+		expect(oraFailMock).toHaveBeenCalledWith('Dash4 is already installed!');
 		expect(spyProcess).toHaveBeenCalledWith(1);
 	});
 	test('execute in directory where config exist but with force mode', async () => {
@@ -156,5 +173,11 @@ describe('cli', () => {
 		await cpy([`**/README.md`, '!lerna/README.md'], dest, options);
 		await init(cwd, getOptions(cwd));
 		expect(await getTempFile(testId, 'dash4.config.js')).toBe(await getMockFile(testId, '_dash4.config.js'));
+		expect(execaMock).toHaveBeenCalledWith(
+			'npm',
+			`i -D @dash4/server @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(
+				' '
+			)
+		);
 	});
 });
