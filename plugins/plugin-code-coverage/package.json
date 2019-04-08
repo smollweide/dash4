@@ -6,6 +6,12 @@
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "files": [
+    "build",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "./build/server/index.js",
   "typings": "./build/server/index.d.ts",
   "scripts": {

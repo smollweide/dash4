@@ -31,6 +31,7 @@
     "@dash4/client": "0.1.0",
     "commander": "2.20.0",
     "mime-types": "2.1.22",
+    "tslib": "1.9.3",
     "uuid": "3.3.2",
     "ws": "6.2.1"
   },

@@ -46,7 +46,7 @@ process.kill = jest.fn();
 // tslint:disable-next-line
 console.log = jest.fn();
 
-const getOptions = (cwd: string, force?: boolean) => ({
+const getOptions = (cwd: string, force: boolean = true) => ({
 	port: 8080,
 	config: path.join(cwd, 'dash4.config.js'),
 	force,
@@ -106,7 +106,7 @@ describe('cli', () => {
 		await fs.writeFile(path.join(cwd, 'dash4.config.js'), '');
 
 		const spyProcess = jest.spyOn(process, 'kill');
-		await init(cwd, getOptions(cwd));
+		await init(cwd, getOptions(cwd, false));
 		expect(oraFailMock).toHaveBeenCalledWith('Dash4 is already installed!');
 		expect(spyProcess).toHaveBeenCalledWith(1);
 	});

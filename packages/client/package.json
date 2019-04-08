@@ -40,7 +40,8 @@
     "react-dom": "16.8.6",
     "react-horizontal-scrolling-menu": "0.5.7",
     "react-jss": "10.0.0-alpha.10",
-    "react-router-dom": "5.0.0"
+    "react-router-dom": "5.0.0",
+    "tslib": "1.9.3"
   },
   "devDependencies": {
     "@namics/ts-config": "0.2.0",

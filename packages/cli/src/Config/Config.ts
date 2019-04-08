@@ -31,7 +31,7 @@ const pluginMap = {
 	PluginCodeCoverage: {
 		url: () => `https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage`,
 		import: () => `const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');`,
-		content: () => `<DASH4>new PluginCodeCoverage()</DASH4>`,
+		content: (options?: any) => `<DASH4>new PluginCodeCoverage(${options ? JSON.stringify(options) : ''})</DASH4>`,
 	},
 };
 
@@ -51,17 +51,6 @@ export class Config {
 		}
 		this._tabs[tabName].push(pluginMap[name].content(options) as string);
 	};
-
-	// public get rows() {
-	// 	return chunk(this._rows, 2);
-	// }
-
-	// public get rowsString() {
-	// 	return JSON.stringify(this.rows, null, 2)
-	// 		.replace(/"<DASH4>/g, '')
-	// 		.replace(/<\/DASH4>"/g, '')
-	// 		.replace(/\\"/g, '"');
-	// }
 
 	public get tabs() {
 		const tabs: Array<{

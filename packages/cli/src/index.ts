@@ -24,6 +24,7 @@ export async function hasFile(...pathFragments: string[]) {
 
 interface ICollect {
 	cwd: string;
+	packagePath?: string;
 }
 
 async function asyncForEach<IITem = any>(
@@ -35,7 +36,7 @@ async function asyncForEach<IITem = any>(
 	}
 }
 
-async function collectTab({ cwd }: ICollect) {
+async function collectTab({ cwd, packagePath }: ICollect) {
 	const packages: {
 		[key: string]: boolean;
 	} = {};
@@ -74,6 +75,7 @@ async function collectTab({ cwd }: ICollect) {
 			pluginName: 'PluginTerminal',
 			options: {
 				cmd: 'npm start',
+				cwd: packagePath,
 				autostart: true,
 			},
 		});
@@ -85,6 +87,7 @@ async function collectTab({ cwd }: ICollect) {
 			pluginName: 'PluginTerminal',
 			options: {
 				cmd: 'npm run storybook',
+				cwd: packagePath,
 			},
 		});
 		packages['@dash4/plugin-terminal'] = true;
@@ -98,7 +101,9 @@ async function collectTab({ cwd }: ICollect) {
 		configs.push({
 			pluginName: 'PluginReadme',
 			options: {
-				file: hasReadmeUp ? 'README.md' : 'readme.md',
+				file: hasReadmeUp
+					? path.join(packagePath || '', 'README.md')
+					: path.join(packagePath || '', 'readme.md'),
 			},
 		});
 		packages['@dash4/plugin-readme'] = true;
@@ -111,13 +116,22 @@ async function collectTab({ cwd }: ICollect) {
 				pluginName: 'PluginTerminal',
 				options: {
 					cmd: 'npm run watch-test',
+					cwd: packagePath,
 				},
 			});
 			packages['@dash4/plugin-terminal'] = true;
 		}
 		configs.push({
 			pluginName: 'PluginCodeCoverage',
+			...(packagePath
+				? {
+						options: {
+							cwd: packagePath,
+						},
+				  }
+				: {}),
 		});
+
 		packages['@dash4/plugin-code-coverage'] = true;
 	}
 
@@ -129,6 +143,7 @@ async function collectTab({ cwd }: ICollect) {
 					title: cmd ? cmd.replace(/^npm run /, '') : '',
 					cmd,
 				})),
+				cwd: packagePath,
 			},
 		});
 		packages['@dash4/plugin-npm-scripts'] = true;
@@ -176,6 +191,7 @@ export async function init(cwd: string, options: IOptions) {
 				(await fs.readJSON(path.join(cwd, lernaPackage, 'package.json'))).name || path.basename(lernaPackage);
 			const _collection = await collectTab({
 				cwd: path.join(cwd, lernaPackage),
+				packagePath: lernaPackage,
 			});
 			packages = {
 				...packages,
@@ -206,5 +222,5 @@ export async function init(cwd: string, options: IOptions) {
 		process.kill(1);
 	}
 
-	spinner.succeed('Your Dash4 dashboard is installed and ready. Run "npm run dash"');
+	spinner.succeed('Your Dash4 dashboard is installed and ready. Run "npm run dash4"');
 }

@@ -37,12 +37,15 @@ async function getConfig() {
 				title: 'all-scripts',
 				rows: [
 					[
-						new PluginTerminal({ cmd: 'npm start', autostart: true }),
-						new PluginTerminal({ cmd: 'npm run storybook' }),
+						new PluginTerminal({ cmd: 'npm start', cwd: 'packages/all-scripts', autostart: true }),
+						new PluginTerminal({ cmd: 'npm run storybook', cwd: 'packages/all-scripts' }),
 					],
-					[new PluginReadme({ file: 'README.md' }), new PluginTerminal({ cmd: 'npm run watch-test' })],
 					[
-						new PluginCodeCoverage(),
+						new PluginReadme({ file: 'packages/all-scripts/README.md' }),
+						new PluginTerminal({ cmd: 'npm run watch-test', cwd: 'packages/all-scripts' }),
+					],
+					[
+						new PluginCodeCoverage({ cwd: 'packages/all-scripts' }),
 						new PluginNpmScripts({
 							scripts: [
 								{ title: 'bootstrap', cmd: 'npm run bootstrap' },
@@ -62,38 +65,47 @@ async function getConfig() {
 								{ title: 'docs', cmd: 'npm run docs' },
 								{ title: 'build-storybook', cmd: 'npm run build-storybook' },
 							],
+							cwd: 'packages/all-scripts',
 						}),
 					],
 				],
 			},
 			{
 				title: 'readme',
-				rows: [[new PluginReadme({ file: 'README.md' })]],
+				rows: [[new PluginReadme({ file: 'packages/readme/README.md' })]],
 			},
 			{
 				title: 'readme-low',
-				rows: [[new PluginReadme({ file: 'README.md' })]],
+				rows: [[new PluginReadme({ file: 'packages/readme-low/README.md' })]],
 			},
 			{
 				title: 'script-start',
-				rows: [[new PluginTerminal({ cmd: 'npm start', autostart: true })]],
+				rows: [[new PluginTerminal({ cmd: 'npm start', cwd: 'packages/script-start', autostart: true })]],
 			},
 			{
 				title: 'script-storybook',
-				rows: [[new PluginTerminal({ cmd: 'npm run storybook' })]],
+				rows: [[new PluginTerminal({ cmd: 'npm run storybook', cwd: 'packages/script-storybook' })]],
 			},
 			{
 				title: 'script-test',
 				rows: [
 					[
-						new PluginCodeCoverage(),
-						new PluginNpmScripts({ scripts: [{ title: 'test', cmd: 'npm run test' }] }),
+						new PluginCodeCoverage({ cwd: 'packages/script-test' }),
+						new PluginNpmScripts({
+							scripts: [{ title: 'test', cmd: 'npm run test' }],
+							cwd: 'packages/script-test',
+						}),
 					],
 				],
 			},
 			{
 				title: 'script-watch-test',
-				rows: [[new PluginTerminal({ cmd: 'npm run watch-test' }), new PluginCodeCoverage()]],
+				rows: [
+					[
+						new PluginTerminal({ cmd: 'npm run watch-test', cwd: 'packages/script-watch-test' }),
+						new PluginCodeCoverage({ cwd: 'packages/script-watch-test' }),
+					],
+				],
 			},
 		],
 	};
