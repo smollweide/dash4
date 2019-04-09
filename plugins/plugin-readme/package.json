@@ -45,13 +45,13 @@
     "mime-types": "2.1.22"
   },
   "devDependencies": {
-    "@dash4/config": "0.1.0",
+    "@dash4/config": "0.1.1",
     "@dash4/ui": "0.1.0",
     "@types/fs-extra": "5.0.5",
     "@types/jest": "24.0.11",
     "@types/mime-types": "2.1.0",
-    "@types/node": "11.13.0",
-    "@types/react": "16.8.12",
+    "@types/node": "11.13.2",
+    "@types/react": "16.8.13",
     "@types/react-dom": "16.8.3",
     "jest": "24.7.1",
     "react": "16.8.6",

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
+const fs = require('fs-extra');
 const path = require('path');
 const globby = require('globby');
 const { prompt } = require('enquirer');
 const latestVersion = require('latest-version');
 const ora = require('ora');
 const chalk = require('chalk');
-const fs = require('./fs');
 
 const cwd = fs.realpathSync(process.cwd());
 

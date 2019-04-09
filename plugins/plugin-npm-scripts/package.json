@@ -45,13 +45,13 @@
     "xterm": "3.12.0"
   },
   "devDependencies": {
-    "@dash4/config": "0.1.0",
+    "@dash4/config": "0.1.1",
     "@dash4/react-xterm": "0.1.0",
     "@dash4/ui": "0.1.0",
     "@types/core-js": "2.5.0",
     "@types/jest": "24.0.11",
-    "@types/node": "11.13.0",
-    "@types/react": "16.8.12",
+    "@types/node": "11.13.2",
+    "@types/react": "16.8.13",
     "@types/react-dom": "16.8.3",
     "chalk": "2.4.2",
     "columnify": "1.5.4",

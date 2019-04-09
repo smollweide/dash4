@@ -23,6 +23,7 @@ The dashboard for developers
 * [Motivation](#motivation)
 * [Contributing](#contributing)
 * [Thanks](#thanks)
+* [Troubleshooting](#troubleshooting)
 * [License](#license)
 
 ## <a name="usage">Usage</a>
@@ -122,12 +123,8 @@ run `npm start`
 
 ## <a name="motivation">Motivation</a>
 
-Okay you are right there are a lot of webdashboards available. So why is another one needed? A while ago I started with a new project which was a monorepository using lerna. I like the monorepository approach but there are also cons. For example the start command. You can do it by running `lerna run start --parallel` but this is quite a mess. That's why I started to search for a solution which allowes you to start multiple terminal instances with a single command. I found nothing helpful (Ping me if you know something). What I found was [webdash](https://github.com/jadjoubran/webdash) which is close to what I'm looking for (not close enough). The second one, most of you may aready know, is [hyper](https://github.com/zeit/hyper). Hyper is using web technologies with electron. Which means it's easy to run hyper in the browser. Some hours later a prototype was born and the idea of combining webdash with hyper.
-
-Long story short Dash4 is build for providing you a terminal (explicit commands) in the dashboard and support for monorepositories.
-
-From technical point of view, Dash4 uses [react](https://reactjs.org/), [websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API), [node-pty](https://github.com/Microsoft/node-pty) and [Xterm](https://github.com/xtermjs/xterm.js). It's build plugin based, easy to configure and flexible.
-
+You are right there are a lot of web dashboards out there. So why is another one needed now?
+When a new larger project starts, it's usually a mono repository nowadays. Which is great, but has the disadvantage that each package has its own scripts, which makes the project slightly confusing. Dash4 claims to solve this problem because it was designed for mono repositories from the scratch. Another important aspect is extensibility. Dash4 is implemented with and for plugins. Almost everything is a plugin which is why it allows you to add any feature you desire. Dash4 was heavily inspired by [webdash](https://github.com/jadjoubran/webdash) and [hyper](https://github.com/zeit/hyper). From technical point of view, the most important technologies which are used in Dash4 are [react](https://reactjs.org/), [websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API), [node-pty](https://github.com/Microsoft/node-pty) and [Xterm](https://github.com/xtermjs/xterm.js).
 
 ## <a name="contributing">Contributing</a>
 
@@ -139,6 +136,11 @@ TBD
 - [Xterm](https://github.com/xtermjs/xterm.js) for bringing the terminal to the frontend
 - [Zeit - hyper](https://github.com/zeit/hyper) for the implementation of xterm in react
 - [JoubranJad - webdash](https://github.com/jadjoubran/webdash) for the inspiration
+
+## <a name="troubleshooting">Troubleshooting</a>
+
+`Can't find Python executable "python"` on windows
+[window-build-tools/issues/56](https://github.com/felixrieseberg/windows-build-tools/issues/56)
 
 ## <a name="license">License</a>
 
