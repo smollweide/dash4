@@ -1,10 +1,10 @@
 /// <reference types="@types/jest" />
 
+import { terminalEmulator } from '@dash4/terminal-emulator';
 import path from 'path';
 import { PluginTerminal } from '.';
-import { terminalEmulator } from './terminal-emulator';
 
-jest.mock('./terminal-emulator', () => ({
+jest.mock('@dash4/terminal-emulator', () => ({
 	__esModule: true, // this property makes it work
 	// default: 'mockedDefaultExport',
 	terminalEmulator: jest.fn().mockImplementation(() => {

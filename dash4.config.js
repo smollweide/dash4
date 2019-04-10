@@ -333,6 +333,52 @@ async function getConfig() {
 					],
 				],
 			},
+			{
+				title: 'terminal-emulator',
+				rows: [
+					[
+						new PluginReadme({
+							file: '/packages/terminal-emulator/README.md',
+							width: [12, 6, 8],
+							height: 400,
+						}),
+						new PluginNpmScripts({
+							scripts: [
+								{
+									title: 'test',
+									cmd: 'npm run test',
+									cwd: '/packages/terminal-emulator',
+								},
+								{
+									title: 'build',
+									cmd: 'npm run build',
+									cwd: '/packages/terminal-emulator',
+								},
+							],
+							width: [12, 6, 4],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-build',
+							cwd: '/packages/terminal-emulator',
+							autostart: false,
+							width: [12, 6, 6],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-test',
+							cwd: '/packages/terminal-emulator',
+							autostart: false,
+						}),
+						new PluginCodeCoverage({
+							cwd: '/packages/terminal-emulator',
+							lcovHtmlPath: 'coverage-server/lcov-report/index.html',
+						}),
+					],
+				],
+			},
 		].concat(await pluginTabs()),
 	};
 }

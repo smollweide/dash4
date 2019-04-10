@@ -1,0 +1,16 @@
+node ./script-02.js
+bash-3.2$ node ./script-02.js
+/Users/smollweide/Projects/private/node/dash4/packages/terminal-emulator/src/__mocks__/script-02.js:4
+throw new Error('error');
+^
+
+Error: error
+    at Object.<anonymous> (/Users/smollweide/Projects/private/node/dash4/packages/terminal-emulator/src/__mocks__/script-02.js:4:7)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Function.Module.runMain (module.js:693:10)
+    at startup (bootstrap_node.js:188:16)
+    at bootstrap_node.js:609:3

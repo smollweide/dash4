@@ -1,8 +1,8 @@
 import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
+import { ITerm, terminalEmulator } from '@dash4/terminal-emulator';
 import fs from 'fs';
 import path from 'path';
 import { IClientConfig } from '../shared-types';
-import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
 	// command which should be executed

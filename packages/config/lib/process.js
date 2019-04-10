@@ -8,7 +8,9 @@ function getBinPath(name) {
 
 function execute(cmd, cwd) {
 	process.env.FORCE_COLOR = true;
-	const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash';
+	const isWin = os.platform() === 'win32';
+	const reg = isWin ? /PS \w:\\[^>]*> ?$/ : /bash-3\.2\$ ?$/;
+	const shell = isWin ? 'powershell.exe' : 'bash';
 
 	const ptyProcess = pty.spawn(shell, [], {
 		name: 'xterm-color',
@@ -24,7 +26,7 @@ function execute(cmd, cwd) {
 		if (lineCounter === 1) {
 			return;
 		}
-		if (/^bash-3\.2\$ $/.test(data)) {
+		if (reg.test(data)) {
 			ptyProcess.kill();
 			process.exit();
 			return;

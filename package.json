@@ -15,7 +15,7 @@
     "build:lib": "lerna run build:lib",
     "build:server": "lerna run build:server",
     "clean": "npx npm-run-all clean:lerna clean:installed clean:build",
-    "clean:build": "npx rimraf packages/*/build plugins/*/build packages/*/dist plugins/*/build packages/react-xterm/lib **/coverage **/coverage-server",
+    "clean:build": "npx rimraf packages/*/build plugins/*/build packages/*/dist plugins/*/dist packages/react-xterm/lib **/coverage **/coverage-server",
     "clean:installed": "npx rimraf node_modules package-lock.json lerna-debug.log npm-debug.log **/package-lock.json",
     "clean:lerna": "npx lerna clean --yes",
     "cz": "git-cz",
