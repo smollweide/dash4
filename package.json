@@ -8,6 +8,7 @@
   "author": "Simon Mollweide <simon.mollweide@gmail.com>",
   "scripts": {
     "bootstrap": "npx lerna bootstrap --hoist",
+    "postbootstrap": "npm rebuild node-sass",
     "build": "npm-run-all build:lib build:build build:dist build:client build:server",
     "build:build": "lerna run build:build",
     "build:client": "lerna run build:client",
@@ -76,6 +77,7 @@
     "lerna": "3.13.2",
     "lerna-terminal": "1.4.2",
     "lint-staged": "8.1.5",
+    "node-sass": "4.11.0",
     "npm-run-all": "4.1.5",
     "ora": "3.4.0",
     "prettier": "1.16.4",
