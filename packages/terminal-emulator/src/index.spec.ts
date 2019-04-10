@@ -17,6 +17,7 @@ describe('terminalEmulator', () => {
 			onStopProcessing: () => {
 				// fs.writeFileSync(path.join(process.cwd(), 'src/__mocks__/log-01.txt'), log);
 				expect(log).toBe(fs.readFileSync(path.join(process.cwd(), 'src/__mocks__/log-01.txt'), 'utf8'));
+				term.kill();
 				done();
 			},
 		});
@@ -32,12 +33,13 @@ describe('terminalEmulator', () => {
 			onStopProcessing: () => {
 				fs.writeFileSync(path.join(process.cwd(), 'src/__mocks__/log-02.txt'), log);
 				expect(log).toBe(fs.readFileSync(path.join(process.cwd(), 'src/__mocks__/log-02.txt'), 'utf8'));
+				term.kill();
 				done();
 			},
 		});
 		term.write('node ./script-02.js\r');
 	});
-	test('execute-script and handle exit', async (done) => {
+	test('execute-script and handle exit', (done) => {
 		let log = '';
 		const term = terminalEmulator({
 			cwd: path.join(process.cwd(), 'src/__mocks__'),
