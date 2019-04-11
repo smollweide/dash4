@@ -54,6 +54,8 @@ subTitle?: string;
 className?: string;
 children?: React.ReactNode;
 onDoubleClick?: (event: React.SyntheticEvent<HTMLDivElement>) => void;
+// enable / disable processing mode (default=false)
+progressing?: boolean;
 ```
 
 *props (WindowBody):*

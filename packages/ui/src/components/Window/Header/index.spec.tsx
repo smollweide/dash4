@@ -19,4 +19,12 @@ describe('WindowHeader', () => {
 		);
 		expect(container.firstChild).toMatchSnapshot();
 	});
+	test('render progressing', () => {
+		const { container } = render(
+			<WindowHeader progressing title="title" subTitle="subtitle">
+				Hello
+			</WindowHeader>
+		);
+		expect(container.firstChild).toMatchSnapshot();
+	});
 });

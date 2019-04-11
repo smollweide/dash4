@@ -1,29 +1,6 @@
 import React from 'react';
 import withStyles, { WithStyles } from 'react-jss';
-
-const styles = {
-	header: {
-		padding: '15px',
-		textAlign: 'center',
-		display: 'flex',
-		alignItems: 'flex-start',
-		justifyContent: 'space-between',
-	},
-	button: {
-		marginLeft: 15,
-	},
-	title: {
-		width: '100%',
-		whiteSpace: 'normal',
-		fontSize: 14,
-		fontWeight: 400,
-		lineHeight: 1.2,
-		marginBottom: 0,
-		overflow: 'hidden',
-		wordBreak: 'break-word',
-		hyphens: 'auto',
-	},
-};
+import { styles } from './styles';
 
 interface IProps extends WithStyles<typeof styles> {
 	title: string;
@@ -31,10 +8,12 @@ interface IProps extends WithStyles<typeof styles> {
 	className?: string;
 	children?: React.ReactNode;
 	onDoubleClick?: (event: React.SyntheticEvent<HTMLDivElement>) => void;
+	// enable / disable processing mode (default=false)
+	progressing?: boolean;
 }
 
 export const WindowHeader = withStyles(styles)(
-	({ className, classes, title, subTitle, children, onDoubleClick }: IProps) => {
+	({ className, classes, title, subTitle, children, onDoubleClick, progressing }: IProps) => {
 		return (
 			<div onDoubleClick={onDoubleClick} className={`${className || ''} ${classes.header}`}>
 				<p className={`${classes.title}`}>
@@ -47,6 +26,7 @@ export const WindowHeader = withStyles(styles)(
 					)}
 				</p>
 				{children && <div className={classes.button}>{children}</div>}
+				{progressing && <div className={classes.progressBar} />}
 			</div>
 		);
 	}

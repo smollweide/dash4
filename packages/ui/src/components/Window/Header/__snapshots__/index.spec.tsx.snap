@@ -17,6 +17,33 @@ exports[`WindowHeader render default 1`] = `
 </div>
 `;
 
+exports[`WindowHeader render progressing 1`] = `
+<div
+  class=" Component-header-0-1-1"
+>
+  <p
+    class="Component-title-0-1-3"
+  >
+    title
+    <br />
+    <small
+      class="text-muted"
+    >
+       
+      subtitle
+    </small>
+  </p>
+  <div
+    class="Component-button-0-1-2"
+  >
+    Hello
+  </div>
+  <div
+    class="Component-progressBar-0-1-5"
+  />
+</div>
+`;
+
 exports[`WindowHeader render with subtitle 1`] = `
 <div
   class=" Component-header-0-1-1"

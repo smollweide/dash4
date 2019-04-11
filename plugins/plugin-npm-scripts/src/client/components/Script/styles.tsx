@@ -34,6 +34,7 @@ export const styles = {
 	},
 	modalWindowHeader: {
 		padding: 0,
+		paddingBottom: 10,
 		width: '100%',
 	},
 };

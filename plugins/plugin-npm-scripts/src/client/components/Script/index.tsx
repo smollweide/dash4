@@ -78,6 +78,7 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 				>
 					<Modal.Header className={this.props.classes.modalHeader} closeButton>
 						<WindowHeader
+							progressing={!this.state.stopped}
 							className={this.props.classes.modalWindowHeader}
 							title="Terminal"
 							subTitle={script.title || script.cmd}
