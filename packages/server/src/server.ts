@@ -1,5 +1,6 @@
 /* globals: global */
 import { IConfig as IClientConfig } from '@dash4/client/build/index';
+import { error, success } from '@dash4/log';
 import fs from 'fs';
 import { createServer } from 'http';
 import { contentType as getContentType } from 'mime-types';
@@ -7,8 +8,6 @@ import path from 'path';
 import WebSocket from 'ws';
 import { IClientFile, IConfig, TClientFile, TServerRequest } from './index';
 
-// tslint:disable-next-line
-const log = console.log;
 const g = global as any;
 
 g.socket = g.socket || {};
@@ -235,7 +234,7 @@ export const start = ({ port, serverRequestListeners }: IOptions, config: IConfi
 	}
 
 	function connected(ws: WebSocket) {
-		log('[socket]: connection established');
+		success('server', 'connection established');
 		g.socket.isReady = true;
 		g.socket.readyList.forEach((resolve: (sk: ISocketAbstract) => void) => {
 			resolve(socketAbstract());
@@ -254,17 +253,17 @@ export const start = ({ port, serverRequestListeners }: IOptions, config: IConfi
 	}
 
 	wss.on('connection', function connection(ws) {
-		log(`[socket] connection to client established`);
+		success('server', 'connection to a client established');
 		connected(ws);
 	});
 
 	wss.on('error', function wserror(err: Error) {
-		log(`[socket] connection error ${err}`);
+		error('server', `connection error ${err}`);
 		g.socket.isReady = false;
 	});
 
 	server.listen(port);
-	log(`server started on http://localhost:${port}`);
+	success('server', `started on http://localhost:${port}`);
 
 	return new Promise((resolve) => {
 		if (g.socket.isReady) {

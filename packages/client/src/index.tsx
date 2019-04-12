@@ -1,3 +1,4 @@
+import { log } from '@dash4/log/build/browser';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import * as ReactBootstrap from 'react-bootstrap';
@@ -41,7 +42,7 @@ export interface IConfig {
 
 if (process.env.MOCK_ENV === 'true') {
 	// tslint:disable-next-line
-	console.log('[webpack]: mode develop');
+	log('client', 'mode develop');
 	// tslint:disable-next-line
 	require('./mock/Plugin');
 }

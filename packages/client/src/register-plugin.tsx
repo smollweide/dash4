@@ -1,5 +1,4 @@
-import React from 'react';
-import { IWidgetConfig } from '.';
+import { success } from '@dash4/log/build/browser';
 
 // export type TPluginComponent = (config: IWidgetConfig) => JSX.Element | React.Component<IWidgetConfig, any>;
 export type TPluginComponent = any;
@@ -10,8 +9,7 @@ win.dash4 = win.dash4 || {};
 win.dash4.plugins = win.dash4.plugins || {};
 
 export function registerPlugin(name: string, PluginComponent: TPluginComponent) {
-	// tslint:disable-next-line
-	console.log(`[plugin]: ${name} registered`);
+	success(name, 'registered');
 
 	win.dash4.plugins[name] = PluginComponent;
 }

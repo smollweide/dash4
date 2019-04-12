@@ -379,6 +379,52 @@ async function getConfig() {
 					],
 				],
 			},
+			{
+				title: 'log',
+				rows: [
+					[
+						new PluginReadme({
+							file: '/packages/log/README.md',
+							width: [12, 6, 8],
+							height: 400,
+						}),
+						new PluginNpmScripts({
+							scripts: [
+								{
+									title: 'test',
+									cmd: 'npm run test',
+									cwd: '/packages/log',
+								},
+								{
+									title: 'build',
+									cmd: 'npm run build',
+									cwd: '/packages/log',
+								},
+							],
+							width: [12, 6, 4],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-build',
+							cwd: '/packages/log',
+							autostart: false,
+							width: [12, 6, 6],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-test',
+							cwd: '/packages/log',
+							autostart: false,
+						}),
+						new PluginCodeCoverage({
+							cwd: '/packages/log',
+							lcovHtmlPath: 'coverage-server/lcov-report/index.html',
+						}),
+					],
+				],
+			},
 		].concat(await pluginTabs()),
 	};
 }

@@ -1,9 +1,8 @@
 /* globals: global */
+import { error, success } from '@dash4/log';
 import { createServer } from 'https';
 import WebSocket from 'ws';
 
-// tslint:disable-next-line
-const log = console.log;
 const g = global as any;
 const server = createServer({});
 const wss = new WebSocket.Server({
@@ -64,7 +63,7 @@ function socketAbstract(): ISocketAbstract {
 }
 
 function connected(ws: WebSocket) {
-	log('[socket]: connection established');
+	success('server', 'connection established');
 	g.socket.isReady = true;
 	g.socket.readyList.forEach((resolve: (sk: ISocketAbstract) => void) => {
 		resolve(socketAbstract());
@@ -83,12 +82,12 @@ function connected(ws: WebSocket) {
 }
 
 wss.on('connection', function connection(ws) {
-	log(`[socket] connection to client established`);
+	success('server', `connection to client established`);
 	connected(ws);
 });
 
 wss.on('error', function wserror(err: Error) {
-	log(`[socket] connection error ${err}`);
+	error('server', `connection error ${err}`);
 	g.socket.isReady = false;
 });
 

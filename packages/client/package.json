@@ -30,6 +30,7 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "@dash4/log": "0.1.0",
     "@dash4/react-xterm": "0.1.0",
     "@dash4/ui": "0.1.0",
     "bootstrap": "4.3.1",

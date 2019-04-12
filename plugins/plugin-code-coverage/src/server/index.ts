@@ -1,3 +1,4 @@
+import { error } from '@dash4/log';
 import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import fs from 'fs-extra';
 import makeDir from 'make-dir';
@@ -121,7 +122,7 @@ export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<ICli
 			return getCoverageFromDom(await htmlToDom(lcovReport));
 		} catch (err) {
 			// tslint:disable-next-line
-			console.log('Error in fetchCoverage: ', err.toString());
+			error('plugin-code-coverage', 'error in fetchCoverage: ', err.toString());
 			return {
 				error: true,
 				message: err.toString(),

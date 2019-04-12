@@ -4,20 +4,23 @@ jest.mock('execa', () => ({
 	__esModule: true,
 	default: execaMock,
 }));
-const oraFailMock = jest.fn();
-jest.mock('ora', () => ({
+const spinnerFailMock = jest.fn();
+jest.mock('@dash4/log', () => ({
 	__esModule: true,
-	default: () => ({
-		start: () => ({
-			fail: oraFailMock,
+	spinner: () => {
+		return {
+			start: jest.fn(),
 			succeed: jest.fn(),
-			text: '',
-		}),
-	}),
+			fail: spinnerFailMock,
+			text: jest.fn(),
+		};
+	},
 }));
 jest.mock('chalk', () => ({
 	__esModule: true,
 	default: {
+		hex: (vaui: string) => (text: string) => text,
+		bgBlack: (text: string) => text,
 		white: (text: string) => text,
 		red: (text: string) => text,
 		bold: (text: string) => text,
@@ -96,7 +99,7 @@ describe('cli', () => {
 
 		const spyProcess = jest.spyOn(process, 'kill');
 		await init(cwd, getOptions(cwd));
-		expect(oraFailMock).toHaveBeenCalledWith('package.json not found!');
+		expect(spinnerFailMock).toHaveBeenCalledWith('package.json not found!');
 		expect(spyProcess).toHaveBeenCalledWith(1);
 	});
 	test('execute in directory where config exist', async () => {
@@ -107,7 +110,7 @@ describe('cli', () => {
 
 		const spyProcess = jest.spyOn(process, 'kill');
 		await init(cwd, getOptions(cwd, false));
-		expect(oraFailMock).toHaveBeenCalledWith('Dash4 is already installed!');
+		expect(spinnerFailMock).toHaveBeenCalledWith('Dash4 is already installed!');
 		expect(spyProcess).toHaveBeenCalledWith(1);
 	});
 	test('execute in directory where config exist but with force mode', async () => {

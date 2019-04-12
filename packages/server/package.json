@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "@dash4/client": "0.1.0",
+    "@dash4/log": "0.1.0",
     "commander": "2.20.0",
     "mime-types": "2.1.22",
     "tslib": "1.9.3",

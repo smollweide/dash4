@@ -39,6 +39,7 @@
   ],
   "dependencies": {
     "@dash4/client": "0.1.0",
+    "@dash4/log": "0.1.0",
     "@dash4/server": "0.1.0",
     "@dash4/terminal-emulator": "0.1.0",
     "@dash4/ui": "0.1.0"

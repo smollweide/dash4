@@ -1,4 +1,5 @@
 /// <reference types="@types/jest" />
+
 jest.mock('./services', () => ({
 	__esModule: true, // this property makes it work
 	// default: 'mockedDefaultExport',

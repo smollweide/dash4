@@ -1,7 +1,7 @@
+import { error as logError, success, warn } from '@dash4/log/build/browser';
+
 const win = window as any;
 const ws = new WebSocket(`ws://localhost:${win.dash4.port}`);
-// tslint:disable-next-line
-const log = console.log;
 
 interface ISocketListeners {
 	[key: string]: {
@@ -52,7 +52,6 @@ function socketAbstract(wsInstace: WebSocket): ISocketAbstract {
 }
 
 function connected() {
-	log('[socket]: connection established');
 	isReady = true;
 	readyList.forEach((resolve: (sk: ISocketAbstract) => void) => {
 		resolve(socketAbstract(ws));
@@ -71,12 +70,12 @@ function connected() {
 }
 
 function disconnected() {
-	log('[socket]: connection closed');
+	warn('client', 'connection closed');
 	isReady = false;
 }
 
 function error() {
-	log('[socket]: connection could not be established');
+	logError('client', 'connection could not be established');
 	isReady = false;
 }
 

@@ -1,7 +1,7 @@
+import { spinner } from '@dash4/log';
 import chalk from 'chalk';
 import execa from 'execa';
 import fs from 'fs-extra';
-import ora from 'ora';
 import path from 'path';
 import readPkg from 'read-pkg';
 import writePkg from 'write-pkg';
@@ -153,16 +153,17 @@ async function collectTab({ cwd, packagePath }: ICollect) {
 }
 
 export async function init(cwd: string, options: IOptions) {
-	const spinner = ora('Collect required changes').start();
+	const spin = spinner('cli', 'Collect required changes');
+	spin.start();
 
 	if (!(await hasFile(cwd, 'package.json'))) {
-		spinner.fail(chalk.red('package.json not found!'));
+		spin.fail('package.json not found!');
 		process.kill(1);
 		return;
 	}
 
 	if ((await hasFile(options.config)) && !options.force) {
-		spinner.fail(chalk.red('Dash4 is already installed!'));
+		spin.fail('Dash4 is already installed!');
 		process.kill(1);
 		return;
 	}
@@ -184,7 +185,7 @@ export async function init(cwd: string, options: IOptions) {
 
 	// lerna
 	if (await hasFile(cwd, 'lerna.json')) {
-		spinner.text = 'collect changes for lerna monorepository';
+		spin.text('collect changes for lerna monorepository');
 		const lernaPackages = await getLernaPackages(cwd);
 		asyncForEach(lernaPackages, async (lernaPackage) => {
 			const tabName: string =
@@ -204,23 +205,23 @@ export async function init(cwd: string, options: IOptions) {
 	}
 
 	// add npm scripts
-	spinner.text = 'Add dash4 npm script';
+	spin.text('add dash4 npm script');
 	packageData.scripts = packageData.scripts || {};
 	packageData.scripts.dash4 = 'dash4';
 	await writePkg(path.join(cwd, 'package.json'), packageData);
 
 	// write dash.config
-	spinner.text = 'Create dash4 configuration';
+	spin.text('create dash4 configuration');
 	await fs.writeFile(options.config, config.toString());
 
 	// install dependencies
-	spinner.text = 'Install dependencies';
+	spin.text('install dependencies');
 	try {
 		await execa('npm', ['i', '-D', ...Object.keys(packages)]);
 	} catch (err) {
-		spinner.fail(chalk.red(`${chalk.bold('Could not install dependencies:')}\n${err}`));
+		spin.fail(`${chalk.bold('Could not install dependencies:')}\n${err}`);
 		process.kill(1);
 	}
 
-	spinner.succeed('Your Dash4 dashboard is installed and ready. Run "npm run dash4"');
+	spin.succeed('your Dash4 dashboard is installed and ready. Run "npm run dash4"');
 }
