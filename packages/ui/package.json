@@ -22,12 +22,12 @@
     "build:lib": "webpack --config webpack.library.config.js --mode production",
     "postinstall": "npm rebuild node-sass",
     "start": "start-storybook -p 6006",
-    "test": "node ./node_modules/.bin/dash4-test-client",
-    "test-update-snapshots": "node ./node_modules/.bin/dash4-test-client-update-snapshots",
+    "test": "jest --coverage --config=jest.config.js",
+    "test-update-snapshots": "jest --coverage --update-snapshot --config=jest.config.js",
     "watch-build": "run-p watch-build:*",
     "watch-build:build": "tsc --watch --outDir build",
     "watch-build:lib": "webpack --watch --config webpack.library.config.js --mode production",
-    "watch-test": "node ./node_modules/.bin/dash4-watch-test-client"
+    "watch-test": "jest --coverage --watchAll --config=jest.config.js"
   },
   "browserslist": [
     "> 1%",

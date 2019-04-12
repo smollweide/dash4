@@ -6,21 +6,6 @@
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
-  "bin": {
-    "dash4-analyze-bundle-size": "./bin/analyze-bundle-size.js",
-    "dash4-build-client": "./bin/build-client.js",
-    "dash4-build-server": "./bin/build-server.js",
-    "dash4-prebuild": "./bin/prebuild.js",
-    "dash4-start": "./bin/start.js",
-    "dash4-static": "./bin/static.js",
-    "dash4-test-client": "./bin/test-client.js",
-    "dash4-test-client-update-snapshots": "./bin/test-client-update-snapshots.js",
-    "dash4-test-server": "./bin/test-server.js",
-    "dash4-watch-build": "./bin/watch-build.js",
-    "dash4-watch-dist": "./bin/watch-dist.js",
-    "dash4-watch-test-client": "./bin/watch-test-client.js",
-    "dash4-watch-test-server": "./bin/watch-test-server.js"
-  },
   "dependencies": {
     "@namics/ts-config": "0.2.0",
     "asset-config-webpack-plugin": "1.3.1",

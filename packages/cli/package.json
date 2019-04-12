@@ -21,9 +21,9 @@
     "build": "npm run build:build",
     "build:build": "tsc --project tsconfig.server.json --outDir build",
     "test": "npm-run-all test:*",
-    "test:server": "node ./node_modules/.bin/dash4-test-server",
+    "test:server": "jest --coverage --config=jest.server.config.js",
     "watch-build": "tsc --project tsconfig.server.json --watch --outDir build",
-    "watch-test": "node ./node_modules/.bin/dash4-watch-test-server"
+    "watch-test": "jest --coverage --watchAll --config=jest.server.config.js"
   },
   "browserslist": [
     "> 1%",

@@ -35,3 +35,4 @@ dist
 build
 lib
 coverage
+storybook-static
