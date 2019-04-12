@@ -128,7 +128,10 @@ When a new larger project starts, it's usually a mono repository nowadays. Which
 
 ## <a name="contributing">Contributing</a>
 
-TBD
+Contributions to Dash4 are welcome!
+
+* Read our [contributing guide](https://github.com/smollweide/dash4/blob/master/CONTRIBUTING.md) to get started.
+* Stars :star: and Pull requests :pencil: are always welcome.
 
 ## <a name="thanks">Thanks</a>
 
