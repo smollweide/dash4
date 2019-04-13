@@ -1,6 +1,6 @@
 {
   "name": "@dash4/ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "description": "dash4 react ui component",
   "repository": "https://github.com/smollweide/dash4",
@@ -38,7 +38,7 @@
     "react-jss": "10.0.0-alpha.10"
   },
   "devDependencies": {
-    "@dash4/config": "0.1.1",
+    "@dash4/config": "0.2.0",
     "@storybook/addon-actions": "5.0.6",
     "@storybook/addon-info": "5.0.6",
     "@storybook/addon-knobs": "5.0.6",
