@@ -10,11 +10,10 @@ import { styles } from './styles';
 type ITerm = Term;
 
 interface IState {
-	alreadyStarted: boolean;
 	overlayOpening: boolean;
 	overlayOpened: boolean;
 	term?: ITerm;
-	stopped: boolean;
+	executing: boolean;
 	dataBuffer: string;
 	send?: (name: string, data?: number) => void;
 }
@@ -30,8 +29,7 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
-			alreadyStarted: false,
-			stopped: true,
+			executing: false,
 			overlayOpening: false,
 			overlayOpened: false,
 			dataBuffer: '',
@@ -65,7 +63,7 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 					className={this.props.classes.button}
 					variant={script.buttonVariant || 'outline-primary'}
 				>
-					{!this.state.stopped && (
+					{this.state.executing && (
 						<Icon align="center-in-content" name="refresh" animation="rotation-clockwise" />
 					)}
 					{script.title || script.cmd}
@@ -78,7 +76,7 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 				>
 					<Modal.Header className={this.props.classes.modalHeader} closeButton>
 						<WindowHeader
-							progressing={!this.state.stopped}
+							progressing={this.state.executing}
 							className={this.props.classes.modalWindowHeader}
 							title="Terminal"
 							subTitle={script.title || script.cmd}
@@ -110,13 +108,13 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 						<Button size="sm" variant="outline-secondary" onClick={this.handleClickClean}>
 							Clean
 						</Button>
-						{this.state.stopped ? (
-							<Button size="sm" variant="outline-primary" onClick={this.handleClickStart}>
-								Restart
-							</Button>
-						) : (
+						{this.state.executing ? (
 							<Button size="sm" variant="outline-secondary" onClick={this.handleClickStop}>
 								Stop
+							</Button>
+						) : (
+							<Button size="sm" variant="outline-primary" onClick={this.handleClickStart}>
+								Restart
 							</Button>
 						)}
 					</Modal.Footer>
@@ -132,14 +130,14 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 		});
 	};
 
-	private setStateA = (data: object) => new Promise((resolve) => this.setState(data, resolve));
+	private setStateAsync = (data: object) => new Promise((resolve) => this.setState(data, resolve));
 
 	private handleOpenOverlay = async () => {
-		await this.setStateA({
+		await this.setStateAsync({
 			overlayOpening: true,
 		});
 		await wait(100);
-		await this.setStateA({
+		await this.setStateAsync({
 			overlayOpened: true,
 		});
 
@@ -147,54 +145,43 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 			return;
 		}
 
-		if (!this.state.alreadyStarted) {
-			this.state.send('start');
-			this.setState({
-				alreadyStarted: true,
-				stopped: false,
-			});
+		if (this.state.executing) {
+			this.state.send('request-terminal-data');
 			return;
 		}
 
-		this.state.send('request-terminal-data');
+		this.clean();
+		this.start();
 	};
 
-	private handleTerminalDataChange = (data: string, initial?: boolean) => {
-		if (initial && data !== '') {
-			this.setState({
-				alreadyStarted: true,
-				stopped: false,
-			});
+	private recieve = (data: string) => {
+		if (!this.state.term) {
+			return;
 		}
-		if (this.state.term) {
-			this.state.term.write(data);
-		}
+		this.state.term.write(data);
 	};
 
-	private handleClickStart = (event: SyntheticEvent<HTMLButtonElement>) => {
-		event.preventDefault();
+	private start = () => {
 		if (!this.state.send) {
 			return;
 		}
 		this.state.send('start');
 		this.setState({
-			stopped: false,
+			executing: true,
 		});
 	};
 
-	private handleClickStop = (event: SyntheticEvent<HTMLButtonElement>) => {
-		event.preventDefault();
+	private stop = () => {
 		if (!this.state.send) {
 			return;
 		}
 		this.state.send('stop');
 		this.setState({
-			stopped: true,
+			executing: false,
 		});
 	};
 
-	private handleClickClean = (event: SyntheticEvent<HTMLButtonElement>) => {
-		event.preventDefault();
+	private clean = () => {
 		if (!this.state.send || !this.state.term) {
 			return;
 		}
@@ -202,9 +189,33 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 		this.state.send('clean');
 	};
 
+	private handleTerminalDataChange = (data: string, initial?: boolean) => {
+		if (initial && data !== '') {
+			this.setState({
+				executing: true,
+			});
+		}
+		this.recieve(data);
+	};
+
+	private handleClickStart = (event: SyntheticEvent<HTMLButtonElement>) => {
+		event.preventDefault();
+		this.start();
+	};
+
+	private handleClickStop = (event: SyntheticEvent<HTMLButtonElement>) => {
+		event.preventDefault();
+		this.stop();
+	};
+
+	private handleClickClean = (event: SyntheticEvent<HTMLButtonElement>) => {
+		event.preventDefault();
+		this.clean();
+	};
+
 	private handleStopped = () => {
 		this.setState({
-			stopped: true,
+			executing: false,
 		});
 	};
 }
