@@ -44,15 +44,6 @@ describe('PluginReadme', () => {
 		// @ts-ignore
 		expect(await inst.fetchFile()).toBe('# Test');
 	});
-	test('fetchFile with already fetched file', async () => {
-		const inst = new PluginReadme({
-			file: 'README.md',
-		});
-		// @ts-ignore
-		inst._data = '# Test 2';
-		// @ts-ignore
-		expect(await inst.fetchFile()).toBe('# Test 2');
-	});
 	test('method sendFile should send data to socket', async () => {
 		const inst = new PluginReadme({
 			file: 'README.md',
@@ -70,7 +61,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.jpg';
 			// @ts-ignore
-			inst._data = `# Test <img src="${imagePublicPath}" />`;
+			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -92,7 +83,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.png';
 			// @ts-ignore
-			inst._data = `# Test <img src="${imagePublicPath}" />`;
+			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -114,7 +105,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.jpg';
 			// @ts-ignore
-			inst._data = `# Test <img src=".${imagePublicPath}" />`;
+			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -136,7 +127,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image';
 			// @ts-ignore
-			inst._data = `# Test <img src=".${imagePublicPath}" />`;
+			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(

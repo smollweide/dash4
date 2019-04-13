@@ -21,7 +21,7 @@
     "build:client": "cross-env NODE_ENV=production webpack --mode production",
     "build:server": "tsc --outDir build --project tsconfig.server.json",
     "prepublishOnly": "npm-run-all test build",
-    "start": "cross-env NODE_ENV=development nodemon --watch ./build --watch ./dash4.config.js",
+    "start": "cross-env NODE_ENV=development nodemon ./node_modules/@dash4/server/bin --watch ./build --watch ./dash4.config.js",
     "static": "node ./node_modules/@dash4/server/bin",
     "test": "npm-run-all test:*",
     "test:client": "jest --coverage --config=jest.config.js",

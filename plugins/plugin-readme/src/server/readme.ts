@@ -19,7 +19,6 @@ const processCwd = fs.realpathSync(process.cwd());
 
 export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeClientConfig> {
 	private _file: string;
-	private _data?: string;
 	private _height?: number | string;
 
 	constructor({ file, width, height }: IReadmeOptions) {
@@ -75,13 +74,10 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	};
 
 	private sendFile = async () => {
-		this.send('data', await this.fetchFile());
+		this.send('data', await fs.readFile(this._file, 'utf8'));
 	};
 
 	private fetchFile = async () => {
-		if (this._data) {
-			return this._data;
-		}
-		return (this._data = await fs.readFile(this._file, 'utf8'));
+		return await fs.readFile(this._file, 'utf8');
 	};
 }
