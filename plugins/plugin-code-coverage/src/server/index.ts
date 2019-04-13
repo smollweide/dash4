@@ -2,7 +2,7 @@ import { error } from '@dash4/log';
 import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import fs from 'fs-extra';
 import makeDir from 'make-dir';
-import opn from 'opn';
+import open from 'open';
 import path from 'path';
 import watch from 'watch';
 import { IClientConfig, ICoverage, IThreshold, IThresholdGuaranteed } from '../shared-types';
@@ -12,6 +12,7 @@ import { htmlToDom } from './html-to-dom';
 // import { ITerm, terminalEmulator } from './terminal-emulator';
 
 export interface IOptions {
+	// custom title (default=Code coverage)
 	// custom title (default=Code coverage)
 	title?: string;
 	// current working directory of the child process.
@@ -96,7 +97,7 @@ export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<ICli
 	};
 
 	private openReport = () => {
-		opn(this._lcovHtmlPath);
+		open(this._lcovHtmlPath);
 	};
 
 	private watchForChangeCoverage = async () => {
