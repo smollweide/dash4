@@ -1,3 +1,0 @@
-node ./script-01.js
-bash-3.2$ node ./script-01.js
-hello

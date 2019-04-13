@@ -13,7 +13,8 @@ export type ITerm = IPty;
 export const terminalEmulator = ({ cwd, onData, onStopProcessing, onExit }: ITerminalEmulator) => {
 	const isWin = os.platform() === 'win32';
 	/* istanbul ignore next */
-	const reg = isWin ? /PS \w:\\[^>]*> ?$/ : /bash-3\.2\$ ?$/;
+	const reg = isWin ? /PS \w:[^>]*>/ : /bash-3\.2\$ ?$/;
+	let regMatchCounter = 0;
 	/* istanbul ignore next */
 	const shell = isWin ? 'powershell.exe' : 'bash';
 	(process.env.FORCE_COLOR as any) = true;
@@ -28,6 +29,13 @@ export const terminalEmulator = ({ cwd, onData, onStopProcessing, onExit }: ITer
 
 	ptyProcess.on('data', (data: string) => {
 		if (reg.test(data)) {
+			regMatchCounter += 1;
+			/* istanbul ignore next */
+			if (isWin && regMatchCounter <= 2) {
+				// ignore first match on windows
+				return;
+			}
+			regMatchCounter = 0;
 			if (onStopProcessing) {
 				onStopProcessing();
 			}
