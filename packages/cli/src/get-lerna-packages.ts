@@ -35,8 +35,13 @@ export async function getLernaPackages(projectRootDir: string, options?: IOption
 			})
 		)
 	);
-	const isValidPackagePath = async (packagePath: string) =>
-		(await fs.stat(path.join(projectRootDir, packagePath, 'package.json'))).isFile();
+	const isValidPackagePath = async (packagePath: string) => {
+		try {
+			return (await fs.stat(path.join(projectRootDir, packagePath, 'package.json'))).isFile();
+		} catch (err) {
+			return false;
+		}
+	};
 	const packages = packagesRaw.reduce((a, b) => [...a, ...b]);
 	if (options && options.include) {
 		return packages.filter(isValidPackagePath).filter(include.bind(null, options.include));

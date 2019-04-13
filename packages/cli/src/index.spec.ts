@@ -154,6 +154,8 @@ describe('cli', () => {
 		const cwd = path.join(tempDir, testId);
 		await makeDir(cwd);
 
+		// add empty dir
+		await makeDir(path.join(cwd, 'packages/empty'));
 		await cpy([`src/__mocks__/${testId}/_package.json`], `__tmp__/${testId}`, {
 			rename: () => `package.json`,
 		});

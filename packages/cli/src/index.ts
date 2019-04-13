@@ -188,19 +188,24 @@ export async function init(cwd: string, options: IOptions) {
 		spin.text('collect changes for lerna monorepository');
 		const lernaPackages = await getLernaPackages(cwd);
 		asyncForEach(lernaPackages, async (lernaPackage) => {
-			const tabName: string =
-				(await fs.readJSON(path.join(cwd, lernaPackage, 'package.json'))).name || path.basename(lernaPackage);
-			const _collection = await collectTab({
-				cwd: path.join(cwd, lernaPackage),
-				packagePath: lernaPackage,
-			});
-			packages = {
-				...packages,
-				..._collection.packages,
-			};
-			_collection.configs.forEach((_config) => {
-				config.addPlugin(tabName, _config.pluginName, _config.options);
-			});
+			try {
+				const tabName: string =
+					(await fs.readJSON(path.join(cwd, lernaPackage, 'package.json'))).name ||
+					path.basename(lernaPackage);
+				const _collection = await collectTab({
+					cwd: path.join(cwd, lernaPackage),
+					packagePath: lernaPackage,
+				});
+				packages = {
+					...packages,
+					..._collection.packages,
+				};
+				_collection.configs.forEach((_config) => {
+					config.addPlugin(tabName, _config.pluginName, _config.options);
+				});
+			} catch (err) {
+				return;
+			}
 		});
 	}
 
