@@ -1,3 +1,12 @@
+## <small>0.2.1 (2019-04-13)</small>
+
+* fix(cli): prevent error while packages includes empty directories ([14486c8](https://github.com/smollweide/dash4/commit/14486c8))
+* fix(plugin-code-coverage): use open instead of opn ([19e2fb6](https://github.com/smollweide/dash4/commit/19e2fb6))
+
+
+
+
+
 ## 0.2.0 (2019-04-13)
 
 * fix: unsubscribe to terminal changes when component will unmount ([c67a101](https://github.com/smollweide/dash4/commit/c67a101))
