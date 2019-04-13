@@ -144,12 +144,10 @@ describe('PluginCodeCoverage', () => {
 		// @ts-ignore
 		expect(inst._terminalLog).toBe('test');
 	});
-	test('stop should kill running term process and create a new term instance', (done) => {
+	test('stop should kill running term process', (done) => {
 		const inst = new PluginTerminal({
 			cmd: 'hello',
 		});
-		// @ts-ignore
-		const spy = jest.spyOn(inst, 'create');
 		// @ts-ignore
 		inst._term = {
 			kill() {
@@ -158,10 +156,6 @@ describe('PluginCodeCoverage', () => {
 		};
 		// @ts-ignore
 		inst.stop();
-
-		expect(spy).toHaveBeenCalled();
-
-		spy.mockRestore();
 	});
 	test('clean should write clean command and stored data', (done) => {
 		const inst = new PluginTerminal({

@@ -25,7 +25,7 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 	private _cwd: string;
 	private _terminalLog: string = '';
 	private _autostart: boolean;
-	private _term: ITerm;
+	private _term?: ITerm;
 	private _stopProcessingTriggered: boolean = false;
 
 	constructor({ dark = true, width, cmd, cwd, autostart = false }: IOptions) {
@@ -39,8 +39,6 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 		this._cmd = cmd;
 		this._cwd = cwd ? path.join(processCwd, cwd) : processCwd;
 		this._autostart = autostart;
-
-		this.create();
 
 		if (this._autostart) {
 			this.start();
@@ -97,18 +95,32 @@ export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientC
 		this.send('recieve', data.toString());
 	};
 
-	private stop = () => {
+	private kill = () => {
+		if (!this._term) {
+			return;
+		}
 		this._term.kill();
-		this.create();
+	};
+
+	private write = (cmd: string) => {
+		if (!this._term) {
+			return;
+		}
+		this._term.write(cmd);
+	};
+
+	private stop = () => {
+		this.kill();
 	};
 
 	private clean = () => {
-		this._term.write('\x1Bc');
+		this.write('\x1Bc');
 		this._terminalLog = '';
 	};
 
 	private start = async () => {
+		this.create();
 		this._stopProcessingTriggered = false;
-		this._term.write(`${this._cmd}\r`);
+		this.write(`${this._cmd}\r`);
 	};
 }
