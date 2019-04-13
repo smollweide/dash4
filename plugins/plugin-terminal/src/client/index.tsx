@@ -26,7 +26,7 @@ class PluginTerminalRaw extends Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
-			stopped: false,
+			stopped: true,
 			fullscreen: false,
 		};
 	}
@@ -115,6 +115,11 @@ class PluginTerminalRaw extends Component<IProps, IState> {
 	private handleTerminalDataChange = (data: string) => {
 		if (this.state.term) {
 			this.state.term.write(data);
+			if (this.state.stopped && data !== '') {
+				this.setState({
+					stopped: false,
+				});
+			}
 		}
 	};
 
