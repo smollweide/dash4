@@ -1,6 +1,16 @@
 /// <reference types="@types/jest" />
 import { PluginNpmScript } from './plugin-npm-script';
 
+jest.mock('@dash4/terminal-emulator', () => ({
+	__esModule: true,
+	terminalEmulator: () => {
+		return {
+			kill: jest.fn(),
+			write: jest.fn(),
+		};
+	},
+}));
+
 function getInstance() {
 	return new PluginNpmScript({
 		id: '1',
