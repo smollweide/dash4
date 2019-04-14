@@ -143,6 +143,10 @@ async function getConfig() {
 									title: 'build',
 									cmd: 'npm run build',
 								},
+								{
+									title: 'git: reset last commit',
+									cmd: 'git reset HEAD~1',
+								},
 							],
 							width: [12, 6, 4],
 						}),
@@ -406,10 +410,14 @@ async function getConfig() {
 					],
 					[
 						new PluginTerminal({
+							cmd: 'npm start',
+							cwd: '/packages/log',
+							autostart: false,
+						}),
+						new PluginTerminal({
 							cmd: 'npm run watch-build',
 							cwd: '/packages/log',
 							autostart: false,
-							width: [12, 6, 6],
 						}),
 					],
 					[

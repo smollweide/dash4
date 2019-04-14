@@ -9,7 +9,7 @@ export const typeMap = {
 export type TType = keyof typeof typeMap;
 
 export const typeColorMap = {
-	log: '#343a40',
+	log: '#fff',
 	info: '#17a2b8',
 	success: '#28a745',
 	error: '#dc3545',

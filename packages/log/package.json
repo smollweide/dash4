@@ -16,6 +16,7 @@
   "scripts": {
     "build": "npm run build:build",
     "build:build": "tsc --outDir build --project tsconfig.server.json",
+    "start": "node ./run.js",
     "test": "npm run test:server",
     "test:server": "jest --coverage --config=jest.server.config.js",
     "watch-build": "tsc --watch --outDir build --project tsconfig.server.json",
