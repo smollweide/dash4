@@ -142,8 +142,8 @@ async function collectTab({ cwd, packagePath }: ICollect) {
 				scripts: npmScriptsCmds.map((cmd) => ({
 					title: cmd ? cmd.replace(/^npm run /, '') : '',
 					cmd,
+					cwd: packagePath,
 				})),
-				cwd: packagePath,
 			},
 		});
 		packages['@dash4/plugin-npm-scripts'] = true;

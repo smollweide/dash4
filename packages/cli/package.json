@@ -23,7 +23,7 @@
     "test": "npm-run-all test:*",
     "test:server": "jest --coverage --config=jest.server.config.js",
     "watch-build": "tsc --project tsconfig.server.json --watch --outDir build",
-    "watch-test": "jest --coverage --watchAll --config=jest.server.config.js"
+    "watch-test": "jest --coverage --watchAll --notify --config=jest.server.config.js"
   },
   "browserslist": [
     "> 1%",
