@@ -2,7 +2,13 @@ import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import { ITerm, terminalEmulator } from '@dash4/terminal-emulator';
 import fs from 'fs';
 import path from 'path';
-import { IClientConfig } from '../shared-types';
+import {
+	IClientConfig,
+	IRecieveFromClientCb,
+	IRecieveFromClientEventNames,
+	ISendToClientData,
+	ISendToClientEventNames,
+} from '../shared-types';
 
 export interface IOptions {
 	// command which should be executed
@@ -20,7 +26,9 @@ export interface IOptions {
 
 const processCwd = fs.realpathSync(process.cwd());
 
-export class PluginTerminal extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
+export class PluginTerminal
+	extends Dash4Plugin<IRecieveFromClientEventNames, IRecieveFromClientCb, ISendToClientEventNames, ISendToClientData>
+	implements IDash4Plugin<IClientConfig> {
 	private _cmd: string;
 	private _cwd: string;
 	private _terminalLog: string = '';

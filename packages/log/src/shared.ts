@@ -1,10 +1,10 @@
 export const typeMap = {
-	log: 'log' as 'log',
-	info: 'info' as 'info',
-	success: 'success' as 'success',
-	error: 'error' as 'error',
-	warn: 'warn' as 'warn',
-};
+	log: 'log',
+	info: 'info',
+	success: 'success',
+	error: 'error',
+	warn: 'warn',
+} as const;
 
 export type TType = keyof typeof typeMap;
 

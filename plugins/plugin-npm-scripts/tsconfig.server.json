@@ -1,4 +1,4 @@
 {
 	"extends": "@dash4/config/tsconfig.server.json",
-	"exclude": ["dist", "build", "node_modules", "__tests__", "src/client", "src/**/*.spec.ts"]
+	"exclude": ["dist", "build", "node_modules", "__tests__", "src/**/*.spec.ts"]
 }

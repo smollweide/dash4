@@ -72,30 +72,30 @@ const styles = {
 };
 
 export const sizeMap = {
-	s: 's' as 's',
-	m: 'm' as 'm',
-	l: 'l' as 'l',
-};
+	s: 's',
+	m: 'm',
+	l: 'l',
+} as const;
 
 export type TSize = keyof typeof sizeMap;
 
 export const colorMap = {
-	dark: 'dark' as 'dark',
-	bright: 'bright' as 'bright',
-};
+	dark: 'dark',
+	bright: 'bright',
+} as const;
 
 export type TColor = keyof typeof colorMap;
 
 export const alignMap = {
-	'center-in-content': 'center-in-content' as 'center-in-content',
-};
+	'center-in-content': 'center-in-content',
+} as const;
 
 export type TAlign = keyof typeof alignMap;
 
 export const animationMap = {
-	'rotation-clockwise': 'rotation-clockwise' as 'rotation-clockwise',
-	'rotation-counter-clockwise': 'rotation-counter-clockwise' as 'rotation-counter-clockwise',
-};
+	'rotation-clockwise': 'rotation-clockwise',
+	'rotation-counter-clockwise': 'rotation-counter-clockwise',
+} as const;
 
 export type TAnimation = keyof typeof animationMap;
 

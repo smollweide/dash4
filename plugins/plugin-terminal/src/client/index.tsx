@@ -16,7 +16,7 @@ type ITerm = Term;
 interface IState {
 	term?: ITerm;
 	stopped: boolean;
-	send?: (name: string, data?: string) => void;
+	send?: (name: string, data?: any) => void;
 	fullscreen: boolean;
 }
 

@@ -13,7 +13,6 @@ import { htmlToDom } from './html-to-dom';
 
 export interface IOptions {
 	// custom title (default=Code coverage)
-	// custom title (default=Code coverage)
 	title?: string;
 	// current working directory of the child process.
 	cwd?: string;

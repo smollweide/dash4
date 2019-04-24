@@ -19,12 +19,12 @@ const defaultLog = (type: TType, packageName: TPackageName, message: TMessage, .
 };
 
 export const typeOraColorMap = {
-	log: 'white' as 'white',
-	info: 'cyan' as 'cyan',
-	success: 'green' as 'green',
-	error: 'red' as 'red',
-	warn: 'yellow' as 'yellow',
-};
+	log: 'white',
+	info: 'cyan',
+	success: 'green',
+	error: 'red',
+	warn: 'yellow',
+} as const;
 
 export function spinner(packageName: TPackageName, message: TMessage, type?: TType) {
 	const _spinner = ora(getStyledMessage(type || 'log', packageName, message));

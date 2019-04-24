@@ -47,14 +47,14 @@ export interface IPluginOptions {
 	width?: number[];
 }
 
-export class Dash4Plugin {
+export class Dash4Plugin<IOnEventName = any, IOnCb = any, ISendEventName = any, ISendData = any> {
+	protected _on?: (id: string, callback: any) => void;
+	protected _send?: (id: string, data?: any) => void;
 	private _id: string;
 	private _dark: boolean;
 	private _width?: number[];
 	private _name?: string;
 	private _lowerCaseName?: string;
-	private _on?: (id: string, callback: any) => void;
-	private _send?: (id: string, data?: any) => void;
 
 	constructor({ dark = false, width, lowerCaseName, name }: IPluginOptions) {
 		this._id = uuid();
@@ -96,14 +96,15 @@ export class Dash4Plugin {
 		// override
 	};
 
-	protected send = <CbData = undefined>(eventName: string, data?: CbData) => {
+	// protected send = ()()
+	protected send = (eventName: ISendEventName, data: ISendData) => {
 		if (!this._send) {
 			return;
 		}
 		this._send(`${this.lowerCaseName}-${this.id}_${eventName}`, data);
 	};
 
-	protected on = <CbData = undefined>(eventName: string, cb: (data?: CbData) => void) => {
+	protected on = (eventName: IOnEventName, cb: IOnCb) => {
 		if (!this._on) {
 			return;
 		}

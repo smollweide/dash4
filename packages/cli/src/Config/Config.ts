@@ -4,11 +4,11 @@ import { chunk } from '../chunk';
 import tmpl from './template';
 
 export const pluginNameMap = {
-	PluginTerminal: 'PluginTerminal' as 'PluginTerminal',
-	PluginNpmScripts: 'PluginNpmScripts' as 'PluginNpmScripts',
-	PluginReadme: 'PluginReadme' as 'PluginReadme',
-	PluginCodeCoverage: 'PluginCodeCoverage' as 'PluginCodeCoverage',
-};
+	PluginTerminal: 'PluginTerminal',
+	PluginNpmScripts: 'PluginNpmScripts',
+	PluginReadme: 'PluginReadme',
+	PluginCodeCoverage: 'PluginCodeCoverage',
+} as const;
 
 export type TPluginName = keyof typeof pluginNameMap;
 

@@ -1,4 +1,5 @@
 import { socket } from '@dash4/client/build/socket';
+import { IRecieveFromServer, ISendToServer, SEND_TO_CLIENT_EVENT_NAMES } from '../shared-types';
 
 export async function subscribeToTerminalDataChanges(
 	id: string,
@@ -6,10 +7,10 @@ export async function subscribeToTerminalDataChanges(
 	onStopped: () => void
 ) {
 	const socketData = await socket();
-	const on = (name: string, callback: (data: string) => void) => {
+	const on: IRecieveFromServer = (name: string, callback: (data: string) => void) => {
 		socketData.on(`plugin-terminal-${id}_${name}`, callback);
 	};
-	const send = (name: string, data?: string) => {
+	const send: ISendToServer = (name: string, data) => {
 		socketData.send(`plugin-terminal-${id}_${name}`, data);
 	};
 	send('connected');
@@ -27,7 +28,8 @@ export async function unsubscribeToTerminalDataChanges(id: string) {
 	const off = (name: string) => {
 		socketData.off(`plugin-terminal-${id}_${name}`);
 	};
-	off('connected');
-	off('recieve');
-	off('stopped');
+
+	Object.keys(SEND_TO_CLIENT_EVENT_NAMES).forEach((key) => {
+		off(key);
+	});
 }
