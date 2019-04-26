@@ -70,7 +70,7 @@ async function runSnapshotTest(testId: string, dependencies: string) {
 	await init(cwd, getOptions(cwd));
 	expect(execaMock).toHaveBeenCalledWith('npm', `i -D @dash4/server ${dependencies}`.split(' '));
 	expect((((await readPkg({ cwd })) || {}) as any).scripts.dash4).toBe('dash4');
-	expect(await getTempFile(testId, 'dash4.config.js')).toBe(await getMockFile(testId, '_dash4.config.js'));
+	expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 }
 
 describe('cli', () => {
@@ -177,7 +177,7 @@ describe('cli', () => {
 		await cpy([`**/readme.md`, '!lerna/readme.md'], dest, options);
 		await cpy([`**/README.md`, '!lerna/README.md'], dest, options);
 		await init(cwd, getOptions(cwd));
-		expect(await getTempFile(testId, 'dash4.config.js')).toBe(await getMockFile(testId, '_dash4.config.js'));
+		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
 			'npm',
 			`i -D @dash4/server @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(

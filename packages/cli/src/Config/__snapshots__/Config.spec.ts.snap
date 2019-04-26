@@ -1,4 +1,7 @@
-/**
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config add multiple plugins 1`] = `
+"/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -12,6 +15,8 @@ const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 const { PluginReadme } = require('@dash4/plugin-readme');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-npm-scripts
 const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
+const { PluginDependencies } = require('@dash4/plugin-dependencies');
 
 async function getConfig() {
 	return {
@@ -25,6 +30,7 @@ async function getConfig() {
 						new PluginReadme({ file: 'README.md' }),
 						new PluginNpmScripts({ scripts: [{ title: 'build', cmd: 'npm run build' }] }),
 					],
+					[new PluginDependencies({ lerna: './lerna.json' })],
 				],
 			},
 		],
@@ -32,3 +38,5 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
+"
+`;

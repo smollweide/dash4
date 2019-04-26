@@ -174,6 +174,11 @@ async function getConfig() {
 									cmd: 'npm run test',
 									cwd: '/packages/cli',
 								},
+								{
+									title: 'update snapshots',
+									cmd: 'npm run test-update-snapshots:server',
+									cwd: '/packages/cli',
+								},
 							],
 							width: [12, 6, 4],
 						}),

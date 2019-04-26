@@ -8,6 +8,7 @@ export const pluginNameMap = {
 	PluginNpmScripts: 'PluginNpmScripts',
 	PluginReadme: 'PluginReadme',
 	PluginCodeCoverage: 'PluginCodeCoverage',
+	PluginDependencies: 'PluginDependencies',
 } as const;
 
 export type TPluginName = keyof typeof pluginNameMap;
@@ -32,6 +33,11 @@ const pluginMap = {
 		url: () => `https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage`,
 		import: () => `const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');`,
 		content: (options?: any) => `<DASH4>new PluginCodeCoverage(${options ? JSON.stringify(options) : ''})</DASH4>`,
+	},
+	PluginDependencies: {
+		url: () => `https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies`,
+		import: () => `const { PluginDependencies } = require('@dash4/plugin-dependencies');`,
+		content: (options?: any) => `<DASH4>new PluginDependencies(${options ? JSON.stringify(options) : ''})</DASH4>`,
 	},
 };
 

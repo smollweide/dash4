@@ -33,6 +33,8 @@ describe('Config', () => {
 				},
 			],
 		});
+		config.addPlugin('Root', 'PluginDependencies', { lerna: './lerna.json' });
+
 		expect(config.tabs).toEqual([
 			{
 				title: 'Root',
@@ -45,6 +47,7 @@ describe('Config', () => {
 						'<DASH4>new PluginReadme({"file":"README.md"})</DASH4>',
 						'<DASH4>new PluginNpmScripts({"scripts":[{"title":"build","cmd":"npm run build"}]})</DASH4>',
 					],
+					['<DASH4>new PluginDependencies({"lerna":"./lerna.json"})</DASH4>'],
 				],
 			},
 		]);
@@ -58,12 +61,11 @@ describe('Config', () => {
 				`const { PluginReadme } = require('@dash4/plugin-readme');`,
 				`// https://github.com/smollweide/dash4/tree/master/plugins/plugin-npm-scripts`,
 				`const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');`,
+				`// https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies`,
+				`const { PluginDependencies } = require('@dash4/plugin-dependencies');`,
 			].join('\n')
 		);
-		// await fs.writeFile('src/t.js', inst.config);
-		expect(config.toString()).toBe(
-			await fs.readFile(path.join(process.cwd(), 'src/__mocks__/config/_dash4.config.js'), 'utf8')
-		);
+		expect(config.toString()).toMatchSnapshot();
 	});
 	test('add plugins in mutiple tabs', async () => {
 		const config = new Config({ port: 8080 });

@@ -25,6 +25,7 @@ export async function hasFile(...pathFragments: string[]) {
 interface ICollect {
 	cwd: string;
 	packagePath?: string;
+	lerna?: string;
 }
 
 async function asyncForEach<IITem = any>(
@@ -36,7 +37,7 @@ async function asyncForEach<IITem = any>(
 	}
 }
 
-async function collectTab({ cwd, packagePath }: ICollect) {
+async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 	const packages: {
 		[key: string]: boolean;
 	} = {};
@@ -69,6 +70,26 @@ async function collectTab({ cwd, packagePath }: ICollect) {
 		hasScript('docs') ? 'npm run docs' : undefined,
 		hasScript('build-storybook') ? 'npm run build-storybook' : undefined,
 	].filter((cmd) => cmd);
+
+	if (!lerna) {
+		configs.push({
+			pluginName: 'PluginDependencies',
+		});
+	}
+
+	if (lerna && !packagePath) {
+		configs.push({
+			pluginName: 'PluginDependencies',
+			options: {
+				lerna,
+				installProcess: {
+					title: 'run bootstrap',
+					cmd: 'npm run bootstrap',
+					cwd: '/',
+				},
+			},
+		});
+	}
 
 	if (hasScript('start')) {
 		configs.push({
@@ -171,9 +192,11 @@ export async function init(cwd: string, options: IOptions) {
 	const config = new Config({ port: options.port });
 	let packages = { '@dash4/server': true };
 	const packageData = await readPkg({ cwd, normalize: false });
+	const isLerna = await hasFile(cwd, 'lerna.json');
 
 	const collection = await collectTab({
 		cwd,
+		lerna: isLerna ? path.join('lerna.json') : undefined,
 	});
 	packages = {
 		...packages,
@@ -184,7 +207,7 @@ export async function init(cwd: string, options: IOptions) {
 	});
 
 	// lerna
-	if (await hasFile(cwd, 'lerna.json')) {
+	if (isLerna) {
 		spin.text('collect changes for lerna monorepository');
 		const lernaPackages = await getLernaPackages(cwd);
 		asyncForEach(lernaPackages, async (lernaPackage) => {
@@ -195,6 +218,7 @@ export async function init(cwd: string, options: IOptions) {
 				const _collection = await collectTab({
 					cwd: path.join(cwd, lernaPackage),
 					packagePath: lernaPackage,
+					lerna: path.join('lerna.json'),
 				});
 				packages = {
 					...packages,

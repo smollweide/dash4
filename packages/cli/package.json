@@ -21,6 +21,7 @@
     "build": "npm run build:build",
     "build:build": "tsc --project tsconfig.server.json --outDir build",
     "test": "npm-run-all test:*",
+    "test-update-snapshots:server": "jest --coverage --update-snapshot --config=jest.server.config.js",
     "test:server": "jest --coverage --config=jest.server.config.js",
     "watch-build": "tsc --project tsconfig.server.json --watch --outDir build",
     "watch-test": "jest --coverage --watchAll --notify --config=jest.server.config.js"
