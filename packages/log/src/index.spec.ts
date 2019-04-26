@@ -65,27 +65,27 @@ describe('log', () => {
 	});
 	test('log', () => {
 		log('server', 'message');
-		expect(consoleLockMock).toHaveBeenCalledWith('❲Dash4 server❳ message');
+		expect(consoleLockMock).toHaveBeenCalledWith('(Dash4 server) message');
 	});
 	test('log PascalCase', () => {
 		log('PluginTerminal', 'message');
-		expect(consoleLockMock).toHaveBeenCalledWith('❲Dash4 plugin-terminal❳ message');
+		expect(consoleLockMock).toHaveBeenCalledWith('(Dash4 plugin-terminal) message');
 	});
 	test('info', () => {
 		info('server', 'message');
-		expect(consoleLockMock).toHaveBeenCalledWith('❲Dash4 server❳ message');
+		expect(consoleLockMock).toHaveBeenCalledWith('(Dash4 server) message');
 	});
 	test('success', () => {
 		success('server', 'message');
-		expect(consoleLockMock).toHaveBeenCalledWith('❲Dash4 server❳ message');
+		expect(consoleLockMock).toHaveBeenCalledWith('(Dash4 server) message');
 	});
 	test('error', () => {
 		error('server', 'message');
-		expect(consoleLockMock).toHaveBeenCalledWith('❲Dash4 server❳ message');
+		expect(consoleLockMock).toHaveBeenCalledWith('(Dash4 server) message');
 	});
 	test('warn', () => {
 		warn('server', 'message');
-		expect(consoleLockMock).toHaveBeenCalledWith('❲Dash4 server❳ message');
+		expect(consoleLockMock).toHaveBeenCalledWith('(Dash4 server) message');
 	});
 	test('spinner', () => {
 		const spin = spinner('server', 'load content');
@@ -95,20 +95,20 @@ describe('log', () => {
 		expect(oraStartMock).toHaveBeenCalled();
 
 		spin.fail('error text');
-		expect(oraFailMock).toHaveBeenCalledWith('❲Dash4 server❳ error text');
+		expect(oraFailMock).toHaveBeenCalledWith('(Dash4 server) error text');
 
 		spin.succeed('succeed text');
-		expect(oraSucceedMock).toHaveBeenCalledWith('❲Dash4 server❳ succeed text');
+		expect(oraSucceedMock).toHaveBeenCalledWith('(Dash4 server) succeed text');
 
 		spin.warn('warn text');
-		expect(oraWarnMock).toHaveBeenCalledWith('❲Dash4 server❳ warn text');
+		expect(oraWarnMock).toHaveBeenCalledWith('(Dash4 server) warn text');
 
 		spin.info('info text');
-		expect(oraInfoMock).toHaveBeenCalledWith('❲Dash4 server❳ info text');
+		expect(oraInfoMock).toHaveBeenCalledWith('(Dash4 server) info text');
 
 		const spyText = jest.spyOn(oraMock, 'text', 'set');
 		spin.text('text');
-		expect(spyText).toHaveBeenCalledWith('❲Dash4 server❳ text');
+		expect(spyText).toHaveBeenCalledWith('(Dash4 server) text');
 
 		const spyColor = jest.spyOn(oraMock, 'color', 'set');
 		spin.type('success');

@@ -7,8 +7,8 @@ import { toParamCase, TType, typeToColor } from './shared';
 
 function getStyledMessage(type: TType, packageName: TPackageName, message: TMessage) {
 	return chalk.bgBlack(
-		`${chalk.hex('#999')('❲Dash4 ')}${chalk.hex('#fff')(toParamCase(packageName))}${chalk.hex('#999')(
-			'❳'
+		`${chalk.hex('#999')('(Dash4 ')}${chalk.hex('#fff')(toParamCase(packageName))}${chalk.hex('#999')(
+			')'
 		)} ${chalk.hex(typeToColor(type))(message as string)}`
 	);
 }
