@@ -1,11 +1,11 @@
 import { IWidgetConfig } from '@dash4/client/build';
-import { Icon, Window, WindowBody } from '@dash4/ui';
+import { Icon, useFullscreen, Window, WindowBody } from '@dash4/ui';
 import Markdown from 'markdown-to-jsx';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';
 import { IReadmeClientConfig } from '../../../shared-types';
-import { useFullscreen, useMarkdownData } from '../../hooks';
+import { useMarkdownData } from '../../hooks';
 import { styles } from './styles';
 import { styles as readmeStyles } from './styles';
 
@@ -16,7 +16,7 @@ function ReadmeRaw({ classes, id }: IProps) {
 	const { fullscreen, enableFullscreen, disableFullscreen } = useFullscreen();
 
 	return (
-		<Window fullscreen={fullscreen} dark={false}>
+		<Window onWillLeaveFullscreen={disableFullscreen} fullscreen={fullscreen} dark={false}>
 			<WindowBody className={fullscreen ? classes.windowBodyFullscreen : classes.windowBody}>
 				<div className={fullscreen ? classes.markdownWrapperFullscreen : classes.markdownWrapper}>
 					<Markdown>{data}</Markdown>

@@ -10,6 +10,10 @@ export const styles = {
 		display: 'flex',
 		flexDirection: 'column',
 		position: 'relative',
+		'&:focus': {
+			border: '1px solid var(--primary)',
+			outline: 'none',
+		},
 	},
 	windowAutoStretch: {
 		height: '100%',
@@ -18,6 +22,7 @@ export const styles = {
 		color: '#000',
 		whiteSpace: 'pre',
 		background: '#fff',
+		border: '1px solid #fff',
 		boxShadow: 'rgba(0, 0, 0, 0.16) 0px 2px 4px',
 		borderRadius: 6,
 	},

@@ -11,10 +11,3 @@ export function useMarkdownData(id: string) {
 	}, []);
 	return data;
 }
-
-export function useFullscreen() {
-	const [fullscreen, setFullscreen] = useState(false);
-	const enableFullscreen = () => setFullscreen(true);
-	const disableFullscreen = () => setFullscreen(false);
-	return { fullscreen, enableFullscreen, disableFullscreen };
-}

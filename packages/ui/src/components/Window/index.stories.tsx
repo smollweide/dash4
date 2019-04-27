@@ -1,9 +1,9 @@
 /// <reference types="../../types/markdown" />
-import { withKnobs } from '@storybook/addon-knobs';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Window, WindowBody, WindowHeader } from '.';
+import { useFullscreen, Window, WindowBody, WindowHeader } from '.';
 import Readme from './README.md';
 
 const stories = storiesOf('Window', module);
@@ -83,3 +83,29 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ame
 		</WindowBody>
 	</Window>
 ));
+
+const WindowWithFullscreenHook = () => {
+	const dark = boolean('dark', true);
+	const { fullscreen, enableFullscreen, disableFullscreen, toggleFullscreen } = useFullscreen();
+
+	return (
+		<Window dark={dark} onWillLeaveFullscreen={disableFullscreen} fullscreen={fullscreen}>
+			<WindowHeader onDoubleClick={toggleFullscreen} title={'Title'} subTitle={'Subtitle'} />
+			<WindowBody>
+				{!fullscreen && (
+					<>
+						<button onClick={enableFullscreen}>Fullscreen</button>
+						<br />
+						<br />
+					</>
+				)}
+				{`Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
+sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.
+Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`}
+			</WindowBody>
+		</Window>
+	);
+};
+
+stories.add('window fullscreen close via esc', () => <WindowWithFullscreenHook />);

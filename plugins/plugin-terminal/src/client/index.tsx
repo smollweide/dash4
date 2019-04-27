@@ -49,7 +49,11 @@ class PluginTerminalRaw extends Component<IProps, IState> {
 
 	public render() {
 		return (
-			<Window fullscreen={this.state.fullscreen} dark={this.props.dark}>
+			<Window
+				onWillLeaveFullscreen={this.handleHeaderDoubleClick}
+				fullscreen={this.state.fullscreen}
+				dark={this.props.dark}
+			>
 				<WindowHeader
 					onDoubleClick={this.handleHeaderDoubleClick}
 					title={this.props.name}
