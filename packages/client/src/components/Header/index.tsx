@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { Icon } from '@dash4/ui';
+import React, { CSSProperties, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import withStyles, { WithStyles } from 'react-jss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
@@ -9,12 +11,12 @@ const styles = {
 		position: 'relative',
 		background: '#fff',
 		borderBottom: '1px solid #eaeaea',
-	},
+	} as CSSProperties,
 	logo: {
 		position: 'absolute',
 		width: 45,
 		margin: '13px 15px',
-	},
+	} as CSSProperties,
 	menuWrap: {
 		position: 'relative',
 		marginLeft: 75,
@@ -23,15 +25,15 @@ const styles = {
 		textAlign: 'left',
 		'& .menu-item-wrapper': {
 			padding: '5px 0',
-		},
-	},
+		} as CSSProperties,
+	} as CSSProperties,
 	menu: {
 		position: 'relative',
 		padding: 0,
-	},
+	} as CSSProperties,
 	menuItem: {
 		listStyle: 'none',
-	},
+	} as CSSProperties,
 	menuLink: {
 		transition: 'color 0.5s, text-decoration 0.5s',
 		border: 0,
@@ -43,13 +45,19 @@ const styles = {
 		'&:hover': {
 			color: '#000',
 			textDecoration: 'none',
-		},
-	},
+		} as CSSProperties,
+	} as CSSProperties,
 	menuLinkActive: {
 		color: '#000',
 		textDecoration: 'none',
 		borderBottom: '1px solid #000',
-	},
+	} as CSSProperties,
+	arrow: {
+		marginTop: 3,
+		'&,&:hover,&:active,&:focus': {
+			color: 'var(--gray-dark)',
+		} as CSSProperties,
+	} as CSSProperties,
 };
 
 interface IProps extends WithStyles<typeof styles>, RouteComponentProps<{}> {
@@ -86,7 +94,17 @@ const RawHeader = (props: IProps) => {
 			</Link>
 			<div className={classes.menuWrap}>
 				<ScrollMenu
-					hideArrows
+					alignOnResize
+					arrowLeft={
+						<Button className={classes.arrow} variant="link" size="sm">
+							<Icon name="keyboard_arrow_left" size="m" />
+						</Button>
+					}
+					arrowRight={
+						<Button className={classes.arrow} variant="link" size="sm">
+							<Icon name="keyboard_arrow_right" size="m" />
+						</Button>
+					}
 					scrollToSelected
 					selected={selected}
 					data={tabs.map((tab, index) => {
