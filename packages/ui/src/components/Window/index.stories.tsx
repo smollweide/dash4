@@ -11,7 +11,7 @@ stories.addDecorator(withKnobs);
 stories.add(
 	'docs',
 	() => (
-		<div style={{ maxWidth: 420 }}>
+		<div style={{ maxWidth: 420, margin: '0 auto' }}>
 			<Window dark>
 				<WindowHeader title={'Window'} subTitle={'Subtitle'}>
 					{'something'}

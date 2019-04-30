@@ -4,6 +4,7 @@ import execa from 'execa';
 import fs from 'fs-extra';
 import path from 'path';
 import readPkg from 'read-pkg';
+import { JsonObject } from 'type-fest';
 import writePkg from 'write-pkg';
 import { Config, TPluginName } from './Config/Config';
 import { getLernaPackages } from './get-lerna-packages';
@@ -214,7 +215,7 @@ export async function init(cwd: string, options: IOptions) {
 	spin.text('add dash4 npm script');
 	packageData.scripts = packageData.scripts || {};
 	packageData.scripts.dash4 = 'dash4';
-	await writePkg(path.join(cwd, 'package.json'), packageData);
+	await writePkg(path.join(cwd, 'package.json'), packageData as JsonObject);
 
 	// write dash.config
 	spin.text('create dash4 configuration');

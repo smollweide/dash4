@@ -23,7 +23,7 @@ const stories = storiesOf('ErrorBoundary', module);
 stories.add(
 	'docs',
 	() => (
-		<div style={{ maxWidth: 420 }}>
+		<div style={{ maxWidth: 420, margin: '0 auto' }}>
 			<ErrorBoundary title="Error boundary title" message="Custom message placed here">
 				<BuggyCounter initialCounter="0" />
 			</ErrorBoundary>

@@ -8,11 +8,11 @@ const stories = storiesOf('Icon', module);
 stories.add(
 	'docs',
 	() => (
-		<>
+		<div style={{ textAlign: 'center' }}>
 			<Icon name="play_arrow" />
 			<Icon name="favorite" />
 			<Icon name="bookmark_border" />
-		</>
+		</div>
 	),
 	{
 		readme: {

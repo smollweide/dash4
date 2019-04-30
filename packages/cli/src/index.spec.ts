@@ -36,10 +36,10 @@ import readPkg from 'read-pkg';
 import { init } from '.';
 import { hasFile } from './utils';
 
-const tempDir = path.join(process.cwd(), '__tmp__');
+const tempDir = path.join(__dirname, '../__tmp__');
 const getTempFile = async (testId: string, fileName: string) =>
 	await fs.readFile(path.join(tempDir, testId, fileName), 'utf8');
-const mockDir = path.join(process.cwd(), 'src/__mocks__');
+const mockDir = path.join(__dirname, '../src/__mocks__');
 const getMockFile = async (testId: string, fileName: string) =>
 	await fs.readFile(path.join(mockDir, testId, fileName), 'utf8');
 const processKill = process.kill;
@@ -176,7 +176,7 @@ describe('cli', () => {
 
 		// create packages
 		const options = {
-			cwd: path.join(process.cwd(), 'src/__mocks__'),
+			cwd: path.join(__dirname, '../src/__mocks__'),
 			parents: true,
 		};
 		const dest = `../../__tmp__/${testId}/packages`;

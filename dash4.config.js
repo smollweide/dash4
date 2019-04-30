@@ -4,6 +4,7 @@ const { PluginNpmScripts } = require('./plugins/plugin-npm-scripts');
 const { PluginTerminal, jestCommands } = require('./plugins/plugin-terminal');
 const { PluginReadme } = require('./plugins/plugin-readme');
 const { PluginCodeCoverage } = require('./plugins/plugin-code-coverage');
+const { PluginDependencies } = require('./plugins/plugin-dependencies');
 
 const getPluginPathes = async () => {
 	const cwd = await fs.realpath(process.cwd());
@@ -37,11 +38,6 @@ const pluginTabs = async () => {
 						{
 							title: 'run client-side tests',
 							cmd: 'npm run test:client',
-							cwd: path.join('plugins', pluginName),
-						},
-						{
-							title: 'update client-side snapshots',
-							cmd: 'npm run test-update-snapshots:client',
 							cwd: path.join('plugins', pluginName),
 						},
 						{
@@ -82,6 +78,7 @@ const pluginTabs = async () => {
 					cmd: 'npm run watch-test-client',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
+					allowedCommands: jestCommands,
 				}),
 				new PluginCodeCoverage({
 					title: 'Client-side code coverage',
@@ -93,6 +90,7 @@ const pluginTabs = async () => {
 					cmd: 'npm run watch-test-server',
 					cwd: path.join('plugins', pluginName),
 					autostart: false,
+					allowedCommands: jestCommands,
 				}),
 				new PluginCodeCoverage({
 					title: 'Server-side code coverage',
@@ -149,6 +147,15 @@ async function getConfig() {
 								},
 							],
 							width: [12, 6, 4],
+						}),
+					],
+					[
+						new PluginDependencies({
+							lerna: 'lerna.json',
+							installProcess: {
+								title: 'run bootstrap',
+								cmd: 'npm run bootstrap',
+							},
 						}),
 					],
 				],

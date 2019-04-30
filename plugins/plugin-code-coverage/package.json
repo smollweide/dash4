@@ -44,17 +44,17 @@
     "fs-extra": "7.0.1",
     "htmlparser2": "3.10.1",
     "make-dir": "3.0.0",
-    "open": "6.1.0",
+    "open": "6.2.0",
     "recharts": "1.5.0",
     "watch": "1.0.2"
   },
   "devDependencies": {
     "@dash4/config": "0.2.1",
     "@types/fs-extra": "5.0.5",
-    "@types/jest": "24.0.11",
-    "@types/node": "11.13.4",
+    "@types/jest": "24.0.12",
+    "@types/node": "11.13.8",
     "@types/open": "6.1.0",
-    "@types/react": "16.8.13",
+    "@types/react": "16.8.15",
     "@types/react-dom": "16.8.4",
     "@types/recharts": "1.1.16",
     "@types/watch": "1.0.1",
@@ -66,10 +66,10 @@
     "react-bootstrap": "1.0.0-beta.8",
     "react-dom": "16.8.6",
     "react-jss": "10.0.0-alpha.10",
-    "react-testing-library": "6.1.2",
+    "react-testing-library": "7.0.0",
     "rimraf": "2.6.3",
     "ts-jest": "24.0.2",
-    "typescript": "3.4.3",
+    "typescript": "3.4.5",
     "webpack": "4.30.0"
   }
 }
