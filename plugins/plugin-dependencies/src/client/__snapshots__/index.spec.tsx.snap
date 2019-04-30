@@ -22,7 +22,7 @@ exports[`PluginTerminal render error 1`] = `
         type="button"
       >
         <span
-          class="undefined Component-root-0-1-21 Component-size-m-0-1-23"
+          class=" Component-root-0-1-21 Component-size-m-0-1-23"
         >
           <i
             class="material-icons Component-size-i-m-0-1-26"
@@ -66,7 +66,7 @@ exports[`PluginTerminal render loading 1`] = `
         type="button"
       >
         <span
-          class="undefined Component-root-0-1-21 Component-size-m-0-1-23"
+          class=" Component-root-0-1-21 Component-size-m-0-1-23"
         >
           <i
             class="material-icons Component-size-i-m-0-1-26"
@@ -113,7 +113,7 @@ exports[`PluginTerminal render with data 1`] = `
         type="button"
       >
         <span
-          class="undefined Component-root-0-1-21 Component-size-m-0-1-23"
+          class=" Component-root-0-1-21 Component-size-m-0-1-23"
         >
           <i
             class="material-icons Component-size-i-m-0-1-26"
@@ -187,7 +187,7 @@ exports[`PluginTerminal render with data 1`] = `
             type="button"
           >
             <span
-              class="undefined Component-root-0-1-21 Component-size-m-0-1-23"
+              class=" Component-root-0-1-21 Component-size-m-0-1-23"
             >
               <i
                 class="material-icons Component-size-i-m-0-1-26"
@@ -219,7 +219,7 @@ exports[`PluginTerminal render with data 1`] = `
             type="button"
           >
             <span
-              class="undefined Component-root-0-1-21 Component-size-m-0-1-23"
+              class=" Component-root-0-1-21 Component-size-m-0-1-23"
             >
               <i
                 class="material-icons Component-size-i-m-0-1-26"

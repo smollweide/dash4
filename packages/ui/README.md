@@ -39,6 +39,7 @@ import { Icon, Window, WindowBody, WindowHeader } from '@dash4/ui';
 * [Window](https://github.com/smollweide/dash4/tree/master/packages/ui/src/components/Window/README.md)
 * [Icon](https://github.com/smollweide/dash4/tree/master/packages/ui/src/components/Icon/README.md)
 * [ErrorBoundary](https://github.com/smollweide/dash4/tree/master/packages/ui/src/components/ErrorBoundary/README.md)
+* [Keyboard](https://github.com/smollweide/dash4/tree/master/packages/ui/src/components/Keyboard/README.md)
 
 ## <a name="license">License</a>
 

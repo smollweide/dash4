@@ -5,7 +5,7 @@
  *
  */
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal } = require('@dash4/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
 const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-readme

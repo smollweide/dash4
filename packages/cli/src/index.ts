@@ -7,19 +7,14 @@ import readPkg from 'read-pkg';
 import writePkg from 'write-pkg';
 import { Config, TPluginName } from './Config/Config';
 import { getLernaPackages } from './get-lerna-packages';
+import { getReadmeConfig } from './get-readme-config';
+import { getTestConfig } from './get-test-config';
+import { hasFile, hasScript } from './utils';
 
 interface IOptions {
 	port: number;
 	config: string;
 	force?: boolean;
-}
-
-export async function hasFile(...pathFragments: string[]) {
-	try {
-		return (await fs.stat(path.join(...pathFragments))).isFile();
-	} catch (err) {
-		return false;
-	}
 }
 
 interface ICollect {
@@ -37,38 +32,48 @@ async function asyncForEach<IITem = any>(
 	}
 }
 
+interface IPackages {
+	[key: string]: boolean;
+}
+
+interface IConfig {
+	pluginName: TPluginName;
+	options?: any;
+}
+
 async function collectTab({ cwd, packagePath, lerna }: ICollect) {
-	const packages: {
-		[key: string]: boolean;
-	} = {};
-	const configs: Array<{
-		pluginName: TPluginName;
-		options?: any;
-	}> = [];
+	let packages: IPackages = {};
+	let configs: IConfig[] = [];
 	const packageData = await readPkg({
 		cwd,
 		normalize: false,
 	});
-	const hasScript = (scriptName: string) =>
-		packageData.scripts && packageData.scripts[scriptName] && packageData.scripts[scriptName] !== '';
+
+	function append(results: { packages: IPackages; configs: IConfig[] }) {
+		packages = {
+			...packages,
+			...results.packages,
+		};
+		configs = configs.concat(results.configs);
+	}
 
 	const npmScriptsCmds = [
-		hasScript('bootstrap') ? 'npm run bootstrap' : undefined,
-		hasScript('build') ? 'npm run build' : undefined,
-		hasScript('watch') ? 'npm run watch' : undefined,
-		hasScript('test') ? 'npm run test' : undefined,
-		hasScript('lint') ? 'npm run lint' : undefined,
-		hasScript('clean') ? 'npm run clean' : undefined,
-		hasScript('flow') ? 'npm run flow' : undefined,
-		hasScript('compile') ? 'npm run compile' : undefined,
-		hasScript('format') ? 'npm run format' : undefined,
-		hasScript('prettier') ? 'npm run prettier' : undefined,
-		hasScript('coverage') ? 'npm run coverage' : undefined,
-		hasScript('prepare') ? 'npm run prepare' : undefined,
-		hasScript('validate') ? 'npm run validate' : undefined,
-		hasScript('deploy') ? 'npm run deploy' : undefined,
-		hasScript('docs') ? 'npm run docs' : undefined,
-		hasScript('build-storybook') ? 'npm run build-storybook' : undefined,
+		hasScript(packageData, 'bootstrap') ? 'npm run bootstrap' : undefined,
+		hasScript(packageData, 'build') ? 'npm run build' : undefined,
+		hasScript(packageData, 'watch') ? 'npm run watch' : undefined,
+		hasScript(packageData, 'test') ? 'npm run test' : undefined,
+		hasScript(packageData, 'lint') ? 'npm run lint' : undefined,
+		hasScript(packageData, 'clean') ? 'npm run clean' : undefined,
+		hasScript(packageData, 'flow') ? 'npm run flow' : undefined,
+		hasScript(packageData, 'compile') ? 'npm run compile' : undefined,
+		hasScript(packageData, 'format') ? 'npm run format' : undefined,
+		hasScript(packageData, 'prettier') ? 'npm run prettier' : undefined,
+		hasScript(packageData, 'coverage') ? 'npm run coverage' : undefined,
+		hasScript(packageData, 'prepare') ? 'npm run prepare' : undefined,
+		hasScript(packageData, 'validate') ? 'npm run validate' : undefined,
+		hasScript(packageData, 'deploy') ? 'npm run deploy' : undefined,
+		hasScript(packageData, 'docs') ? 'npm run docs' : undefined,
+		hasScript(packageData, 'build-storybook') ? 'npm run build-storybook' : undefined,
 	].filter((cmd) => cmd);
 
 	if (!lerna) {
@@ -91,7 +96,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		});
 	}
 
-	if (hasScript('start')) {
+	if (hasScript(packageData, 'start')) {
 		configs.push({
 			pluginName: 'PluginTerminal',
 			options: {
@@ -103,7 +108,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		packages['@dash4/plugin-terminal'] = true;
 	}
 
-	if (hasScript('storybook')) {
+	if (hasScript(packageData, 'storybook')) {
 		configs.push({
 			pluginName: 'PluginTerminal',
 			options: {
@@ -114,47 +119,19 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		packages['@dash4/plugin-terminal'] = true;
 	}
 
-	const hasReadmeLow = await hasFile(cwd, 'readme.md');
-	const hasReadmeUp = await hasFile(cwd, 'README.md');
-	const hasReadme = hasReadmeLow || hasReadmeUp;
+	append(
+		await getReadmeConfig({
+			packagePath,
+			cwd,
+		})
+	);
 
-	if (hasReadme) {
-		configs.push({
-			pluginName: 'PluginReadme',
-			options: {
-				file: hasReadmeUp
-					? path.join(packagePath || '', 'README.md')
-					: path.join(packagePath || '', 'readme.md'),
-			},
-		});
-		packages['@dash4/plugin-readme'] = true;
-	}
-
-	const hasWatchTest = hasScript('watch-test');
-	if (hasScript('test') || hasWatchTest) {
-		if (hasWatchTest) {
-			configs.push({
-				pluginName: 'PluginTerminal',
-				options: {
-					cmd: 'npm run watch-test',
-					cwd: packagePath,
-				},
-			});
-			packages['@dash4/plugin-terminal'] = true;
-		}
-		configs.push({
-			pluginName: 'PluginCodeCoverage',
-			...(packagePath
-				? {
-						options: {
-							cwd: packagePath,
-						},
-				  }
-				: {}),
-		});
-
-		packages['@dash4/plugin-code-coverage'] = true;
-	}
+	append(
+		await getTestConfig({
+			packagePath,
+			packageData,
+		})
+	);
 
 	if (npmScriptsCmds.length > 0) {
 		configs.push({

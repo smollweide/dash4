@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keyboard Key standalonw 1`] = `
+<span
+  class=" Component-root-0-1-2"
+>
+  A
+</span>
+`;
+
+exports[`Keyboard Key with custom tagname 1`] = `
+<div
+  class=" Component-root-0-1-2"
+>
+  A
+</div>
+`;
+
+exports[`Keyboard render default 1`] = `
+<ul
+  class=" Component-root-0-1-1"
+>
+  <li
+    class=" Component-root-0-1-2"
+  >
+    A
+  </li>
+</ul>
+`;
+
+exports[`Keyboard render with Icon 1`] = `
+<ul
+  class="test Component-root-0-1-1"
+>
+  <li
+    class=" Component-root-0-1-2"
+  >
+    A
+  </li>
+  <li
+    class="test Component-root-0-1-2"
+  >
+    <span
+      class="Component-icon-0-1-3 Component-root-0-1-4"
+    >
+      <i
+        class="material-icons"
+      >
+        arrow_upward
+      </i>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Keyboard render with className 1`] = `
+<ul
+  class="test Component-root-0-1-1"
+>
+  <li
+    class=" Component-root-0-1-2"
+  >
+    A
+  </li>
+</ul>
+`;

@@ -1,4 +1,5 @@
 import prettierConfig from '@namics/prettier-config';
+import fs from 'fs';
 import { format, Options as IPrettierOptions } from 'prettier';
 import { chunk } from '../chunk';
 import tmpl from './template';
@@ -16,7 +17,7 @@ export type TPluginName = keyof typeof pluginNameMap;
 const pluginMap = {
 	PluginTerminal: {
 		url: () => `https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal`,
-		import: () => `const { PluginTerminal } = require('@dash4/plugin-terminal');`,
+		import: () => `const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');`,
 		content: (options: any) => `<DASH4>new PluginTerminal(${JSON.stringify(options)})</DASH4>`,
 	},
 	PluginNpmScripts: {
@@ -76,6 +77,8 @@ export class Config {
 		return JSON.stringify(this.tabs, null, 2)
 			.replace(/"<DASH4>/g, '')
 			.replace(/<\/DASH4>"/g, '')
+			.replace(/\\"<DASH4INNER>/g, '')
+			.replace(/<\/DASH4INNER>\\"/g, '')
 			.replace(/\\"/g, '"');
 	}
 

@@ -41,7 +41,9 @@
     "@dash4/log": "0.2.1",
     "@dash4/server": "0.2.1",
     "@dash4/terminal-emulator": "0.2.1",
-    "@dash4/ui": "0.2.1"
+    "@dash4/ui": "0.2.1",
+    "@rooks/use-key": "3.0.1",
+    "uuid": "3.3.2"
   },
   "devDependencies": {
     "@dash4/config": "0.2.1",

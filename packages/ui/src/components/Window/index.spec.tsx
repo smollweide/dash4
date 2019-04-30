@@ -1,7 +1,7 @@
 /// <reference types="@types/jest" />
 import React from 'react';
 import { act, renderHook } from 'react-hooks-testing-library';
-import { render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
 import { useFullscreen, Window } from './index';
 
 const useKeyMock = jest.fn();
@@ -60,6 +60,52 @@ describe('Window', () => {
 			</Window>
 		);
 		expect(useKeyMock).toHaveBeenCalled();
+	});
+	test('focus', (done) => {
+		const { container } = render(
+			<Window
+				onFocus={() => {
+					done();
+				}}
+				autoStretch={false}
+			>
+				Hello
+			</Window>
+		);
+		// @ts-ignore
+		fireEvent.focus(container.firstChild);
+		// @ts-ignore
+		expect(container.firstChild).toHaveAttribute('tabindex');
+	});
+	test('focus without cb', () => {
+		const { container } = render(<Window autoStretch={false}>Hello</Window>);
+		// @ts-ignore
+		fireEvent.focus(container.firstChild);
+		// @ts-ignore
+		expect(container.firstChild).toHaveAttribute('tabindex');
+	});
+	test('blur', (done) => {
+		const { container } = render(
+			<Window
+				onBlur={() => {
+					done();
+				}}
+				autoStretch={false}
+			>
+				Hello
+			</Window>
+		);
+		// @ts-ignore
+		fireEvent.focus(container.firstChild);
+		// @ts-ignore
+		fireEvent.blur(container.firstChild);
+	});
+	test('blur without cb', () => {
+		const { container } = render(<Window autoStretch={false}>Hello</Window>);
+		// @ts-ignore
+		fireEvent.focus(container.firstChild);
+		// @ts-ignore
+		fireEvent.blur(container.firstChild);
 	});
 	test('press key esc without defined callback', (done) => {
 		useKeyMock.mockImplementation((keys, cb) => {

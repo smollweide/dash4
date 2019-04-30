@@ -1,4 +1,4 @@
-const { PluginTerminal } = require('./build/server');
+const { PluginTerminal, jestCommands } = require('./build/server');
 
 async function getConfig() {
 	return {
@@ -6,6 +6,20 @@ async function getConfig() {
 			{
 				title: 'Root',
 				rows: [
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-test-client',
+							dark: true,
+							autostart: false,
+							allowedCommands: jestCommands,
+						}),
+						new PluginTerminal({
+							cmd: 'npm run watch-test-server',
+							dark: true,
+							autostart: false,
+							allowedCommands: jestCommands,
+						}),
+					],
 					[
 						new PluginTerminal({
 							cmd: 'node ./bin/chalk.js',

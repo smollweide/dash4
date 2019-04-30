@@ -113,7 +113,7 @@ interface IProps extends WithStyles<typeof styles> {
 	align?: TAlign;
 }
 
-export const Icon = withStyles(styles)(({ className, classes, color, name, size, animation, align }: IProps) => {
+export const Icon = withStyles(styles)(({ className = '', classes, color, name, size, animation, align }: IProps) => {
 	const classNames: string[] = [classes.root];
 	const classNamesI: string[] = ['material-icons'];
 	if (size) {

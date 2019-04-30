@@ -13,6 +13,8 @@ interface IProps extends WithStyles<typeof styles> {
 	// enable / disable fullscreen mode (default=false)
 	fullscreen?: boolean;
 	onWillLeaveFullscreen?: () => void;
+	onFocus?: () => void;
+	onBlur?: () => void;
 }
 
 export function useFullscreen() {
@@ -34,6 +36,8 @@ export const Window = withStyles(styles)(
 		autoStretch = true,
 		fullscreen = false,
 		onWillLeaveFullscreen = () => undefined,
+		onFocus = () => undefined,
+		onBlur = () => undefined,
 	}: IProps) => {
 		useEffect(() => {
 			const body = document.getElementsByTagName('body')[0];
@@ -64,7 +68,7 @@ export const Window = withStyles(styles)(
 		}
 
 		return (
-			<div tabIndex={1} className={classNames.join(' ')}>
+			<div tabIndex={1} onFocus={onFocus} onBlur={onBlur} className={classNames.join(' ')}>
 				{children}
 			</div>
 		);

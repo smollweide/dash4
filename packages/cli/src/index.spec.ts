@@ -33,7 +33,8 @@ import fs from 'fs-extra';
 import makeDir from 'make-dir';
 import path from 'path';
 import readPkg from 'read-pkg';
-import { hasFile, init } from '.';
+import { init } from '.';
+import { hasFile } from './utils';
 
 const tempDir = path.join(process.cwd(), '__tmp__');
 const getTempFile = async (testId: string, fileName: string) =>
@@ -140,6 +141,15 @@ describe('cli', () => {
 	test('execute with script "watch-test"', async () => {
 		await runSnapshotTest('script-watch-test', '@dash4/plugin-terminal @dash4/plugin-code-coverage');
 	});
+	test('execute with script "watch-test-jest"', async () => {
+		await runSnapshotTest('script-watch-test-jest', '@dash4/plugin-terminal @dash4/plugin-code-coverage');
+	});
+	test('execute in create-react-app setup', async () => {
+		await runSnapshotTest(
+			'script-cra',
+			'@dash4/plugin-terminal @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
+		);
+	});
 	test('execute with script "storybook"', async () => {
 		await runSnapshotTest('script-storybook', '@dash4/plugin-terminal');
 	});
@@ -170,7 +180,7 @@ describe('cli', () => {
 			parents: true,
 		};
 		const dest = `../../__tmp__/${testId}/packages`;
-		await cpy([`**/_package.json`, '!lerna/_package.json'], dest, {
+		await cpy([`**/_package.json`, '!lerna/_package.json', '!script-cra/_package.json'], dest, {
 			...options,
 			rename: () => `package.json`,
 		});

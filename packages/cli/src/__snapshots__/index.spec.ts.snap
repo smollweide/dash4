@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`cli execute in create-react-app setup 1`] = `
+"/**
+ *
+ * 	DASH4 configuration
+ *  https://github.com/smollweide/dash4
+ *
+ */
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
+const { PluginDependencies } = require('@dash4/plugin-dependencies');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
+const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-npm-scripts
+const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
+
+async function getConfig() {
+	return {
+		port: 8080,
+		tabs: [
+			{
+				title: 'Root',
+				rows: [
+					[new PluginDependencies(), new PluginTerminal({ cmd: 'npm start', autostart: true })],
+					[
+						new PluginTerminal({ cmd: 'npm run test', allowedCommands: jestCommands }),
+						new PluginCodeCoverage(),
+					],
+					[
+						new PluginNpmScripts({
+							scripts: [{ title: 'build', cmd: 'npm run build' }, { title: 'test', cmd: 'npm run test' }],
+						}),
+					],
+				],
+			},
+		],
+	};
+}
+
+module.exports = getConfig;
+"
+`;
+
 exports[`cli execute in lerna repo 1`] = `
 "/**
  *
@@ -16,7 +59,7 @@ const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-npm-scripts
 const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal } = require('@dash4/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
@@ -121,6 +164,19 @@ async function getConfig() {
 					],
 				],
 			},
+			{
+				title: 'script-watch-test-jest',
+				rows: [
+					[
+						new PluginTerminal({
+							cmd: 'npm run watch-test',
+							cwd: 'packages/script-watch-test-jest',
+							allowedCommands: jestCommands,
+						}),
+						new PluginCodeCoverage({ cwd: 'packages/script-watch-test-jest' }),
+					],
+				],
+			},
 		],
 	};
 }
@@ -167,7 +223,7 @@ exports[`cli execute with all possible scripts 1`] = `
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
 const { PluginDependencies } = require('@dash4/plugin-dependencies');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal } = require('@dash4/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-readme
 const { PluginReadme } = require('@dash4/plugin-readme');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
@@ -227,7 +283,7 @@ exports[`cli execute with script "start" 1`] = `
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
 const { PluginDependencies } = require('@dash4/plugin-dependencies');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal } = require('@dash4/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
@@ -255,7 +311,7 @@ exports[`cli execute with script "storybook" 1`] = `
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
 const { PluginDependencies } = require('@dash4/plugin-dependencies');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal } = require('@dash4/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
@@ -316,7 +372,7 @@ exports[`cli execute with script "watch-test" 1`] = `
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
 const { PluginDependencies } = require('@dash4/plugin-dependencies');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal } = require('@dash4/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
 const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 
@@ -328,6 +384,42 @@ async function getConfig() {
 				title: 'Root',
 				rows: [
 					[new PluginDependencies(), new PluginTerminal({ cmd: 'npm run watch-test' })],
+					[new PluginCodeCoverage()],
+				],
+			},
+		],
+	};
+}
+
+module.exports = getConfig;
+"
+`;
+
+exports[`cli execute with script "watch-test-jest" 1`] = `
+"/**
+ *
+ * 	DASH4 configuration
+ *  https://github.com/smollweide/dash4
+ *
+ */
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
+const { PluginDependencies } = require('@dash4/plugin-dependencies');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
+const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
+
+async function getConfig() {
+	return {
+		port: 8080,
+		tabs: [
+			{
+				title: 'Root',
+				rows: [
+					[
+						new PluginDependencies(),
+						new PluginTerminal({ cmd: 'npm run watch-test', allowedCommands: jestCommands }),
+					],
 					[new PluginCodeCoverage()],
 				],
 			},

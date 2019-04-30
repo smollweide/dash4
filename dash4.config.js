@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { PluginNpmScripts } = require('./plugins/plugin-npm-scripts');
-const { PluginTerminal } = require('./plugins/plugin-terminal');
+const { PluginTerminal, jestCommands } = require('./plugins/plugin-terminal');
 const { PluginReadme } = require('./plugins/plugin-readme');
 const { PluginCodeCoverage } = require('./plugins/plugin-code-coverage');
 
@@ -196,6 +196,7 @@ async function getConfig() {
 							cmd: 'npm run watch-test',
 							cwd: '/packages/cli',
 							autostart: false,
+							allowedCommands: jestCommands,
 						}),
 						new PluginCodeCoverage({
 							cwd: '/packages/cli',
@@ -239,11 +240,13 @@ async function getConfig() {
 							cmd: 'npm run watch-build',
 							cwd: '/packages/client',
 							autostart: false,
+							allowedCommands: jestCommands,
 						}),
 						new PluginTerminal({
 							cmd: 'npm run watch-dist',
 							cwd: '/packages/client',
 							autostart: false,
+							allowedCommands: jestCommands,
 						}),
 					],
 				],
@@ -335,6 +338,7 @@ async function getConfig() {
 							cmd: 'npm run watch-test',
 							cwd: '/packages/ui',
 							autostart: false,
+							allowedCommands: jestCommands,
 						}),
 						new PluginCodeCoverage({
 							cwd: '/packages/ui',
@@ -380,6 +384,7 @@ async function getConfig() {
 							cmd: 'npm run watch-test',
 							cwd: '/packages/terminal-emulator',
 							autostart: false,
+							allowedCommands: jestCommands,
 						}),
 						new PluginCodeCoverage({
 							cwd: '/packages/terminal-emulator',
@@ -430,6 +435,7 @@ async function getConfig() {
 							cmd: 'npm run watch-test',
 							cwd: '/packages/log',
 							autostart: false,
+							allowedCommands: jestCommands,
 						}),
 						new PluginCodeCoverage({
 							cwd: '/packages/log',

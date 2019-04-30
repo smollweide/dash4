@@ -2,7 +2,9 @@ import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import { ITerm, terminalEmulator } from '@dash4/terminal-emulator';
 import fs from 'fs';
 import path from 'path';
+import uuid from 'uuid/v1';
 import {
+	IAllowedCommand,
 	IClientConfig,
 	IRecieveFromClientCb,
 	IRecieveFromClientEventNames,
@@ -10,11 +12,15 @@ import {
 	ISendToClientEventNames,
 } from '../shared-types';
 
+export * from './jest-commands';
+
 export interface IOptions {
 	// command which should be executed
 	cmd: string;
 	// current working directory of the child process.
 	cwd?: string;
+	// define commands (keycodes) which are allowed to enter
+	allowedCommands?: IAllowedCommand[];
 	// enable/disable dark mode
 	dark?: boolean;
 	// the given command will be executed on start
@@ -35,8 +41,9 @@ export class PluginTerminal
 	private _autostart: boolean;
 	private _term?: ITerm;
 	private _stopProcessingTriggered: boolean = false;
+	private _allowedCommands?: { [key: string]: IAllowedCommand };
 
-	constructor({ dark = true, width, cmd, cwd, autostart = false }: IOptions) {
+	constructor({ dark = true, width, cmd, cwd, autostart = false, allowedCommands }: IOptions) {
 		super({
 			dark,
 			width,
@@ -47,6 +54,15 @@ export class PluginTerminal
 		this._cmd = cmd;
 		this._cwd = cwd ? path.join(processCwd, cwd) : processCwd;
 		this._autostart = autostart;
+
+		if (allowedCommands) {
+			allowedCommands.forEach((allowedCommand) => {
+				if (!this._allowedCommands) {
+					this._allowedCommands = {};
+				}
+				this._allowedCommands[uuid()] = allowedCommand;
+			});
+		}
 
 		if (this._autostart) {
 			this.start();
@@ -62,9 +78,21 @@ export class PluginTerminal
 	}
 
 	public get clientConfig() {
+		const allowedCommands = {};
+		Object.keys(this._allowedCommands || {}).forEach((commandId) => {
+			if (!this._allowedCommands || !this._allowedCommands[commandId]) {
+				return;
+			}
+			allowedCommands[commandId] = {
+				keyCode: this._allowedCommands[commandId].keyCode,
+				title: this._allowedCommands[commandId].title,
+				hasInput: typeof this._allowedCommands[commandId].input === 'function',
+			};
+		});
 		return {
 			cmd: this._cmd,
 			cwd: this._cwd,
+			allowedCommands,
 		};
 	}
 
@@ -81,6 +109,8 @@ export class PluginTerminal
 		this.on('start', this.start);
 		this.on('stop', this.stop);
 		this.on('clean', this.clean);
+		this.on('command', this.appendCommand);
+		this.on('command-input', this.appendCommandInput);
 	};
 
 	private handleConnected = () => {
@@ -93,6 +123,45 @@ export class PluginTerminal
 	private handleTermStopProcessing = () => {
 		this._stopProcessingTriggered = true;
 		this.send('stopped');
+	};
+
+	private getCommandById = (commandId: string) => {
+		if (!this._allowedCommands || !this._allowedCommands[commandId]) {
+			return;
+		}
+		return this._allowedCommands[commandId];
+	};
+
+	private appendCommand = (commandId: string) => {
+		const command = this.getCommandById(commandId);
+		if (!command) {
+			return;
+		}
+		const out = command.terminalOutput || command.keyCode.toString();
+		this._terminalLog += out;
+		if (!this._term) {
+			return;
+		}
+		this._term.write(out);
+	};
+
+	private appendCommandInput = ({ value, commandId }: { value: string; commandId: string }) => {
+		const command = this.getCommandById(commandId);
+		if (!command || !command.input || !value || !commandId) {
+			return;
+		}
+		const out = command.input(value);
+		this._terminalLog += out;
+		if (!this._term) {
+			return;
+		}
+		this._term.write(out);
+		setTimeout(() => {
+			if (!this._term) {
+				return;
+			}
+			this._term.write('\r');
+		}, 100);
 	};
 
 	private recieveData = (data: string) => {
@@ -118,6 +187,7 @@ export class PluginTerminal
 	};
 
 	private stop = () => {
+		this._terminalLog = '';
 		this.kill();
 	};
 
