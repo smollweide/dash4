@@ -1,3 +1,21 @@
+## 0.3.0 (2019-05-02)
+
+* fix: update dependencies ([4c728f2](https://github.com/smollweide/dash4/commit/4c728f2))
+* fix(cli): fix wrong cwd in plugin-npm-scripts ([90860a1](https://github.com/smollweide/dash4/commit/90860a1))
+* fix(client): add arrows to main menu ([e5a07f6](https://github.com/smollweide/dash4/commit/e5a07f6))
+* fix(log): replace low contrast color for log text ([0f227c0](https://github.com/smollweide/dash4/commit/0f227c0))
+* fix(plugin-code-coverage): remove peerDependencies ([222ff56](https://github.com/smollweide/dash4/commit/222ff56))
+* feat(cli): add pluginDependencies to init process ([19ce2c3](https://github.com/smollweide/dash4/commit/19ce2c3))
+* feat(log): replace special brackets with normal ones ([e99f8a3](https://github.com/smollweide/dash4/commit/e99f8a3))
+* feat(plugin-dependencies): add plugin "dependencies" ([bcde4dd](https://github.com/smollweide/dash4/commit/bcde4dd))
+* feat(plugin-terminal): allow custom commands fir terminal ([d5895c0](https://github.com/smollweide/dash4/commit/d5895c0))
+* feat(ui,plugin-readme,plugin-terminal): close fullscreen mode by pressing esc ([613c93a](https://github.com/smollweide/dash4/commit/613c93a))
+* test(plugin-npm-scripts): fix broken test ([474eaeb](https://github.com/smollweide/dash4/commit/474eaeb))
+
+
+
+
+
 ## <small>0.2.1 (2019-04-13)</small>
 
 * fix(cli): prevent error while packages includes empty directories ([14486c8](https://github.com/smollweide/dash4/commit/14486c8))
