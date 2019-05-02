@@ -21,15 +21,24 @@ export interface IOptions {
 	exclude?: string[];
 }
 
+async function getJsonFile<P = any>(pathName: string) {
+	return JSON.parse(await fs.readFile(pathName, 'utf8')) as P;
+}
+
 /**
  * Returns all packages and it's path's in you project
  */
 export async function getLernaPackages(projectRootDir: string, options?: IOptions): Promise<string[]> {
-	const lernaData: { packages: string[] } = JSON.parse(
-		await fs.readFile(path.join(projectRootDir, 'lerna.json'), 'utf8')
-	);
+	const lernaData = await getJsonFile<{ packages?: string[] }>(path.join(projectRootDir, 'lerna.json'));
+	const rootPkgData = await getJsonFile<{ workspaces?: string[] }>(path.join(projectRootDir, 'package.json'));
+	const packagesGlobs = lernaData.packages || rootPkgData.workspaces;
+
+	if (!packagesGlobs) {
+		return [];
+	}
+
 	const packagesRaw = await Promise.all(
-		lernaData.packages.map((packageGlob: string) =>
+		packagesGlobs.map((packageGlob: string) =>
 			pGlop(packageGlob, {
 				cwd: projectRootDir,
 			})

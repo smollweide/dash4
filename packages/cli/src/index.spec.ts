@@ -159,6 +159,11 @@ describe('cli', () => {
 			'@dash4/plugin-terminal @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
 		);
 	});
+
+	const ignorePackages = ['!lerna/_package.json', '!script-cra/_package.json', '!yarn-workspaces/_package.json'];
+	const ignoreReadme1 = ['!lerna/readme.md', '!script-cra/readme.md', '!yarn-workspaces/readme.md'];
+	const ignoreReadme2 = ['!lerna/README.md', '!script-cra/README.md', '!yarn-workspaces/README.md'];
+
 	test('execute in lerna repo', async () => {
 		const testId = 'lerna';
 		const cwd = path.join(tempDir, testId);
@@ -180,12 +185,48 @@ describe('cli', () => {
 			parents: true,
 		};
 		const dest = `../../__tmp__/${testId}/packages`;
-		await cpy([`**/_package.json`, '!lerna/_package.json', '!script-cra/_package.json'], dest, {
+		await cpy([`**/_package.json`, ...ignorePackages], dest, {
 			...options,
 			rename: () => `package.json`,
 		});
-		await cpy([`**/readme.md`, '!lerna/readme.md'], dest, options);
-		await cpy([`**/README.md`, '!lerna/README.md'], dest, options);
+		await cpy([`**/readme.md`, ...ignoreReadme1], dest, options);
+		await cpy([`**/README.md`, ...ignoreReadme2], dest, options);
+		await init(cwd, getOptions(cwd));
+		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
+		expect(execaMock).toHaveBeenCalledWith(
+			'npm',
+			`i -D @dash4/server @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(
+				' '
+			)
+		);
+	});
+	test('execute in yarn workspaces repo', async () => {
+		const testId = 'yarn-workspaces';
+		const cwd = path.join(tempDir, testId);
+		await makeDir(cwd);
+
+		// add empty dir
+		await makeDir(path.join(cwd, 'packages/empty'));
+		await cpy([`src/__mocks__/${testId}/_package.json`], `__tmp__/${testId}`, {
+			rename: () => `package.json`,
+		});
+		await cpy([`src/__mocks__/${testId}/README.md`], `__tmp__/${testId}`);
+		await cpy([`src/__mocks__/${testId}/_lerna.json`], `__tmp__/${testId}`, {
+			rename: () => `lerna.json`,
+		});
+
+		// create packages
+		const options = {
+			cwd: path.join(__dirname, '../src/__mocks__'),
+			parents: true,
+		};
+		const dest = `../../__tmp__/${testId}/packages`;
+		await cpy([`**/_package.json`, ...ignorePackages], dest, {
+			...options,
+			rename: () => `package.json`,
+		});
+		await cpy([`**/readme.md`, ...ignoreReadme1], dest, options);
+		await cpy([`**/README.md`, ...ignoreReadme2], dest, options);
 		await init(cwd, getOptions(cwd));
 		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(

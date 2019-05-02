@@ -36,6 +36,7 @@
     "bootstrap": "4.3.1",
     "core-js": "3.0.1",
     "jquery": "3.4.0",
+    "popper.js": "1.15.0",
     "react": "16.8.6",
     "react-bootstrap": "1.0.0-beta.8",
     "react-container-query": "0.11.0",

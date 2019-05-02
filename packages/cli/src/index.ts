@@ -81,6 +81,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		configs.push({
 			pluginName: 'PluginDependencies',
 		});
+		packages['@dash4/plugin-dependencies'] = true;
 	}
 
 	if (lerna && !packagePath) {
@@ -95,6 +96,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 				},
 			},
 		});
+		packages['@dash4/plugin-dependencies'] = true;
 	}
 
 	if (hasScript(packageData, 'start')) {
@@ -224,6 +226,7 @@ export async function init(cwd: string, options: IOptions) {
 	// install dependencies
 	spin.text('install dependencies');
 	try {
+		spin.text(`npm i -D ${Object.keys(packages).join(' ')}`);
 		await execa('npm', ['i', '-D', ...Object.keys(packages)]);
 	} catch (err) {
 		spin.fail(`${chalk.bold('Could not install dependencies:')}\n${err}`);
