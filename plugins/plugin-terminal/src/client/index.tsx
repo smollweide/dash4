@@ -248,7 +248,11 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 				fullscreen={fullscreen}
 				dark={dark}
 			>
-				<WindowHeader onDoubleClick={toggleFullscreen} title={name} subTitle={clientConfig.cmd}>
+				<WindowHeader
+					onDoubleClick={toggleFullscreen}
+					title={clientConfig.title || name}
+					subTitle={clientConfig.subtitle || clientConfig.cmd}
+				>
 					<ButtonGroup>
 						{!processing ? (
 							<Button onClick={handleClickStart} variant="outline-primary" size="sm">

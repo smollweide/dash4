@@ -8,10 +8,13 @@ async function getConfig() {
 				rows: [
 					[
 						new PluginTerminal({
-							cmd: 'npm run watch-test-client',
+							cmd: 'npm run watch-test',
+							cwd: '../../packages/ui',
 							dark: true,
 							autostart: false,
 							allowedCommands: jestCommands,
+							width: [12, 6, 8],
+							height: 500,
 						}),
 						new PluginTerminal({
 							cmd: 'npm run watch-test-server',

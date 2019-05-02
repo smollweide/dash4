@@ -354,6 +354,41 @@ async function getConfig() {
 				],
 			},
 			{
+				title: 'react-xterm',
+				rows: [
+					[
+						new PluginReadme({
+							file: '/packages/react-xterm/README.md',
+							width: [12, 6, 8],
+							height: 400,
+						}),
+						new PluginNpmScripts({
+							scripts: [
+								{
+									title: 'build',
+									cmd: 'npm run build',
+									cwd: '/packages/react-xterm',
+								},
+								{
+									title: 'analyze-bundle-size',
+									cmd: 'npm run analyze-bundle-size',
+									cwd: '/packages/react-xterm',
+								},
+							],
+							width: [12, 6, 4],
+						}),
+					],
+					[
+						new PluginTerminal({
+							cmd: 'npm run start',
+							cwd: '/packages/react-xterm',
+							autostart: false,
+							width: [12, 6, 6],
+						}),
+					],
+				],
+			},
+			{
 				title: 'terminal-emulator',
 				rows: [
 					[

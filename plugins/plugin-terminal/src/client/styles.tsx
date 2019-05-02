@@ -1,9 +1,12 @@
+import { IWidgetConfig } from '@dash4/client/build';
 import { CSSProperties } from 'react';
+import { IClientConfig } from '../shared-types';
 
 export const styles = {
-	windowBody: {
-		height: 250,
-	} as CSSProperties,
+	windowBody: (props: IWidgetConfig<IClientConfig>) =>
+		({
+			height: props.clientConfig.height || 250,
+		} as CSSProperties),
 	keyboard: {
 		position: 'absolute',
 		right: 0,

@@ -19,6 +19,10 @@ export interface IOptions {
 	cmd: string;
 	// current working directory of the child process.
 	cwd?: string;
+	// define a custom title for the window
+	title?: string;
+	// define a custom subtitle for the window
+	subtitle?: string;
 	// define commands (keycodes) which are allowed to enter
 	allowedCommands?: IAllowedCommand[];
 	// enable/disable dark mode
@@ -28,6 +32,8 @@ export interface IOptions {
 	// grid with per breakpoint
 	// [12,6,3] means 100% width on small viewports, 50% on medium viewports and 33.3% on large viewports
 	width?: number[];
+	// define fixed height
+	height?: number;
 }
 
 const processCwd = fs.realpathSync(process.cwd());
@@ -42,8 +48,21 @@ export class PluginTerminal
 	private _term?: ITerm;
 	private _stopProcessingTriggered: boolean = false;
 	private _allowedCommands?: { [key: string]: IAllowedCommand };
+	private _height?: number;
+	private _title?: string;
+	private _subtitle?: string;
 
-	constructor({ dark = true, width, cmd, cwd, autostart = false, allowedCommands }: IOptions) {
+	constructor({
+		dark = true,
+		width,
+		height,
+		title,
+		subtitle,
+		cmd,
+		cwd,
+		autostart = false,
+		allowedCommands,
+	}: IOptions) {
 		super({
 			dark,
 			width,
@@ -54,6 +73,9 @@ export class PluginTerminal
 		this._cmd = cmd;
 		this._cwd = cwd ? path.join(processCwd, cwd) : processCwd;
 		this._autostart = autostart;
+		this._height = height;
+		this._title = title;
+		this._subtitle = subtitle;
 
 		if (allowedCommands) {
 			allowedCommands.forEach((allowedCommand) => {
@@ -93,6 +115,9 @@ export class PluginTerminal
 			cmd: this._cmd,
 			cwd: this._cwd,
 			allowedCommands,
+			height: this._height,
+			title: this._title,
+			subtitle: this._subtitle,
 		};
 	}
 
