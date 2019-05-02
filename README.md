@@ -2,7 +2,7 @@
 <div align="center">
 <br />
   <h1>
-    <img src="/packages/client/src/components/Header/dash4_256.png" alt="Dash4 Logo" width="196" />
+    <img src="/packages/client/src/components/Header/dash4_256.png" alt="Dash4 Logo" width="156" />
   </h1>
 The dashboard for developers
 <br />
@@ -11,6 +11,11 @@ The dashboard for developers
 
 [![Travis](https://img.shields.io/travis/dash4/master.svg)](https://travis-ci.org/smollweide/dash4) [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Prettier](https://img.shields.io/badge/Code%20Style-Prettier-green.svg)](https://github.com/prettier/prettier)
 
+
+<br />
+<br />
+
+<img src="https://user-images.githubusercontent.com/2912007/57101809-4bd3d400-6d22-11e9-95af-0a146d039777.png" alt="dash4 screenshot" width="1000" />
 
 <br />
 <br />
@@ -28,68 +33,19 @@ The dashboard for developers
 
 ## <a name="usage">Usage</a>
 
-### Installation by using the CLI
+> For security reason please make sure you are in a secure network.
+
+### Installation
 
 ```shell
 npx @dash4/cli
 ```
 
-### Manual installation
-
-```shell
-npm i -D @dash4/server @dash4/plugin-terminal @dash4/plugin-npm-scripts
-```
-
-*package.json*
-```json
-  ...
-  scripts: {
-    "start": "dash4",
-    ...
-  }
-```
-
-*dash4.config.js*
-
-```js
-const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
-const { PluginTerminal } = require('@dash4/plugin-terminal');
-
-async function getConfig() {
-  return {
-    tabs: [
-      {
-        title: 'Root',
-        rows: [
-          [
-            new PluginTerminal({
-              cmd: 'npm run build',
-              autostart: false,
-              width: [12, 6, 8],
-            }),
-            new PluginNpmScripts({
-              dark: false,
-              scripts: [
-                {
-                  title: 'bootstrap',
-                  cmd: 'npm run bootstrap',
-                },
-              ],
-              width: [12, 6, 4],
-            }),
-          ],
-        ],
-      },
-    ],
-  };
-}
-
-module.exports = getConfig;
-```
+[manual installation](./docs/manual-installation.md)
 
 ### Start the dashboard
 
-run `npm start`
+run `npm dash4`
 
 ## <a name="plugins">Plugins</a>
 
