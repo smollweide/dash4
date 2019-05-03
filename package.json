@@ -3,6 +3,17 @@
   "version": "0.3.0",
   "private": false,
   "description": "The dashboard for developers",
+  "keywords": [
+    "browser terminal",
+    "dash4",
+    "dashboard",
+    "plugins",
+    "productivity",
+    "terminal",
+    "tools",
+    "web dashboard",
+    "webdash"
+  ],
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide <simon.mollweide@gmail.com>",

@@ -4,7 +4,7 @@
   <h1>
     <img src="/packages/client/src/components/Header/dash4_256.png" alt="Dash4 Logo" width="156" />
   </h1>
-The dashboard for developers
+The dashboard for developers :computer:
 <br />
 <br />
 <br />
