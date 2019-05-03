@@ -1,9 +1,10 @@
 {
 	"scripts": {
-		"bootstrap": "npm run bootstrap",
+		"bootstrap": "lerna bootstrap",
 		"build": "lerna run build",
 		"test": "lerna run test",
-		"lint": "lerna run lint"
+		"lint": "lerna run lint",
+		"start": "yarn ppp"
 	},
 	"workspaces": ["packages/*"]
 }

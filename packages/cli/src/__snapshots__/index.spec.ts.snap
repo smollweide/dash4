@@ -194,14 +194,14 @@ exports[`cli execute in yarn workspaces repo 1`] = `
  */
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-dependencies
 const { PluginDependencies } = require('@dash4/plugin-dependencies');
+// https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-readme
 const { PluginReadme } = require('@dash4/plugin-readme');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
 const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-npm-scripts
 const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
-// https://github.com/smollweide/dash4/tree/master/plugins/plugin-terminal
-const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
@@ -213,18 +213,18 @@ async function getConfig() {
 					[
 						new PluginDependencies({
 							lerna: 'lerna.json',
-							installProcess: { title: 'run bootstrap', cmd: 'npm run bootstrap', cwd: '/' },
+							installProcess: { title: 'run bootstrap', cmd: 'yarn bootstrap', cwd: '/' },
 						}),
-						new PluginReadme({ file: 'README.md' }),
+						new PluginTerminal({ cmd: 'yarn start', autostart: true }),
 					],
+					[new PluginReadme({ file: 'README.md' }), new PluginCodeCoverage()],
 					[
-						new PluginCodeCoverage(),
 						new PluginNpmScripts({
 							scripts: [
-								{ title: 'bootstrap', cmd: 'npm run bootstrap' },
-								{ title: 'build', cmd: 'npm run build' },
-								{ title: 'test', cmd: 'npm run test' },
-								{ title: 'lint', cmd: 'npm run lint' },
+								{ title: 'bootstrap', cmd: 'yarn bootstrap' },
+								{ title: 'build', cmd: 'yarn build' },
+								{ title: 'test', cmd: 'yarn test' },
+								{ title: 'lint', cmd: 'yarn lint' },
 							],
 						}),
 					],

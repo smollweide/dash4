@@ -123,40 +123,49 @@ describe('cli', () => {
 		expect((((await readPkg({ cwd })) || {}) as any).scripts.dash4).toBe('dash4');
 	});
 	test('execute with script "start"', async () => {
-		await runSnapshotTest('script-start', '@dash4/plugin-terminal');
+		await runSnapshotTest('script-start', '@dash4/plugin-dependencies @dash4/plugin-terminal');
 	});
 	test('execute with "README.md" file', async () => {
 		expect(await hasFile(mockDir, 'readme', `README.md`)).toBe(true);
-		await runSnapshotTest('readme', '@dash4/plugin-readme');
+		await runSnapshotTest('readme', '@dash4/plugin-dependencies @dash4/plugin-readme');
 	});
 	test.skip('execute with "readme.md" file', async () => {
 		/* TODO fs.stat is not sensitive */
 		expect(await hasFile(mockDir, 'readme-low', `README.md`)).toBe(false);
 		expect(await hasFile(mockDir, 'readme-low', `readme.md`)).toBe(true);
-		await runSnapshotTest('readme-low', '@dash4/plugin-readme');
+		await runSnapshotTest('readme-low', '@dash4/plugin-dependencies @dash4/plugin-readme');
 	});
 	test('execute with script "test"', async () => {
-		await runSnapshotTest('script-test', '@dash4/plugin-code-coverage @dash4/plugin-npm-scripts');
+		await runSnapshotTest(
+			'script-test',
+			'@dash4/plugin-dependencies @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
+		);
 	});
 	test('execute with script "watch-test"', async () => {
-		await runSnapshotTest('script-watch-test', '@dash4/plugin-terminal @dash4/plugin-code-coverage');
+		await runSnapshotTest(
+			'script-watch-test',
+			'@dash4/plugin-dependencies @dash4/plugin-terminal @dash4/plugin-code-coverage'
+		);
 	});
 	test('execute with script "watch-test-jest"', async () => {
-		await runSnapshotTest('script-watch-test-jest', '@dash4/plugin-terminal @dash4/plugin-code-coverage');
+		await runSnapshotTest(
+			'script-watch-test-jest',
+			'@dash4/plugin-dependencies @dash4/plugin-terminal @dash4/plugin-code-coverage'
+		);
 	});
 	test('execute in create-react-app setup', async () => {
 		await runSnapshotTest(
 			'script-cra',
-			'@dash4/plugin-terminal @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
+			'@dash4/plugin-dependencies @dash4/plugin-terminal @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
 		);
 	});
 	test('execute with script "storybook"', async () => {
-		await runSnapshotTest('script-storybook', '@dash4/plugin-terminal');
+		await runSnapshotTest('script-storybook', '@dash4/plugin-dependencies @dash4/plugin-terminal');
 	});
 	test('execute with all possible scripts', async () => {
 		await runSnapshotTest(
 			'all-scripts',
-			'@dash4/plugin-terminal @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
+			'@dash4/plugin-dependencies @dash4/plugin-terminal @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts'
 		);
 	});
 
@@ -195,7 +204,7 @@ describe('cli', () => {
 		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
 			'npm',
-			`i -D @dash4/server @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(
+			`i -D @dash4/server @dash4/plugin-dependencies @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(
 				' '
 			)
 		);
@@ -230,8 +239,8 @@ describe('cli', () => {
 		await init(cwd, getOptions(cwd));
 		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
-			'npm',
-			`i -D @dash4/server @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(
+			'yarn',
+			`add -D -W @dash4/server @dash4/plugin-dependencies @dash4/plugin-terminal @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts`.split(
 				' '
 			)
 		);

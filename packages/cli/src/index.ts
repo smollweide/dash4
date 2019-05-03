@@ -3,14 +3,14 @@ import chalk from 'chalk';
 import execa from 'execa';
 import fs from 'fs-extra';
 import path from 'path';
-import readPkg from 'read-pkg';
+import readPkg, { PackageJson } from 'read-pkg';
 import { JsonObject } from 'type-fest';
 import writePkg from 'write-pkg';
 import { Config, TPluginName } from './Config/Config';
 import { getLernaPackages } from './get-lerna-packages';
 import { getReadmeConfig } from './get-readme-config';
 import { getTestConfig } from './get-test-config';
-import { hasFile, hasScript } from './utils';
+import { getScript, hasFile, hasScript } from './utils';
 
 interface IOptions {
 	port: number;
@@ -45,10 +45,11 @@ interface IConfig {
 async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 	let packages: IPackages = {};
 	let configs: IConfig[] = [];
-	const packageData = await readPkg({
-		cwd,
-		normalize: false,
-	});
+	const packageData = await readPkg({ cwd, normalize: false });
+	const usesYarn =
+		(await hasFile(path.join(cwd, 'yarn.lock'))) || (getScript(packageData, 'start') || '').includes('yarn');
+
+	const command = usesYarn ? 'yarn' : 'npm run';
 
 	function append(results: { packages: IPackages; configs: IConfig[] }) {
 		packages = {
@@ -59,22 +60,22 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 	}
 
 	const npmScriptsCmds = [
-		hasScript(packageData, 'bootstrap') ? 'npm run bootstrap' : undefined,
-		hasScript(packageData, 'build') ? 'npm run build' : undefined,
-		hasScript(packageData, 'watch') ? 'npm run watch' : undefined,
-		hasScript(packageData, 'test') ? 'npm run test' : undefined,
-		hasScript(packageData, 'lint') ? 'npm run lint' : undefined,
-		hasScript(packageData, 'clean') ? 'npm run clean' : undefined,
-		hasScript(packageData, 'flow') ? 'npm run flow' : undefined,
-		hasScript(packageData, 'compile') ? 'npm run compile' : undefined,
-		hasScript(packageData, 'format') ? 'npm run format' : undefined,
-		hasScript(packageData, 'prettier') ? 'npm run prettier' : undefined,
-		hasScript(packageData, 'coverage') ? 'npm run coverage' : undefined,
-		hasScript(packageData, 'prepare') ? 'npm run prepare' : undefined,
-		hasScript(packageData, 'validate') ? 'npm run validate' : undefined,
-		hasScript(packageData, 'deploy') ? 'npm run deploy' : undefined,
-		hasScript(packageData, 'docs') ? 'npm run docs' : undefined,
-		hasScript(packageData, 'build-storybook') ? 'npm run build-storybook' : undefined,
+		hasScript(packageData, 'bootstrap') ? `${command} bootstrap` : undefined,
+		hasScript(packageData, 'build') ? `${command} build` : undefined,
+		hasScript(packageData, 'watch') ? `${command} watch` : undefined,
+		hasScript(packageData, 'test') ? `${command} test` : undefined,
+		hasScript(packageData, 'lint') ? `${command} lint` : undefined,
+		hasScript(packageData, 'clean') ? `${command} clean` : undefined,
+		hasScript(packageData, 'flow') ? `${command} flow` : undefined,
+		hasScript(packageData, 'compile') ? `${command} compile` : undefined,
+		hasScript(packageData, 'format') ? `${command} format` : undefined,
+		hasScript(packageData, 'prettier') ? `${command} prettier` : undefined,
+		hasScript(packageData, 'coverage') ? `${command} coverage` : undefined,
+		hasScript(packageData, 'prepare') ? `${command} prepare` : undefined,
+		hasScript(packageData, 'validate') ? `${command} validate` : undefined,
+		hasScript(packageData, 'deploy') ? `${command} deploy` : undefined,
+		hasScript(packageData, 'docs') ? `${command} docs` : undefined,
+		hasScript(packageData, 'build-storybook') ? `${command} build-storybook` : undefined,
 	].filter((cmd) => cmd);
 
 	if (!lerna) {
@@ -91,7 +92,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 				lerna,
 				installProcess: {
 					title: 'run bootstrap',
-					cmd: 'npm run bootstrap',
+					cmd: `${command} bootstrap`,
 					cwd: '/',
 				},
 			},
@@ -103,7 +104,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		configs.push({
 			pluginName: 'PluginTerminal',
 			options: {
-				cmd: 'npm start',
+				cmd: `${command.replace(' run', '')} start`,
 				cwd: packagePath,
 				autostart: true,
 			},
@@ -115,7 +116,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		configs.push({
 			pluginName: 'PluginTerminal',
 			options: {
-				cmd: 'npm run storybook',
+				cmd: `${command} storybook`,
 				cwd: packagePath,
 			},
 		});
@@ -141,7 +142,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 			pluginName: 'PluginNpmScripts',
 			options: {
 				scripts: npmScriptsCmds.map((cmd) => ({
-					title: cmd ? cmd.replace(/^npm run /, '') : '',
+					title: cmd ? cmd.replace(/^npm run /, '').replace(/^yarn /, '') : '',
 					cmd,
 					cwd: packagePath,
 				})),
@@ -173,6 +174,8 @@ export async function init(cwd: string, options: IOptions) {
 	let packages = { '@dash4/server': true };
 	const packageData = await readPkg({ cwd, normalize: false });
 	const isLerna = await hasFile(cwd, 'lerna.json');
+	const usesYarn =
+		(await hasFile(path.join(cwd, 'yarn.lock'))) || (getScript(packageData, 'start') || '').includes('yarn');
 
 	const collection = await collectTab({
 		cwd,
@@ -214,7 +217,7 @@ export async function init(cwd: string, options: IOptions) {
 	}
 
 	// add npm scripts
-	spin.text('add dash4 npm script');
+	spin.text('add dash4 script');
 	packageData.scripts = packageData.scripts || {};
 	packageData.scripts.dash4 = 'dash4';
 	await writePkg(path.join(cwd, 'package.json'), packageData as JsonObject);
@@ -226,12 +229,17 @@ export async function init(cwd: string, options: IOptions) {
 	// install dependencies
 	spin.text('install dependencies');
 	try {
-		spin.text(`npm i -D ${Object.keys(packages).join(' ')}`);
-		await execa('npm', ['i', '-D', ...Object.keys(packages)]);
+		if (usesYarn) {
+			spin.text(`yarn add -D -W ${Object.keys(packages).join(' ')}`);
+			await execa('yarn', ['add', '-D', '-W', ...Object.keys(packages)]);
+		} else {
+			spin.text(`npm i -D ${Object.keys(packages).join(' ')}`);
+			await execa('npm', ['i', '-D', ...Object.keys(packages)]);
+		}
 	} catch (err) {
 		spin.fail(`${chalk.bold('Could not install dependencies:')}\n${err}`);
 		process.kill(1);
 	}
 
-	spin.succeed('your Dash4 dashboard is installed and ready. Run "npm run dash4"');
+	spin.succeed(`your Dash4 dashboard is installed and ready. Run "${usesYarn ? 'yarn' : 'npm run'} dash4"`);
 }
