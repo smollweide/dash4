@@ -181,10 +181,14 @@ describe('cli', () => {
 		// add empty dir
 		await makeDir(path.join(cwd, 'packages/empty'));
 		await cpy([`src/__mocks__/${testId}/_package.json`], `__tmp__/${testId}`, {
+			cwd: path.join(__dirname, '..'),
 			rename: () => `package.json`,
 		});
-		await cpy([`src/__mocks__/${testId}/README.md`], `__tmp__/${testId}`);
+		await cpy([`src/__mocks__/${testId}/README.md`], `__tmp__/${testId}`, {
+			cwd: path.join(__dirname, '..'),
+		});
 		await cpy([`src/__mocks__/${testId}/_lerna.json`], `__tmp__/${testId}`, {
+			cwd: path.join(__dirname, '..'),
 			rename: () => `lerna.json`,
 		});
 
@@ -217,10 +221,14 @@ describe('cli', () => {
 		// add empty dir
 		await makeDir(path.join(cwd, 'packages/empty'));
 		await cpy([`src/__mocks__/${testId}/_package.json`], `__tmp__/${testId}`, {
+			cwd: path.join(__dirname, '..'),
 			rename: () => `package.json`,
 		});
-		await cpy([`src/__mocks__/${testId}/README.md`], `__tmp__/${testId}`);
+		await cpy([`src/__mocks__/${testId}/README.md`], `__tmp__/${testId}`, {
+			cwd: path.join(__dirname, '..'),
+		});
 		await cpy([`src/__mocks__/${testId}/_lerna.json`], `__tmp__/${testId}`, {
+			cwd: path.join(__dirname, '..'),
 			rename: () => `lerna.json`,
 		});
 
