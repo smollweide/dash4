@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 import { ISendToServer } from '../shared-types';
 
-jest.mock('@dash4/plugin-npm-scripts/build/client/Components/Script', () => ({
+jest.mock('@dash4/plugin-npm-scripts/build/client/components/Script', () => ({
 	__esModule: true, // this property makes it work
 	// default: 'mockedDefaultExport',
 	NpmScript: () => <div />,

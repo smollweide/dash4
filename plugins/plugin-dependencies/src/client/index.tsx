@@ -1,6 +1,6 @@
 import { IWidgetConfig } from '@dash4/client/build';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
-import { NpmScript } from '@dash4/plugin-npm-scripts/build/client/Components/Script';
+import { NpmScript } from '@dash4/plugin-npm-scripts/build/client/components/Script';
 import { Icon, Window, WindowBody, WindowHeader } from '@dash4/ui';
 import React, { useEffect, useState } from 'react';
 import { Button, Form, OverlayTrigger, Popover, Row } from 'react-bootstrap';
