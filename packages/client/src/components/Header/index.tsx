@@ -1,68 +1,16 @@
 import { Icon } from '@dash4/ui';
-import React, { CSSProperties, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import React, { SyntheticEvent, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import withStyles, { WithStyles } from 'react-jss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from './dash4_512.png';
-
-const styles = {
-	header: {
-		position: 'relative',
-		background: '#fff',
-		borderBottom: '1px solid #eaeaea',
-	} as CSSProperties,
-	logo: {
-		position: 'absolute',
-		width: 45,
-		margin: '13px 15px',
-	} as CSSProperties,
-	menuWrap: {
-		position: 'relative',
-		marginLeft: 75,
-		marginRight: 15,
-		padding: '18px 0 18px 0',
-		textAlign: 'left',
-		'& .menu-item-wrapper': {
-			padding: '5px 0',
-		} as CSSProperties,
-	} as CSSProperties,
-	menu: {
-		position: 'relative',
-		padding: 0,
-	} as CSSProperties,
-	menuItem: {
-		listStyle: 'none',
-	} as CSSProperties,
-	menuLink: {
-		transition: 'color 0.5s, text-decoration 0.5s',
-		border: 0,
-		fontSize: 12,
-		padding: '4px 0',
-		margin: '6px 10px',
-		color: '#999',
-		textTransform: 'uppercase',
-		'&:hover': {
-			color: '#000',
-			textDecoration: 'none',
-		} as CSSProperties,
-	} as CSSProperties,
-	menuLinkActive: {
-		color: '#000',
-		textDecoration: 'none',
-		borderBottom: '1px solid #000',
-	} as CSSProperties,
-	arrow: {
-		marginTop: 3,
-		'&,&:hover,&:active,&:focus': {
-			color: 'var(--gray-dark)',
-		} as CSSProperties,
-	} as CSSProperties,
-};
+import { styles } from './styles';
 
 interface IProps extends WithStyles<typeof styles>, RouteComponentProps<{}> {
 	children?: React.ReactNode;
 	tabs: string[];
+	version?: string;
 }
 
 function getInitialSelected({ tabs, location }: IProps) {
@@ -82,16 +30,95 @@ function getInitialSelected({ tabs, location }: IProps) {
 const RawHeader = (props: IProps) => {
 	const { classes, location, tabs } = props;
 	const [selected, setSelected] = useState(getInitialSelected(props));
+	const [showInfoModal, setShowInfoModal] = useState(false);
 
 	function handleSelect(key: string) {
 		setSelected(key);
 	}
 
+	function handleHideInfoModal(event?: SyntheticEvent<HTMLElement>) {
+		if (event) {
+			event.preventDefault();
+		}
+		setShowInfoModal(false);
+	}
+	function handleShowInfoModal(event: SyntheticEvent<HTMLAnchorElement>) {
+		event.preventDefault();
+		setShowInfoModal(true);
+	}
+
 	return (
 		<header className={classes.header}>
-			<Link to={'/'}>
+			<a href="/" onClick={handleShowInfoModal}>
 				<img className={classes.logo} src={logo} alt="Dash4 Logo" />
-			</Link>
+			</a>
+			<Modal show={showInfoModal} onHide={handleHideInfoModal}>
+				<Modal.Header className={classes.infoModalHeader} closeButton />
+				<Modal.Body className={classes.infoModalBody}>
+					<img width="84" src={logo} alt="Dash4 Logo" />
+					<ul className={classes.infoModalList1}>
+						{props.version && (
+							<li>
+								<strong>version</strong> {props.version}
+							</li>
+						)}
+						<li>
+							<strong>github</strong>{' '}
+							<a
+								target="_blank"
+								rel="noreferrer noopener"
+								href="https://github.com/smollweide/dash4/blob/master/README.md#------"
+							>
+								dash4 on github
+							</a>
+						</li>
+						<li>
+							<strong>cli</strong>{' '}
+							<a
+								target="_blank"
+								rel="noreferrer noopener"
+								href="https://github.com/smollweide/dash4/blob/master/packages/cli/README.md#dash4-cli"
+							>
+								dash4 cli on github
+							</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<Button
+								as="a"
+								size="sm"
+								target="_blank"
+								variant="outline-primary"
+								href="https://github.com/smollweide/dash4#plugins"
+							>
+								add plugin
+							</Button>
+						</li>
+						<li>
+							<Button
+								as="a"
+								size="sm"
+								target="_blank"
+								variant="outline-secondary"
+								href="https://github.com/smollweide/dash4/issues/new"
+							>
+								report issue
+							</Button>
+						</li>
+					</ul>
+				</Modal.Body>
+				<Modal.Footer className={classes.infoModalFooter}>
+					Dash4 is{' '}
+					<a
+						target="_blank"
+						rel="noreferrer noopener"
+						href="https://github.com/smollweide/dash4/blob/master/LICENSE"
+					>
+						MIT licensed
+					</a>
+				</Modal.Footer>
+			</Modal>
 			<div className={classes.menuWrap}>
 				<ScrollMenu
 					alignOnResize

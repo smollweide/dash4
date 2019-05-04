@@ -1,7 +1,7 @@
 /* globals: global */
 import { IConfig as IClientConfig } from '@dash4/client/build/index';
-import { error, success } from '@dash4/log';
-import fs from 'fs';
+import { error, success, warn } from '@dash4/log';
+import fs from 'fs-extra';
 import { createServer } from 'http';
 import { contentType as getContentType } from 'mime-types';
 import path from 'path';
@@ -37,8 +37,16 @@ interface IScripts {
 	};
 }
 
-const getClientConfigFromConfig = (config: IConfig): IClientConfig => {
+const getClientConfigFromConfig = async (config: IConfig): Promise<IClientConfig> => {
+	let version = 'unknown';
+	try {
+		version = JSON.parse(await fs.readFile(path.join(__dirname, '..', 'package.json'), 'utf8')).version;
+	} catch (err) {
+		warn('server', `could not read version from @dash4/server package.json: ${err}`);
+	}
+
 	return {
+		version,
 		tabs: config.tabs.map((tab) => {
 			return {
 				title: tab.title,
@@ -161,7 +169,7 @@ export const start = ({ port, serverRequestListeners }: IOptions, config: IConfi
 
 		if (url === '/config.json') {
 			res.writeHead(200, { 'Content-Type': getContentType(path.extname('.json')) || '' });
-			res.end(JSON.stringify(getClientConfigFromConfig(config)));
+			res.end(JSON.stringify(await getClientConfigFromConfig(config)));
 			return;
 		}
 

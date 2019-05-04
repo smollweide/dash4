@@ -16,7 +16,10 @@ export function App() {
 			<>
 				{!isLoading && (
 					<>
-						<Header tabs={config ? config.tabs.map((tab) => tab.title) : []} />
+						<Header
+							version={config ? config.version : undefined}
+							tabs={config ? config.tabs.map((tab) => tab.title) : []}
+						/>
 						<Page>
 							{config &&
 								config.tabs.map((tab, index) => {

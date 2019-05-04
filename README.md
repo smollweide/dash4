@@ -45,7 +45,7 @@ npx @dash4/cli
 
 ### Start the dashboard
 
-run `npm dash4`
+run `npm run dash4` or `yarn dash4` if you are using yarn
 
 ## <a name="plugins">Plugins</a>
 

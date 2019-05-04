@@ -37,6 +37,7 @@ export interface IConfigTab {
 }
 
 export interface IConfig {
+	version: string;
 	tabs: IConfigTab[];
 }
 
