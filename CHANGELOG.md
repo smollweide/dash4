@@ -1,3 +1,19 @@
+## 0.4.0 (2019-05-04)
+
+* chore: update dependencies and optimize root test execution ([eb62e8d](https://github.com/smollweide/dash4/commit/eb62e8d))
+* feat(cli): support yarn ([69be3a1](https://github.com/smollweide/dash4/commit/69be3a1))
+* feat(cli): support yarn workspaces ([349542d](https://github.com/smollweide/dash4/commit/349542d))
+* feat(client): add info modal ([cc0bc09](https://github.com/smollweide/dash4/commit/cc0bc09))
+* feat(plugin-terminal): add options for title, subtitle and height ([649984a](https://github.com/smollweide/dash4/commit/649984a))
+* feat(server): open webapp after server was started ([c6358d4](https://github.com/smollweide/dash4/commit/c6358d4))
+* test(cli): fix broken tests while executed from root ([7f5fe0b](https://github.com/smollweide/dash4/commit/7f5fe0b))
+* docs: add keywords ([ea730cb](https://github.com/smollweide/dash4/commit/ea730cb))
+* docs: add screenshot and scurity hint ([149fb5a](https://github.com/smollweide/dash4/commit/149fb5a))
+
+
+
+
+
 ## 0.3.0 (2019-05-02)
 
 * fix: update dependencies ([4c728f2](https://github.com/smollweide/dash4/commit/4c728f2))
