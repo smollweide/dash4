@@ -4,6 +4,7 @@ import { error, success, warn } from '@dash4/log';
 import fs from 'fs-extra';
 import { createServer } from 'http';
 import { contentType as getContentType } from 'mime-types';
+import open from 'open';
 import path from 'path';
 import WebSocket from 'ws';
 import { IClientFile, IConfig, TClientFile, TServerRequest } from './index';
@@ -71,7 +72,7 @@ const hasExtname = (url: string) => {
 	return path.extname(url) !== '';
 };
 
-export const start = ({ port, serverRequestListeners }: IOptions, config: IConfig): Promise<ISocketAbstract> => {
+export const start = async ({ port, serverRequestListeners }: IOptions, config: IConfig): Promise<ISocketAbstract> => {
 	const pluginScripts: IScripts = {};
 	const pluginStyles: IScripts = {};
 	const pluginFiles: IScripts = {};
@@ -272,6 +273,9 @@ export const start = ({ port, serverRequestListeners }: IOptions, config: IConfi
 
 	server.listen(port);
 	success('server', `started on http://localhost:${port}`);
+	if (process.env && process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
+		await open(`http://localhost:${port}`);
+	}
 
 	return new Promise((resolve) => {
 		if (g.socket.isReady) {
