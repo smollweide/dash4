@@ -129,12 +129,6 @@ describe('cli', () => {
 		expect(await hasFile(mockDir, 'readme', `README.md`)).toBe(true);
 		await runSnapshotTest('readme', '@dash4/plugin-dependencies @dash4/plugin-readme');
 	});
-	test.skip('execute with "readme.md" file', async () => {
-		/* TODO fs.stat is not sensitive */
-		expect(await hasFile(mockDir, 'readme-low', `README.md`)).toBe(false);
-		expect(await hasFile(mockDir, 'readme-low', `readme.md`)).toBe(true);
-		await runSnapshotTest('readme-low', '@dash4/plugin-dependencies @dash4/plugin-readme');
-	});
 	test('execute with script "test"', async () => {
 		await runSnapshotTest(
 			'script-test',

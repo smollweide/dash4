@@ -133,10 +133,6 @@ async function getConfig() {
 				rows: [[new PluginReadme({ file: 'packages/readme/README.md' })]],
 			},
 			{
-				title: 'readme-low',
-				rows: [[new PluginReadme({ file: 'packages/readme-low/README.md' })]],
-			},
-			{
 				title: 'script-start',
 				rows: [[new PluginTerminal({ cmd: 'npm start', cwd: 'packages/script-start', autostart: true })]],
 			},
@@ -273,10 +269,6 @@ async function getConfig() {
 			{
 				title: 'readme',
 				rows: [[new PluginReadme({ file: 'packages/readme/README.md' })]],
-			},
-			{
-				title: 'readme-low',
-				rows: [[new PluginReadme({ file: 'packages/readme-low/README.md' })]],
 			},
 			{
 				title: 'script-start',
