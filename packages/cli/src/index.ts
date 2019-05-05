@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import execa from 'execa';
 import fs from 'fs-extra';
 import path from 'path';
-import readPkg, { PackageJson } from 'read-pkg';
+import readPkg from 'read-pkg';
 import { JsonObject } from 'type-fest';
 import writePkg from 'write-pkg';
 import { Config, TPluginName } from './Config/Config';
@@ -22,6 +22,7 @@ interface ICollect {
 	cwd: string;
 	packagePath?: string;
 	lerna?: string;
+	parentUsesYarn?: boolean;
 }
 
 async function asyncForEach<IITem = any>(
@@ -42,12 +43,14 @@ interface IConfig {
 	options?: any;
 }
 
-async function collectTab({ cwd, packagePath, lerna }: ICollect) {
+async function collectTab({ cwd, packagePath, lerna, parentUsesYarn }: ICollect) {
 	let packages: IPackages = {};
 	let configs: IConfig[] = [];
 	const packageData = await readPkg({ cwd, normalize: false });
 	const usesYarn =
-		(await hasFile(path.join(cwd, 'yarn.lock'))) || (getScript(packageData, 'start') || '').includes('yarn');
+		parentUsesYarn ||
+		(await hasFile(path.join(cwd, 'yarn.lock'))) ||
+		(getScript(packageData, 'start') || '').includes('yarn');
 
 	const command = usesYarn ? 'yarn' : 'npm run';
 
@@ -134,6 +137,7 @@ async function collectTab({ cwd, packagePath, lerna }: ICollect) {
 		await getTestConfig({
 			packagePath,
 			packageData,
+			usesYarn,
 		})
 	);
 
@@ -202,6 +206,7 @@ export async function init(cwd: string, options: IOptions) {
 					cwd: path.join(cwd, lernaPackage),
 					packagePath: lernaPackage,
 					lerna: path.join('lerna.json'),
+					parentUsesYarn: usesYarn,
 				});
 				packages = {
 					...packages,

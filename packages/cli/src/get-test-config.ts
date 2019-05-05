@@ -2,11 +2,12 @@ import { TPluginName } from './Config/Config';
 import { hasDependency, hasScript, IPackageJson } from './utils';
 
 interface IGetTestConfig {
+	usesYarn: boolean;
 	packagePath?: string;
 	packageData: IPackageJson;
 }
 
-export async function getTestConfig({ packagePath, packageData }: IGetTestConfig) {
+export async function getTestConfig({ usesYarn, packagePath, packageData }: IGetTestConfig) {
 	const packages: {
 		[key: string]: boolean;
 	} = {};
@@ -15,6 +16,7 @@ export async function getTestConfig({ packagePath, packageData }: IGetTestConfig
 		options?: any;
 	}> = [];
 
+	const command = usesYarn ? 'yarn' : 'npm run';
 	const hasTest = hasScript(packageData, 'test');
 	const hasWatchTest = hasScript(packageData, 'watch-test');
 	const hasJest = hasDependency(packageData, 'jest');
@@ -48,7 +50,7 @@ export async function getTestConfig({ packagePath, packageData }: IGetTestConfig
 
 	if (isCra) {
 		appendPluginTerminal({
-			cmd: 'npm run test',
+			cmd: `${command} test`,
 			cwd: packagePath,
 			allowedCommands: '<DASH4INNER>jestCommands</DASH4INNER>',
 		});
@@ -58,7 +60,7 @@ export async function getTestConfig({ packagePath, packageData }: IGetTestConfig
 
 	if (hasWatchTest && hasJest) {
 		appendPluginTerminal({
-			cmd: 'npm run watch-test',
+			cmd: `${command} watch-test`,
 			cwd: packagePath,
 			allowedCommands: '<DASH4INNER>jestCommands</DASH4INNER>',
 		});
@@ -68,7 +70,7 @@ export async function getTestConfig({ packagePath, packageData }: IGetTestConfig
 
 	if (hasWatchTest) {
 		appendPluginTerminal({
-			cmd: 'npm run watch-test',
+			cmd: `${command} watch-test`,
 			cwd: packagePath,
 		});
 		appendPluginCodeCoverage();

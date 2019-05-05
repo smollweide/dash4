@@ -6,5 +6,5 @@
 		"lint": "lerna run lint",
 		"start": "yarn ppp"
 	},
-	"workspaces": ["packages/*"]
+	"workspaces": ["packages/*", "configs/*"]
 }

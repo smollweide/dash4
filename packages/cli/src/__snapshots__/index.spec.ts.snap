@@ -89,50 +89,6 @@ async function getConfig() {
 				],
 			},
 			{
-				title: 'all-scripts',
-				rows: [
-					[
-						new PluginTerminal({ cmd: 'npm start', cwd: 'packages/all-scripts', autostart: true }),
-						new PluginTerminal({ cmd: 'npm run storybook', cwd: 'packages/all-scripts' }),
-					],
-					[
-						new PluginReadme({ file: 'packages/all-scripts/README.md' }),
-						new PluginTerminal({ cmd: 'npm run watch-test', cwd: 'packages/all-scripts' }),
-					],
-					[
-						new PluginCodeCoverage({ cwd: 'packages/all-scripts' }),
-						new PluginNpmScripts({
-							scripts: [
-								{ title: 'bootstrap', cmd: 'npm run bootstrap', cwd: 'packages/all-scripts' },
-								{ title: 'build', cmd: 'npm run build', cwd: 'packages/all-scripts' },
-								{ title: 'watch', cmd: 'npm run watch', cwd: 'packages/all-scripts' },
-								{ title: 'test', cmd: 'npm run test', cwd: 'packages/all-scripts' },
-								{ title: 'lint', cmd: 'npm run lint', cwd: 'packages/all-scripts' },
-								{ title: 'clean', cmd: 'npm run clean', cwd: 'packages/all-scripts' },
-								{ title: 'flow', cmd: 'npm run flow', cwd: 'packages/all-scripts' },
-								{ title: 'compile', cmd: 'npm run compile', cwd: 'packages/all-scripts' },
-								{ title: 'format', cmd: 'npm run format', cwd: 'packages/all-scripts' },
-								{ title: 'prettier', cmd: 'npm run prettier', cwd: 'packages/all-scripts' },
-								{ title: 'coverage', cmd: 'npm run coverage', cwd: 'packages/all-scripts' },
-								{ title: 'prepare', cmd: 'npm run prepare', cwd: 'packages/all-scripts' },
-								{ title: 'validate', cmd: 'npm run validate', cwd: 'packages/all-scripts' },
-								{ title: 'deploy', cmd: 'npm run deploy', cwd: 'packages/all-scripts' },
-								{ title: 'docs', cmd: 'npm run docs', cwd: 'packages/all-scripts' },
-								{
-									title: 'build-storybook',
-									cmd: 'npm run build-storybook',
-									cwd: 'packages/all-scripts',
-								},
-							],
-						}),
-					],
-				],
-			},
-			{
-				title: 'readme',
-				rows: [[new PluginReadme({ file: 'packages/readme/README.md' })]],
-			},
-			{
 				title: 'script-start',
 				rows: [[new PluginTerminal({ cmd: 'npm start', cwd: 'packages/script-start', autostart: true })]],
 			},
@@ -161,17 +117,48 @@ async function getConfig() {
 				],
 			},
 			{
-				title: 'script-watch-test-jest',
+				title: 'all-scripts',
 				rows: [
 					[
-						new PluginTerminal({
-							cmd: 'npm run watch-test',
-							cwd: 'packages/script-watch-test-jest',
-							allowedCommands: jestCommands,
+						new PluginTerminal({ cmd: 'npm start', cwd: 'configs/all-scripts', autostart: true }),
+						new PluginTerminal({ cmd: 'npm run storybook', cwd: 'configs/all-scripts' }),
+					],
+					[
+						new PluginReadme({ file: 'configs/all-scripts/README.md' }),
+						new PluginTerminal({ cmd: 'npm run watch-test', cwd: 'configs/all-scripts' }),
+					],
+					[
+						new PluginCodeCoverage({ cwd: 'configs/all-scripts' }),
+						new PluginNpmScripts({
+							scripts: [
+								{ title: 'bootstrap', cmd: 'npm run bootstrap', cwd: 'configs/all-scripts' },
+								{ title: 'build', cmd: 'npm run build', cwd: 'configs/all-scripts' },
+								{ title: 'watch', cmd: 'npm run watch', cwd: 'configs/all-scripts' },
+								{ title: 'test', cmd: 'npm run test', cwd: 'configs/all-scripts' },
+								{ title: 'lint', cmd: 'npm run lint', cwd: 'configs/all-scripts' },
+								{ title: 'clean', cmd: 'npm run clean', cwd: 'configs/all-scripts' },
+								{ title: 'flow', cmd: 'npm run flow', cwd: 'configs/all-scripts' },
+								{ title: 'compile', cmd: 'npm run compile', cwd: 'configs/all-scripts' },
+								{ title: 'format', cmd: 'npm run format', cwd: 'configs/all-scripts' },
+								{ title: 'prettier', cmd: 'npm run prettier', cwd: 'configs/all-scripts' },
+								{ title: 'coverage', cmd: 'npm run coverage', cwd: 'configs/all-scripts' },
+								{ title: 'prepare', cmd: 'npm run prepare', cwd: 'configs/all-scripts' },
+								{ title: 'validate', cmd: 'npm run validate', cwd: 'configs/all-scripts' },
+								{ title: 'deploy', cmd: 'npm run deploy', cwd: 'configs/all-scripts' },
+								{ title: 'docs', cmd: 'npm run docs', cwd: 'configs/all-scripts' },
+								{
+									title: 'build-storybook',
+									cmd: 'npm run build-storybook',
+									cwd: 'configs/all-scripts',
+								},
+							],
 						}),
-						new PluginCodeCoverage({ cwd: 'packages/script-watch-test-jest' }),
 					],
 				],
+			},
+			{
+				title: 'readme',
+				rows: [[new PluginReadme({ file: 'configs/readme/README.md' })]],
 			},
 		],
 	};
@@ -227,56 +214,12 @@ async function getConfig() {
 				],
 			},
 			{
-				title: 'all-scripts',
-				rows: [
-					[
-						new PluginTerminal({ cmd: 'npm start', cwd: 'packages/all-scripts', autostart: true }),
-						new PluginTerminal({ cmd: 'npm run storybook', cwd: 'packages/all-scripts' }),
-					],
-					[
-						new PluginReadme({ file: 'packages/all-scripts/README.md' }),
-						new PluginTerminal({ cmd: 'npm run watch-test', cwd: 'packages/all-scripts' }),
-					],
-					[
-						new PluginCodeCoverage({ cwd: 'packages/all-scripts' }),
-						new PluginNpmScripts({
-							scripts: [
-								{ title: 'bootstrap', cmd: 'npm run bootstrap', cwd: 'packages/all-scripts' },
-								{ title: 'build', cmd: 'npm run build', cwd: 'packages/all-scripts' },
-								{ title: 'watch', cmd: 'npm run watch', cwd: 'packages/all-scripts' },
-								{ title: 'test', cmd: 'npm run test', cwd: 'packages/all-scripts' },
-								{ title: 'lint', cmd: 'npm run lint', cwd: 'packages/all-scripts' },
-								{ title: 'clean', cmd: 'npm run clean', cwd: 'packages/all-scripts' },
-								{ title: 'flow', cmd: 'npm run flow', cwd: 'packages/all-scripts' },
-								{ title: 'compile', cmd: 'npm run compile', cwd: 'packages/all-scripts' },
-								{ title: 'format', cmd: 'npm run format', cwd: 'packages/all-scripts' },
-								{ title: 'prettier', cmd: 'npm run prettier', cwd: 'packages/all-scripts' },
-								{ title: 'coverage', cmd: 'npm run coverage', cwd: 'packages/all-scripts' },
-								{ title: 'prepare', cmd: 'npm run prepare', cwd: 'packages/all-scripts' },
-								{ title: 'validate', cmd: 'npm run validate', cwd: 'packages/all-scripts' },
-								{ title: 'deploy', cmd: 'npm run deploy', cwd: 'packages/all-scripts' },
-								{ title: 'docs', cmd: 'npm run docs', cwd: 'packages/all-scripts' },
-								{
-									title: 'build-storybook',
-									cmd: 'npm run build-storybook',
-									cwd: 'packages/all-scripts',
-								},
-							],
-						}),
-					],
-				],
-			},
-			{
-				title: 'readme',
-				rows: [[new PluginReadme({ file: 'packages/readme/README.md' })]],
-			},
-			{
 				title: 'script-start',
-				rows: [[new PluginTerminal({ cmd: 'npm start', cwd: 'packages/script-start', autostart: true })]],
+				rows: [[new PluginTerminal({ cmd: 'yarn start', cwd: 'packages/script-start', autostart: true })]],
 			},
 			{
 				title: 'script-storybook',
-				rows: [[new PluginTerminal({ cmd: 'npm run storybook', cwd: 'packages/script-storybook' })]],
+				rows: [[new PluginTerminal({ cmd: 'yarn storybook', cwd: 'packages/script-storybook' })]],
 			},
 			{
 				title: 'script-test',
@@ -284,7 +227,7 @@ async function getConfig() {
 					[
 						new PluginCodeCoverage({ cwd: 'packages/script-test' }),
 						new PluginNpmScripts({
-							scripts: [{ title: 'test', cmd: 'npm run test', cwd: 'packages/script-test' }],
+							scripts: [{ title: 'test', cmd: 'yarn test', cwd: 'packages/script-test' }],
 						}),
 					],
 				],
@@ -293,23 +236,50 @@ async function getConfig() {
 				title: 'script-watch-test',
 				rows: [
 					[
-						new PluginTerminal({ cmd: 'npm run watch-test', cwd: 'packages/script-watch-test' }),
+						new PluginTerminal({ cmd: 'yarn watch-test', cwd: 'packages/script-watch-test' }),
 						new PluginCodeCoverage({ cwd: 'packages/script-watch-test' }),
 					],
 				],
 			},
 			{
-				title: 'script-watch-test-jest',
+				title: 'all-scripts',
 				rows: [
 					[
-						new PluginTerminal({
-							cmd: 'npm run watch-test',
-							cwd: 'packages/script-watch-test-jest',
-							allowedCommands: jestCommands,
+						new PluginTerminal({ cmd: 'yarn start', cwd: 'configs/all-scripts', autostart: true }),
+						new PluginTerminal({ cmd: 'yarn storybook', cwd: 'configs/all-scripts' }),
+					],
+					[
+						new PluginReadme({ file: 'configs/all-scripts/README.md' }),
+						new PluginTerminal({ cmd: 'yarn watch-test', cwd: 'configs/all-scripts' }),
+					],
+					[
+						new PluginCodeCoverage({ cwd: 'configs/all-scripts' }),
+						new PluginNpmScripts({
+							scripts: [
+								{ title: 'bootstrap', cmd: 'yarn bootstrap', cwd: 'configs/all-scripts' },
+								{ title: 'build', cmd: 'yarn build', cwd: 'configs/all-scripts' },
+								{ title: 'watch', cmd: 'yarn watch', cwd: 'configs/all-scripts' },
+								{ title: 'test', cmd: 'yarn test', cwd: 'configs/all-scripts' },
+								{ title: 'lint', cmd: 'yarn lint', cwd: 'configs/all-scripts' },
+								{ title: 'clean', cmd: 'yarn clean', cwd: 'configs/all-scripts' },
+								{ title: 'flow', cmd: 'yarn flow', cwd: 'configs/all-scripts' },
+								{ title: 'compile', cmd: 'yarn compile', cwd: 'configs/all-scripts' },
+								{ title: 'format', cmd: 'yarn format', cwd: 'configs/all-scripts' },
+								{ title: 'prettier', cmd: 'yarn prettier', cwd: 'configs/all-scripts' },
+								{ title: 'coverage', cmd: 'yarn coverage', cwd: 'configs/all-scripts' },
+								{ title: 'prepare', cmd: 'yarn prepare', cwd: 'configs/all-scripts' },
+								{ title: 'validate', cmd: 'yarn validate', cwd: 'configs/all-scripts' },
+								{ title: 'deploy', cmd: 'yarn deploy', cwd: 'configs/all-scripts' },
+								{ title: 'docs', cmd: 'yarn docs', cwd: 'configs/all-scripts' },
+								{ title: 'build-storybook', cmd: 'yarn build-storybook', cwd: 'configs/all-scripts' },
+							],
 						}),
-						new PluginCodeCoverage({ cwd: 'packages/script-watch-test-jest' }),
 					],
 				],
+			},
+			{
+				title: 'readme',
+				rows: [[new PluginReadme({ file: 'configs/readme/README.md' })]],
 			},
 		],
 	};

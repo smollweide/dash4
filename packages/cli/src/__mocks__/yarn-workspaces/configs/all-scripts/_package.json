@@ -1,0 +1,23 @@
+{
+	"scripts": {
+		"start": "dash4",
+		"bootstrap": "lerna bootstrap",
+		"build": "tsc",
+		"watch": "tsc --watch",
+		"test": "jest",
+		"watch-test": "jest --watch",
+		"lint": "eslint .",
+		"clean": "lerna clean --yes",
+		"flow": "flow",
+		"compile": "compile",
+		"format": "prettier",
+		"docs": "docs",
+		"prettier": "prettier",
+		"coverage": "jest --coverage",
+		"prepare": "npm-run-all build test lint",
+		"validate": "npm-run-all test lint",
+		"deploy": "now",
+		"storybook": "storybook",
+		"build-storybook": "build-storybook"
+	}
+}

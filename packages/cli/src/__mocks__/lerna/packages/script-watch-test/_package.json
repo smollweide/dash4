@@ -1,0 +1,5 @@
+{
+	"scripts": {
+		"watch-test": "jest --watch"
+	}
+}

@@ -40,8 +40,7 @@ const tempDir = path.join(__dirname, '../__tmp__');
 const getTempFile = async (testId: string, fileName: string) =>
 	await fs.readFile(path.join(tempDir, testId, fileName), 'utf8');
 const mockDir = path.join(__dirname, '../src/__mocks__');
-const getMockFile = async (testId: string, fileName: string) =>
-	await fs.readFile(path.join(mockDir, testId, fileName), 'utf8');
+
 const processKill = process.kill;
 // tslint:disable-next-line
 const consoleLog = console.log;
@@ -80,6 +79,7 @@ describe('cli', () => {
 	});
 
 	beforeAll(async () => {
+		await del(tempDir);
 		// create needed directories and files
 		await makeDir(tempDir);
 	});
@@ -88,7 +88,7 @@ describe('cli', () => {
 		// tslint:disable-next-line
 		console.log = consoleLog;
 		process.kill = processKill;
-		await del(tempDir);
+		// await del(tempDir);
 	});
 
 	test('is function', async () => {
@@ -164,8 +164,7 @@ describe('cli', () => {
 	});
 
 	const ignorePackages = ['!lerna/_package.json', '!script-cra/_package.json', '!yarn-workspaces/_package.json'];
-	const ignoreReadme1 = ['!lerna/readme.md', '!script-cra/readme.md', '!yarn-workspaces/readme.md'];
-	const ignoreReadme2 = ['!lerna/README.md', '!script-cra/README.md', '!yarn-workspaces/README.md'];
+	const ignoreReadme = ['!lerna/README.md', '!script-cra/README.md', '!yarn-workspaces/README.md'];
 
 	test('execute in lerna repo', async () => {
 		const testId = 'lerna';
@@ -186,18 +185,30 @@ describe('cli', () => {
 			rename: () => `lerna.json`,
 		});
 
-		// create packages
-		const options = {
-			cwd: path.join(__dirname, '../src/__mocks__'),
+		// create configs directory
+		await makeDir(path.join(cwd, 'configs'));
+		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/configs/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
 			parents: true,
-		};
-		const dest = `../../__tmp__/${testId}/packages`;
-		await cpy([`**/_package.json`, ...ignorePackages], dest, {
-			...options,
 			rename: () => `package.json`,
 		});
-		await cpy([`**/readme.md`, ...ignoreReadme1], dest, options);
-		await cpy([`**/README.md`, ...ignoreReadme2], dest, options);
+		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
+			parents: true,
+		});
+
+		// create packages directory
+		await makeDir(path.join(cwd, 'packages'));
+		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/packages/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+			parents: true,
+			rename: () => `package.json`,
+		});
+		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+			parents: true,
+		});
+
 		await init(cwd, getOptions(cwd));
 		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
@@ -226,18 +237,30 @@ describe('cli', () => {
 			rename: () => `lerna.json`,
 		});
 
-		// create packages
-		const options = {
-			cwd: path.join(__dirname, '../src/__mocks__'),
+		// create configs directory
+		await makeDir(path.join(cwd, 'configs'));
+		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/configs/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
 			parents: true,
-		};
-		const dest = `../../__tmp__/${testId}/packages`;
-		await cpy([`**/_package.json`, ...ignorePackages], dest, {
-			...options,
 			rename: () => `package.json`,
 		});
-		await cpy([`**/readme.md`, ...ignoreReadme1], dest, options);
-		await cpy([`**/README.md`, ...ignoreReadme2], dest, options);
+		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
+			parents: true,
+		});
+
+		// create packages directory
+		await makeDir(path.join(cwd, 'packages'));
+		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/packages/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+			parents: true,
+			rename: () => `package.json`,
+		});
+		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
+			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+			parents: true,
+		});
+
 		await init(cwd, getOptions(cwd));
 		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
