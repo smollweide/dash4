@@ -2,11 +2,16 @@ module.exports = {
 	preset: 'ts-jest',
 	coverageDirectory: 'coverage-server',
 	testEnvironment: 'node',
-	testPathIgnorePatterns: ['/node_modules/', '/src/client/', 'build', 'dist'],
+	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/src/client/', '<rootDir>/build', '<rootDir>/dist'],
 	globals: {
 		'ts-jest': {
 			tsConfig: 'tsconfig.server.json',
 		},
 	},
-	collectCoverageFrom: ['src/server/**/*.{ts,tsx}', '!**/node_modules/**', '!**/dist/**', '!**/build/**'],
+	collectCoverageFrom: [
+		'src/server/**/*.{ts,tsx}',
+		'!<rootDir>/node_modules/**',
+		'!<rootDir>/dist/**',
+		'!<rootDir>/build/**',
+	],
 };

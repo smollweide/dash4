@@ -1,5 +1,5 @@
 const config = require('@dash4/config/jest.server.config');
 
-config.collectCoverageFrom = ['src/**/*.{ts,tsx}', '!**/node_modules/**', '!**/build/**'];
+config.collectCoverageFrom = ['<rootDir>/src/**/*.{ts,tsx}', '!<rootDir>/node_modules/**', '!<rootDir>/build/**'];
 
 module.exports = config;

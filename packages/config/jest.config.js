@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
 	preset: 'ts-jest',
 	testEnvironment: 'jsdom',
-	testPathIgnorePatterns: ['/node_modules/', '/src/server/', 'build', 'dist'],
+	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/src/server/', '<rootDir>/build', '<rootDir>/dist'],
 	setupFilesAfterEnv: [path.join(__dirname, 'rtl.setup.js')],
 	transform: {
 		'^.+\\.(t|j)sx?$': 'ts-jest',
@@ -14,5 +14,10 @@ module.exports = {
 			tsConfig: 'tsconfig.test.json',
 		},
 	},
-	collectCoverageFrom: ['src/client/**/*.{ts,tsx}', '!**/node_modules/**', '!**/dist/**', '!**/build/**'],
+	collectCoverageFrom: [
+		'<rootDir>/src/client/**/*.{ts,tsx}',
+		'!<rootDir>/node_modules/**',
+		'!<rootDir>/dist/**',
+		'!<rootDir>/build/**',
+	],
 };

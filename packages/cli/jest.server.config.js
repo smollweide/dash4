@@ -1,12 +1,12 @@
 const config = require('@dash4/config/jest.server.config');
 
 config.collectCoverageFrom = [
-	'src/**/*.{ts,tsx}',
-	'!src/run.ts',
-	'!src/get-program.ts',
-	'!**/node_modules/**',
-	'!**/dist/**',
-	'!**/build/**',
+	'<rootDir>/src/**/*.{ts,tsx}',
+	'!<rootDir>/src/run.ts',
+	'!<rootDir>/src/get-program.ts',
+	'!<rootDir>/node_modules/**',
+	'!<rootDir>/dist/**',
+	'!<rootDir>/build/**',
 ];
 
 module.exports = config;
