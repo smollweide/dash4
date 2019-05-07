@@ -40,6 +40,7 @@ const tempDir = path.join(__dirname, '../__tmp__');
 const getTempFile = async (testId: string, fileName: string) =>
 	await fs.readFile(path.join(tempDir, testId, fileName), 'utf8');
 const mockDir = path.join(__dirname, '../src/__mocks__');
+const isCI = ((process.env || {}).NODE_ENV || '').toLowerCase() === 'ci';
 
 const processKill = process.kill;
 // tslint:disable-next-line
@@ -163,10 +164,7 @@ describe('cli', () => {
 		);
 	});
 
-	const ignorePackages = ['!lerna/_package.json', '!script-cra/_package.json', '!yarn-workspaces/_package.json'];
-	const ignoreReadme = ['!lerna/README.md', '!script-cra/README.md', '!yarn-workspaces/README.md'];
-
-	test('execute in lerna repo', async () => {
+	(isCI ? test.skip : test)('execute in lerna repo', async () => {
 		const testId = 'lerna';
 		const cwd = path.join(tempDir, testId);
 		await makeDir(cwd);
@@ -218,7 +216,8 @@ describe('cli', () => {
 			)
 		);
 	});
-	test('execute in yarn workspaces repo', async () => {
+
+	(isCI ? test.skip : test)('execute in yarn workspaces repo', async () => {
 		const testId = 'yarn-workspaces';
 		const cwd = path.join(tempDir, testId);
 		await makeDir(cwd);

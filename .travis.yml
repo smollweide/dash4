@@ -1,13 +1,25 @@
 language: node_js
+
+os:
+  - osx
+  - windows
+
 cache:
   directories:
     - ~/.npm
+
 notifications:
   email: true
+
 node_js:
   - '10'
+
+env:
+  - NODE_ENV=CI
+
 before_script:
   - npm prune
+
 script:
   - npm run bootstrap
   - npm run build
