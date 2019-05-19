@@ -58,6 +58,7 @@ run `npm run dash4` or `yarn dash4` if you are using yarn
 | [PluginReadme](https://github.com/smollweide/dash4/blob/master/plugins/plugin-readme/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-readme.svg)](https://www.npmjs.com/package/@dash4/plugin-readme) |
 | [PluginCodeCoverage](https://github.com/smollweide/dash4/blob/master/plugins/plugin-code-coverage/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-code-coverage.svg)](https://www.npmjs.com/package/@dash4/plugin-code-coverage) |
 | [PluginDependencies](https://github.com/smollweide/dash4/blob/master/plugins/plugin-dependencies/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-dependencies.svg)](https://www.npmjs.com/package/@dash4/plugin-dependencies) |
+| [PluginActions](https://github.com/smollweide/dash4/blob/master/plugins/plugin-actions/README.md) | [![NPM version](https://badge.fury.io/js/%40dash4%2Fplugin-actions.svg)](https://www.npmjs.com/package/@dash4/plugin-actions) |
 
 ### Community plugins
 
@@ -67,7 +68,6 @@ run `npm run dash4` or `yarn dash4` if you are using yarn
 
 | Name          |        |
 | ------------- |-------------|
-| PluginAction | ⌛Coming soon |
 | PluginBundleSize | ⌛Coming soon |
 | PluginEmbed | ⌛Coming soon |
 | PluginTodos | ⌛Coming soon |

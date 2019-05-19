@@ -29,6 +29,7 @@
     "build-plugins:p3": "lerna run build --scope @dash4/plugin-code-coverage",
     "build-plugins:p4": "lerna run build --scope @dash4/plugin-readme",
     "build-plugins:p5": "lerna run build --scope @dash4/plugin-dependencies",
+    "build-plugins:p6": "lerna run build --scope @dash4/plugin-actions",
     "clean": "npx npm-run-all clean:lerna clean:installed clean:build",
     "clean-install": "npm-run-all clean bootstrap build test start",
     "clean:build": "npx rimraf packages/*/build plugins/*/build packages/*/dist plugins/*/dist packages/react-xterm/lib **/coverage **/coverage-server",
