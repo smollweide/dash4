@@ -1,3 +1,23 @@
+## 0.5.0 (2019-06-08)
+
+* chore: update dependencies ([350a0d6](https://github.com/smollweide/dash4/commit/350a0d6))
+* chore: update dependencies ([7749bdc](https://github.com/smollweide/dash4/commit/7749bdc))
+* fix: replace overrides of connect ([01c3068](https://github.com/smollweide/dash4/commit/01c3068))
+* fix: use correct webpack configuration for externals in umd ([47cdc3f](https://github.com/smollweide/dash4/commit/47cdc3f))
+* fix(cli): use yarn command also in watch-test scripts ([6cb7237](https://github.com/smollweide/dash4/commit/6cb7237))
+* fix(plugin-dependencies): fix wrong path name ([c9dd0d8](https://github.com/smollweide/dash4/commit/c9dd0d8))
+* feat(client): optimize header and tabs ([5615fc4](https://github.com/smollweide/dash4/commit/5615fc4))
+* feat(plugin-actions): add plugin actions ([7f43cf9](https://github.com/smollweide/dash4/commit/7f43cf9))
+* test(cli): remove unused readme-low test ([cb02abc](https://github.com/smollweide/dash4/commit/cb02abc))
+* test(cli): run tests on osx and windows ([cdd7b36](https://github.com/smollweide/dash4/commit/cdd7b36))
+* build: add lerna bootstrap to travis config ([6fb36e4](https://github.com/smollweide/dash4/commit/6fb36e4))
+* build: add travis config ([200071f](https://github.com/smollweide/dash4/commit/200071f))
+* build: fix travis issue regarding no tests found because of build directory ([52dcb45](https://github.com/smollweide/dash4/commit/52dcb45))
+
+
+
+
+
 ## 0.4.0 (2019-05-04)
 
 * chore: update dependencies and optimize root test execution ([eb62e8d](https://github.com/smollweide/dash4/commit/eb62e8d))
