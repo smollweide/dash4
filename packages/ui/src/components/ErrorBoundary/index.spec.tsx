@@ -1,6 +1,6 @@
 /// <reference types="@types/jest" />
+import { render } from '@testing-library/react';
 import React, { useState } from 'react';
-import { render } from 'react-testing-library';
 import { ErrorBoundary } from './index';
 
 function BuggyCounter({ initialCounter = 0 }: { initialCounter: any }) {

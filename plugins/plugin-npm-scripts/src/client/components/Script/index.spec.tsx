@@ -30,8 +30,8 @@ jest.mock('@dash4/react-xterm', () => ({
 // 	return jest.doMock('./services', () => mockedFunctions);
 // };
 
+import { fireEvent, render, waitForElement } from '@testing-library/react';
 import React from 'react';
-import { fireEvent, render, waitForElement } from 'react-testing-library';
 import { NpmScript, wait } from '.';
 
 describe('PluginNpmScripts', () => {

@@ -1,7 +1,7 @@
 /// <reference types="@types/jest" />
+import { render } from '@testing-library/react';
 import React from 'react';
 import 'react-dom';
-import { render } from 'react-testing-library';
 import CoverageChart from './index';
 
 describe('CoverageChart', () => {

@@ -62,10 +62,6 @@ describe('PluginDependencies', () => {
 		expect(Array.isArray(inst.clientFiles)).toBe(true);
 		expect(inst.clientFiles[0].includes('/plugin-dependencies/main.js')).toBe(true);
 	});
-	test('instance connected before connect', async () => {
-		const inst = new PluginDependencies();
-		await inst.connected();
-	});
 	test('fetchLernaPackages', async () => {
 		const inst = new PluginDependencies({
 			lerna: '../../lerna.json',

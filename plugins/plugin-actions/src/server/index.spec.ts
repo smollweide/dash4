@@ -35,7 +35,6 @@ describe('PluginActions', () => {
 		expect(inst.clientFiles[0].includes('plugins/plugin-actions/dist/plugins/plugin-actions/main.js')).toBe(true);
 		// make sure connet is overritten
 		expect(typeof inst.connect).toBe('function');
-		expect(inst.connect()).toBe(undefined);
 	});
 	test('create instance without options', async () => {
 		const inst = new PluginActions();

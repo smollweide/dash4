@@ -1,5 +1,5 @@
 const AssetConfigWebpackPlugin = require('asset-config-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScssConfigWebpackPlugin = require('scss-config-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
@@ -18,7 +18,9 @@ module.exports = (componentName) => {
 			new HtmlWebpackPlugin({
 				title: componentName,
 				template: 'demo/index.html',
-				meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+				meta: {
+					viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+				},
 			}),
 			// SCSS Configuration for .css .module.css and .scss .module.scss files
 			// see https://github.com/namics/webpack-config-plugins/tree/master/packages/scss-config-webpack-plugin/config

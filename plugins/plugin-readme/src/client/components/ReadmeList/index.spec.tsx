@@ -11,8 +11,8 @@ jest.mock('../../hooks', () => ({
 	useFullscreen: useFullScreenMock,
 }));
 
+import { render } from '@testing-library/react';
 import React from 'react';
-import { render } from 'react-testing-library';
 import { getMatchingQuery, Readme, ReadmeList } from '.';
 
 describe('PluginReadmeList', () => {

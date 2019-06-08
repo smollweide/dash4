@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const AssetConfigWebpackPlugin = require('asset-config-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
@@ -26,7 +26,9 @@ module.exports = (_some, { mode }) => {
 			new HtmlWebpackPlugin({
 				title: 'Dash4',
 				template: 'src/index.html',
-				meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+				meta: {
+					viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+				},
 			}),
 			new FaviconsWebpackPlugin('./src/favicon.png'),
 			new ScssConfigWebpackPlugin(),

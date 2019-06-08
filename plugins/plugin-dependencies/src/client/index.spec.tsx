@@ -1,6 +1,6 @@
 /// <reference types="@types/jest" />
+import { render } from '@testing-library/react';
 import React from 'react';
-import { fireEvent, render } from 'react-testing-library';
 import { ISendToServer } from '../shared-types';
 
 jest.mock('@dash4/plugin-npm-scripts/build/client/components/Script', () => ({

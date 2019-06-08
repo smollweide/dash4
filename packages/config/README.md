@@ -20,7 +20,7 @@ The following documentation is just relevant for dash4 plugin development. For i
 * [License](#license)
 
 ## <a name="installation">Installation</a>
-`npm i -D @dash4/server @dash4/config cross-env nodemon rimraf typescript webpack @types/jest jest ts-jest react-testing-library`
+`npm i -D @dash4/server @dash4/config cross-env nodemon rimraf typescript webpack @types/jest jest ts-jest @testing-library/react`
 
 ## <a name="usage">Usage</a>
 

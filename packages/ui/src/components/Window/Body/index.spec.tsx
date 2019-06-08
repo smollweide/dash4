@@ -1,6 +1,6 @@
 /// <reference types="@types/jest" />
+import { render } from '@testing-library/react';
 import React from 'react';
-import { render } from 'react-testing-library';
 import { WindowBody } from './index';
 
 describe('WindowBody', () => {
