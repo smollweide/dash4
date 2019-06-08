@@ -169,6 +169,45 @@
 					}
 				]
 			]
+		},
+		{
+			"title": "plugin-a-5",
+			"rows": [
+				[
+					{
+						"id": "17",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		},
+		{
+			"title": "plugin-a-6",
+			"rows": [
+				[
+					{
+						"id": "17",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
+		},
+		{
+			"title": "plugin-a-7",
+			"rows": [
+				[
+					{
+						"id": "17",
+						"cmd": "node bin/example-01",
+						"name": "PluginTerminal",
+						"lowerCaseName": "plugin-terminal"
+					}
+				]
+			]
 		}
 	]
 }

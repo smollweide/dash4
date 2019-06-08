@@ -1,13 +1,11 @@
-import { Icon } from '@dash4/ui';
 import React, { SyntheticEvent, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import ScrollMenu from 'react-horizontal-scrolling-menu';
 import withStyles, { WithStyles } from 'react-jss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from './dash4_512.png';
 import { styles } from './styles';
 
-interface IProps extends WithStyles<typeof styles>, RouteComponentProps<{}> {
+export interface IProps extends WithStyles<typeof styles>, RouteComponentProps<{}> {
 	children?: React.ReactNode;
 	tabs: string[];
 	version?: string;
@@ -28,13 +26,9 @@ function getInitialSelected({ tabs, location }: IProps) {
 }
 
 const RawHeader = (props: IProps) => {
-	const { classes, location, tabs } = props;
+	const { classes, location, tabs, history } = props;
 	const [selected, setSelected] = useState(getInitialSelected(props));
 	const [showInfoModal, setShowInfoModal] = useState(false);
-
-	function handleSelect(key: string) {
-		setSelected(key);
-	}
 
 	function handleHideInfoModal(event?: SyntheticEvent<HTMLElement>) {
 		if (event) {
@@ -119,38 +113,54 @@ const RawHeader = (props: IProps) => {
 					</a>
 				</Modal.Footer>
 			</Modal>
-			<div className={classes.menuWrap}>
-				<ScrollMenu
-					alignOnResize
-					arrowLeft={
-						<Button className={classes.arrow} variant="link" size="sm">
-							<Icon name="keyboard_arrow_left" size="m" />
-						</Button>
+			<ul className={classes.menu}>
+				{tabs.map((tab, index) => {
+					const classNames = [classes.menuLink];
+					let isActive = false;
+					if (
+						location.pathname === `/${tab}` ||
+						location.pathname.indexOf(`/${tab}/`) === 0 ||
+						(location.pathname === '/' && index === 0)
+					) {
+						isActive = true;
+						classNames.push(classes.menuLinkActive);
 					}
-					arrowRight={
-						<Button className={classes.arrow} variant="link" size="sm">
-							<Icon name="keyboard_arrow_right" size="m" />
-						</Button>
-					}
-					scrollToSelected
-					selected={selected}
-					data={tabs.map((tab, index) => {
-						const classNames = [classes.menuLink];
-						if (
-							location.pathname === `/${tab}` ||
-							location.pathname.indexOf(`/${tab}/`) === 0 ||
-							(location.pathname === '/' && index === 0)
-						) {
-							classNames.push(classes.menuLinkActive);
-						}
-						return (
-							<Link key={tab} className={classNames.join(' ')} to={index === 0 ? '/' : `/${tab}`}>
+					return (
+						<li style={{ width: `${100 / tabs.length}%` }} className={classes.menuLi} key={tab}>
+							{isActive && (
+								<>
+									<span className={classes.menuLiLeft} />
+									<span className={classes.menuLiCenter} />
+									<span className={classes.menuLiRight} />
+								</>
+							)}
+							<Link title={tab} className={classNames.join(' ')} to={index === 0 ? '/' : `/${tab}`}>
 								{tab}
 							</Link>
+						</li>
+					);
+				})}
+			</ul>
+			<div className={classes.menuMobile}>
+				<div className={classes.menuMobileTitle}>{selected}</div>
+				<div className={classes.menuBurger} />
+				<select
+					value={selected}
+					onChange={(event) => {
+						const value = event.currentTarget.value;
+						setSelected(value);
+						history.push(value === tabs[0] ? '/' : `/${value}`);
+					}}
+					className={classes.menuSelect}
+				>
+					{tabs.map((tab) => {
+						return (
+							<option value={tab} key={tab}>
+								{tab}
+							</option>
 						);
 					})}
-					onSelect={handleSelect}
-				/>
+				</select>
 			</div>
 		</header>
 	);
