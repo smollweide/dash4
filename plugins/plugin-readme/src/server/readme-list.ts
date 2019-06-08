@@ -56,5 +56,7 @@ export class PluginReadmeList extends Dash4Plugin implements IDash4Plugin<IReadm
 		return [path.join(__dirname, '../../dist/plugins/plugin-readme/main.js')];
 	}
 
-	public connect = (on: TOn, send: TSend) => this._instances.forEach((instance) => instance.connect(on, send));
+	public connected = (on: TOn, send: TSend) => {
+		this._instances.forEach((instance) => instance.connect(on, send));
+	};
 }

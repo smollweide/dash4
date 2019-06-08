@@ -85,11 +85,7 @@ class PluginName extends Dash4Plugin implements IDash4Plugin<IClientConfig> {
    * method connected will be executed after a connection via sockets is established
    * super class provides a `on` and `send` method
    */
-  public connected = async () => {
-    if (!this.on) {
-      return;
-    }
-
+  public connected = async (on: TOn, send: TSend) => {
     this.on('connected', () => {
       this.send('data', 'some conntent');
     });

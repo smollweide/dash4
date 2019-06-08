@@ -16,7 +16,7 @@ export interface IDash4Plugin<IClientConfig = {}> {
 	dark: boolean;
 	width?: number[];
 	clientConfig: IClientConfig;
-	connected: () => void;
+	connected: (on: TOn, send: TSend) => void;
 }
 
 export type TServerRequest = (req: IncomingMessage, res: ServerResponse) => Promise<boolean>;
@@ -88,10 +88,10 @@ export class Dash4Plugin<IOnEventName = any, IOnCb = any, ISendEventName = any, 
 		this._on = on;
 		this._send = send;
 
-		this.connected();
+		this.connected(on, send);
 	};
 
-	public connected = () => {
+	public connected = (on: TOn, send: TSend) => {
 		// tslint:disable-next-line
 		// override
 	};

@@ -82,13 +82,6 @@ export class PluginDependencies
 		this._exclude = options.exclude ? options.exclude : [];
 	}
 
-	public connect = (on: TOn, send: TSend) => {
-		this._on = on;
-		this._send = send;
-		this._npmScriptInstance.connect(on, send);
-		this.connected();
-	};
-
 	public get clientConfig() {
 		return {
 			title: this._title,
@@ -101,7 +94,9 @@ export class PluginDependencies
 		return [path.join(__dirname, '../../dist/plugins/plugin-dependencies/main.js')];
 	}
 
-	public connected = async () => {
+	public connected = async (on: TOn, send: TSend) => {
+		this._npmScriptInstance.connect(on, send);
+
 		await this.fetchLernaPackages();
 		this.watchForChangePackageJson();
 		this.on('connected', this.handleConnected);

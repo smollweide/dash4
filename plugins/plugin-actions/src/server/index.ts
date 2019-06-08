@@ -45,8 +45,4 @@ export class PluginActions extends Dash4Plugin implements IDash4Plugin<IClientCo
 	public get clientFiles() {
 		return [path.join(__dirname, '../../dist/plugins/plugin-actions/main.js')];
 	}
-
-	public connect = () => {
-		// tslint:disable-next-line
-	};
 }

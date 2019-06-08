@@ -51,7 +51,7 @@ export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClien
 		return [path.join(__dirname, '../../dist/plugins/plugin-npm-scripts/main.js')];
 	}
 
-	public connect = (on: TOn, send: TSend) => {
+	public connected = (on: TOn, send: TSend) => {
 		this.instances.forEach((instance) => instance.connect(on, send));
 	};
 }

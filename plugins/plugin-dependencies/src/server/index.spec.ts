@@ -97,14 +97,4 @@ describe('PluginDependencies', () => {
 		// @ts-ignore
 		expect(inst._exclude).toEqual([]);
 	});
-	test('handleConnected with client', async () => {
-		const inst = new PluginDependencies();
-		// @ts-ignore
-		await inst.handleConnected();
-	});
-	test('handleUpdateDependency triggered by client', async () => {
-		const inst = new PluginDependencies();
-		// @ts-ignore
-		await inst.handleUpdateDependency();
-	});
 });
