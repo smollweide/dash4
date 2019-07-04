@@ -1,0 +1,24 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - html-webpack-plugin > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - jest-dom > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - webpack-bundle-analyzer > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - scss-config-webpack-plugin > node-sass > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - scss-config-webpack-plugin > iconfont-webpack-plugin > svg2ttf > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - scss-config-webpack-plugin > node-sass > sass-graph > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - scss-config-webpack-plugin > optimize-css-assets-webpack-plugin > last-call-webpack-plugin > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
+    - scss-config-webpack-plugin > node-sass > gaze > globule > lodash:
+        patched: '2019-07-04T06:45:55.196Z'
