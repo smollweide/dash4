@@ -57,7 +57,7 @@ const getOptions = (cwd: string, force: boolean = true) => ({
 });
 
 async function runSnapshotTest(testId: string, dependencies: string) {
-	const cwd = path.join(tempDir, testId);
+	const cwd = path.posix.join(tempDir, testId);
 	await makeDir(cwd);
 	await cpy([`src/__mocks__/${testId}/_package.json`], `__tmp__/${testId}`, {
 		rename: () => `package.json`,

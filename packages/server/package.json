@@ -1,6 +1,6 @@
 {
   "name": "@dash4/server",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": false,
   "description": "dash4 server",
   "repository": "https://github.com/smollweide/dash4",
@@ -28,20 +28,20 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/client": "0.5.0",
-    "@dash4/log": "0.5.0",
+    "@dash4/client": "0.5.1",
+    "@dash4/log": "0.5.1",
     "commander": "2.20.0",
     "mime-types": "2.1.24",
-    "open": "6.3.0",
-    "tslib": "1.9.3",
+    "open": "6.4.0",
+    "tslib": "1.10.0",
     "uuid": "3.3.2",
-    "ws": "7.0.0"
+    "ws": "7.1.1"
   },
   "devDependencies": {
     "@namics/ts-config": "0.3.0",
     "@types/mime-types": "2.1.0",
-    "@types/uuid": "3.4.4",
+    "@types/uuid": "3.4.5",
     "@types/ws": "6.0.1",
-    "typescript": "3.5.1"
+    "typescript": "3.5.3"
   }
 }

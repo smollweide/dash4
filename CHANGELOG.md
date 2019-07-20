@@ -1,3 +1,13 @@
+## <small>0.5.1 (2019-07-20)</small>
+
+* fix: packages/config/.snyk & packages/config/package.json to reduce vulnerabilities ([f063b33](https://github.com/smollweide/dash4/commit/f063b33))
+* fix: packages/config/package.json to reduce vulnerabilities ([dd9e2f0](https://github.com/smollweide/dash4/commit/dd9e2f0))
+* fix: plugins/plugin-code-coverage/.snyk & plugins/plugin-code-coverage/package.json to reduce vulner ([23a04bf](https://github.com/smollweide/dash4/commit/23a04bf))
+
+
+
+
+
 ## 0.5.0 (2019-06-08)
 
 * chore: update dependencies ([350a0d6](https://github.com/smollweide/dash4/commit/350a0d6))
