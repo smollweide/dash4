@@ -1,7 +1,7 @@
 /// <reference types="@types/jest" />
 import { fireEvent, render } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react-hooks';
 import React from 'react';
-import { act, renderHook } from 'react-hooks-testing-library';
 import { useFullscreen, Window } from './index';
 
 const useKeyMock = jest.fn();

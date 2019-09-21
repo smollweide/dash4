@@ -1,5 +1,5 @@
 /// <reference types="@types/jest" />
-import { renderHook } from 'react-hooks-testing-library';
+import { renderHook } from '@testing-library/react-hooks';
 jest.mock('./services', () => ({
 	__esModule: true, // this property makes it work
 	subscribeToReadme: jest.fn(),

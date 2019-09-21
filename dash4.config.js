@@ -1,10 +1,10 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { PluginNpmScripts } = require('./plugins/plugin-npm-scripts');
-const { PluginTerminal, jestCommands } = require('./plugins/plugin-terminal');
-const { PluginReadme } = require('./plugins/plugin-readme');
-const { PluginCodeCoverage } = require('./plugins/plugin-code-coverage');
-const { PluginDependencies } = require('./plugins/plugin-dependencies');
+const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
+const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
+const { PluginReadme } = require('@dash4/plugin-readme');
+const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
+const { PluginDependencies } = require('@dash4/plugin-dependencies');
 
 const getPluginPathes = async () => {
 	const cwd = await fs.realpath(process.cwd());
@@ -106,7 +106,7 @@ async function getConfig() {
 	return {
 		tabs: [
 			{
-				title: 'Root',
+				title: 'root',
 				rows: [
 					[
 						new PluginReadme({

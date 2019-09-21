@@ -5,11 +5,13 @@ import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from './dash4_512.png';
 import { styles } from './styles';
 
-export interface IProps extends WithStyles<typeof styles>, RouteComponentProps<{}> {
+interface IPropsRaw {
 	children?: React.ReactNode;
 	tabs: string[];
 	version?: string;
 }
+
+export interface IProps extends WithStyles<typeof styles>, RouteComponentProps, IPropsRaw {}
 
 function getInitialSelected({ tabs, location }: IProps) {
 	let selected = tabs[0];
@@ -168,4 +170,5 @@ const RawHeader = (props: IProps) => {
 
 const StyledHeader = withStyles(styles)(RawHeader);
 
-export const Header = withRouter(StyledHeader);
+// TODO fix issue since typescript 3.6.x
+export const Header = (withRouter(StyledHeader as any) as any) as (props: IPropsRaw) => JSX.Element;
