@@ -49,7 +49,7 @@
     "open": "6.4.0",
     "recharts": "1.6.2",
     "watch": "1.0.2",
-    "snyk": "^1.189.0"
+    "snyk": "^1.231.0"
   },
   "devDependencies": {
     "@dash4/config": "0.5.1",
