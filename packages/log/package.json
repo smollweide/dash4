@@ -1,6 +1,6 @@
 {
   "name": "@dash4/log",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "private": false,
   "description": "dash4 log helper",
   "repository": "https://github.com/smollweide/dash4",
@@ -28,7 +28,7 @@
     "tslib": "1.10.0"
   },
   "devDependencies": {
-    "@dash4/config": "0.5.1",
+    "@dash4/config": "0.5.2",
     "jest": "24.9.0",
     "ts-jest": "24.1.0",
     "typescript": "3.6.4"

@@ -1,6 +1,6 @@
 {
   "name": "@dash4/plugin-code-coverage",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "private": false,
   "description": "Displays current code coverage",
   "repository": "https://github.com/smollweide/dash4",
@@ -37,10 +37,10 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/client": "0.5.1",
-    "@dash4/log": "0.5.1",
-    "@dash4/server": "0.5.1",
-    "@dash4/ui": "0.5.1",
+    "@dash4/client": "0.5.2",
+    "@dash4/log": "0.5.2",
+    "@dash4/server": "0.5.2",
+    "@dash4/ui": "0.5.2",
     "fs-extra": "8.1.0",
     "htmlparser2": "3.10.1",
     "make-dir": "3.0.0",
@@ -49,7 +49,7 @@
     "watch": "1.0.2"
   },
   "devDependencies": {
-    "@dash4/config": "0.5.1",
+    "@dash4/config": "0.5.2",
     "@testing-library/react": "9.1.4",
     "@types/fs-extra": "8.0.0",
     "@types/jest": "24.0.18",
