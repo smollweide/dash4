@@ -105,17 +105,17 @@ describe('PluginTerminal', () => {
 		expect(container.firstChild).toMatchSnapshot();
 		expect(registerPluginMock).toHaveBeenCalledWith('PluginDependencies', PluginDependencies);
 	});
-	test('render error', () => {
-		useDataMock.mockImplementation((id: string, sendFactory: (send: ISendToServer) => void) => {
-			sendFactory(() => undefined);
-			return {
-				error: true,
-				message: 'error',
-			};
-		});
-		const { container } = render(<PluginDependencies {...props} />);
-		expect(container.firstChild).toMatchSnapshot();
-	});
+	// test('render error', () => {
+	// 	useDataMock.mockImplementation((id: string, sendFactory: (send: ISendToServer) => void) => {
+	// 		sendFactory(() => undefined);
+	// 		return {
+	// 			error: true,
+	// 			message: 'error',
+	// 		};
+	// 	});
+	// 	const { container } = render(<PluginDependencies {...props} />);
+	// 	expect(container.firstChild).toMatchSnapshot();
+	// });
 	test('render with data', async () => {
 		useDataMock.mockImplementation((id: string, sendFactory: (send: ISendToServer) => void) => {
 			sendFactory(() => undefined);
@@ -123,11 +123,5 @@ describe('PluginTerminal', () => {
 		});
 		const { container } = render(<PluginDependencies {...props} />);
 		expect(container.firstChild).toMatchSnapshot();
-		// fireEvent.click(getByTestId('1_filter-button'));
-		// await wait();
-		// const inputFiled = getByPlaceholderText('search') as HTMLInputElement;
-		// inputFiled.value = 'react';
-		// await wait();
-		// expect(container.firstChild).toMatchSnapshot();
 	});
 });

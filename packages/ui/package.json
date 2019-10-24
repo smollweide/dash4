@@ -73,7 +73,7 @@
     "storybook-readme": "5.0.8",
     "ts-config-webpack-plugin": "1.4.0",
     "ts-jest": "24.1.0",
-    "typescript": "3.6.3",
+    "typescript": "3.6.4",
     "webpack": "4.40.2",
     "webpack-cli": "3.3.9",
     "webpack-dev-server": "3.8.1"

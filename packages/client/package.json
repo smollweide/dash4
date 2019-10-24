@@ -61,7 +61,7 @@
     "rimraf": "3.0.0",
     "scss-config-webpack-plugin": "1.4.0",
     "ts-config-webpack-plugin": "1.4.0",
-    "typescript": "3.6.3",
+    "typescript": "3.6.4",
     "webpack": "4.40.2",
     "webpack-bundle-analyzer": "3.5.1",
     "webpack-cli": "3.3.9",

@@ -42,6 +42,6 @@
     "@types/mime-types": "2.1.0",
     "@types/uuid": "3.4.5",
     "@types/ws": "6.0.3",
-    "typescript": "3.6.3"
+    "typescript": "3.6.4"
   }
 }

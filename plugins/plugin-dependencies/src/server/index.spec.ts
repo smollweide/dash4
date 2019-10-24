@@ -78,7 +78,7 @@ describe('PluginDependencies', () => {
 		expect(inst._exclude).toEqual([/^@dash4\/cli/, /^@dash4\/log/]);
 	});
 	test('fetchLernaPackages with error', async () => {
-		getDetailedLernaPackgesMock.mockImplementation(async () => {
+		getDetailedLernaPackgesMock.mockImplementation(() => {
 			throw new Error('error');
 		});
 

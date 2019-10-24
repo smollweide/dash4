@@ -6,10 +6,6 @@
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
-  "scripts": {
-    "prepublish": "npm run snyk-protect",
-    "snyk-protect": "snyk protect"
-  },
   "dependencies": {
     "@namics/ts-config": "0.3.2",
     "@testing-library/jest-dom": "4.1.0",
@@ -28,13 +24,11 @@
     "react-test-renderer": "16.9.0",
     "rimraf": "3.0.0",
     "scss-config-webpack-plugin": "1.4.0",
-    "snyk": "^1.189.0",
     "ts-config-webpack-plugin": "1.4.0",
-    "typescript": "3.6.3",
+    "typescript": "3.6.4",
     "webpack": "4.40.2",
     "webpack-bundle-analyzer": "3.5.1",
     "webpack-cli": "3.3.9",
     "webpack-dev-server": "3.8.1"
-  },
-  "snyk": true
+  }
 }

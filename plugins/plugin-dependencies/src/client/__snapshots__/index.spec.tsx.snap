@@ -1,49 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PluginTerminal render error 1`] = `
-<div
-  class="Component-window-0-1-11 Component-windowBright-0-1-13 Component-windowAutoStretch-0-1-12"
-  tabindex="1"
->
-  <div
-    class=" Component-header-0-1-16"
-  >
-    <p
-      class="Component-title-0-1-18"
-    >
-      Dependencies
-    </p>
-    <div
-      class="Component-button-0-1-17"
-    >
-      <button
-        class="btn btn-outline-primary btn-sm"
-        data-testid="1_filter-button"
-        type="button"
-      >
-        <span
-          class=" Component-root-0-1-21 Component-size-m-0-1-23"
-        >
-          <i
-            class="material-icons Component-size-i-m-0-1-26"
-          >
-            filter_list
-          </i>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    class="Component-windowBody-0-1-1  Component-body-0-1-35"
-  >
-    <p>
-      Error: 
-      error
-    </p>
-  </div>
-</div>
-`;
-
 exports[`PluginTerminal render loading 1`] = `
 <div
   class="Component-window-0-1-11 Component-windowBright-0-1-13 Component-windowAutoStretch-0-1-12"

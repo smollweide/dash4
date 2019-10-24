@@ -21,8 +21,6 @@
     "build:client": "cross-env NODE_ENV=production webpack --mode production",
     "build:server": "tsc --outDir build --project tsconfig.server.json",
     "prepublishOnly": "npm-run-all test build",
-    "prepublish": "npm run snyk-protect",
-    "snyk-protect": "snyk protect",
     "start": "cross-env NODE_ENV=development nodemon ./node_modules/@dash4/server/bin --watch ./build --watch ./dash4.config.js",
     "static": "node ./node_modules/@dash4/server/bin",
     "test": "npm-run-all test:*",
@@ -48,7 +46,6 @@
     "make-dir": "3.0.0",
     "open": "6.4.0",
     "recharts": "1.7.1",
-    "snyk": "1.231.0",
     "watch": "1.0.2"
   },
   "devDependencies": {
@@ -71,8 +68,7 @@
     "react-jss": "10.0.0-alpha.10",
     "rimraf": "3.0.0",
     "ts-jest": "24.1.0",
-    "typescript": "3.6.3",
+    "typescript": "3.6.4",
     "webpack": "4.40.2"
-  },
-  "snyk": true
+  }
 }
