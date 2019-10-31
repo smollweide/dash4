@@ -19,6 +19,7 @@ import {
 import { isVersionUpToDate } from './is-version-up-to-date';
 import { getLatestVersion } from './latest-version';
 import { detailed as getDetailedLernaPackages } from './lerna';
+import { updateDependencyInPackage } from './update-dependency-in-package';
 import { asyncForEach } from './utils';
 
 export interface IOptions {
@@ -142,13 +143,20 @@ export class PluginDependencies
 
 		const version = await getLatestVersion(dependencyName, this.getCurrentVersion(dependencyName));
 
+		if (!version) {
+			await this.getAllDependencies();
+			this.send('data', this._foundDependencies);
+			this._isProcessing = false;
+			return;
+		}
+
 		await asyncForEach(this._packages, async (item) => {
 			const pkgPath = path.join(this.getPkgBasePath(item.path), 'package.json');
-			const pkg = await fs.readFile(pkgPath, 'utf8');
+			const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf8'));
 
 			await fs.writeFile(
 				pkgPath,
-				pkg.replace(new RegExp(`("${dependencyName}" ?: ?")(~|\^)?([^"]*)(")`, 'g'), `$1$2${version}$4`)
+				JSON.stringify(updateDependencyInPackage(pkg, dependencyName, version), null, 2)
 			);
 		});
 
