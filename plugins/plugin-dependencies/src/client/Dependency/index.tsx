@@ -1,5 +1,5 @@
 import { Icon } from '@dash4/ui';
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties } from 'react';
 import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';
 
@@ -10,6 +10,12 @@ const styles = {
 		margin: 10,
 		position: 'relative',
 		textAlign: 'center',
+	} as CSSProperties,
+	link: {
+		color: '#000',
+		'&:hover, &:active, &:focus': {
+			color: '#000',
+		},
 	} as CSSProperties,
 	name: {
 		width: '100%',
@@ -55,34 +61,36 @@ function DependencyRaw({ name, version, latestVersion, isUpToDate, onClick, clas
 
 	return (
 		<li className={classes.li}>
-			<div className={`${classes.name}`}>{name}</div>
-			<div className={`${classes.version}`}>
-				<span className={isUpToDate ? classes.versionInCaseUpToDate : classes.versionInCaseOutOfDate}>
-					{version}
-				</span>
-				{isUpToDate === false && (
-					<OverlayTrigger
-						trigger="hover"
-						key={`latest-version-popover-${name}`}
-						placement="auto"
-						overlay={
-							<Popover id={`latest-version-popover-${name}`}>
-								Update to <strong>{latestVersion}</strong>
-								{packages && packages.length > 0 && packages[0] !== 'root' && (
-									<>
-										&nbsp;in the following packages:&nbsp;
-										{packages.join(', ')}
-									</>
-								)}
-							</Popover>
-						}
-					>
-						<Button onClick={handleClick} className={`${classes.button}`} variant="danger" size="sm">
-							<Icon name="arrow_upward" size="m" />
-						</Button>
-					</OverlayTrigger>
-				)}
-			</div>
+			<a className={classes.link} target="_blank" href={`https://www.npmjs.com/package/${name}`}>
+				<div className={`${classes.name}`}>{name}</div>
+				<div className={`${classes.version}`}>
+					<span className={isUpToDate ? classes.versionInCaseUpToDate : classes.versionInCaseOutOfDate}>
+						{version}
+					</span>
+					{isUpToDate === false && (
+						<OverlayTrigger
+							trigger="hover"
+							key={`latest-version-popover-${name}`}
+							placement="auto"
+							overlay={
+								<Popover id={`latest-version-popover-${name}`}>
+									Update to <strong>{latestVersion}</strong>
+									{packages && packages.length > 0 && packages[0] !== 'root' && (
+										<>
+											&nbsp;in the following packages:&nbsp;
+											{packages.join(', ')}
+										</>
+									)}
+								</Popover>
+							}
+						>
+							<Button onClick={handleClick} className={`${classes.button}`} variant="danger" size="sm">
+								<Icon name="arrow_upward" size="m" />
+							</Button>
+						</OverlayTrigger>
+					)}
+				</div>
+			</a>
 		</li>
 	);
 }
