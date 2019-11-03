@@ -89,102 +89,126 @@ exports[`PluginTerminal render with data 1`] = `
       <li
         class="DependencyRaw-li-0-1-36"
       >
-        <div
-          class="DependencyRaw-name-0-1-37"
+        <a
+          class="DependencyRaw-link-0-1-37"
+          href="https://www.npmjs.com/package/react"
+          target="_blank"
         >
-          react
-        </div>
-        <div
-          class="DependencyRaw-version-0-1-38"
-        >
-          <span
-            class="DependencyRaw-versionInCaseUpToDate-0-1-40"
+          <div
+            class="DependencyRaw-name-0-1-38"
           >
-            16.8.4
-          </span>
-        </div>
-      </li>
-      <li
-        class="DependencyRaw-li-0-1-36"
-      >
-        <div
-          class="DependencyRaw-name-0-1-37"
-        >
-          react-dom
-        </div>
-        <div
-          class="DependencyRaw-version-0-1-38"
-        >
-          <span
-            class="DependencyRaw-versionInCaseUpToDate-0-1-40"
-          >
-            16.8.4
-          </span>
-        </div>
-      </li>
-      <li
-        class="DependencyRaw-li-0-1-36"
-      >
-        <div
-          class="DependencyRaw-name-0-1-37"
-        >
-          @types/react
-        </div>
-        <div
-          class="DependencyRaw-version-0-1-38"
-        >
-          <span
-            class="DependencyRaw-versionInCaseOutOfDate-0-1-41"
-          >
-            16.8.3
-          </span>
-          <button
-            class="DependencyRaw-button-0-1-39 btn btn-danger btn-sm"
-            type="button"
+            react
+          </div>
+          <div
+            class="DependencyRaw-version-0-1-39"
           >
             <span
-              class=" Component-root-0-1-21 Component-size-m-0-1-23"
+              class="DependencyRaw-versionInCaseUpToDate-0-1-41"
             >
-              <i
-                class="material-icons Component-size-i-m-0-1-26"
-              >
-                arrow_upward
-              </i>
+              16.8.4
             </span>
-          </button>
-        </div>
+          </div>
+        </a>
       </li>
       <li
         class="DependencyRaw-li-0-1-36"
       >
-        <div
-          class="DependencyRaw-name-0-1-37"
+        <a
+          class="DependencyRaw-link-0-1-37"
+          href="https://www.npmjs.com/package/react-dom"
+          target="_blank"
         >
-          @types/node
-        </div>
-        <div
-          class="DependencyRaw-version-0-1-38"
-        >
-          <span
-            class="DependencyRaw-versionInCaseOutOfDate-0-1-41"
+          <div
+            class="DependencyRaw-name-0-1-38"
           >
-            10.0.0
-          </span>
-          <button
-            class="DependencyRaw-button-0-1-39 btn btn-danger btn-sm"
-            type="button"
+            react-dom
+          </div>
+          <div
+            class="DependencyRaw-version-0-1-39"
           >
             <span
-              class=" Component-root-0-1-21 Component-size-m-0-1-23"
+              class="DependencyRaw-versionInCaseUpToDate-0-1-41"
             >
-              <i
-                class="material-icons Component-size-i-m-0-1-26"
-              >
-                arrow_upward
-              </i>
+              16.8.4
             </span>
-          </button>
-        </div>
+          </div>
+        </a>
+      </li>
+      <li
+        class="DependencyRaw-li-0-1-36"
+      >
+        <a
+          class="DependencyRaw-link-0-1-37"
+          href="https://www.npmjs.com/package/@types/react"
+          target="_blank"
+        >
+          <div
+            class="DependencyRaw-name-0-1-38"
+          >
+            @types/react
+          </div>
+          <div
+            class="DependencyRaw-version-0-1-39"
+          >
+            <span
+              class="DependencyRaw-versionInCaseOutOfDate-0-1-42"
+            >
+              16.8.3
+            </span>
+            <button
+              class="DependencyRaw-button-0-1-40 btn btn-danger btn-sm"
+              type="button"
+            >
+              <span
+                class=" Component-root-0-1-21 Component-size-m-0-1-23"
+              >
+                <i
+                  class="material-icons Component-size-i-m-0-1-26"
+                >
+                  arrow_upward
+                </i>
+              </span>
+            </button>
+          </div>
+        </a>
+      </li>
+      <li
+        class="DependencyRaw-li-0-1-36"
+      >
+        <a
+          class="DependencyRaw-link-0-1-37"
+          href="https://www.npmjs.com/package/@types/node"
+          target="_blank"
+        >
+          <div
+            class="DependencyRaw-name-0-1-38"
+          >
+            @types/node
+          </div>
+          <div
+            class="DependencyRaw-version-0-1-39"
+          >
+            <span
+              class="DependencyRaw-versionInCaseOutOfDate-0-1-42"
+            >
+              10.0.0
+            </span>
+            <button
+              class="DependencyRaw-button-0-1-40 btn btn-danger btn-sm"
+              type="button"
+            >
+              <span
+                class=" Component-root-0-1-21 Component-size-m-0-1-23"
+              >
+                <i
+                  class="material-icons Component-size-i-m-0-1-26"
+                >
+                  arrow_upward
+                </i>
+              </span>
+            </button>
+          </div>
+        </a>
       </li>
     </ul>
   </div>
