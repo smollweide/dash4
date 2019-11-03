@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`cli execute in create-react-app setup 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -40,11 +43,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute in lerna repo 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -165,11 +174,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute in yarn workspaces repo 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -286,11 +301,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with "README.md" file 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -314,11 +335,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with all possible scripts 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -374,11 +401,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with script "start" 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -402,11 +435,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with script "storybook" 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -430,11 +469,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with script "test" 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -463,11 +508,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with script "watch-test" 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -496,11 +547,17 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;
 
 exports[`cli execute with script "watch-test-jest" 1`] = `
-"/**
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "/**
  *
  * 	DASH4 configuration
  *  https://github.com/smollweide/dash4
@@ -532,5 +589,8 @@ async function getConfig() {
 }
 
 module.exports = getConfig;
-"
+",
+    }
+  }
+/>
 `;

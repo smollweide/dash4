@@ -1,4 +1,7 @@
 /// <reference types="@types/jest" />
+import React from 'react';
+import renderer from 'react-test-renderer';
+
 const execaMock = jest.fn();
 jest.mock('execa', () => ({
 	__esModule: true,
@@ -71,7 +74,9 @@ async function runSnapshotTest(testId: string, dependencies: string) {
 	await init(cwd, getOptions(cwd));
 	expect(execaMock).toHaveBeenCalledWith('npm', `i -D @dash4/server ${dependencies}`.split(' '));
 	expect((((await readPkg({ cwd })) || {}) as any).scripts.dash4).toBe('dash4');
-	expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
+	const fileData = await getTempFile(testId, 'dash4.config.js');
+	const tree = renderer.create(<div dangerouslySetInnerHTML={{ __html: fileData }} />).toJSON();
+	expect(tree).toMatchSnapshot();
 }
 
 describe('cli', () => {
@@ -208,7 +213,10 @@ describe('cli', () => {
 		});
 
 		await init(cwd, getOptions(cwd));
-		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
+
+		const fileData = await getTempFile(testId, 'dash4.config.js');
+		const tree = renderer.create(<div dangerouslySetInnerHTML={{ __html: fileData }} />).toJSON();
+		expect(tree).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
 			'npm',
 			`i -D @dash4/server @dash4/plugin-dependencies @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts @dash4/plugin-terminal`.split(
@@ -261,7 +269,10 @@ describe('cli', () => {
 		});
 
 		await init(cwd, getOptions(cwd));
-		expect(await getTempFile(testId, 'dash4.config.js')).toMatchSnapshot();
+
+		const fileData = await getTempFile(testId, 'dash4.config.js');
+		const tree = renderer.create(<div dangerouslySetInnerHTML={{ __html: fileData }} />).toJSON();
+		expect(tree).toMatchSnapshot();
 		expect(execaMock).toHaveBeenCalledWith(
 			'yarn',
 			`add -D -W @dash4/server @dash4/plugin-dependencies @dash4/plugin-terminal @dash4/plugin-readme @dash4/plugin-code-coverage @dash4/plugin-npm-scripts`.split(
