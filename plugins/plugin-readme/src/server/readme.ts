@@ -4,6 +4,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { contentType as getContentType } from 'mime-types';
 import path from 'path';
 import { IReadmeClientConfig } from '../shared-types';
+import { transformEmojis } from './transform-emojis';
 
 export interface IReadmeOptions {
 	// relative path to the README file
@@ -83,6 +84,6 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	private fetchFile = async () => {
 		const markdown = await fs.readFile(this._file, 'utf8');
 		// fix not supported tsx https://github.com/highlightjs/highlight.js/issues/1155
-		return markdown.replace(/```tsx/g, '```jsx');
+		return transformEmojis(markdown.replace(/```tsx/g, '```jsx'));
 	};
 }

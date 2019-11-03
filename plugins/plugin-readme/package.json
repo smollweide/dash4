@@ -45,7 +45,8 @@
     "fs-extra": "8.1.0",
     "highlight.js": "9.16.2",
     "markdown-to-jsx": "6.10.3",
-    "mime-types": "2.1.24"
+    "mime-types": "2.1.24",
+    "node-emoji": "1.10.0"
   },
   "devDependencies": {
     "@dash4/config": "0.5.2",
@@ -57,6 +58,7 @@
     "@types/markdown-to-jsx": "6.9.0",
     "@types/mime-types": "2.1.0",
     "@types/node": "12.7.5",
+    "@types/node-emoji": "1.8.1",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "cross-env": "6.0.0",
