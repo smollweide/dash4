@@ -1,11 +1,11 @@
 import { IWidgetConfig } from '@dash4/client/build';
 import { Icon, useFullscreen, Window, WindowBody } from '@dash4/ui';
-import Markdown from 'markdown-to-jsx';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import withStyles, { WithStyles } from 'react-jss';
 import { IReadmeClientConfig } from '../../../shared-types';
 import { useMarkdownData } from '../../hooks';
+import { Markdown } from '../Markdown';
 import { styles } from './styles';
 import { styles as readmeStyles } from './styles';
 

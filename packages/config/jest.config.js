@@ -14,6 +14,9 @@ module.exports = {
 			tsConfig: 'tsconfig.test.json',
 		},
 	},
+	moduleNameMapper: {
+		'\\.(scss|sass|css|less)$': 'identity-obj-proxy',
+	},
 	collectCoverageFrom: [
 		'<rootDir>/src/client/**/*.{ts,tsx}',
 		'!<rootDir>/node_modules/**',

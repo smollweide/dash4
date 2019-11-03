@@ -53,7 +53,10 @@ export class PluginReadmeList extends Dash4Plugin implements IDash4Plugin<IReadm
 	}
 
 	public get clientFiles() {
-		return [path.join(__dirname, '../../dist/plugins/plugin-readme/main.js')];
+		return [
+			path.join(__dirname, '../../dist/plugins/plugin-readme/main.js'),
+			path.join(__dirname, '../../dist/plugins/plugin-readme/main.css'),
+		];
 	}
 
 	public connected = (on: TOn, send: TSend) => {

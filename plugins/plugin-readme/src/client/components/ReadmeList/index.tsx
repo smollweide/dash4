@@ -1,12 +1,12 @@
 import { IWidgetConfig } from '@dash4/client/build';
 import { useFullscreen, Window, WindowBody, WindowHeader } from '@dash4/ui';
-import Markdown from 'markdown-to-jsx';
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { ContainerQuery } from 'react-container-query';
 import withStyles, { WithStyles } from 'react-jss';
 import { IReadmeListClientConfig, IReadmeListItemClientConfig } from '../../../shared-types';
 import { useMarkdownData } from '../../hooks';
+import { Markdown } from '../Markdown';
 import { styles, stylesReadme } from './styles';
 import { styles as readmeListStyles } from './styles';
 

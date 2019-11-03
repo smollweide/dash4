@@ -41,7 +41,10 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	}
 
 	public get clientFiles() {
-		return [path.join(__dirname, '../../dist/plugins/plugin-readme/main.js')];
+		return [
+			path.join(__dirname, '../../dist/plugins/plugin-readme/main.js'),
+			path.join(__dirname, '../../dist/plugins/plugin-readme/main.css'),
+		];
 	}
 
 	public connected = async () => {
@@ -74,10 +77,12 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	};
 
 	private sendFile = async () => {
-		this.send('data', await fs.readFile(this._file, 'utf8'));
+		this.send('data', await this.fetchFile());
 	};
 
 	private fetchFile = async () => {
-		return await fs.readFile(this._file, 'utf8');
+		const markdown = await fs.readFile(this._file, 'utf8');
+		// fix not supported tsx https://github.com/highlightjs/highlight.js/issues/1155
+		return markdown.replace(/```tsx/g, '```jsx');
 	};
 }

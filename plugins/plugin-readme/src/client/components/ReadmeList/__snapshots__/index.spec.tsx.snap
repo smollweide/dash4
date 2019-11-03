@@ -27,8 +27,12 @@ exports[`PluginReadmeList ReadmeList render default 1`] = `
               <div
                 class="Component-markdown-0-1-21"
               >
-                <div>
-                  markdown
+                <div
+                  class="markdown-body"
+                >
+                  <div>
+                    markdown
+                  </div>
                 </div>
               </div>
             </div>
@@ -81,8 +85,12 @@ exports[`PluginReadmeList ReadmeList render fullscreen 1`] = `
               <div
                 class="Component-markdown-0-1-21"
               >
-                <div>
-                  markdown
+                <div
+                  class="markdown-body"
+                >
+                  <div>
+                    markdown
+                  </div>
                 </div>
               </div>
             </div>
