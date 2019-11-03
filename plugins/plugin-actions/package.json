@@ -1,6 +1,6 @@
 {
   "name": "@dash4/plugin-actions",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "private": false,
   "description": "Create actions like form based executions or simple links",
   "repository": "https://github.com/smollweide/dash4",
@@ -38,16 +38,16 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/client": "0.5.2",
-    "@dash4/log": "0.5.2",
-    "@dash4/server": "0.5.2",
-    "@dash4/ui": "0.5.2",
+    "@dash4/client": "0.6.0",
+    "@dash4/log": "0.6.0",
+    "@dash4/server": "0.6.0",
+    "@dash4/ui": "0.6.0",
     "fs-extra": "8.1.0",
     "tslib": "1.10.0",
     "uuid": "3.3.3"
   },
   "devDependencies": {
-    "@dash4/config": "0.5.2",
+    "@dash4/config": "0.6.0",
     "@testing-library/react": "9.1.4",
     "@testing-library/react-hooks": "2.0.1",
     "@types/fs-extra": "8.0.0",

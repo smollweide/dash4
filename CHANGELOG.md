@@ -1,3 +1,14 @@
+## 0.6.0 (2019-11-03)
+
+* feat(plugin-dependencies): add link to npm ([241fd77](https://github.com/smollweide/dash4/commit/241fd77))
+* feat(plugin-readme): add code highlighting and github styles for readme ([3fb20e8](https://github.com/smollweide/dash4/commit/3fb20e8))
+* feat(plugin-readme): transform emoji codes ([6b6d90b](https://github.com/smollweide/dash4/commit/6b6d90b))
+* fix(plugin-dependencies): update version only in dependencies and devDependencies ([13b4368](https://github.com/smollweide/dash4/commit/13b4368))
+
+
+
+
+
 ## <small>0.5.2 (2019-10-24)</small>
 
 * fix: plugins/plugin-code-coverage/package.json & plugins/plugin-code-coverage/.snyk to reduce vulner ([2b1c67f](https://github.com/smollweide/dash4/commit/2b1c67f))
