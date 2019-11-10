@@ -21,7 +21,7 @@ const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -72,7 +72,7 @@ const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -203,7 +203,7 @@ const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -324,7 +324,7 @@ const { PluginReadme } = require('@dash4/plugin-readme');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -364,7 +364,7 @@ const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -424,7 +424,7 @@ const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -458,7 +458,7 @@ const { PluginTerminal, jestCommands } = require('@dash4/plugin-terminal');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -494,7 +494,7 @@ const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -533,7 +533,7 @@ const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',
@@ -572,7 +572,7 @@ const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',

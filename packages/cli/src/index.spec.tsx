@@ -54,7 +54,7 @@ process.kill = jest.fn();
 console.log = jest.fn();
 
 const getOptions = (cwd: string, force: boolean = true) => ({
-	port: 8080,
+	port: 4000,
 	config: path.join(cwd, 'dash4.config.js'),
 	force,
 });

@@ -8,7 +8,7 @@ describe('Config', () => {
 		expect(typeof Config).toBe('function');
 	});
 	test('add plugin', async () => {
-		const config = new Config({ port: 8080 });
+		const config = new Config({ port: 4000 });
 		config.addPlugin('Root', 'PluginCodeCoverage');
 		expect(config.tabs).toEqual([
 			{
@@ -21,7 +21,7 @@ describe('Config', () => {
 		);
 	});
 	test('add multiple plugins', async () => {
-		const config = new Config({ port: 8080 });
+		const config = new Config({ port: 4000 });
 		config.addPlugin('Root', 'PluginTerminal', { cmd: 'npm run test' });
 		config.addPlugin('Root', 'PluginCodeCoverage');
 		config.addPlugin('Root', 'PluginReadme', { file: 'README.md' });
@@ -68,7 +68,7 @@ describe('Config', () => {
 		expect(config.toString()).toMatchSnapshot();
 	});
 	test('add plugins in mutiple tabs', async () => {
-		const config = new Config({ port: 8080 });
+		const config = new Config({ port: 4000 });
 		config.addPlugin('Root', 'PluginTerminal', { cmd: 'npm run test' });
 		config.addPlugin('Cli', 'PluginCodeCoverage');
 		config.addPlugin('Client', 'PluginReadme', { file: 'README.md' });

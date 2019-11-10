@@ -15,7 +15,7 @@ const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 
 async function getConfig() {
 	return {
-		port: 8080,
+		port: 4000,
 		tabs: [
 			{
 				title: 'Root',

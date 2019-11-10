@@ -23,7 +23,7 @@ async function getProgram() {
 	const getConfig = ((await require(options.config)) as any) as () => Promise<IConfig>;
 	const config = await getConfig();
 
-	config.port = options.port || config.port || 8080;
+	config.port = options.port || config.port || 4000;
 	const serverRequestListeners: TServerRequest[] = [];
 
 	const { on, send } = await startServer({ port: config.port, serverRequestListeners }, config);

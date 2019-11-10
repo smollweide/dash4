@@ -44,7 +44,7 @@
     "publish": "node ./bin/publish.js",
     "release": "node ./bin/release.js",
     "sort-package-json": "sort-package-json packages/*/package.json plugins/*/package.json package.json",
-    "start": "node ./packages/server/bin/index.js --port=8888",
+    "start": "node ./packages/server/bin/index.js --port=4000",
     "test": "npm-run-all test-packages:* test-plugins",
     "test-packages:cli": "lerna run test --scope @dash4/cli",
     "test-packages:client": "lerna run test --scope @dash4/client",

@@ -127,7 +127,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 				'</body>',
 				`<script type="text/javascript">
 					window.dash4 = window.dash4 || {};
-					window.dash4.port = ${config.port || 8080};
+					window.dash4.port = ${config.port || 4000};
 				</script>
 				</body>`
 			);
