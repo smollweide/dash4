@@ -40,8 +40,10 @@ describe('PluginDependencies', () => {
 	test('exists', () => {
 		expect(typeof PluginDependencies).toBe('function');
 	});
-	test('create instance', async () => {
+	test('create instance', () => {
 		const inst = new PluginDependencies();
+		// @ts-ignore
+		inst.watchForChangePackageJson = () => undefined;
 		inst.connect(
 			() => undefined,
 			() => undefined
@@ -54,7 +56,7 @@ describe('PluginDependencies', () => {
 		expect(inst.clientConfig.installProcess.cmd).toBe('npm run install');
 		expect(inst.clientConfig.installProcess.title).toBe('npm run install');
 	});
-	test('create instance with custom cwd', async () => {
+	test('create instance with custom cwd', () => {
 		const inst = new PluginDependencies({
 			cwd: '/custom/dir',
 		});
