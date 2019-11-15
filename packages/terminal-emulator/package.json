@@ -22,7 +22,7 @@
     "watch-test": "jest --coverage --watchAll --config=jest.server.config.js"
   },
   "dependencies": {
-    "node-pty": "0.8.1",
+    "node-pty": "0.9.0",
     "os": "0.1.1",
     "tslib": "1.10.0"
   },
