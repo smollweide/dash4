@@ -1,3 +1,16 @@
+## 0.7.0 (2019-11-15)
+
+* fix: update dependencies ([a34410e](https://github.com/smollweide/dash4/commit/a34410e))
+* fix(client): use bootstrap from cdn ([69be01d](https://github.com/smollweide/dash4/commit/69be01d))
+* fix(terminal-emulator): switch to node 12 and update node-pty ([6f32c24](https://github.com/smollweide/dash4/commit/6f32c24))
+* feat: change default port from 8080 to 4000 ([965337d](https://github.com/smollweide/dash4/commit/965337d))
+* test(cli): use react and dangerouslySetInnerHTML for snapshot tests ([fd18ccc](https://github.com/smollweide/dash4/commit/fd18ccc))
+* test(plugin-dependencies): update snapshot tests ([1224b96](https://github.com/smollweide/dash4/commit/1224b96))
+
+
+
+
+
 ## 0.6.0 (2019-11-03)
 
 * feat(plugin-dependencies): add link to npm ([241fd77](https://github.com/smollweide/dash4/commit/241fd77))
