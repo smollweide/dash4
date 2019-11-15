@@ -1,5 +1,4 @@
 import { log } from '@dash4/log/build/browser';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import * as ReactBootstrap from 'react-bootstrap';
 import * as ReactContainerQuery from 'react-container-query';
