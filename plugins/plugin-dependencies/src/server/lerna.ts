@@ -16,7 +16,10 @@ export async function configJson(cwd: string, lerna: string = 'lerna.json'): Pro
 
 export async function packages(cwd: string, lerna?: string) {
 	const config = await configJson(cwd, lerna);
-	return await globby(config.packages.map((pathName) => path.join(pathName, 'package.json')), { cwd });
+	return await globby(
+		config.packages.map((pathName) => path.join(pathName, 'package.json')),
+		{ cwd }
+	);
 }
 
 export interface IDetailed {

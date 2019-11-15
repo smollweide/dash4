@@ -11,11 +11,13 @@ const getPluginPathes = async () => {
 	const pathPlugins = path.join(cwd, 'plugins');
 	const pathes = await fs.readdir(pathPlugins);
 
-	return (await Promise.all(
-		pathes.map(async (pathPlugin) =>
-			(await fs.stat(path.join(pathPlugins, pathPlugin))).isDirectory() ? pathPlugin : undefined
+	return (
+		await Promise.all(
+			pathes.map(async (pathPlugin) =>
+				(await fs.stat(path.join(pathPlugins, pathPlugin))).isDirectory() ? pathPlugin : undefined
+			)
 		)
-	)).filter((value) => typeof value === 'string');
+	).filter((value) => typeof value === 'string');
 };
 
 const pluginTabs = async () => {

@@ -42,7 +42,10 @@ describe('PluginDependencies', () => {
 	});
 	test('create instance', async () => {
 		const inst = new PluginDependencies();
-		inst.connect(() => undefined, () => undefined);
+		inst.connect(
+			() => undefined,
+			() => undefined
+		);
 		expect(inst.name).toBe('PluginDependencies');
 		expect(inst.lowerCaseName).toBe('plugin-dependencies');
 		expect(typeof inst.clientConfig.cwd).toBe('string');

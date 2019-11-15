@@ -75,12 +75,14 @@ async function writeChangelog(changelog) {
 }
 
 async function promptVersion(recommendedVersion) {
-	return (await prompt({
-		type: 'input',
-		name: 'version',
-		message: 'Enter version',
-		initial: recommendedVersion,
-	})).version;
+	return (
+		await prompt({
+			type: 'input',
+			name: 'version',
+			message: 'Enter version',
+			initial: recommendedVersion,
+		})
+	).version;
 }
 
 async function bumpPackage(pathName, newVersion, lernaPackageNames) {

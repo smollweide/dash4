@@ -1,20 +1,7 @@
 language: node_js
 
-cache:
-  directories:
-    - ~/.npm
-
-notifications:
-  email: true
-
 node_js:
-  - '10'
-
-env:
-  - NODE_ENV=CI
-
-before_script:
-  - npm prune
+  - '12'
 
 script:
   - npm run bootstrap

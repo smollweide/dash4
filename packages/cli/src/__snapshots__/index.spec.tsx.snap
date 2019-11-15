@@ -33,7 +33,10 @@ async function getConfig() {
 					],
 					[
 						new PluginNpmScripts({
-							scripts: [{ title: 'build', cmd: 'npm run build' }, { title: 'test', cmd: 'npm run test' }],
+							scripts: [
+								{ title: 'build', cmd: 'npm run build' },
+								{ title: 'test', cmd: 'npm run test' },
+							],
 						}),
 					],
 				],

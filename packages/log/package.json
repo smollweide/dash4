@@ -23,14 +23,14 @@
     "watch-test": "jest --coverage --watchAll --config=jest.server.config.js"
   },
   "dependencies": {
-    "chalk": "2.4.2",
-    "ora": "3.4.0",
+    "chalk": "3.0.0",
+    "ora": "4.0.3",
     "tslib": "1.10.0"
   },
   "devDependencies": {
     "@dash4/config": "0.6.0",
     "jest": "24.9.0",
     "ts-jest": "24.1.0",
-    "typescript": "3.6.4"
+    "typescript": "3.7.2"
   }
 }

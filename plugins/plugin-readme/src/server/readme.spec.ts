@@ -17,7 +17,10 @@ describe('PluginReadme', () => {
 		const inst = new PluginReadme({
 			file: 'README.md',
 		});
-		inst.connect(() => undefined, () => undefined);
+		inst.connect(
+			() => undefined,
+			() => undefined
+		);
 		expect(inst.name).toBe('PluginReadme');
 		expect(inst.lowerCaseName).toBe('plugin-readme');
 		expect(typeof inst.clientConfig.file).toBe('string');
@@ -30,7 +33,10 @@ describe('PluginReadme', () => {
 			file: 'README.md',
 			height: 200,
 		});
-		inst.connect(() => undefined, () => undefined);
+		inst.connect(
+			() => undefined,
+			() => undefined
+		);
 		expect(inst.name).toBe('PluginReadme');
 		expect(inst.lowerCaseName).toBe('plugin-readme');
 		expect(typeof inst.clientConfig.file).toBe('string');

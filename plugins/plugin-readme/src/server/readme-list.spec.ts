@@ -22,7 +22,10 @@ describe('PluginReadmeList', () => {
 				},
 			],
 		});
-		inst.connect(() => undefined, () => undefined);
+		inst.connect(
+			() => undefined,
+			() => undefined
+		);
 		expect(inst.name).toBe('PluginReadmeList');
 		expect(inst.lowerCaseName).toBe('plugin-readme-list');
 		expect(typeof inst.clientConfig.files[0].file).toBe('string');

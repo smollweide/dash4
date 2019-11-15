@@ -15,7 +15,10 @@ async function configJson() {
 
 async function packages() {
 	const config = await configJson();
-	return await globby(config.packages.map((pathName) => path.join(pathName, 'package.json')), { cwd });
+	return await globby(
+		config.packages.map((pathName) => path.join(pathName, 'package.json')),
+		{ cwd }
+	);
 }
 
 async function packageDatas(packages) {

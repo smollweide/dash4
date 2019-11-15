@@ -43,7 +43,10 @@ describe('PluginNpmScripts', () => {
 				connect: jest.fn(),
 			} as any,
 		];
-		inst.connect(() => undefined, () => undefined);
+		inst.connect(
+			() => undefined,
+			() => undefined
+		);
 		// @ts-ignore
 		expect(inst.instances[0].connect).toHaveBeenCalled();
 	});
