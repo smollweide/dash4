@@ -1,13 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PluginNpmScripts NpmScript open and close overlay 1`] = `
+.emotion-1 {
+  width: 100%;
+  white-space: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.emotion-0 {
+  color: #6c757d;
+  font-size: 80%;
+  font-weight: 400;
+}
+
 <p
-  class="Component-title-0-1-9"
+  class="emotion-1"
 >
   Terminal
   <br />
   <small
-    class="text-muted"
+    class="emotion-0"
   >
      
     npm run test
@@ -16,8 +37,13 @@ exports[`PluginNpmScripts NpmScript open and close overlay 1`] = `
 `;
 
 exports[`PluginNpmScripts NpmScript render default 1`] = `
+.emotion-0 {
+  position: relative;
+  width: 100%;
+}
+
 <button
-  class="NpmScriptRaw-button-0-1-1 btn btn-outline-primary btn-sm"
+  class="emotion-0 btn btn-outline-primary btn-sm"
   type="button"
 >
   npm run test

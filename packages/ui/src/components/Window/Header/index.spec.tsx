@@ -5,7 +5,7 @@ import { WindowHeader } from './index';
 
 describe('WindowHeader', () => {
 	test('exist', () => {
-		expect(typeof WindowHeader).toBe('object');
+		expect(typeof WindowHeader).toBe('function');
 	});
 	test('render default', () => {
 		const { container } = render(<WindowHeader title="title">Hello</WindowHeader>);

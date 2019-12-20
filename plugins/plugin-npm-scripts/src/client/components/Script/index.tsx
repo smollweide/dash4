@@ -1,11 +1,12 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { Term } from '@dash4/react-xterm';
 import { ErrorBoundary, Icon, WindowHeader } from '@dash4/ui';
-import React, { SyntheticEvent } from 'react';
+import React, { Fragment, SyntheticEvent } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import withStyles, { WithStyles } from 'react-jss';
 import { IScriptWithId } from '../../../shared-types';
 import { subscribeToNpmScriptDataChanges, unsubscribeToNpmScriptDataChanges } from './services';
-import { styles } from './styles';
 
 type ITerm = Term;
 
@@ -18,15 +19,15 @@ interface IState {
 	send?: (name: string, data?: number) => void;
 }
 
-export interface IProps extends WithStyles<typeof styles> {
+export interface INpmScriptProps {
 	id: string;
 	script: IScriptWithId;
 }
 
 export const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
 
-export class NpmScriptRaw extends React.Component<IProps, IState> {
-	constructor(props: IProps) {
+export class NpmScript extends React.Component<INpmScriptProps, IState> {
+	constructor(props: INpmScriptProps) {
 		super(props);
 		this.state = {
 			executing: false,
@@ -56,11 +57,14 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 	public render() {
 		const script = this.props.script;
 		return (
-			<>
+			<Fragment>
 				<Button
 					size="sm"
 					onClick={this.handleOpenOverlay}
-					className={this.props.classes.button}
+					css={css`
+						position: relative;
+						width: 100%;
+					`}
 					variant={script.buttonVariant || 'outline-primary'}
 				>
 					{this.state.executing && (
@@ -69,20 +73,51 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 					{script.title || script.cmd}
 				</Button>
 				<Modal
-					className={this.props.classes.modal}
+					css={css`
+						& .modal-dialog {
+							max-width: calc(100vw - 30px);
+						}
+						& .modal-content {
+							border: 0;
+						}
+					`}
 					size="lg"
 					show={this.state.overlayOpening}
 					onHide={this.handleCloseOverlay}
 				>
-					<Modal.Header className={this.props.classes.modalHeader} closeButton>
+					<Modal.Header
+						closeButton
+						css={css`
+							background: #000;
+							color: #fff;
+							border-bottom: 0;
+							& .close {
+								color: #fff;
+								text-shadow: none;
+								opacity: 1;
+								font-size: 18px;
+							}
+						`}
+					>
 						<WindowHeader
+							css={css`
+								padding: 0;
+								padding-bottom: 10px;
+								width: 100%;
+							`}
 							progressing={this.state.executing}
-							className={this.props.classes.modalWindowHeader}
 							title="Terminal"
 							subTitle={script.title || script.cmd}
 						/>
 					</Modal.Header>
-					<Modal.Body className={this.props.classes.modalBody}>
+					<Modal.Body
+						css={css`
+							background: #000;
+							padding-top: 0;
+							padding-bottom: 0;
+							padding-right: 0;
+						`}
+					>
 						{this.state.overlayOpened && (
 							<ErrorBoundary>
 								<Term
@@ -104,7 +139,12 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 							</ErrorBoundary>
 						)}
 					</Modal.Body>
-					<Modal.Footer className={this.props.classes.modalFooter}>
+					<Modal.Footer
+						css={css`
+							background: #000;
+							border: 0;
+						`}
+					>
 						<Button size="sm" variant="outline-secondary" onClick={this.handleClickClean}>
 							Clean
 						</Button>
@@ -119,7 +159,7 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 						)}
 					</Modal.Footer>
 				</Modal>
-			</>
+			</Fragment>
 		);
 	}
 
@@ -219,5 +259,3 @@ export class NpmScriptRaw extends React.Component<IProps, IState> {
 		});
 	};
 }
-
-export const NpmScript = withStyles(styles)(NpmScriptRaw);

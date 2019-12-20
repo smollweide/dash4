@@ -37,10 +37,7 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/client": "0.7.0",
-    "@dash4/log": "0.7.0",
     "@dash4/server": "0.7.0",
-    "@dash4/ui": "0.7.0",
     "fs-extra": "8.1.0",
     "htmlparser2": "3.10.1",
     "make-dir": "3.0.0",
@@ -49,7 +46,11 @@
     "watch": "1.0.2"
   },
   "devDependencies": {
+    "@dash4/client": "0.7.0",
     "@dash4/config": "0.7.0",
+    "@dash4/log": "0.7.0",
+    "@dash4/ui": "0.7.0",
+    "@emotion/core": "10.0.22",
     "@testing-library/react": "9.3.2",
     "@types/fs-extra": "8.0.1",
     "@types/jest": "24.0.23",
@@ -65,7 +66,6 @@
     "react": "16.12.0",
     "react-bootstrap": "1.0.0-beta.8",
     "react-dom": "16.12.0",
-    "react-jss": "10.0.0-alpha.10",
     "rimraf": "3.0.0",
     "ts-jest": "24.1.0",
     "typescript": "3.7.2",

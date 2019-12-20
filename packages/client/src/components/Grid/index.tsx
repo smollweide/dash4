@@ -1,29 +1,27 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import React, { ReactElement } from 'react';
-import withStyles, { WithStyles } from 'react-jss';
-import { Cell as _Cell } from './Cell';
 
-const styles = {
-	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		marginLeft: -15,
-		justifyContent: 'center',
-	},
-};
-
-export interface IGridProps extends WithStyles<typeof styles> {
+export interface IGridProps {
 	children: ReactElement[];
 }
 
-export const Grid = withStyles(styles)(({ classes, children }: IGridProps) => (
-	<div className={classes.root}>
+export const Grid = ({ children }: IGridProps) => (
+	<div
+		css={css`
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin-left: -15px;
+			justify-content: center;
+		`}
+	>
 		{React.Children.map(children, (child) =>
 			React.cloneElement(child, {
 				amountOfCells: children.length,
 			})
 		)}
 	</div>
-));
+);
 
-export const Cell = _Cell;
+export * from './Cell';

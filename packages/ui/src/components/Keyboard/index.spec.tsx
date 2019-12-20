@@ -6,7 +6,7 @@ import { Key, Keyboard } from './index';
 
 describe('Keyboard', () => {
 	test('exist', () => {
-		expect(typeof Keyboard).toBe('object');
+		expect(typeof Keyboard).toBe('function');
 	});
 	test('render default', () => {
 		const { container } = render(

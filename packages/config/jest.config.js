@@ -23,4 +23,5 @@ module.exports = {
 		'!<rootDir>/dist/**',
 		'!<rootDir>/build/**',
 	],
+	snapshotSerializers: ['jest-emotion'],
 };

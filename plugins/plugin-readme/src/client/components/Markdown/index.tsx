@@ -1,8 +1,11 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import RawMarkdown from 'markdown-to-jsx';
-import React, { useEffect, useRef } from 'react';
-import './github-styles.css';
+import { useEffect, useRef } from 'react';
+import { styles } from './styles';
 
 interface IMarkdownProps {
 	children: string;
@@ -21,7 +24,7 @@ export function Markdown({ children }: IMarkdownProps) {
 	}, [children]);
 
 	return (
-		<div className={`markdown-body`} ref={rootRef}>
+		<div css={styles} ref={rootRef}>
 			<RawMarkdown>{children}</RawMarkdown>
 		</div>
 	);

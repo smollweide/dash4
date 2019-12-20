@@ -28,7 +28,11 @@ module.exports = (pluginName) => (_some, { mode }) => {
 			'react-jss': 'ReactJSS',
 			'react-container-query': 'ReactContainerQuery',
 			tslib: 'tslib',
+			'@emotion/core': 'EmotionCore',
 			'@dash4/react-xterm': 'ReactXterm',
+			'@dash4/ui': 'Dash4Ui',
+			'@dash4/log': 'Dash4Log',
+			'@dash4/log/build/browser': 'Dash4Log',
 		},
 		plugins: [
 			new AssetConfigWebpackPlugin(),

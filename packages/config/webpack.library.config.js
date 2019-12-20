@@ -17,10 +17,18 @@ module.exports = (libraryName) => {
 			bootstrap: 'umd bootstrap',
 			'core-js': 'umd core-js',
 			'react-bootstrap': 'umd react-bootstrap',
-			// 'react-jss': 'ReactJSS',
 			'react-container-query': 'umd react-container-query',
 			tslib: 'umd tslib',
+			'@emotion/core': 'EmotionCore',
 		},
+		// resolve: {
+		// 	alias: {
+		// 		// '@dash4/ui': path.resolve(__dirname, 'alias/dash4-ui.js'),
+		// 		// '@dash4/log/build/browser': path.resolve(__dirname, 'alias/dash4-log.js'),
+		// 		// '@dash4/log': path.resolve(__dirname, 'alias/dash4-log.js'),
+		// 		'@emotion/core': path.resolve(__dirname, 'alias/emotion-core.js'),
+		// 	},
+		// },
 		output: {
 			path: path.join(process.cwd(), '/lib'),
 			filename: `${libraryName}.js`,

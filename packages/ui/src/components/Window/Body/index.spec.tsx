@@ -5,7 +5,7 @@ import { WindowBody } from './index';
 
 describe('WindowBody', () => {
 	test('exist', () => {
-		expect(typeof WindowBody).toBe('object');
+		expect(typeof WindowBody).toBe('function');
 	});
 	test('render default', () => {
 		const { container } = render(<WindowBody>Hello</WindowBody>);

@@ -3,6 +3,7 @@ const { PluginCodeCoverage } = require('./build/server');
 
 async function getConfig() {
 	return {
+		port: 8041,
 		tabs: [
 			{
 				title: 'Root',

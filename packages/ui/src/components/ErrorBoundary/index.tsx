@@ -1,10 +1,10 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import React, { ErrorInfo } from 'react';
 import { Alert } from 'react-bootstrap';
-import withStyles, { WithStyles } from 'react-jss';
-import { styles } from './styles';
 
 // tslint:disable-next-line
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
 	title?: string;
 	message?: string;
 	children: React.ReactNode;
@@ -15,7 +15,13 @@ interface IState {
 	errorMessage?: string;
 }
 
-export class ErrorBoundaryUnstyled extends React.Component<IProps, IState> {
+const textHyphens = css`
+	overflow: hidden;
+	word-break: break-word;
+	hyphens: auto;
+`;
+
+export class ErrorBoundary extends React.Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
 		this.state = { hasError: false };
@@ -32,14 +38,14 @@ export class ErrorBoundaryUnstyled extends React.Component<IProps, IState> {
 	}
 
 	public render() {
-		const { classes, title = 'Something went wrong.', message = this.state.errorMessage } = this.props;
+		const { title = 'Something went wrong.', message = this.state.errorMessage } = this.props;
 
 		if (this.state.hasError) {
 			// You can render any custom fallback UI
 			return (
 				<Alert variant="danger">
-					<Alert.Heading className={classes.text}>{title}</Alert.Heading>
-					<p className={classes.text}>{message}</p>
+					<Alert.Heading css={textHyphens}>{title}</Alert.Heading>
+					<p css={textHyphens}>{message}</p>
 				</Alert>
 			);
 		}
@@ -47,5 +53,3 @@ export class ErrorBoundaryUnstyled extends React.Component<IProps, IState> {
 		return this.props.children;
 	}
 }
-
-export const ErrorBoundary = withStyles(styles)(ErrorBoundaryUnstyled);

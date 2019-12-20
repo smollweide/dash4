@@ -2,6 +2,7 @@ const { PluginNpmScripts } = require('./build/server');
 
 async function getConfig() {
 	return {
+		port: 8043,
 		tabs: [
 			{
 				title: 'Root',

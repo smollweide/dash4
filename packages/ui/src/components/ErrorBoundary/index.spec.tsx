@@ -20,7 +20,7 @@ function BuggyCounter({ initialCounter = 0 }: { initialCounter: any }) {
 
 describe('ErrorBoundary', () => {
 	test('exist', () => {
-		expect(typeof ErrorBoundary).toBe('object');
+		expect(typeof ErrorBoundary).toBe('function');
 	});
 	test('render default', () => {
 		// tslint:disable-next-line

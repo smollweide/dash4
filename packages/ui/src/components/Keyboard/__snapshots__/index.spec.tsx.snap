@@ -1,27 +1,115 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Keyboard Key standalonw 1`] = `
+.emotion-0 {
+  position: relative;
+  display: inline;
+  padding: 2px 5px;
+  background-image: linear-gradient(rgb(223,224,231),rgb(248,249,255));
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px 1px rgba(112,113,117,0.8);
+  font-size: 12px;
+  line-height: 12px;
+  color: rgb(152,153,157);
+}
+
+.emotion-0 + .emotion-0 {
+  margin-left: 18px;
+}
+
+.emotion-0 + .emotion-0:before {
+  content: '+';
+  position: absolute;
+  left: -18px;
+  top: 0;
+  padding: 2px 4px;
+  color: rgb(112,113,117);
+  font-size: 16px;
+}
+
 <span
-  class=" Component-root-0-1-2"
+  class=" emotion-0"
 >
   A
 </span>
 `;
 
 exports[`Keyboard Key with custom tagname 1`] = `
+.emotion-0 {
+  position: relative;
+  display: inline;
+  padding: 2px 5px;
+  background-image: linear-gradient(rgb(223,224,231),rgb(248,249,255));
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px 1px rgba(112,113,117,0.8);
+  font-size: 12px;
+  line-height: 12px;
+  color: rgb(152,153,157);
+}
+
+.emotion-0 + .emotion-0 {
+  margin-left: 18px;
+}
+
+.emotion-0 + .emotion-0:before {
+  content: '+';
+  position: absolute;
+  left: -18px;
+  top: 0;
+  padding: 2px 4px;
+  color: rgb(112,113,117);
+  font-size: 16px;
+}
+
 <div
-  class=" Component-root-0-1-2"
+  class=" emotion-0"
 >
   A
 </div>
 `;
 
 exports[`Keyboard render default 1`] = `
+.emotion-1 {
+  position: relative;
+  display: inline;
+  padding: 3px 4px 6px;
+  background: #cbccd2;
+  width: auto;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.emotion-0 {
+  position: relative;
+  display: inline;
+  padding: 2px 5px;
+  background-image: linear-gradient(rgb(223,224,231),rgb(248,249,255));
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px 1px rgba(112,113,117,0.8);
+  font-size: 12px;
+  line-height: 12px;
+  color: rgb(152,153,157);
+}
+
+.emotion-0 + .emotion-0 {
+  margin-left: 18px;
+}
+
+.emotion-0 + .emotion-0:before {
+  content: '+';
+  position: absolute;
+  left: -18px;
+  top: 0;
+  padding: 2px 4px;
+  color: rgb(112,113,117);
+  font-size: 16px;
+}
+
 <ul
-  class=" Component-root-0-1-1"
+  class=" emotion-1"
 >
   <li
-    class=" Component-root-0-1-2"
+    class=" emotion-0"
   >
     A
   </li>
@@ -29,22 +117,67 @@ exports[`Keyboard render default 1`] = `
 `;
 
 exports[`Keyboard render with Icon 1`] = `
+.emotion-4 {
+  position: relative;
+  display: inline;
+  padding: 3px 4px 6px;
+  background: #cbccd2;
+  width: auto;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.emotion-0 {
+  position: relative;
+  display: inline;
+  padding: 2px 5px;
+  background-image: linear-gradient(rgb(223,224,231),rgb(248,249,255));
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px 1px rgba(112,113,117,0.8);
+  font-size: 12px;
+  line-height: 12px;
+  color: rgb(152,153,157);
+}
+
+.emotion-0 + .emotion-0 {
+  margin-left: 18px;
+}
+
+.emotion-0 + .emotion-0:before {
+  content: '+';
+  position: absolute;
+  left: -18px;
+  top: 0;
+  padding: 2px 4px;
+  color: rgb(112,113,117);
+  font-size: 16px;
+}
+
+.emotion-2 {
+  position: relative;
+  display: inline;
+}
+
+.emotion-1 {
+  font-size: inherit;
+}
+
 <ul
-  class="test Component-root-0-1-1"
+  class="test emotion-4"
 >
   <li
-    class=" Component-root-0-1-2"
+    class=" emotion-0"
   >
     A
   </li>
   <li
-    class="test Component-root-0-1-2"
+    class="test emotion-0"
   >
     <span
-      class="Component-icon-0-1-3 Component-root-0-1-4"
+      class=" emotion-2"
     >
       <i
-        class="material-icons"
+        class="material-icons emotion-1"
       >
         arrow_upward
       </i>
@@ -54,11 +187,47 @@ exports[`Keyboard render with Icon 1`] = `
 `;
 
 exports[`Keyboard render with className 1`] = `
+.emotion-1 {
+  position: relative;
+  display: inline;
+  padding: 3px 4px 6px;
+  background: #cbccd2;
+  width: auto;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.emotion-0 {
+  position: relative;
+  display: inline;
+  padding: 2px 5px;
+  background-image: linear-gradient(rgb(223,224,231),rgb(248,249,255));
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px 1px rgba(112,113,117,0.8);
+  font-size: 12px;
+  line-height: 12px;
+  color: rgb(152,153,157);
+}
+
+.emotion-0 + .emotion-0 {
+  margin-left: 18px;
+}
+
+.emotion-0 + .emotion-0:before {
+  content: '+';
+  position: absolute;
+  left: -18px;
+  top: 0;
+  padding: 2px 4px;
+  color: rgb(112,113,117);
+  font-size: 16px;
+}
+
 <ul
-  class="test Component-root-0-1-1"
+  class="test emotion-1"
 >
   <li
-    class=" Component-root-0-1-2"
+    class=" emotion-0"
   >
     A
   </li>

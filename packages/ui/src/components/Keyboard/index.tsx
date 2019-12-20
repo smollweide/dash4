@@ -1,29 +1,29 @@
-import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+import { Children, cloneElement } from 'react';
 
-const styles = {
-	root: {
-		position: 'relative',
-		display: 'inline',
-		padding: '3px 4px 6px',
-		background: '#cbccd2',
-		width: 'auto',
-		borderRadius: 6,
-		margin: 0,
-	},
-};
-
-interface IProps extends WithStyles<typeof styles> {
+interface IKeyboardProps {
 	children: JSX.Element | JSX.Element[];
 	className?: string;
 }
 
-export const Keyboard = withStyles(styles)(({ className = '', classes, children }: IProps) => {
+export const Keyboard = ({ className = '', children }: IKeyboardProps) => {
 	return (
-		<ul className={`${className} ${classes.root}`}>
-			{React.Children.map(children, (child) => React.cloneElement(child, { tagName: 'li' }))}
+		<ul
+			className={className}
+			css={css`
+				position: relative;
+				display: inline;
+				padding: 3px 4px 6px;
+				background: #cbccd2;
+				width: auto;
+				border-radius: 6px;
+				margin: 0;
+			`}
+		>
+			{Children.map(children, (child) => cloneElement(child, { tagName: 'li' }))}
 		</ul>
 	);
-});
+};
 
 export * from './Key';

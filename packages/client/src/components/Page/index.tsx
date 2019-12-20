@@ -1,21 +1,24 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
 
-const styles = {
-	'@global': {
-		body: {
-			background: '#fafafa',
-		},
-	},
-	main: {
-		padding: 15,
-	},
-};
-
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
 	children: React.ReactNode;
 }
 
-export const Page = withStyles(styles)(({ classes, children }: IProps) => {
-	return <main className={classes.main}>{children}</main>;
-});
+export function Page({ children }: IProps) {
+	return (
+		<main
+			css={css`
+				@global {
+					body: {
+						background: #fafafa;
+					}
+				}
+				padding: 15px;
+			`}
+		>
+			{children}
+		</main>
+	);
+}

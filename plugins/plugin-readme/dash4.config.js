@@ -2,6 +2,7 @@ const { PluginReadme, PluginReadmeList } = require('./build/server');
 
 async function getConfig() {
 	return {
+		port: 8044,
 		tabs: [
 			{
 				title: 'Root',

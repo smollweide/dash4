@@ -13,7 +13,7 @@ jest.mock('@rooks/use-key', () => ({
 
 describe('Window', () => {
 	test('exist', () => {
-		expect(typeof Window).toBe('object');
+		expect(typeof Window).toBe('function');
 	});
 	test('render default', () => {
 		const { container } = render(<Window>Hello</Window>);

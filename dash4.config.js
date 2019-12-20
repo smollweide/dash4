@@ -148,6 +148,10 @@ async function getConfig() {
 									cmd: 'npm run audit',
 								},
 								{
+									title: 'audit-fix',
+									cmd: 'npm audit fix',
+								},
+								{
 									title: 'git: reset last commit',
 									cmd: 'git reset HEAD~1',
 								},

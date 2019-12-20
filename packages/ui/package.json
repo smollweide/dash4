@@ -35,11 +35,11 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@rooks/use-key": "3.4.0",
-    "react-jss": "10.0.0-alpha.10"
+    "@rooks/use-key": "3.4.0"
   },
   "devDependencies": {
     "@dash4/config": "0.7.0",
+    "@emotion/core": "10.0.22",
     "@storybook/addon-actions": "5.2.6",
     "@storybook/addon-info": "5.2.6",
     "@storybook/addon-knobs": "5.2.6",

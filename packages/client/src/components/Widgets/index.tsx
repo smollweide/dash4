@@ -1,12 +1,9 @@
 import { ErrorBoundary } from '@dash4/ui';
 import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
 import { IConfigTab } from '../..';
 import { Cell, Grid } from '../Grid';
 
-const styles = {};
-
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
 	tab: IConfigTab;
 }
 
@@ -19,7 +16,7 @@ const CouldNotLoad = ({ name, className }: ICouldNotLoadProps) => (
 	<div className={className || ''}>{`Could not load Plugin ${name}`}</div>
 );
 
-export const Widgets = withStyles(styles)(({ classes, tab }: IProps) => {
+export function Widgets({ tab }: IProps) {
 	return (
 		<ErrorBoundary>
 			{tab.rows.map((row, rowIndex) => {
@@ -69,4 +66,4 @@ export const Widgets = withStyles(styles)(({ classes, tab }: IProps) => {
 			})}
 		</ErrorBoundary>
 	);
-});
+}

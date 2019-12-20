@@ -1,56 +1,164 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PluginTerminal links 1`] = `
+.emotion-12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-12:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-1 {
+  position: relative;
+  padding: 15px;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  padding: 15px 15px 0;
+}
+
+.emotion-0 {
+  width: 100%;
+  white-space: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.emotion-11 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative;
+  padding: 15px;
+}
+
+.emotion-10 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--dark);
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+.emotion-3:hover,
+.emotion-3:focus,
+.emotion-3:active {
+  color: var(--dark);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background: rgba(108,117,125,0.1);
+}
+
+.emotion-2 {
+  margin: 3px 10px 4px 0;
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.emotion-5 {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 3px 10px 4px 0;
+}
+
+.emotion-4 {
+  font-size: 18px;
+}
+
 <div
-  class="Component-window-0-1-5 Component-windowBright-0-1-7 Component-windowAutoStretch-0-1-6"
+  class="emotion-12"
   tabindex="1"
 >
   <div
-    class="Component-windowHeader-0-1-1 Component-header-0-1-10"
+    class="emotion-1"
   >
     <p
-      class="Component-title-0-1-12"
+      class="emotion-0"
     >
       Links
     </p>
   </div>
   <div
-    class="Component-windowBody-0-1-2 Component-body-0-1-15"
+    class="emotion-11"
   >
     <ul
-      class="Component-ul-0-1-3"
+      class="emotion-10"
     >
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <a
-          class="Component-link-0-1-16 Component-link-0-1-19 btn btn-link"
+          class="emotion-3 btn btn-link"
           href="http://localhost:6006"
           rel="noreferrer noopener"
           target="_blank"
         >
           <img
             alt="Storybook"
-            class="Component-image-0-1-18"
+            class="emotion-2"
             src="https://storybook.js.org/images/logos/icon-storybook.png"
           />
           Storybook
         </a>
       </li>
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <a
-          class="Component-link-0-1-16 Component-link-0-1-20 btn btn-link"
+          class="emotion-3 btn btn-link"
           href="http://localhost:6008"
           rel="noreferrer noopener"
           target="_blank"
         >
           <span
-            class="Component-icon-0-1-17 Component-root-0-1-21 Component-size-m-0-1-23"
+            class="emotion-5"
           >
             <i
-              class="material-icons Component-size-i-m-0-1-26"
+              class="material-icons emotion-4"
             >
               compare
             </i>
@@ -58,20 +166,18 @@ exports[`PluginTerminal links 1`] = `
           Development environment
         </a>
       </li>
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <a
-          class="Component-link-0-1-16 Component-link-0-1-35 btn btn-link"
+          class="emotion-3 btn btn-link"
           href="http://localhost:6009"
           rel="noreferrer noopener"
           target="_blank"
         >
           <span
-            class="Component-icon-0-1-17 Component-root-0-1-21 Component-size-m-0-1-23"
+            class="emotion-5"
           >
             <i
-              class="material-icons Component-size-i-m-0-1-26"
+              class="material-icons emotion-4"
             >
               devices
             </i>
@@ -85,56 +191,164 @@ exports[`PluginTerminal links 1`] = `
 `;
 
 exports[`PluginTerminal links in dark mode 1`] = `
+.emotion-1 {
+  position: relative;
+  padding: 15px;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  padding: 15px 15px 0;
+}
+
+.emotion-0 {
+  width: 100%;
+  white-space: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.emotion-11 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative;
+  padding: 15px;
+}
+
+.emotion-10 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emotion-2 {
+  margin: 3px 10px 4px 0;
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.emotion-5 {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 3px 10px 4px 0;
+}
+
+.emotion-4 {
+  font-size: 18px;
+}
+
+.emotion-12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+  white-space: pre;
+  background: #000;
+  border: 1px solid rgb(51,51,51);
+  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px 0px;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.emotion-12:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--white);
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+.emotion-3:hover,
+.emotion-3:focus,
+.emotion-3:active {
+  color: var(--white);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background: var(--gray-dark);
+}
+
 <div
-  class="Component-window-0-1-5 Component-windowDark-0-1-8 Component-windowAutoStretch-0-1-6"
+  class="emotion-12"
   tabindex="1"
 >
   <div
-    class="Component-windowHeader-0-1-1 Component-header-0-1-10"
+    class="emotion-1"
   >
     <p
-      class="Component-title-0-1-12"
+      class="emotion-0"
     >
       Links
     </p>
   </div>
   <div
-    class="Component-windowBody-0-1-2 Component-body-0-1-15"
+    class="emotion-11"
   >
     <ul
-      class="Component-ul-0-1-3"
+      class="emotion-10"
     >
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <a
-          class="Component-link-0-1-16 Component-link-0-1-36 btn btn-link"
+          class="emotion-3 btn btn-link"
           href="http://localhost:6006"
           rel="noreferrer noopener"
           target="_blank"
         >
           <img
             alt="Storybook"
-            class="Component-image-0-1-18"
+            class="emotion-2"
             src="https://storybook.js.org/images/logos/icon-storybook.png"
           />
           Storybook
         </a>
       </li>
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <a
-          class="Component-link-0-1-16 Component-link-0-1-37 btn btn-link"
+          class="emotion-3 btn btn-link"
           href="http://localhost:6008"
           rel="noreferrer noopener"
           target="_blank"
         >
           <span
-            class="Component-icon-0-1-17 Component-root-0-1-21 Component-size-m-0-1-23"
+            class="emotion-5"
           >
             <i
-              class="material-icons Component-size-i-m-0-1-26"
+              class="material-icons emotion-4"
             >
               compare
             </i>
@@ -142,20 +356,18 @@ exports[`PluginTerminal links in dark mode 1`] = `
           Development environment
         </a>
       </li>
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <a
-          class="Component-link-0-1-16 Component-link-0-1-38 btn btn-link"
+          class="emotion-3 btn btn-link"
           href="http://localhost:6009"
           rel="noreferrer noopener"
           target="_blank"
         >
           <span
-            class="Component-icon-0-1-17 Component-root-0-1-21 Component-size-m-0-1-23"
+            class="emotion-5"
           >
             <i
-              class="material-icons Component-size-i-m-0-1-26"
+              class="material-icons emotion-4"
             >
               devices
             </i>
@@ -169,51 +381,138 @@ exports[`PluginTerminal links in dark mode 1`] = `
 `;
 
 exports[`PluginTerminal teaser with icon 1`] = `
+.emotion-10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-10:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-9 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative;
+  padding: 15px;
+}
+
+.emotion-8 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emotion-7 {
+  background: transparent;
+  border: 0;
+}
+
+.emotion-5 {
+  padding: 12px 0;
+}
+
+.emotion-3 {
+  padding: 0 12px;
+}
+
+.emotion-4 {
+  padding: 0 12px;
+}
+
+.emotion-6 {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.emotion-2 {
+  padding: 12px 0 20px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.emotion-1 {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-0 {
+  font-size: 24px;
+}
+
 <div
-  class="Component-window-0-1-5 Component-windowBright-0-1-7 Component-windowAutoStretch-0-1-6"
+  class="emotion-10"
   tabindex="1"
 >
   <div
-    class="Component-windowBody-0-1-2 Component-body-0-1-15"
+    class="emotion-9"
   >
     <ul
-      class="Component-ul-0-1-3"
+      class="emotion-8"
     >
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <div
-          class="Component-card-0-1-39 card"
+          class="emotion-7 card"
         >
           <div
-            class="Component-cardIconWrap-0-1-41"
+            class="emotion-2"
           >
             <span
-              class=" Component-root-0-1-21 Component-size-l-0-1-24"
+              class=" emotion-1"
             >
               <i
-                class="material-icons Component-size-i-l-0-1-27"
+                class="material-icons emotion-0"
               >
                 compare
               </i>
             </span>
           </div>
           <div
-            class="Component-cardBody-0-1-43 card-body"
+            class="emotion-5 card-body"
           >
             <div
-              class="Component-cardTitle-0-1-44 card-title h5"
+              class="emotion-3 card-title h5"
             >
               Storybook
             </div>
             <p
-              class="Component-cardText-0-1-45 card-text"
+              class="emotion-4 card-text"
             >
               Build bulletproof UI components faster. Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient.
             </p>
           </div>
           <a
-            class="Component-link-0-1-46"
+            class="emotion-6"
             href="http://localhost:6006"
             rel="noreferrer noopener"
             target="_blank"
@@ -226,68 +525,170 @@ exports[`PluginTerminal teaser with icon 1`] = `
 `;
 
 exports[`PluginTerminal teaser with multiple links 1`] = `
+.emotion-16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-16:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-15 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative;
+  padding: 15px;
+}
+
+.emotion-14 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--dark);
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+.emotion-5:hover,
+.emotion-5:focus,
+.emotion-5:active {
+  color: var(--dark);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background: rgba(108,117,125,0.1);
+}
+
+.emotion-4 {
+  margin: 3px 10px 4px 0;
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.emotion-7 {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 3px 10px 4px 0;
+}
+
+.emotion-6 {
+  font-size: 18px;
+}
+
+.emotion-13 {
+  background: transparent;
+  border: 0;
+}
+
+.emotion-1 {
+  padding: 12px 0 20px 0;
+  text-align: center;
+}
+
+.emotion-0 {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.emotion-12 {
+  padding: 12px 0;
+}
+
+.emotion-2 {
+  padding: 0 12px;
+}
+
+.emotion-3 {
+  padding: 0 12px;
+}
+
 <div
-  class="Component-window-0-1-5 Component-windowBright-0-1-7 Component-windowAutoStretch-0-1-6"
+  class="emotion-16"
   tabindex="1"
 >
   <div
-    class="Component-windowBody-0-1-2 Component-body-0-1-15"
+    class="emotion-15"
   >
     <ul
-      class="Component-ul-0-1-3"
+      class="emotion-14"
     >
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <div
-          class="Component-card-0-1-39 card"
+          class="emotion-13 card"
         >
           <div
-            class="Component-cardImageWrap-0-1-40"
+            class="emotion-1"
           >
             <img
               alt="Storybook"
-              class="card-img-top Component-cardImage-0-1-42"
+              class="card-img-top emotion-0"
               src="https://storybook.js.org/images/logos/icon-storybook.png"
             />
           </div>
           <div
-            class="Component-cardBody-0-1-43 card-body"
+            class="emotion-12 card-body"
           >
             <div
-              class="Component-cardTitle-0-1-44 card-title h5"
+              class="emotion-2 card-title h5"
             >
               Storybook
             </div>
             <p
-              class="Component-cardText-0-1-45 card-text"
+              class="emotion-3 card-text"
             >
               Build bulletproof UI components faster. Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient.
             </p>
             <a
-              class="Component-link-0-1-16 Component-link-0-1-47 btn btn-link"
+              class="emotion-5 btn btn-link"
               href="http://localhost:6006"
               rel="noreferrer noopener"
               target="_blank"
             >
               <img
                 alt="Storybook"
-                class="Component-image-0-1-18"
+                class="emotion-4"
                 src="https://storybook.js.org/images/logos/icon-storybook.png"
               />
               Storybook
             </a>
             <a
-              class="Component-link-0-1-16 Component-link-0-1-48 btn btn-link"
+              class="emotion-5 btn btn-link"
               href="http://localhost:6008"
               rel="noreferrer noopener"
               target="_blank"
             >
               <span
-                class="Component-icon-0-1-17 Component-root-0-1-21 Component-size-m-0-1-23"
+                class="emotion-7"
               >
                 <i
-                  class="material-icons Component-size-i-m-0-1-26"
+                  class="material-icons emotion-6"
                 >
                   compare
                 </i>
@@ -295,16 +696,16 @@ exports[`PluginTerminal teaser with multiple links 1`] = `
               Development environment
             </a>
             <a
-              class="Component-link-0-1-16 Component-link-0-1-49 btn btn-link"
+              class="emotion-5 btn btn-link"
               href="http://localhost:6009"
               rel="noreferrer noopener"
               target="_blank"
             >
               <span
-                class="Component-icon-0-1-17 Component-root-0-1-21 Component-size-m-0-1-23"
+                class="emotion-7"
               >
                 <i
-                  class="material-icons Component-size-i-m-0-1-26"
+                  class="material-icons emotion-6"
                 >
                   devices
                 </i>
@@ -320,47 +721,121 @@ exports[`PluginTerminal teaser with multiple links 1`] = `
 `;
 
 exports[`PluginTerminal teaser with one link 1`] = `
+.emotion-8 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative;
+  padding: 15px;
+}
+
+.emotion-7 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emotion-9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+  white-space: pre;
+  background: #000;
+  border: 1px solid rgb(51,51,51);
+  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px 0px;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.emotion-9:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-6 {
+  background: transparent;
+  border: 0;
+}
+
+.emotion-1 {
+  padding: 12px 0 20px 0;
+  text-align: center;
+}
+
+.emotion-0 {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.emotion-4 {
+  padding: 12px 0;
+}
+
+.emotion-2 {
+  padding: 0 12px;
+}
+
+.emotion-3 {
+  padding: 0 12px;
+}
+
+.emotion-5 {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 <div
-  class="Component-window-0-1-5 Component-windowDark-0-1-8 Component-windowAutoStretch-0-1-6"
+  class="emotion-9"
   tabindex="1"
 >
   <div
-    class="Component-windowBody-0-1-2 Component-body-0-1-15"
+    class="emotion-8"
   >
     <ul
-      class="Component-ul-0-1-3"
+      class="emotion-7"
     >
-      <li
-        class="Component-li-0-1-4"
-      >
+      <li>
         <div
-          class="Component-card-0-1-39 card"
+          class="emotion-6 card"
         >
           <div
-            class="Component-cardImageWrap-0-1-40"
+            class="emotion-1"
           >
             <img
               alt="Storybook"
-              class="card-img-top Component-cardImage-0-1-42"
+              class="card-img-top emotion-0"
               src="https://storybook.js.org/images/logos/icon-storybook.png"
             />
           </div>
           <div
-            class="Component-cardBody-0-1-43 card-body"
+            class="emotion-4 card-body"
           >
             <div
-              class="Component-cardTitle-0-1-44 card-title h5"
+              class="emotion-2 card-title h5"
             >
               Storybook
             </div>
             <p
-              class="Component-cardText-0-1-45 card-text"
+              class="emotion-3 card-text"
             >
               Build bulletproof UI components faster. Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient.
             </p>
           </div>
           <a
-            class="Component-link-0-1-46"
+            class="emotion-5"
             href="http://localhost:6006"
             rel="noreferrer noopener"
             target="_blank"

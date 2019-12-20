@@ -1,9 +1,9 @@
-import React, { SyntheticEvent, useState } from 'react';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+import React, { Fragment, SyntheticEvent, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import withStyles, { WithStyles } from 'react-jss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from './dash4_512.png';
-import { styles } from './styles';
 
 interface IPropsRaw {
 	children?: React.ReactNode;
@@ -11,7 +11,7 @@ interface IPropsRaw {
 	version?: string;
 }
 
-export interface IProps extends WithStyles<typeof styles>, RouteComponentProps, IPropsRaw {}
+export interface IProps extends RouteComponentProps, IPropsRaw {}
 
 function getInitialSelected({ tabs, location }: IProps) {
 	let selected = tabs[0];
@@ -27,8 +27,20 @@ function getInitialSelected({ tabs, location }: IProps) {
 	return selected;
 }
 
+const linkStyles = `
+	& a {
+		color: var(--gray);
+		text-decoration: none;
+		border-bottom: 1px solid var(--gray);
+		&:hover {
+			color: var(--gray-dark);
+			border-color: var(--gray-dark);
+		}
+	}
+`;
+
 const RawHeader = (props: IProps) => {
-	const { classes, location, tabs, history } = props;
+	const { location, tabs, history } = props;
 	const [selected, setSelected] = useState(getInitialSelected(props));
 	const [showInfoModal, setShowInfoModal] = useState(false);
 
@@ -44,15 +56,71 @@ const RawHeader = (props: IProps) => {
 	}
 
 	return (
-		<header className={classes.header}>
+		<header
+			css={css`
+				position: relative;
+				background: #fff;
+				border-bottom: 1px solid #eaeaea;
+			`}
+		>
 			<a href="/" onClick={handleShowInfoModal}>
-				<img className={classes.logo} src={logo} alt="Dash4 Logo" />
+				<img
+					css={css`
+						position: absolute;
+						width: 35px;
+						margin: 5px 15px;
+					`}
+					src={logo}
+					alt="Dash4 Logo"
+				/>
 			</a>
 			<Modal show={showInfoModal} onHide={handleHideInfoModal}>
-				<Modal.Header className={classes.infoModalHeader} closeButton />
-				<Modal.Body className={classes.infoModalBody}>
+				<Modal.Header
+					css={css`
+						border: 0;
+						padding: 10px 12px 0 0;
+						& .close span {
+							font-weight: 200;
+						}
+					`}
+					closeButton
+				/>
+				<Modal.Body
+					css={css`
+						padding-top: 0;
+						text-align: center;
+						& img {
+							margin-left: 14px;
+							margin-bottom: 1.5rem;
+						}
+						& ul {
+							list-style: none;
+							padding: 0;
+							margin-bottom: 0;
+						}
+						& ul + ul {
+							margin-top: 0.5rem;
+						}
+						& .btn {
+							padding: 0.1rem 1.5rem;
+							min-width: 200px;
+							margin-top: 10px;
+						}
+					`}
+				>
 					<img width="84" src={logo} alt="Dash4 Logo" />
-					<ul className={classes.infoModalList1}>
+					<ul
+						css={css`
+							& li {
+								font-size: 14px;
+								color: var(--gray);
+								${linkStyles}
+							}
+							& strong {
+								font-weight: 500;
+							}
+						`}
+					>
 						{props.version && (
 							<li>
 								<strong>version</strong> {props.version}
@@ -104,7 +172,16 @@ const RawHeader = (props: IProps) => {
 						</li>
 					</ul>
 				</Modal.Body>
-				<Modal.Footer className={classes.infoModalFooter}>
+				<Modal.Footer
+					css={css`
+						border: 0;
+						text-align: center;
+						font-size: 12px;
+						display: inline;
+						color: var(--gray);
+						${linkStyles}
+					`}
+				>
 					Dash4 is{' '}
 					<a
 						target="_blank"
@@ -115,9 +192,42 @@ const RawHeader = (props: IProps) => {
 					</a>
 				</Modal.Footer>
 			</Modal>
-			<ul className={classes.menu}>
+			<ul
+				css={css`
+					position: relative;
+					display: none;
+					flex-wrap: nowrap;
+					justify-content: center;
+					align-content: center;
+					padding: 15px 0 0 0;
+					margin: 0 15px 0 65px;
+					@media screen and (min-width: ${props.tabs.length * 70}px) {
+						display: flex;
+					}
+				`}
+			>
 				{tabs.map((tab, index) => {
-					const classNames = [classes.menuLink];
+					const classNames = [
+						`
+							display: block;
+							text-align: left;
+							overflow: hidden;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+							width: 100%;
+							transition: color 0.5s, text-decoration 0.5s;
+							border: 1px solid transparent;
+							border-bottom: 0;
+							font-size: 12px;
+							padding: 6px 12px;
+							margin: 0;
+							color: #999;
+							&:hover {
+								color: #000;
+								text-decoration: none;
+							}
+						`,
+					];
 					let isActive = false;
 					if (
 						location.pathname === `/${tab}` ||
@@ -125,27 +235,143 @@ const RawHeader = (props: IProps) => {
 						(location.pathname === '/' && index === 0)
 					) {
 						isActive = true;
-						classNames.push(classes.menuLinkActive);
+						classNames.push(`
+							background: #fafafa;
+							border-color: #eaeaea;
+							border-bottom: 0;
+							border-top-left-radius: 8px;
+							border-top-right-radius: 8px;
+							color: #000;
+						`);
 					}
 					return (
-						<li style={{ width: `${100 / tabs.length}%` }} className={classes.menuLi} key={tab}>
+						<li
+							style={{ width: `${100 / tabs.length}%` }}
+							css={css`
+								position: relative;
+								list-style: none;
+								margin-right: -1px;
+								max-width: 100px;
+								& + &:before {
+									content: ' ';
+									position: absolute;
+									left: 0;
+									width: 1px;
+									top: 8px;
+									bottom: 8px;
+									background: #eaeaea;
+								}
+							`}
+							key={tab}
+						>
 							{isActive && (
-								<>
-									<span className={classes.menuLiLeft} />
-									<span className={classes.menuLiCenter} />
-									<span className={classes.menuLiRight} />
-								</>
+								<Fragment>
+									<span
+										css={css`
+											width: 8px;
+											height: 8px;
+											display: block;
+											overflow: hidden;
+											position: absolute;
+											bottom: -1px;
+											left: -7px;
+											&:before {
+												content: ' ';
+												display: block;
+												width: 16px;
+												height: 16px;
+												background: radial-gradient(
+													circle 8px at top left,
+													transparent 0,
+													transparent 7px,
+													#eaeaea 8px,
+													#fafafa 8px
+												);
+											}
+										`}
+									/>
+									<span
+										css={css`
+											position: absolute;
+											background: #fafafa;
+											height: 3px;
+											bottom: -1px;
+											left: 0;
+											right: 0;
+										`}
+									/>
+									<span
+										css={css`
+											width: 8px;
+											right: -7px;
+											height: 8px;
+											bottom: -1px;
+											display: block;
+											overflow: hidden;
+											position: absolute;
+											&:before {
+												content: ' ';
+												position: absolute;
+												right: 0;
+												top: 0;
+												display: block;
+												width: 16px;
+												height: 16px;
+												background: radial-gradient(
+													circle 8px at top right,
+													transparent 0,
+													transparent 7px,
+													#eaeaea 8px,
+													#fafafa 8px
+												);
+											}
+										`}
+									/>
+								</Fragment>
 							)}
-							<Link title={tab} className={classNames.join(' ')} to={index === 0 ? '/' : `/${tab}`}>
+							<Link title={tab} css={css(classNames.join(' '))} to={index === 0 ? '/' : `/${tab}`}>
 								{tab}
 							</Link>
 						</li>
 					);
 				})}
 			</ul>
-			<div className={classes.menuMobile}>
-				<div className={classes.menuMobileTitle}>{selected}</div>
-				<div className={classes.menuBurger} />
+			<div
+				css={css`
+					display: flex;
+					justify-content: center;
+					@media screen and (min-width: ${props.tabs.length * 70}px) {
+						display: none;
+					}
+				`}
+			>
+				<div
+					css={css`
+						text-align: center;
+						padding: 11px 0;
+					`}
+				>
+					{selected}
+				</div>
+				<div
+					css={css`
+						position: absolute;
+						width: 24px;
+						height: 18px;
+						right: 20px;
+						top: 14px;
+						border-top: 2px solid #000;
+						border-bottom: 2px solid #000;
+						&:before {
+							content: ' ';
+							position: absolute;
+							top: 6px;
+							left: 0;
+							width: 100%;
+							border-top: 2px solid #000;
+						}
+					`}
+				/>
 				<select
 					value={selected}
 					onChange={(event) => {
@@ -153,7 +379,21 @@ const RawHeader = (props: IProps) => {
 						setSelected(value);
 						history.push(value === tabs[0] ? '/' : `/${value}`);
 					}}
-					className={classes.menuSelect}
+					css={css`
+						cursor: pointer;
+						background: transparent;
+						border: 0;
+						outline: 0;
+						font-size: 0;
+						color: #fff;
+						text-align: center;
+						appearance: none;
+						height: 40px;
+						position: absolute;
+						right: 15px;
+						width: calc(100% - 65px - 15px);
+						top: 3px;
+					`}
 				>
 					{tabs.map((tab) => {
 						return (
@@ -168,7 +408,5 @@ const RawHeader = (props: IProps) => {
 	);
 };
 
-const StyledHeader = withStyles(styles)(RawHeader);
-
 // TODO fix issue since typescript 3.6.x
-export const Header = (withRouter(StyledHeader as any) as any) as (props: IPropsRaw) => JSX.Element;
+export const Header = (withRouter(RawHeader as any) as any) as (props: IPropsRaw) => JSX.Element;

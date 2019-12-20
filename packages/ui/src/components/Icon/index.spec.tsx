@@ -5,7 +5,7 @@ import { Icon } from './index';
 
 describe('Icon', () => {
 	test('exist', () => {
-		expect(typeof Icon).toBe('object');
+		expect(typeof Icon).toBe('function');
 	});
 	test('render default', () => {
 		const { container } = render(<Icon name="favorite" />);
