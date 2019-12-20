@@ -1,3 +1,13 @@
+## <small>0.7.1 (2019-12-20)</small>
+
+* fix: skip broken ci test and update lerna ([0c57a0b](https://github.com/smollweide/dash4/commit/0c57a0b))
+* chore: update node to 12.14.0 ([ec3a4ec](https://github.com/smollweide/dash4/commit/ec3a4ec))
+* test(plugin-dependencies): fix tests ([32a21b1](https://github.com/smollweide/dash4/commit/32a21b1))
+
+
+
+
+
 ## 0.7.0 (2019-11-15)
 
 * fix: update dependencies ([a34410e](https://github.com/smollweide/dash4/commit/a34410e))

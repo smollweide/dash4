@@ -1,6 +1,6 @@
 {
   "name": "@dash4/client",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": false,
   "description": "Dash4 webapp client application",
   "repository": "https://github.com/smollweide/dash4",
@@ -30,9 +30,9 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/log": "0.7.0",
-    "@dash4/react-xterm": "0.7.0",
-    "@dash4/ui": "0.7.0",
+    "@dash4/log": "0.7.1",
+    "@dash4/react-xterm": "0.7.1",
+    "@dash4/ui": "0.7.1",
     "bootstrap": "4.3.1",
     "core-js": "3.4.1",
     "jquery": "3.4.1",
