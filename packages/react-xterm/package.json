@@ -19,7 +19,6 @@
     "build": "npm-run-all build:*",
     "build:build": "tsc --outDir build",
     "build:lib": "webpack --config webpack.library.config.js --mode production",
-    "postinstall": "npm rebuild node-sass",
     "start": "webpack-dev-server --mode development --port 9000"
   },
   "browserslist": [

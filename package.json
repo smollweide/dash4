@@ -21,7 +21,6 @@
     "audit": "npm-run-all audit:*",
     "audit:root": "npm audit",
     "bootstrap": "npx lerna bootstrap --hoist",
-    "postbootstrap": "npm rebuild node-sass",
     "build": "npm-run-all build-lib build-build build-dist build-plugins:*",
     "build-build": "lerna run build:build",
     "build-dist": "lerna run build:dist",

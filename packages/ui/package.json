@@ -20,7 +20,6 @@
     "build-storybook": "build-storybook",
     "build:build": "tsc --outDir build",
     "build:lib": "webpack --config webpack.library.config.js --mode production",
-    "postinstall": "npm rebuild node-sass",
     "start": "start-storybook -p 6006",
     "test": "jest --coverage --config=jest.config.js",
     "test-update-snapshots": "jest --coverage --update-snapshot --config=jest.config.js",
