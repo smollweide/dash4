@@ -1,6 +1,6 @@
 {
   "name": "@dash4/ui",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": false,
   "description": "dash4 react ui component",
   "repository": "https://github.com/smollweide/dash4",
@@ -20,7 +20,6 @@
     "build-storybook": "build-storybook",
     "build:build": "tsc --outDir build",
     "build:lib": "webpack --config webpack.library.config.js --mode production",
-    "postinstall": "npm rebuild node-sass",
     "start": "start-storybook -p 6006",
     "test": "jest --coverage --config=jest.config.js",
     "test-update-snapshots": "jest --coverage --update-snapshot --config=jest.config.js",
@@ -38,7 +37,7 @@
     "@rooks/use-key": "3.4.0"
   },
   "devDependencies": {
-    "@dash4/config": "0.7.0",
+    "@dash4/config": "0.7.1",
     "@emotion/core": "10.0.22",
     "@storybook/addon-actions": "5.2.6",
     "@storybook/addon-info": "5.2.6",

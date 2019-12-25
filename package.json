@@ -1,6 +1,6 @@
 {
   "name": "dash4",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": false,
   "description": "The dashboard for developers",
   "keywords": [
@@ -21,7 +21,6 @@
     "audit": "npm-run-all audit:*",
     "audit:root": "npm audit",
     "bootstrap": "npx lerna bootstrap --hoist",
-    "postbootstrap": "npm rebuild node-sass",
     "build": "npm-run-all build-lib build-build build-dist build-plugins:*",
     "build-build": "lerna run build:build",
     "build-dist": "lerna run build:dist",
@@ -97,7 +96,7 @@
     "globby": "10.0.1",
     "husky": "3.0.9",
     "latest-version": "5.1.0",
-    "lerna": "3.18.4",
+    "lerna": "3.19.0",
     "lint-staged": "9.4.3",
     "node-sass": "4.13.0",
     "npm-run-all": "4.1.5",

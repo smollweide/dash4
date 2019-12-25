@@ -225,7 +225,7 @@ describe('cli', () => {
 		);
 	});
 
-	(isCI ? test.skip : test)('execute in yarn workspaces repo', async () => {
+	test.skip('execute in yarn workspaces repo', async () => {
 		const testId = 'yarn-workspaces';
 		const cwd = path.join(tempDir, testId);
 		await makeDir(cwd);
