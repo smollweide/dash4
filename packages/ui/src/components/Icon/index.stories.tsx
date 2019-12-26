@@ -33,11 +33,7 @@ Object.keys(colorMap).forEach((color) => {
 	));
 });
 Object.keys(alignMap).forEach((align) => {
-	stories.add(`align ${align}`, () => (
-		<div style={{ width: '100vw', height: '100vh' }}>
-			<Icon name="play_arrow" align={align as TAlign} />
-		</div>
-	));
+	stories.add(`align ${align}`, () => <Icon name="play_arrow" align={align as TAlign} />);
 });
 Object.keys(animationMap).forEach((animation) => {
 	stories.add(`animation ${animation}`, () => <Icon name="cached" animation={animation as TAnimation} />);

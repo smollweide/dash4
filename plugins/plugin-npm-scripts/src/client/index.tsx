@@ -1,39 +1,38 @@
-// tslint:disable-next-line
-// /* global fetch, WebSocket, location */
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { IWidgetConfig } from '@dash4/client/build';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { Window, WindowBody, WindowHeader } from '@dash4/ui';
-import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig } from '../shared-types';
 import { NpmScript } from './components/Script';
 
-const styles = {
-	ul: {
-		listStyle: 'none',
-		padding: 10,
-		margin: 0,
-	},
-	li: {
-		textAlign: 'center',
-		'& + &': {
-			marginTop: 10,
-		},
-	},
-};
-
-export interface IProps extends WithStyles<typeof styles>, IWidgetConfig<IClientConfig> {
+export interface INpmScriptsProps extends IWidgetConfig<IClientConfig> {
 	// tslint:disable-next-line
 }
 
-const NpmScripts = ({ dark, classes, clientConfig, id }: IProps) => {
+const NpmScripts = ({ dark, clientConfig, id }: INpmScriptsProps) => {
 	return (
 		<Window dark={dark}>
 			<WindowHeader title={'Npm Scripts'} />
 			<WindowBody>
-				<ul className={classes.ul}>
+				<ul
+					css={css`
+						list-style: none;
+						padding: 10px;
+						margin: 0;
+					`}
+				>
 					{clientConfig.scripts.map((script) => (
-						<li key={script.id} className={classes.li}>
+						<li
+							key={script.id}
+							css={css`
+								text-align: center;
+								& + & {
+									margin-top: 10px;
+								}
+							`}
+						>
 							<NpmScript id={id} script={script} />
 						</li>
 					))}
@@ -44,4 +43,4 @@ const NpmScripts = ({ dark, classes, clientConfig, id }: IProps) => {
 };
 
 // tslint:disable-next-line
-registerPlugin('PluginNpmScripts', withStyles(styles)(NpmScripts));
+registerPlugin('PluginNpmScripts', NpmScripts);

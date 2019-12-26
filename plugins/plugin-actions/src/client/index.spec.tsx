@@ -80,7 +80,7 @@ const props = {
 
 describe('PluginTerminal', () => {
 	test('exist', () => {
-		expect(typeof PluginActions).toBe('object');
+		expect(typeof PluginActions).toBe('function');
 	});
 	test('links', () => {
 		const { container } = render(

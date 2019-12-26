@@ -1,23 +1,24 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { IWidgetConfig } from '@dash4/client/build';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { NpmScript } from '@dash4/plugin-npm-scripts/build/client/components/Script';
 import { Icon, Window, WindowBody, WindowHeader } from '@dash4/ui';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Button, Form, OverlayTrigger, Popover, Row } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig, ISendToServer } from '../shared-types';
 import { Dependency } from './Dependency';
 import { filter } from './filter';
 import { useData } from './hooks';
-import { styles } from './styles';
 import { isDataError, isDataLoading } from './utils';
 
-type IProps = WithStyles<typeof styles> & IWidgetConfig<IClientConfig>;
+type IPluginDependenciesProps = IWidgetConfig<IClientConfig>;
 
 const sendMap: { [key: string]: ISendToServer } = {};
 
-export const PluginDependencies = withStyles(styles)(({ id, dark, clientConfig, classes }: IProps) => {
+export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenciesProps) => {
 	const data = useData(id, (_send) => {
 		sendMap[id] = _send;
 	});
@@ -63,7 +64,13 @@ export const PluginDependencies = withStyles(styles)(({ id, dark, clientConfig, 
 					placement={'bottom'}
 					overlay={
 						<Popover id={`${id}-filter-popover`} title={'Filter'}>
-							<Form className={classes.filterForm}>
+							<Form
+								css={css`
+									position: relative;
+									width: 100%;
+									padding: 20px 15px 0;
+								`}
+							>
 								<Form.Group as={Row} controlId={`${id}_filter-form-search`}>
 									<Form.Control
 										value={filterQuery}
@@ -88,22 +95,72 @@ export const PluginDependencies = withStyles(styles)(({ id, dark, clientConfig, 
 					</Button>
 				</OverlayTrigger>
 			</WindowHeader>
-			<WindowBody className={`${classes.windowBody} ${isProcessing ? classes.windowBodyProcessing : ''}`}>
+			<WindowBody
+				css={[
+					css`
+						position: relative;
+						padding: 0 15px 30px;
+					`,
+					isProcessing &&
+						css`
+							&:after {
+								content: ' ';
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+							}
+						`,
+				]}
+			>
 				{isProcessing && (
-					<div className={classes.spinnerInContent}>
+					<div
+						css={css`
+							position: absolute;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							width: 100%;
+							height: 100%;
+						`}
+					>
 						<Spinner animation="grow" />
 					</div>
 				)}
 				{isDataLoading(data) ? (
-					<div className={classes.spinner}>
+					<div
+						css={css`
+							position: relative;
+							display: flex;
+							justify-content: center;
+							padding: 30px 0 10px;
+						`}
+					>
 						<Spinner animation="grow" />
 					</div>
 				) : isDataError(data) ? (
 					<p>Error: {data.message}</p>
 				) : (
-					<>
+					<Fragment>
 						{filteredData && Object.keys(filteredData).length > 0 ? (
-							<ul className={`${classes.ul} ${isProcessing ? classes.ulProcessing : ''}`}>
+							<ul
+								css={[
+									css`
+										position: relative;
+										display: flex;
+										justify-content: center;
+										padding: 30px 0 10px;
+										flex-wrap: wrap;
+										max-height: 450px;
+										overflow: scroll;
+									`,
+									isProcessing &&
+										css`
+											opacity: 0.5;
+										`,
+								]}
+							>
 								{Object.keys(filteredData).map((dependencyName) => {
 									const { version, latestVersion, isUpToDate, packages } = data[dependencyName];
 									return (
@@ -124,15 +181,19 @@ export const PluginDependencies = withStyles(styles)(({ id, dark, clientConfig, 
 						)}
 
 						{updatedCounter >= 1 && (
-							<div className={classes.installButtonWrapper}>
+							<div
+								css={css`
+									text-align: center;
+								`}
+							>
 								<NpmScript id={clientConfig.installProcess.id} script={clientConfig.installProcess} />
 							</div>
 						)}
-					</>
+					</Fragment>
 				)}
 			</WindowBody>
 		</Window>
 	);
-});
+};
 
 registerPlugin('PluginDependencies', PluginDependencies);

@@ -37,7 +37,7 @@ import { NpmScript, wait } from '.';
 describe('PluginNpmScripts', () => {
 	describe('NpmScript', () => {
 		test('exist', () => {
-			expect(typeof NpmScript).toBe('object');
+			expect(typeof NpmScript).toBe('function');
 		});
 		test('render default', () => {
 			const { container } = render(

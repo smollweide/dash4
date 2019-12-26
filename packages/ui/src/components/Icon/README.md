@@ -1,8 +1,9 @@
 <div align="center">
 <h1>Dash4 Icon</h1>
 
-Render a [material ui](https://material.io/tools/icons/?style=baseline) icon 
+Render a [material ui](https://material.io/tools/icons/?style=baseline) icon
 <br />
+
 </div>
 
 <!-- STORY -->
@@ -12,13 +13,11 @@ import React from 'react';
 import { Icon } from '@dash4/ui';
 
 export const YourComponent = () => {
-  return (
-    <Icon name="play_arrow" size="m" />
-  );
+	return <Icon name="play_arrow" size="m" />;
 };
 ```
 
-*props:*
+_props:_
 
 ```ts
 // icon name defined by material ui icons
@@ -32,4 +31,6 @@ color?: TColor;
 animation?: TAnimation;
 // type TAlign = "center-in-content"
 align?: TAlign;
+// type TDisplay = "inline" | "block" (default=block)
+display?: TDisplay;
 ```

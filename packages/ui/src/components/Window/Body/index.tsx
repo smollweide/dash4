@@ -1,19 +1,23 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
 
-const styles = {
-	body: {
-		padding: 5,
-		whiteSpace: 'normal',
-		flexGrow: 1,
-	},
-};
-
-interface IProps extends WithStyles<typeof styles> {
+interface IWindowBodyProps {
 	children: React.ReactNode;
 	className?: string;
 }
 
-export const WindowBody = withStyles(styles)(({ classes, children, className }: IProps) => {
-	return <div className={`${className || ''} ${classes.body}`}>{children && children}</div>;
-});
+export const WindowBody = ({ children, className = '' }: IWindowBodyProps) => {
+	return (
+		<div
+			className={className}
+			css={css`
+				padding: 5px;
+				white-space: normal;
+				flex-grow: 1;
+			`}
+		>
+			{children && children}
+		</div>
+	);
+};

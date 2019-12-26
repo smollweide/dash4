@@ -18,7 +18,7 @@ import { getMatchingQuery, Readme, ReadmeList } from '.';
 describe('PluginReadmeList', () => {
 	describe('ReadmeList', () => {
 		test('exist', () => {
-			expect(typeof ReadmeList).toBe('object');
+			expect(typeof ReadmeList).toBe('function');
 		});
 		test('render default', () => {
 			const { container } = render(
@@ -69,7 +69,7 @@ describe('PluginReadmeList', () => {
 
 	describe('Readme', () => {
 		test('exist', () => {
-			expect(typeof Readme).toBe('object');
+			expect(typeof Readme).toBe('function');
 		});
 	});
 

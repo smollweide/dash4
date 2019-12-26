@@ -1,15 +1,15 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { IWidgetConfig } from '@dash4/client/build';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { Window, WindowBody, WindowHeader } from '@dash4/ui';
-import React, { lazy, Suspense } from 'react';
+import { Fragment, lazy, Suspense } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig, ICoverageSection } from '../shared-types';
-// import { CoverageChart } from './components/CoverageChart';
 import { ISend, useCoverageData } from './hooks';
-import { styles } from './styles';
 
-type IProps = WithStyles<typeof styles> & IWidgetConfig<IClientConfig>;
+type IProps = IWidgetConfig<IClientConfig>;
 
 const CoverageChart = lazy(() => import(/* webpackChunkName: "coverage-chart" */ './components/CoverageChart'));
 
@@ -26,7 +26,7 @@ function getCoverageSectionValue(coverageSection: ICoverageSection | undefined, 
 // let send: ISend | undefined;
 const sendMap: { [key: string]: ISend } = {};
 
-export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) => {
+export const PluginCodeCoverage = ({ id, dark, clientConfig }: IProps) => {
 	const data = useCoverageData(id, (_send) => {
 		sendMap[id] = _send;
 	});
@@ -38,18 +38,38 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) 
 		}
 	}
 
+	const chartRow = css`
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;
+	`;
+
 	return (
-		<>
+		<Fragment>
 			<Window dark={dark}>
 				<WindowHeader title="Code coverage" />
-				<WindowBody className={classes.windowBody}>
+				<WindowBody
+					css={css`
+						padding: 0 15px 30px;
+					`}
+				>
 					{data && data.error ? (
 						<p>Error: {data.message}</p>
 					) : data ? (
 						<Suspense fallback={<div>Loading ...</div>}>
-							<div onClick={handleClick} className={classes.box}>
-								<div className={classes.chartRow}>
-									<div className={classes.chart}>
+							<div
+								onClick={handleClick}
+								css={css`
+									display: flex;
+									flex-flow: row wrap;
+									justify-content: center;
+									align-items: center;
+									cursor: pointer;
+								`}
+							>
+								<div css={chartRow}>
+									<div>
 										<CoverageChart
 											dark={dark}
 											title="Statements"
@@ -57,7 +77,7 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) 
 											coverage={getCoverageSectionValue(data.statements, 'coverage')}
 										/>
 									</div>
-									<div className={classes.chart}>
+									<div>
 										<CoverageChart
 											dark={dark}
 											title="Branches"
@@ -66,8 +86,8 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) 
 										/>
 									</div>
 								</div>
-								<div className={classes.chartRow}>
-									<div className={classes.chart}>
+								<div css={chartRow}>
+									<div>
 										<CoverageChart
 											dark={dark}
 											title="Functions"
@@ -75,7 +95,7 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) 
 											coverage={getCoverageSectionValue(data.functions, 'coverage')}
 										/>
 									</div>
-									<div className={classes.chart}>
+									<div>
 										<CoverageChart
 											dark={dark}
 											title="Lines"
@@ -87,14 +107,21 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig, classes }: IProps) 
 							</div>
 						</Suspense>
 					) : (
-						<div className={classes.spinner}>
+						<div
+							css={css`
+								position: relative;
+								display: flex;
+								justify-content: center;
+								padding: 60px 0;
+							`}
+						>
 							<Spinner animation="grow" />
 						</div>
 					)}
 				</WindowBody>
 			</Window>
-		</>
+		</Fragment>
 	);
 };
 
-registerPlugin('PluginCodeCoverage', withStyles(styles)(PluginCodeCoverage));
+registerPlugin('PluginCodeCoverage', PluginCodeCoverage);

@@ -1,34 +1,604 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PluginReadmeList ReadmeList render default 1`] = `
+.emotion-9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-9:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-8 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-6 {
+  cursor: pointer;
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.emotion-5 {
+  padding: 10px;
+  background: none;
+  border: none;
+  display: inline;
+  width: 100%;
+}
+
+.emotion-3 {
+  margin: 10px;
+  box-shadow: rgba(0,0,0,0.16) 0px 0px 1px;
+}
+
+.emotion-2 {
+  height: 175px;
+  padding: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.emotion-2:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.emotion-1 {
+  width: 100%;
+  zoom: 0.25;
+}
+
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji, Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.emotion-0 kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.emotion-0:after,
+.emotion-0:before {
+  display: table;
+  content: '';
+}
+
+.emotion-0:after {
+  clear: both;
+}
+
+.emotion-0 > :first-of-type {
+  margin-top: 0 !important;
+}
+
+.emotion-0 > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.emotion-0 a:not([href]) {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0 .absent {
+  color: #cb2431;
+}
+
+.emotion-0 .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.emotion-0 .anchor:focus {
+  outline: none;
+}
+
+.emotion-0 blockquote,
+.emotion-0 details,
+.emotion-0 dl,
+.emotion-0 ol,
+.emotion-0 p,
+.emotion-0 pre,
+.emotion-0 table,
+.emotion-0 ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.emotion-0 hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.emotion-0 blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.emotion-0 blockquote > :first-of-type {
+  margin-top: 0;
+}
+
+.emotion-0 blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.emotion-0 h1,
+.emotion-0 h2,
+.emotion-0 h3,
+.emotion-0 h4,
+.emotion-0 h5,
+.emotion-0 h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.emotion-0 h1 .octicon-link,
+.emotion-0 h2 .octicon-link,
+.emotion-0 h3 .octicon-link,
+.emotion-0 h4 .octicon-link,
+.emotion-0 h5 .octicon-link,
+.emotion-0 h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.emotion-0 h1:hover .anchor,
+.emotion-0 h2:hover .anchor,
+.emotion-0 h3:hover .anchor,
+.emotion-0 h4:hover .anchor,
+.emotion-0 h5:hover .anchor,
+.emotion-0 h6:hover .anchor {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0 h1:hover .anchor .octicon-link,
+.emotion-0 h2:hover .anchor .octicon-link,
+.emotion-0 h3:hover .anchor .octicon-link,
+.emotion-0 h4:hover .anchor .octicon-link,
+.emotion-0 h5:hover .anchor .octicon-link,
+.emotion-0 h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.emotion-0 h1 code,
+.emotion-0 h1 tt,
+.emotion-0 h2 code,
+.emotion-0 h2 tt,
+.emotion-0 h3 code,
+.emotion-0 h3 tt,
+.emotion-0 h4 code,
+.emotion-0 h4 tt,
+.emotion-0 h5 code,
+.emotion-0 h5 tt,
+.emotion-0 h6 code,
+.emotion-0 h6 tt {
+  font-size: inherit;
+}
+
+.emotion-0 h1 {
+  font-size: 2em;
+}
+
+.emotion-0 h1,
+.emotion-0 h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.emotion-0 h2 {
+  font-size: 1.5em;
+}
+
+.emotion-0 h3 {
+  font-size: 1.25em;
+}
+
+.emotion-0 h4 {
+  font-size: 1em;
+}
+
+.emotion-0 h5 {
+  font-size: 0.875em;
+}
+
+.emotion-0 h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.emotion-0 ol,
+.emotion-0 ul {
+  padding-left: 2em;
+}
+
+.emotion-0 ol.no-list,
+.emotion-0 ul.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.emotion-0 ol ol,
+.emotion-0 ol ul,
+.emotion-0 ul ol,
+.emotion-0 ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.emotion-0 li {
+  word-wrap: break-all;
+}
+
+.emotion-0 li > p {
+  margin-top: 16px;
+}
+
+.emotion-0 li + li {
+  margin-top: 0.25em;
+}
+
+.emotion-0 dl {
+  padding: 0;
+}
+
+.emotion-0 dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.emotion-0 dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-0 table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.emotion-0 table th {
+  font-weight: 600;
+}
+
+.emotion-0 table td,
+.emotion-0 table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.emotion-0 table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.emotion-0 table tr:nth-of-type(2n) {
+  background-color: #f6f8fa;
+}
+
+.emotion-0 table img {
+  background-color: initial;
+}
+
+.emotion-0 img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.emotion-0 img[align='right'] {
+  padding-left: 20px;
+}
+
+.emotion-0 img[align='left'] {
+  padding-right: 20px;
+}
+
+.emotion-0 .emoji {
+  max-width: none;
+  vertical-align: text-top;
+  background-color: initial;
+}
+
+.emotion-0 span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+.emotion-0 span.frame > span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #dfe2e5;
+}
+
+.emotion-0 span.frame span img {
+  display: block;
+  float: left;
+}
+
+.emotion-0 span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #24292e;
+}
+
+.emotion-0 span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.emotion-0 span.align-center > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.emotion-0 span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emotion-0 span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.emotion-0 span.align-right > span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.emotion-0 span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+.emotion-0 span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+.emotion-0 span.float-left span {
+  margin: 13px 0 0;
+}
+
+.emotion-0 span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+.emotion-0 span.float-right > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.emotion-0 code,
+.emotion-0 tt {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+}
+
+.emotion-0 code br,
+.emotion-0 tt br {
+  display: none;
+}
+
+.emotion-0 del code {
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+}
+
+.emotion-0 pre {
+  word-wrap: normal;
+}
+
+.emotion-0 pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.emotion-0 .highlight {
+  margin-bottom: 16px;
+}
+
+.emotion-0 .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.emotion-0 .highlight pre,
+.emotion-0 pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.emotion-0 pre code,
+.emotion-0 pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.emotion-0 .csv-data td,
+.emotion-0 .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.emotion-0 .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: #fff;
+  border: 0;
+}
+
+.emotion-0 .csv-data tr {
+  border-top: 0;
+}
+
+.emotion-0 .csv-data th {
+  font-weight: 600;
+  background: #f6f8fa;
+  border-top: 0;
+}
+
+.emotion-4 {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px 0;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  margin: 0;
+}
+
 <div
-  class="Component-window-0-1-11 Component-windowBright-0-1-13 Component-windowAutoStretch-0-1-12"
+  class="emotion-9"
   tabindex="1"
 >
   <div
-    class="ReadmeListRaw-windowBody-0-1-1 Component-body-0-1-16"
+    class="emotion-8"
   >
     <ul
-      class="ReadmeListRaw-ul-0-1-3"
+      class="emotion-7"
     >
       <li
-        class="ReadmeListRaw-li-0-1-4 undefined"
+        class="emotion-6"
       >
         <button
-          class="Component-box-0-1-17"
+          class="emotion-5"
         >
           <div
             aria-hidden="true"
-            class="Component-markdownWindow-0-1-19"
+            class="emotion-3"
           >
             <div
-              class="Component-markdownSpacing-0-1-20"
+              class="emotion-2"
             >
               <div
-                class="Component-markdown-0-1-21"
+                class="emotion-1"
               >
                 <div
-                  class="markdown-body"
+                  class="emotion-0"
                 >
                   <div>
                     markdown
@@ -38,7 +608,7 @@ exports[`PluginReadmeList ReadmeList render default 1`] = `
             </div>
           </div>
           <h6
-            class="Component-title-0-1-18"
+            class="emotion-4"
           >
             title
           </h6>
@@ -50,43 +620,646 @@ exports[`PluginReadmeList ReadmeList render default 1`] = `
 `;
 
 exports[`PluginReadmeList ReadmeList render fullscreen 1`] = `
+.emotion-11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-11:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.emotion-10 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.emotion-9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-8 {
+  cursor: pointer;
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.emotion-7 {
+  padding: 10px;
+  background: none;
+  border: none;
+  display: inline;
+  width: 100%;
+}
+
+.emotion-5 {
+  margin: 10px;
+  box-shadow: rgba(0,0,0,0.16) 0px 0px 1px;
+}
+
+.emotion-4 {
+  height: 175px;
+  padding: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.emotion-4:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.emotion-3 {
+  width: 100%;
+  zoom: 0.25;
+}
+
+.emotion-2 {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji, Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.emotion-2 kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.emotion-2:after,
+.emotion-2:before {
+  display: table;
+  content: '';
+}
+
+.emotion-2:after {
+  clear: both;
+}
+
+.emotion-2 > :first-of-type {
+  margin-top: 0 !important;
+}
+
+.emotion-2 > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.emotion-2 a:not([href]) {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-2 .absent {
+  color: #cb2431;
+}
+
+.emotion-2 .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.emotion-2 .anchor:focus {
+  outline: none;
+}
+
+.emotion-2 blockquote,
+.emotion-2 details,
+.emotion-2 dl,
+.emotion-2 ol,
+.emotion-2 p,
+.emotion-2 pre,
+.emotion-2 table,
+.emotion-2 ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.emotion-2 hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.emotion-2 blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.emotion-2 blockquote > :first-of-type {
+  margin-top: 0;
+}
+
+.emotion-2 blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.emotion-2 h1,
+.emotion-2 h2,
+.emotion-2 h3,
+.emotion-2 h4,
+.emotion-2 h5,
+.emotion-2 h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.emotion-2 h1 .octicon-link,
+.emotion-2 h2 .octicon-link,
+.emotion-2 h3 .octicon-link,
+.emotion-2 h4 .octicon-link,
+.emotion-2 h5 .octicon-link,
+.emotion-2 h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.emotion-2 h1:hover .anchor,
+.emotion-2 h2:hover .anchor,
+.emotion-2 h3:hover .anchor,
+.emotion-2 h4:hover .anchor,
+.emotion-2 h5:hover .anchor,
+.emotion-2 h6:hover .anchor {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-2 h1:hover .anchor .octicon-link,
+.emotion-2 h2:hover .anchor .octicon-link,
+.emotion-2 h3:hover .anchor .octicon-link,
+.emotion-2 h4:hover .anchor .octicon-link,
+.emotion-2 h5:hover .anchor .octicon-link,
+.emotion-2 h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.emotion-2 h1 code,
+.emotion-2 h1 tt,
+.emotion-2 h2 code,
+.emotion-2 h2 tt,
+.emotion-2 h3 code,
+.emotion-2 h3 tt,
+.emotion-2 h4 code,
+.emotion-2 h4 tt,
+.emotion-2 h5 code,
+.emotion-2 h5 tt,
+.emotion-2 h6 code,
+.emotion-2 h6 tt {
+  font-size: inherit;
+}
+
+.emotion-2 h1 {
+  font-size: 2em;
+}
+
+.emotion-2 h1,
+.emotion-2 h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.emotion-2 h2 {
+  font-size: 1.5em;
+}
+
+.emotion-2 h3 {
+  font-size: 1.25em;
+}
+
+.emotion-2 h4 {
+  font-size: 1em;
+}
+
+.emotion-2 h5 {
+  font-size: 0.875em;
+}
+
+.emotion-2 h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.emotion-2 ol,
+.emotion-2 ul {
+  padding-left: 2em;
+}
+
+.emotion-2 ol.no-list,
+.emotion-2 ul.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.emotion-2 ol ol,
+.emotion-2 ol ul,
+.emotion-2 ul ol,
+.emotion-2 ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.emotion-2 li {
+  word-wrap: break-all;
+}
+
+.emotion-2 li > p {
+  margin-top: 16px;
+}
+
+.emotion-2 li + li {
+  margin-top: 0.25em;
+}
+
+.emotion-2 dl {
+  padding: 0;
+}
+
+.emotion-2 dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.emotion-2 dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-2 table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.emotion-2 table th {
+  font-weight: 600;
+}
+
+.emotion-2 table td,
+.emotion-2 table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.emotion-2 table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.emotion-2 table tr:nth-of-type(2n) {
+  background-color: #f6f8fa;
+}
+
+.emotion-2 table img {
+  background-color: initial;
+}
+
+.emotion-2 img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.emotion-2 img[align='right'] {
+  padding-left: 20px;
+}
+
+.emotion-2 img[align='left'] {
+  padding-right: 20px;
+}
+
+.emotion-2 .emoji {
+  max-width: none;
+  vertical-align: text-top;
+  background-color: initial;
+}
+
+.emotion-2 span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+.emotion-2 span.frame > span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #dfe2e5;
+}
+
+.emotion-2 span.frame span img {
+  display: block;
+  float: left;
+}
+
+.emotion-2 span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #24292e;
+}
+
+.emotion-2 span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.emotion-2 span.align-center > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.emotion-2 span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emotion-2 span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.emotion-2 span.align-right > span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.emotion-2 span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+.emotion-2 span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+.emotion-2 span.float-left span {
+  margin: 13px 0 0;
+}
+
+.emotion-2 span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+.emotion-2 span.float-right > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.emotion-2 code,
+.emotion-2 tt {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+}
+
+.emotion-2 code br,
+.emotion-2 tt br {
+  display: none;
+}
+
+.emotion-2 del code {
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+}
+
+.emotion-2 pre {
+  word-wrap: normal;
+}
+
+.emotion-2 pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.emotion-2 .highlight {
+  margin-bottom: 16px;
+}
+
+.emotion-2 .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.emotion-2 .highlight pre,
+.emotion-2 pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.emotion-2 pre code,
+.emotion-2 pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.emotion-2 .csv-data td,
+.emotion-2 .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.emotion-2 .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: #fff;
+  border: 0;
+}
+
+.emotion-2 .csv-data tr {
+  border-top: 0;
+}
+
+.emotion-2 .csv-data th {
+  font-weight: 600;
+  background: #f6f8fa;
+  border-top: 0;
+}
+
+.emotion-6 {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px 0;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  margin: 0;
+}
+
+.emotion-1 {
+  position: relative;
+  padding: 15px;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.emotion-0 {
+  width: 100%;
+  white-space: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
 <div
-  class="Component-window-0-1-11 Component-windowBright-0-1-13 Component-windowAutoStretch-0-1-12"
+  class="emotion-11"
   tabindex="1"
 >
   <div
-    class=" Component-header-0-1-26"
+    class=" emotion-1"
   >
     <p
-      class="Component-title-0-1-28"
+      class="emotion-0"
     >
       custom title
     </p>
   </div>
   <div
-    class="ReadmeListRaw-windowBody-0-1-1 Component-body-0-1-16"
+    class="emotion-10"
   >
     <ul
-      class="ReadmeListRaw-ul-0-1-3"
+      class="emotion-9"
     >
       <li
-        class="ReadmeListRaw-li-0-1-4 undefined"
+        class="emotion-8"
       >
         <button
-          class="Component-box-0-1-17"
+          class="emotion-7"
         >
           <div
             aria-hidden="true"
-            class="Component-markdownWindow-0-1-19"
+            class="emotion-5"
           >
             <div
-              class="Component-markdownSpacing-0-1-20"
+              class="emotion-4"
             >
               <div
-                class="Component-markdown-0-1-21"
+                class="emotion-3"
               >
                 <div
-                  class="markdown-body"
+                  class="emotion-2"
                 >
                   <div>
                     markdown
@@ -96,7 +1269,7 @@ exports[`PluginReadmeList ReadmeList render fullscreen 1`] = `
             </div>
           </div>
           <h6
-            class="Component-title-0-1-18"
+            class="emotion-6"
           >
             title
           </h6>

@@ -1,7 +1,7 @@
-import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { Pie, PieChart } from 'recharts';
-import { styles } from './styles';
 
 const colors = {
 	success: '#28a745',
@@ -9,7 +9,7 @@ const colors = {
 	danger: '#dc3545',
 };
 
-interface IProps extends WithStyles<typeof styles> {
+interface ICoverageChartProps {
 	title: string;
 	coverage: number;
 	threshold: [number, number];
@@ -29,28 +29,68 @@ function getColorFromPercentage(percentage: number, threshold: [number, number])
 	return colors.success;
 }
 
-export const CoverageChart = withStyles(styles)(
-	({ title, coverage, threshold, className, dark = false, classes }: IProps) => {
-		return (
-			<div className={`${className} ${classes.root}`}>
-				<div className={classes.chart}>
-					<PieChart width={80} height={80}>
-						<Pie
-							data={[{ value: coverage }, { value: 100 - coverage, fill: dark ? '#000' : '#ccc' }]}
-							dataKey="value"
-							cx="50%"
-							cy="50%"
-							innerRadius={25}
-							outerRadius={35}
-							fill={getColorFromPercentage(coverage, threshold)}
-						/>
-					</PieChart>
-				</div>
-				<div className={`h3 ${classes.number}`}>{coverage}%</div>
-				<div className={`h6 ${classes.title}`}>{title}</div>
+export const CoverageChart = ({ title, coverage, threshold, className = '', dark = false }: ICoverageChartProps) => {
+	return (
+		<div
+			className={className}
+			css={css`
+				position: relative;
+				width: 120px;
+				height: 120px;
+			`}
+		>
+			<div
+				css={css`
+					position: absolute;
+					top: 10px;
+					left: 20px;
+					width: 80px;
+				`}
+			>
+				<PieChart width={80} height={80}>
+					<Pie
+						data={[{ value: coverage }, { value: 100 - coverage, fill: dark ? '#000' : '#ccc' }]}
+						dataKey="value"
+						cx="50%"
+						cy="50%"
+						innerRadius={25}
+						outerRadius={35}
+						fill={getColorFromPercentage(coverage, threshold)}
+					/>
+				</PieChart>
 			</div>
-		);
-	}
-);
+			<div
+				className={`h3`}
+				css={css`
+					position: absolute;
+					top: 10px;
+					left: 20px;
+					height: 80px;
+					width: 80px;
+					line-height: 80px;
+					text-align: center;
+					font-size: 14px;
+					font-weight: ${dark ? 400 : undefined};
+				`}
+			>
+				{coverage}%
+			</div>
+			<div
+				className={`h6`}
+				css={css`
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					text-align: center;
+					padding: 5px 15px;
+					margin: 0;
+					font-weight: ${dark ? 100 : undefined};
+				`}
+			>
+				{title}
+			</div>
+		</div>
+	);
+};
 
 export default CoverageChart;

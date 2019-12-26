@@ -1,26 +1,44 @@
+/** @jsx jsx */
 import { IWidgetConfig } from '@dash4/client/build';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { Window, WindowBody, WindowHeader } from '@dash4/ui';
-import React from 'react';
-import withStyles, { WithStyles } from 'react-jss';
+import { css, jsx } from '@emotion/core';
 import { IClientConfig } from '../shared-types';
 import { Link } from './components/Link';
 import { Teaser } from './components/Teaser';
-import { styles } from './styles';
 
-type IProps = WithStyles<typeof styles> & IWidgetConfig<IClientConfig>;
+type IPluginActionsProps = IWidgetConfig<IClientConfig>;
 
-export const PluginActions = withStyles(styles)(({ dark, clientConfig, classes }: IProps) => {
+export const PluginActions = ({ dark, clientConfig }: IPluginActionsProps) => {
 	return (
 		<Window dark={dark}>
-			{clientConfig.title && <WindowHeader className={`${classes.windowHeader}`} title={clientConfig.title} />}
-			<WindowBody className={`${classes.windowBody}`}>
-				<ul className={classes.ul}>
+			{clientConfig.title && (
+				<WindowHeader
+					css={css`
+						position: relative;
+						padding: 15px 15px 0;
+					`}
+					title={clientConfig.title}
+				/>
+			)}
+			<WindowBody
+				css={css`
+					position: relative;
+					padding: 15px;
+				`}
+			>
+				<ul
+					css={css`
+						list-style: none;
+						padding: 0;
+						margin: 0;
+					`}
+				>
 					{clientConfig.actions &&
 						clientConfig.actions.map((action) => {
 							if (action.type === 'link') {
 								return (
-									<li className={classes.li} key={action.id}>
+									<li key={action.id}>
 										<Link
 											dark={dark}
 											href={action.href}
@@ -34,7 +52,7 @@ export const PluginActions = withStyles(styles)(({ dark, clientConfig, classes }
 								);
 							}
 							return (
-								<li className={classes.li} key={action.id}>
+								<li key={action.id}>
 									<Teaser
 										dark={dark}
 										id={action.id}
@@ -52,6 +70,6 @@ export const PluginActions = withStyles(styles)(({ dark, clientConfig, classes }
 			</WindowBody>
 		</Window>
 	);
-});
+};
 
 registerPlugin('PluginActions', PluginActions);

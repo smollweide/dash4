@@ -1,8 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Window onWillLeaveFullscreen 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+}
+
+.emotion-0:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 <div
-  class="Component-window-0-1-1 Component-windowBright-0-1-3"
+  class="emotion-0"
   tabindex="1"
 >
   Hello
@@ -10,8 +32,30 @@ exports[`Window onWillLeaveFullscreen 1`] = `
 `;
 
 exports[`Window render !autoStretch 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+}
+
+.emotion-0:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 <div
-  class="Component-window-0-1-1 Component-windowBright-0-1-3"
+  class="emotion-0"
   tabindex="1"
 >
   Hello
@@ -19,8 +63,31 @@ exports[`Window render !autoStretch 1`] = `
 `;
 
 exports[`Window render dark 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+  white-space: pre;
+  background: #000;
+  border: 1px solid rgb(51,51,51);
+  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px 0px;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.emotion-0:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 <div
-  class="Component-window-0-1-1 Component-windowDark-0-1-4 Component-windowAutoStretch-0-1-2"
+  class="emotion-0"
   tabindex="1"
 >
   Hello
@@ -28,8 +95,31 @@ exports[`Window render dark 1`] = `
 `;
 
 exports[`Window render default 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-0:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 <div
-  class="Component-window-0-1-1 Component-windowBright-0-1-3 Component-windowAutoStretch-0-1-2"
+  class="emotion-0"
   tabindex="1"
 >
   Hello
@@ -37,8 +127,37 @@ exports[`Window render default 1`] = `
 `;
 
 exports[`Window render fullscreen 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+  position: fixed;
+  width: calc(100vw - 10px);
+  height: calc(100vh - 10px);
+  left: 5px;
+  top: 5px;
+  z-index: 99;
+}
+
+.emotion-0:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 <div
-  class="Component-window-0-1-1 Component-windowBright-0-1-3 Component-windowAutoStretch-0-1-2 Component-windowFullscreen-0-1-5"
+  class="emotion-0"
   tabindex="1"
 >
   Hello
@@ -46,8 +165,31 @@ exports[`Window render fullscreen 1`] = `
 `;
 
 exports[`Window render with className 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  color: #000;
+  white-space: pre;
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: rgba(0,0,0,0.16) 0px 2px 4px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.emotion-0:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 <div
-  class="Component-window-0-1-1 Component-windowBright-0-1-3 test Component-windowAutoStretch-0-1-2"
+  class="test emotion-0"
   tabindex="1"
 >
   Hello

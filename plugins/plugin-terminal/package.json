@@ -37,17 +37,17 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/client": "0.7.1",
     "@dash4/log": "0.7.1",
     "@dash4/server": "0.7.1",
     "@dash4/terminal-emulator": "0.7.1",
-    "@dash4/ui": "0.7.1",
     "@rooks/use-key": "3.4.0",
     "uuid": "3.3.3"
   },
   "devDependencies": {
+    "@dash4/client": "0.7.1",
     "@dash4/config": "0.7.1",
     "@dash4/react-xterm": "0.7.1",
+    "@dash4/ui": "0.7.1",
     "@testing-library/react": "9.3.2",
     "@types/core-js": "2.5.2",
     "@types/jest": "24.0.23",
@@ -65,7 +65,6 @@
     "react": "16.12.0",
     "react-bootstrap": "1.0.0-beta.8",
     "react-dom": "16.12.0",
-    "react-jss": "10.0.0-alpha.10",
     "rimraf": "3.0.0",
     "sparkly": "5.0.0",
     "ts-jest": "24.1.0",

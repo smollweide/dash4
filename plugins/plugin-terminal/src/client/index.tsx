@@ -1,20 +1,19 @@
-// tslint:disable-next-line
-// /* global fetch, WebSocket, location */
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { IWidgetConfig } from '@dash4/client/build';
 import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { Term } from '@dash4/react-xterm';
 import { ErrorBoundary, Icon, Key, Keyboard, useFullscreen, Window, WindowBody, WindowHeader } from '@dash4/ui';
 import useKey from '@rooks/use-key';
-import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { Fragment, SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { Button, ButtonGroup, Form, ListGroup, Modal, OverlayTrigger, Popover } from 'react-bootstrap';
-import withStyles, { WithStyles } from 'react-jss';
 import { IClientConfig, ISendToServer } from '../shared-types';
 import { subscribeToTerminalDataChanges, unsubscribeToTerminalDataChanges } from './services';
-import { styles } from './styles';
 
 type ITerm = Term;
 
-type IProps = WithStyles<typeof styles> & IWidgetConfig<IClientConfig>;
+type IProps = IWidgetConfig<IClientConfig>;
 
 function getKeyCodeSymbol(keyCode: string | number) {
 	const keyCodeS = String(keyCode);
@@ -39,7 +38,7 @@ function useFocused() {
 	return { focused, handleFocus, handleBlur };
 }
 
-const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) => {
+export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	const { fullscreen, toggleFullscreen } = useFullscreen();
 	const { focused, handleFocus, handleBlur } = useFocused();
 	const [processing, setProcessing] = useState(false);
@@ -47,6 +46,16 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 	const [inputValue, setInputValue] = useState<string | undefined>(undefined);
 	const [inputCommandId, setInputCommandId] = useState<string | undefined>(undefined);
 	const inputRef = useRef(null);
+	const keyboardWrapperStyles = css`
+		position: absolute;
+		right: 0;
+		top: 11px;
+	`;
+	const contextMenuItemStyles = css`
+		min-width: 200px;
+		padding-left: 0;
+		padding-right: 40px;
+	`;
 
 	function handleTerminalDataChange(data: string) {
 		if (!termMap[id]) {
@@ -160,9 +169,9 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 
 		return (
 			<ListGroup variant="flush">
-				<ListGroup.Item className={classes.contextMenuItem} action onMouseDown={handleClickClean}>
+				<ListGroup.Item css={contextMenuItemStyles} action onMouseDown={handleClickClean}>
 					clean
-					<div className={classes.keyboard}>
+					<div css={keyboardWrapperStyles}>
 						<Keyboard>
 							<Key>⌘</Key>
 							<Key>K</Key>
@@ -171,13 +180,13 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 				</ListGroup.Item>
 				{Object.keys(allowedCommands).map((commandId) => (
 					<ListGroup.Item
-						className={classes.contextMenuItem}
+						css={contextMenuItemStyles}
 						key={allowedCommands[commandId].keyCode}
 						action
 						onMouseDown={handleClickCommand.bind(this, commandId)}
 					>
 						{allowedCommands[commandId].title}
-						<div className={classes.keyboard}>
+						<div css={keyboardWrapperStyles}>
 							<Keyboard>
 								<Key>{getKeyCodeSymbol(allowedCommands[commandId].keyCode)}</Key>
 							</Keyboard>
@@ -240,7 +249,7 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 	});
 
 	return (
-		<>
+		<Fragment>
 			<Window
 				onFocus={handleFocus}
 				onBlur={handleBlur}
@@ -278,7 +287,11 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 						</OverlayTrigger>
 					</ButtonGroup>
 				</WindowHeader>
-				<WindowBody className={classes.windowBody}>
+				<WindowBody
+					css={css`
+						height: ${clientConfig.height || 250}px;
+					`}
+				>
 					<ErrorBoundary>
 						<Term
 							ref_={(_id: string, term: ITerm) => {
@@ -301,10 +314,8 @@ const PluginTerminalRaw = ({ id, dark, name, clientConfig, classes }: IProps) =>
 					/>
 				</Modal.Body>
 			</Modal>
-		</>
+		</Fragment>
 	);
 };
-
-export const PluginTerminal = withStyles(styles)(PluginTerminalRaw);
 
 registerPlugin('PluginTerminal', PluginTerminal);

@@ -54,6 +54,7 @@ const configTeaser = {
 
 async function getConfig() {
 	return {
+		port: 8040,
 		tabs: [
 			{
 				title: 'Root',

@@ -1,9 +1,13 @@
-import { log } from '@dash4/log/build/browser';
+/** @jsx EmotionCore.jsx */
+import * as Dash4Log from '@dash4/log/build/browser';
+import * as ReactXterm from '@dash4/react-xterm/lib/ReactXterm';
+import '@dash4/react-xterm/lib/ReactXterm.css';
+import * as Dash4Ui from '@dash4/ui';
+import * as EmotionCore from '@emotion/core';
 import React from 'react';
 import * as ReactBootstrap from 'react-bootstrap';
 import * as ReactContainerQuery from 'react-container-query';
 import ReactDOM from 'react-dom';
-import * as ReactJSS from 'react-jss';
 import * as tslib from 'tslib';
 import { App } from './components/App';
 import './polyfill';
@@ -12,14 +16,14 @@ import './polyfill';
 (window as any).React = React;
 (window as any).ReactDOM = ReactDOM;
 (window as any).ReactBootstrap = ReactBootstrap;
-(window as any).ReactJSS = ReactJSS;
+(window as any).EmotionCore = EmotionCore;
 (window as any).tslib = tslib;
 (window as any).ReactContainerQuery = ReactContainerQuery;
-
-// because of external dependencies
-import * as ReactXterm from '@dash4/react-xterm/lib/ReactXterm';
-import '@dash4/react-xterm/lib/ReactXterm.css';
+(window as any).Dash4Log = Dash4Log;
+(window as any).Dash4Ui = Dash4Ui;
 (window as any).ReactXterm = ReactXterm;
+
+const { log } = Dash4Log;
 
 export interface IWidgetConfig<IClientConfig = {}> {
 	id: string;

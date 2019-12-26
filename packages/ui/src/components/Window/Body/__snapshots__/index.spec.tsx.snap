@@ -1,8 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WindowBody render default 1`] = `
+.emotion-0 {
+  padding: 5px;
+  white-space: normal;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
 <div
-  class=" Component-body-0-1-1"
+  class=" emotion-0"
 >
   Hello
 </div>

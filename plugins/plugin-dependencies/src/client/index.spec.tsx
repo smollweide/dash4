@@ -94,7 +94,7 @@ const props = {
 
 describe('PluginTerminal', () => {
 	test('exist', () => {
-		expect(typeof PluginDependencies).toBe('object');
+		expect(typeof PluginDependencies).toBe('function');
 	});
 	test('render loading', () => {
 		useDataMock.mockImplementation((id: string, sendFactory: (send: ISendToServer) => void) => {
