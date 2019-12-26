@@ -34,26 +34,26 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@rooks/use-key": "3.4.0"
+    "@rooks/use-key": "3.6.0"
   },
   "devDependencies": {
     "@dash4/config": "0.7.1",
-    "@emotion/core": "10.0.22",
-    "@storybook/addon-actions": "5.2.6",
-    "@storybook/addon-info": "5.2.6",
-    "@storybook/addon-knobs": "5.2.6",
-    "@storybook/addon-links": "5.2.6",
-    "@storybook/addons": "5.2.6",
-    "@storybook/react": "5.2.6",
-    "@testing-library/react": "9.3.2",
+    "@emotion/core": "10.0.27",
+    "@storybook/addon-actions": "5.2.8",
+    "@storybook/addon-info": "5.2.8",
+    "@storybook/addon-knobs": "5.2.8",
+    "@storybook/addon-links": "5.2.8",
+    "@storybook/addons": "5.2.8",
+    "@storybook/react": "5.2.8",
+    "@testing-library/react": "9.4.0",
     "@testing-library/react-hooks": "3.2.1",
-    "@types/jest": "24.0.23",
-    "@types/react": "16.9.11",
+    "@types/jest": "24.0.25",
+    "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "asset-config-webpack-plugin": "1.4.0",
     "babel-loader": "8.0.6",
-    "bootstrap": "4.3.1",
-    "core-js": "3.4.1",
+    "bootstrap": "4.4.1",
+    "core-js": "3.6.1",
     "cross-env": "6.0.3",
     "html-webpack-plugin": "3.2.0",
     "jest": "24.9.0",
@@ -64,10 +64,10 @@
     "storybook-addon-jsx": "7.1.13",
     "storybook-readme": "5.0.8",
     "ts-config-webpack-plugin": "1.4.0",
-    "ts-jest": "24.1.0",
-    "typescript": "3.7.2",
-    "webpack": "4.41.2",
+    "ts-jest": "24.2.0",
+    "typescript": "3.7.4",
+    "webpack": "4.41.4",
     "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.9.0"
+    "webpack-dev-server": "3.10.1"
   }
 }

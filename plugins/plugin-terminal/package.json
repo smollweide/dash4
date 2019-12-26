@@ -40,7 +40,7 @@
     "@dash4/log": "0.7.1",
     "@dash4/server": "0.7.1",
     "@dash4/terminal-emulator": "0.7.1",
-    "@rooks/use-key": "3.4.0",
+    "@rooks/use-key": "3.6.0",
     "uuid": "3.3.3"
   },
   "devDependencies": {
@@ -48,18 +48,18 @@
     "@dash4/config": "0.7.1",
     "@dash4/react-xterm": "0.7.1",
     "@dash4/ui": "0.7.1",
-    "@testing-library/react": "9.3.2",
+    "@testing-library/react": "9.4.0",
     "@types/core-js": "2.5.2",
-    "@types/jest": "24.0.23",
-    "@types/node": "12.12.8",
-    "@types/react": "16.9.11",
+    "@types/jest": "24.0.25",
+    "@types/node": "13.1.1",
+    "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "chalk": "3.0.0",
     "columnify": "1.5.4",
-    "core-js": "3.4.1",
+    "core-js": "3.6.1",
     "cross-env": "6.0.3",
     "jest": "24.9.0",
-    "nodemon": "1.19.4",
+    "nodemon": "2.0.2",
     "npm-run-all": "4.1.5",
     "ora": "4.0.3",
     "react": "16.12.0",
@@ -67,8 +67,8 @@
     "react-dom": "16.12.0",
     "rimraf": "3.0.0",
     "sparkly": "5.0.0",
-    "ts-jest": "24.1.0",
-    "typescript": "3.7.2",
-    "webpack": "4.41.2"
+    "ts-jest": "24.2.0",
+    "typescript": "3.7.4",
+    "webpack": "4.41.4"
   }
 }

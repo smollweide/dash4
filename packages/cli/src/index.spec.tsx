@@ -190,27 +190,43 @@ describe('cli', () => {
 
 		// create configs directory
 		await makeDir(path.join(cwd, 'configs'));
-		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/configs/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
-			parents: true,
-			rename: () => `package.json`,
-		});
-		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
-			parents: true,
-		});
+		try {
+			await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/configs/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
+				parents: true,
+				rename: () => `package.json`,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
+		try {
+			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
+				parents: true,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
 
 		// create packages directory
 		await makeDir(path.join(cwd, 'packages'));
-		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/packages/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
-			parents: true,
-			rename: () => `package.json`,
-		});
-		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
-			parents: true,
-		});
+		try {
+			await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/packages/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+				parents: true,
+				rename: () => `package.json`,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
+		try {
+			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+				parents: true,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
 
 		await init(cwd, getOptions(cwd));
 
@@ -246,27 +262,43 @@ describe('cli', () => {
 
 		// create configs directory
 		await makeDir(path.join(cwd, 'configs'));
-		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/configs/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
-			parents: true,
-			rename: () => `package.json`,
-		});
-		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
-			parents: true,
-		});
+		try {
+			await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/configs/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
+				parents: true,
+				rename: () => `package.json`,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
+		try {
+			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/configs`),
+				parents: true,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
 
 		// create packages directory
 		await makeDir(path.join(cwd, 'packages'));
-		await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/packages/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
-			parents: true,
-			rename: () => `package.json`,
-		});
-		await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
-			cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
-			parents: true,
-		});
+		try {
+			await cpy([`*/_package.json`], `../../../../__tmp__/${testId}/packages/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+				parents: true,
+				rename: () => `package.json`,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
+		try {
+			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
+				cwd: path.join(__dirname, `__mocks__/${testId}/packages`),
+				parents: true,
+			});
+		} catch (err) {
+			// tslint:disable-next-line
+		}
 
 		await init(cwd, getOptions(cwd));
 
