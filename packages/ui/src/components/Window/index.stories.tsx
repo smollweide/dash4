@@ -1,7 +1,6 @@
 /// <reference types="../../types/markdown" />
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { useFullscreen, Window, WindowBody, WindowHeader } from '.';
 import Readme from './README.md';

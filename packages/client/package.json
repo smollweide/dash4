@@ -42,7 +42,6 @@
     "react-bootstrap": "1.0.0-beta.8",
     "react-container-query": "0.11.0",
     "react-dom": "16.12.0",
-    "react-jss": "10.0.0-alpha.10",
     "react-router-dom": "5.1.2",
     "tslib": "1.10.0"
   },

@@ -18,7 +18,7 @@ import { Readme } from '.';
 describe('PluginReadme', () => {
 	describe('Readme', () => {
 		test('exist', () => {
-			expect(typeof Readme).toBe('object');
+			expect(typeof Readme).toBe('function');
 		});
 		test('render default', () => {
 			const { container } = render(
@@ -31,6 +31,8 @@ describe('PluginReadme', () => {
 					}}
 				/>
 			);
+
+			// const { container } = render(<div>Hallo</div>);
 			expect(container.firstChild).toMatchSnapshot();
 		});
 		test('render fullscreen', () => {

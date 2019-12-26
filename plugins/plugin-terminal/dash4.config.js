@@ -2,6 +2,7 @@ const { PluginTerminal, jestCommands } = require('./build/server');
 
 async function getConfig() {
 	return {
+		port: 8045,
 		tabs: [
 			{
 				title: 'Root',

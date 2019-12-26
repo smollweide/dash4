@@ -30,7 +30,7 @@ export const styles = css`
 	&:after {
 		clear: both;
 	}
-	& > :first-child {
+	& > :first-of-type {
 		margin-top: 0 !important;
 	}
 	& > :last-child {
@@ -75,7 +75,7 @@ export const styles = css`
 		color: #6a737d;
 		border-left: 0.25em solid #dfe2e5;
 	}
-	& blockquote > :first-child {
+	& blockquote > :first-of-type {
 		margin-top: 0;
 	}
 	& blockquote > :last-child {
@@ -212,7 +212,7 @@ export const styles = css`
 		background-color: #fff;
 		border-top: 1px solid #c6cbd1;
 	}
-	& table tr:nth-child(2n) {
+	& table tr:nth-of-type(2n) {
 		background-color: #f6f8fa;
 	}
 	& table img {

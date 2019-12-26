@@ -1,5 +1,3 @@
-// tslint:disable-next-line
-// /* global fetch, WebSocket, location */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 

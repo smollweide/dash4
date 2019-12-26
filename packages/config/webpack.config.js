@@ -25,7 +25,6 @@ module.exports = (pluginName) => (_some, { mode }) => {
 			bootstrap: 'bootstrap',
 			'core-js': 'coreJs',
 			'react-bootstrap': 'ReactBootstrap',
-			'react-jss': 'ReactJSS',
 			'react-container-query': 'ReactContainerQuery',
 			tslib: 'tslib',
 			'@emotion/core': 'EmotionCore',

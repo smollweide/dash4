@@ -1,29 +1,87 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
 import { IWidgetConfig } from '@dash4/client/build';
 import { Icon, useFullscreen, Window, WindowBody } from '@dash4/ui';
-import React from 'react';
 import { Button } from 'react-bootstrap';
-import withStyles, { WithStyles } from 'react-jss';
 import { IReadmeClientConfig } from '../../../shared-types';
 import { useMarkdownData } from '../../hooks';
 import { Markdown } from '../Markdown';
-import { styles } from './styles';
-import { styles as readmeStyles } from './styles';
 
-export type IProps = WithStyles<typeof styles> & IWidgetConfig<IReadmeClientConfig>;
+export type IProps = IWidgetConfig<IReadmeClientConfig>;
 
-function ReadmeRaw({ classes, id }: IProps) {
+export function Readme({ id, clientConfig }: IProps) {
 	const data = useMarkdownData(id);
 	const { fullscreen, enableFullscreen, disableFullscreen } = useFullscreen();
 
 	return (
 		<Window onWillLeaveFullscreen={disableFullscreen} fullscreen={fullscreen} dark={false}>
-			<WindowBody className={fullscreen ? classes.windowBodyFullscreen : classes.windowBody}>
-				<div className={fullscreen ? classes.markdownWrapperFullscreen : classes.markdownWrapper}>
+			<WindowBody
+				className="window-body"
+				css={[
+					css`
+						padding: 15px;
+					`,
+					fullscreen &&
+						css`
+							position: relative;
+							overflow: scroll;
+						`,
+				]}
+			>
+				<div
+					css={[
+						!fullscreen &&
+							css`
+								position: relative;
+								height: ${clientConfig.height || 250}px;
+								overflow: hidden;
+								&:after {
+									content: ' ';
+									position: absolute;
+									left: 0;
+									bottom: 0;
+									right: 0;
+									height: 1px;
+									background: linear-gradient(
+										to left,
+										rgba(0, 0, 0, 0) 0%,
+										rgba(0, 0, 0, 0.1) 10%,
+										rgba(0, 0, 0, 0.1) 90%,
+										rgba(0, 0, 0, 0) 100%
+									);
+								}
+								&:before {
+									content: ' ';
+									position: absolute;
+									left: 0;
+									bottom: 1px;
+									right: 0;
+									height: 1px;
+									background: linear-gradient(
+										to left,
+										rgba(0, 0, 0, 0) 0%,
+										rgba(0, 0, 0, 0.05) 10%,
+										rgba(0, 0, 0, 0.05) 90%,
+										rgba(0, 0, 0, 0) 100%
+									);
+								}
+							`,
+						fullscreen &&
+							css`
+								position: relative;
+							`,
+					]}
+				>
 					<Markdown>{data}</Markdown>
 				</div>
 				{fullscreen ? (
 					<Button
-						className={classes.closeFullscreenButton}
+						css={css`
+							position: absolute;
+							top: 15px;
+							right: 15px;
+						`}
 						size="sm"
 						variant="light"
 						onClick={disableFullscreen}
@@ -32,9 +90,15 @@ function ReadmeRaw({ classes, id }: IProps) {
 						close
 					</Button>
 				) : (
-					<div className={classes.buttonWrapper}>
+					<div
+						css={css`
+							text-align: center;
+						`}
+					>
 						<Button
-							className={classes.showMoreButton}
+							css={css`
+								margin-top: 15px;
+							`}
 							size="sm"
 							variant="outline-primary"
 							onClick={enableFullscreen}
@@ -47,5 +111,3 @@ function ReadmeRaw({ classes, id }: IProps) {
 		</Window>
 	);
 }
-
-export const Readme = withStyles(readmeStyles)(ReadmeRaw);
