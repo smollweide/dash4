@@ -2,7 +2,7 @@
 import path from 'path';
 import { terminalEmulator } from '.';
 
-describe('terminalEmulator', () => {
+describe.skip('terminalEmulator', () => {
 	test('exists', () => {
 		expect(typeof terminalEmulator).toBe('function');
 	});
