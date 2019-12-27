@@ -20,7 +20,7 @@ export class PluginActions extends Dash4Plugin implements IDash4Plugin<IClientCo
 	private _title?: string;
 	private _actions?: IActionLink[];
 
-	constructor(options: IOptions | undefined = {}) {
+	public constructor(options: IOptions | undefined = {}) {
 		super({
 			dark: options.dark,
 			width: options.width,

@@ -3,8 +3,8 @@ import { IDependencyObj, IError, IRecieveFromServer, ISendToServer, SEND_TO_CLIE
 
 export async function subscribe(id: string, onChange: (data: IDependencyObj | IError) => void) {
 	const socketData = await socket();
-	const on: IRecieveFromServer = (name, callback) => {
-		socketData.on(`plugin-dependencies-${id}_${name}`, callback);
+	const on: IRecieveFromServer = (name, onRecieve) => {
+		socketData.on(`plugin-dependencies-${id}_${name}`, onRecieve);
 	};
 	const send: ISendToServer = (name, data) => {
 		socketData.send(`plugin-dependencies-${id}_${name}`, data);

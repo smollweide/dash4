@@ -1,5 +1,6 @@
-export async function asyncForEach<A = any>(array: A[], callback: (item: A, index: number) => void) {
+export async function asyncForEach<TArrItem = any>(array: TArrItem[], onEach: (item: TArrItem, index: number) => void) {
 	for (let index = 0; index < array.length; index++) {
-		await callback(array[index], index);
+		// eslint-disable-next-line
+		await onEach(array[index], index);
 	}
 }

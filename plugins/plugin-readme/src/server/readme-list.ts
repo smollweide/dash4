@@ -21,7 +21,7 @@ export class PluginReadmeList extends Dash4Plugin implements IDash4Plugin<IReadm
 	private _title?: string;
 	private _files: IFile[];
 
-	constructor({ title, files, width }: IReadmeListOptions) {
+	public constructor({ title, files, width }: IReadmeListOptions) {
 		super({
 			dark: false,
 			width,

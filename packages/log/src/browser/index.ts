@@ -5,7 +5,7 @@ type TMessage = string | number | object | any[];
 type TConsoleFunc = (packageName: TPackageName, message: TMessage, ...args: TMessage[]) => void;
 
 const defaultLog = (type: TType, packageName: TPackageName, message: TMessage, ...args: TMessage[]) => {
-	// tslint:disable-next-line
+	// eslint-disable-next-line
 	console.log(
 		`%c❲%c  %c${toParamCase(packageName)}%c❳: %c${message}`,
 		`color:#999;`,

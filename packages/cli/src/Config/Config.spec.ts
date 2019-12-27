@@ -1,6 +1,4 @@
 /// <reference types="@types/jest" />
-import fs from 'fs-extra';
-import path from 'path';
 import { Config } from './Config';
 
 describe('Config', () => {

@@ -1,14 +1,11 @@
 /// <reference types="@types/jest" />
 import { PluginCodeCoverage } from '.';
 
-// tslint:disable-next-line
 const consoleLog = console.log;
-// tslint:disable-next-line
 console.log = () => undefined;
 
 describe('PluginCodeCoverage', () => {
 	afterAll(() => {
-		// tslint:disable-next-line
 		console.log = consoleLog;
 	});
 

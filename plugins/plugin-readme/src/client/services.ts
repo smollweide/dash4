@@ -2,8 +2,8 @@ import { socket } from '@dash4/client/build/socket';
 
 export async function subscribeToReadme(id: string, onChange: (data: string) => void) {
 	const socketData = await socket();
-	const on = (name: string, callback: (data: string) => void) => {
-		socketData.on(`plugin-readme-${id}_${name}`, callback);
+	const on = (name: string, onRecieve: (data: string) => void) => {
+		socketData.on(`plugin-readme-${id}_${name}`, onRecieve);
 	};
 	const send = (name: string, data?: string) => {
 		socketData.send(`plugin-readme-${id}_${name}`, data);

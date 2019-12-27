@@ -4,7 +4,7 @@ import { useEffectAsync } from '../../react-hooks';
 import { getArePluginsRegistered } from '../../register-plugin';
 import { getConfig } from '../../services/config';
 
-const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
+const wait = async (duration = 100) => new Promise((resolve) => setTimeout(resolve, duration));
 
 export function useConfig() {
 	const [config, setConfig] = useState<undefined | IConfig>(undefined);

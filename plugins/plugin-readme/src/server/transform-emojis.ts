@@ -8,7 +8,7 @@ export function transformEmojis(doc: string) {
 	} = {};
 	let result: RegExpExecArray | null;
 
-	// tslint:disable-next-line
+	// eslint-disable-next-line
 	while ((result = EMOJI_REGEXP.exec(doc)) !== null) {
 		resultMap[(result as any) as string] = true;
 	}

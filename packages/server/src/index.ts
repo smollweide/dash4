@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import uuid from 'uuid/v1';
 
-export type TOn = (id: string, callback: any) => void;
+export type TOn = (id: string, onReady: any) => void;
 export type TSend = (id: string, data?: any) => void;
 
 export interface IClientFile {
@@ -11,11 +11,11 @@ export interface IClientFile {
 
 export type TClientFile = string | IClientFile;
 
-export interface IDash4Plugin<IClientConfig = {}> {
+export interface IDash4Plugin<TClientConfig = {}> {
 	clientFiles: TClientFile[];
 	dark: boolean;
 	width?: number[];
-	clientConfig: IClientConfig;
+	clientConfig: TClientConfig;
 	connected: (on: TOn, send: TSend) => void;
 }
 
@@ -47,8 +47,8 @@ export interface IPluginOptions {
 	width?: number[];
 }
 
-export class Dash4Plugin<IOnEventName = any, IOnCb = any, ISendEventName = any, ISendData = any> {
-	protected _on?: (id: string, callback: any) => void;
+export class Dash4Plugin<TOnEventName = any, TOnCb = any, TSendEventName = any, TSendData = any> {
+	protected _on?: (id: string, onReady: any) => void;
 	protected _send?: (id: string, data?: any) => void;
 	private _id: string;
 	private _dark: boolean;
@@ -56,7 +56,7 @@ export class Dash4Plugin<IOnEventName = any, IOnCb = any, ISendEventName = any, 
 	private _name?: string;
 	private _lowerCaseName?: string;
 
-	constructor({ dark = false, width, lowerCaseName, name }: IPluginOptions) {
+	public constructor({ dark = false, width, lowerCaseName, name }: IPluginOptions) {
 		this._id = uuid();
 		this._dark = dark;
 		this._width = width;
@@ -91,20 +91,21 @@ export class Dash4Plugin<IOnEventName = any, IOnCb = any, ISendEventName = any, 
 		this.connected(on, send);
 	};
 
+	// eslint-disable-next-line
 	public connected = (on: TOn, send: TSend) => {
-		// tslint:disable-next-line
+		// eslint-disable-next-line
 		// override
 	};
 
 	// protected send = ()()
-	protected send = (eventName: ISendEventName, data: ISendData) => {
+	protected send = (eventName: TSendEventName, data: TSendData) => {
 		if (!this._send) {
 			return;
 		}
 		this._send(`${this.lowerCaseName}-${this.id}_${eventName}`, data);
 	};
 
-	protected on = (eventName: IOnEventName, cb: IOnCb) => {
+	protected on = (eventName: TOnEventName, cb: TOnCb) => {
 		if (!this._on) {
 			return;
 		}

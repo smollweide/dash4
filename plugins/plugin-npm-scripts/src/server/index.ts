@@ -21,7 +21,7 @@ export class PluginNpmScripts extends Dash4Plugin implements IDash4Plugin<IClien
 	private scripts: IScriptWithId[];
 	private instances: PluginNpmScript[];
 
-	constructor({ scripts, width, dark = false }: IOptions) {
+	public constructor({ scripts, width, dark = false }: IOptions) {
 		super({
 			width,
 			dark,

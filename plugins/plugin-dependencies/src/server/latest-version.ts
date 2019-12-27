@@ -46,6 +46,7 @@ export async function flushCache() {
 }
 
 export async function getLatestVersion(dependency: string, currentVersion?: string) {
+	// eslint-disable-next-line no-nested-ternary
 	const version = currentVersion
 		? currentVersion.includes('alpha') || currentVersion.includes('beta')
 			? 'next'

@@ -3,8 +3,8 @@ import { ICoverage } from '../shared-types';
 
 export async function subscribe(id: string, onChange: (data: ICoverage) => void) {
 	const socketData = await socket();
-	const on = (name: string, callback: (data: ICoverage) => void) => {
-		socketData.on(`plugin-code-coverage-${id}_${name}`, callback);
+	const on = (name: string, onReady: (data: ICoverage) => void) => {
+		socketData.on(`plugin-code-coverage-${id}_${name}`, onReady);
 	};
 	const send = (name: string, data?: string) => {
 		socketData.send(`plugin-code-coverage-${id}_${name}`, data);

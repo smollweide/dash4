@@ -24,7 +24,7 @@ export function Markdown({ children }: IMarkdownProps) {
 	}, [children]);
 
 	return (
-		<div css={styles} ref={rootRef}>
+		<div ref={rootRef} css={styles}>
 			<RawMarkdown>{children}</RawMarkdown>
 		</div>
 	);

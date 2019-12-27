@@ -3,14 +3,14 @@
 import { log } from '.';
 
 const consoleLockMock = jest.fn();
-// tslint:disable-next-line
+// eslint-disable-next-line
 const consoleLog = console.log;
-// tslint:disable-next-line
+// eslint-disable-next-line
 console.log = consoleLockMock;
 
 describe('log browser', () => {
 	afterAll(() => {
-		// tslint:disable-next-line
+		// eslint-disable-next-line
 		console.log = consoleLog;
 	});
 

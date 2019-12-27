@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable global-require */
 import fs from 'fs-extra';
 import globby from 'globby';
 import path from 'path';
@@ -10,7 +12,7 @@ export interface ILernaJson {
 	version?: string;
 }
 
-export async function configJson(cwd: string, lerna: string = 'lerna.json'): Promise<ILernaJson> {
+export async function configJson(cwd: string, lerna = 'lerna.json'): Promise<ILernaJson> {
 	return JSON.parse(await fs.readFile(path.join(cwd, lerna), 'utf8'));
 }
 

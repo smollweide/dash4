@@ -1,0 +1,4 @@
+{
+	"extends": "@namics/ts-config",
+	"exclude": ["dist", "build", "node_modules", "__tests__"]
+}

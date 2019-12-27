@@ -1,4 +1,4 @@
-export function chunk<P = any>(array: P[], size: number): P[][] {
+export function chunk<TParams = any>(array: TParams[], size: number): TParams[][] {
 	return array.reduce((accum, next, i) => {
 		const intI = Math.floor(i / size);
 		return Object.assign([], accum, {

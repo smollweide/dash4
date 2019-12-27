@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx, keyframes } from '@emotion/core';
-import { TAlign, TAnimation, TColor, TDisplay, TSize } from './const';
+import { TAlign, TAnimation, TColor, TSize } from './const';
 
 interface IProps {
 	// icon name defined by [material ui icons](https://material.io/tools/icons/?style=baseline)

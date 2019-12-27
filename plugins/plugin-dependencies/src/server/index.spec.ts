@@ -26,14 +26,11 @@ jest.mock('./lerna', () => ({
 
 import { PluginDependencies } from '.';
 
-// tslint:disable-next-line
 const consoleLog = console.log;
-// tslint:disable-next-line
 console.log = () => undefined;
 
 describe('PluginDependencies', () => {
 	afterAll(() => {
-		// tslint:disable-next-line
 		console.log = consoleLog;
 	});
 

@@ -43,16 +43,16 @@ export class PluginTerminal
 	implements IDash4Plugin<IClientConfig> {
 	private _cmd: string;
 	private _cwd: string;
-	private _terminalLog: string = '';
+	private _terminalLog = '';
 	private _autostart: boolean;
 	private _term?: ITerm;
-	private _stopProcessingTriggered: boolean = false;
+	private _stopProcessingTriggered = false;
 	private _allowedCommands?: { [key: string]: IAllowedCommand };
 	private _height?: number;
 	private _title?: string;
 	private _subtitle?: string;
 
-	constructor({
+	public constructor({
 		dark = true,
 		width,
 		height,

@@ -1,5 +1,4 @@
-/* global Blob,URL,requestAnimationFrame,ResizeObserver */
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { Terminal } from 'xterm';
 import 'xterm/dist/xterm.css';
@@ -100,18 +99,19 @@ const getTermOptions = (props: IProps) => {
 	let useWebGL = false;
 	if (props.webGLRenderer) {
 		if (needTransparency) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 			console.warn(
 				'WebGL Renderer has been disabled since it does not support transparent backgrounds yet. ' +
 					'Falling back to canvas-based rendering.'
 			);
 		} else if (!isWebgl2Supported()) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 			console.warn('WebGL2 is not supported on your machine. Falling back to canvas-based rendering.');
 		} else {
 			useWebGL = true;
 		}
 	}
+	// eslint-disable-next-line
 	Term.reportRenderer(props.uid, useWebGL ? 'WebGL' : 'Canvas');
 
 	return {
@@ -168,21 +168,11 @@ export class Term extends React.PureComponent<IProps, any> {
 		}
 	}
 
-	private termRef: any;
-	private termWrapperRef: any;
-	private termRect: any;
-	private termOptions: any;
-	private disposableListeners: any;
-	private term: any;
-	private resizeObserver: any;
-	private resizeTimeout: any;
-
-	constructor(props: IProps) {
+	public constructor(props: IProps) {
 		super(props);
 		props.ref_(props.uid, this);
 		this.termRef = null;
 		this.termWrapperRef = null;
-		this.termRect = null;
 		this.termOptions = {};
 		this.disposableListeners = [];
 	}
@@ -253,67 +243,9 @@ export class Term extends React.PureComponent<IProps, any> {
 			);
 		}
 
-		window.addEventListener('paste', this.onWindowPaste, {
+		window.addEventListener('paste', this.handleWindowPaste, {
 			capture: true,
 		});
-	}
-
-	public getTermDocument() {
-		// tslint:disable-next-line
-		console.warn(
-			'The underlying terminal engine of Hyper no longer ' +
-				'uses iframes with individual `document` objects for each ' +
-				'terminal instance. This method call is retained for ' +
-				"backwards compatibility reasons. It's ok to attach directly" +
-				'to the `document` object of the main `window`.'
-		);
-		return document;
-	}
-
-	// intercepting paste event for any necessary processing of
-	// clipboard data, if result is falsy, paste event continues
-	public onWindowPaste(e: Event) {
-		// tslint:disable-next-line
-	}
-
-	public onMouseUp = (e: SyntheticEvent) => {
-		// tslint:disable-next-line
-	};
-
-	public write(data: string) {
-		this.term.write(data);
-	}
-
-	public focus() {
-		this.term.focus();
-	}
-
-	public clear() {
-		this.term.clear();
-	}
-
-	public reset() {
-		this.term.reset();
-	}
-
-	public resize(cols?: number, rows?: number) {
-		this.term.resize(cols, rows);
-	}
-
-	public selectAll() {
-		this.term.selectAll();
-	}
-
-	public fitResize() {
-		if (!this.termWrapperRef) {
-			return;
-		}
-		this.term.fit();
-	}
-
-	public keyboardHandler(e: any) {
-		// Has Mousetrap flagged this event as a command?
-		return !e.catched;
 	}
 
 	public componentWillReceiveProps(nextProps: IProps) {
@@ -365,6 +297,89 @@ export class Term extends React.PureComponent<IProps, any> {
 		}
 	}
 
+	public componentWillUnmount() {
+		// terms[this.props.uid] = null;
+		this.termWrapperRef.removeChild(this.termRef);
+		this.props.ref_(this.props.uid, null);
+
+		// to clean up the terminal, we remove the listeners
+		// instead of invoking `destroy`, since it will make the
+		// term insta un-attachable in the future (which we need
+		// to do in case of splitting, see `componentDidMount`
+		this.disposableListeners.forEach((handler) => handler.dispose());
+		this.disposableListeners = [];
+
+		window.removeEventListener('paste', this.handleWindowPaste, {
+			capture: true,
+		});
+	}
+
+	public handleMouseUp = () => {
+		// eslint-disable-next-line
+	};
+
+	// intercepting paste event for any necessary processing of
+	// clipboard data, if result is falsy, paste event continues
+	public handleWindowPaste = () => {
+		// eslint-disable-next-line
+	};
+
+	public getTermDocument() {
+		// eslint-disable-next-line
+		console.warn(
+			'The underlying terminal engine of Hyper no longer ' +
+				'uses iframes with individual `document` objects for each ' +
+				'terminal instance. This method call is retained for ' +
+				"backwards compatibility reasons. It's ok to attach directly" +
+				'to the `document` object of the main `window`.'
+		);
+		return document;
+	}
+
+	public write(data: string) {
+		this.term.write(data);
+	}
+
+	public focus() {
+		this.term.focus();
+	}
+
+	public clear() {
+		this.term.clear();
+	}
+
+	public reset() {
+		this.term.reset();
+	}
+
+	public resize(cols?: number, rows?: number) {
+		this.term.resize(cols, rows);
+	}
+
+	public selectAll() {
+		this.term.selectAll();
+	}
+
+	public fitResize() {
+		if (!this.termWrapperRef) {
+			return;
+		}
+		this.term.fit();
+	}
+
+	public keyboardHandler(e: any) {
+		// Has Mousetrap flagged this event as a command?
+		return !e.catched;
+	}
+
+	private termRef: any;
+	private termWrapperRef: any;
+	private termOptions: any;
+	private disposableListeners: any;
+	private term: any;
+	private resizeObserver: any;
+	private resizeTimeout: any;
+
 	public onTermWrapperRef = (component: any) => {
 		this.termWrapperRef = component;
 
@@ -384,27 +399,10 @@ export class Term extends React.PureComponent<IProps, any> {
 		}
 	};
 
-	public componentWillUnmount() {
-		// terms[this.props.uid] = null;
-		this.termWrapperRef.removeChild(this.termRef);
-		this.props.ref_(this.props.uid, null);
-
-		// to clean up the terminal, we remove the listeners
-		// instead of invoking `destroy`, since it will make the
-		// term insta un-attachable in the future (which we need
-		// to do in case of splitting, see `componentDidMount`
-		this.disposableListeners.forEach((handler) => handler.dispose());
-		this.disposableListeners = [];
-
-		window.removeEventListener('paste', this.onWindowPaste, {
-			capture: true,
-		});
-	}
-
 	public render() {
 		const className = `term_fit ${this.props.isTermActive ? 'term_active' : ''}`;
 		return (
-			<div className={className} style={{ padding: this.props.padding }} onMouseUp={this.onMouseUp}>
+			<div className={className} style={{ padding: this.props.padding }} onMouseUp={this.handleMouseUp}>
 				{this.props.customChildrenBefore}
 				<div ref={this.onTermWrapperRef} className="term_fit term_wrapper" />
 				{this.props.customChildren}

@@ -1,14 +1,11 @@
 /// <reference types="@types/jest" />
 import { PluginActions } from '.';
 
-// tslint:disable-next-line
 const consoleLog = console.log;
-// tslint:disable-next-line
 console.log = () => undefined;
 
 describe('PluginActions', () => {
 	afterAll(() => {
-		// tslint:disable-next-line
 		console.log = consoleLog;
 	});
 

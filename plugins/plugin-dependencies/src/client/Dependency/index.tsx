@@ -74,8 +74,8 @@ export function Dependency({ name, version, latestVersion, isUpToDate, onClick, 
 					</span>
 					{isUpToDate === false && (
 						<OverlayTrigger
-							trigger="hover"
 							key={`latest-version-popover-${name}`}
+							trigger="hover"
 							placement="auto"
 							overlay={
 								<Popover id={`latest-version-popover-${name}`}>
@@ -90,7 +90,6 @@ export function Dependency({ name, version, latestVersion, isUpToDate, onClick, 
 							}
 						>
 							<Button
-								onClick={handleClick}
 								css={css`
 									font-size: 12px;
 									padding: 0;
@@ -99,6 +98,7 @@ export function Dependency({ name, version, latestVersion, isUpToDate, onClick, 
 								`}
 								variant="danger"
 								size="sm"
+								onClick={handleClick}
 							>
 								<Icon name="arrow_upward" size="m" />
 							</Button>

@@ -101,6 +101,24 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 		setProcessing(false);
 	}
 
+	function getCommandById(commandId: string) {
+		if (!clientConfig.allowedCommands) {
+			return;
+		}
+		return clientConfig.allowedCommands[commandId];
+	}
+
+	function proceedWithCommand(commandId: string) {
+		const command = getCommandById(commandId);
+		if (!command) {
+			return;
+		}
+		if (command.hasInput) {
+			setInputCommandId(commandId);
+		}
+		sendMap[id]('command', commandId);
+	}
+
 	function handleClickCommand(commandId: string, event: SyntheticEvent<HTMLButtonElement>) {
 		event.preventDefault();
 		if (!sendMap[id]) {
@@ -117,13 +135,6 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 			const keyCode = (clientConfig.allowedCommands || {})[commandId].keyCode;
 			return event.key === keyCode || event.keyCode === keyCode;
 		})[0];
-	}
-
-	function getCommandById(commandId: string) {
-		if (!clientConfig.allowedCommands) {
-			return;
-		}
-		return clientConfig.allowedCommands[commandId];
 	}
 
 	function handleKeyDownCommand(event: KeyboardEvent) {
@@ -145,17 +156,6 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 		setInputValue(undefined);
 	}
 
-	function proceedWithCommand(commandId: string) {
-		const command = getCommandById(commandId);
-		if (!command) {
-			return;
-		}
-		if (command.hasInput) {
-			setInputCommandId(commandId);
-		}
-		sendMap[id]('command', commandId);
-	}
-
 	function handleCloseInputModal() {
 		setInputCommandId(undefined);
 	}
@@ -165,11 +165,11 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	}
 
 	function ContextMenu() {
-		const allowedCommands = clientConfig.allowedCommands || [];
+		const allowedCommands = clientConfig.allowedCommands || {};
 
 		return (
 			<ListGroup variant="flush">
-				<ListGroup.Item css={contextMenuItemStyles} action onMouseDown={handleClickClean}>
+				<ListGroup.Item action css={contextMenuItemStyles} onMouseDown={handleClickClean}>
 					clean
 					<div css={keyboardWrapperStyles}>
 						<Keyboard>
@@ -180,9 +180,10 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 				</ListGroup.Item>
 				{Object.keys(allowedCommands).map((commandId) => (
 					<ListGroup.Item
-						css={contextMenuItemStyles}
 						key={allowedCommands[commandId].keyCode}
 						action
+						css={contextMenuItemStyles}
+						// eslint-disable-next-line
 						onMouseDown={handleClickCommand.bind(this, commandId)}
 					>
 						{allowedCommands[commandId].title}
@@ -212,10 +213,11 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 		}
 		setTimeout(() => {
 			try {
+				// eslint-disable-next-line
 				// @ts-ignore
 				(inputRef || {}).current.focus();
 			} catch (err) {
-				// tslint:disable-next-line
+				// eslint-disable-next-line
 			}
 		}, 100);
 	}, [inputCommandId]);
@@ -251,24 +253,24 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	return (
 		<Fragment>
 			<Window
+				fullscreen={fullscreen}
+				dark={dark}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 				onWillLeaveFullscreen={toggleFullscreen}
-				fullscreen={fullscreen}
-				dark={dark}
 			>
 				<WindowHeader
-					onDoubleClick={toggleFullscreen}
 					title={clientConfig.title || name}
 					subTitle={clientConfig.subtitle || clientConfig.cmd}
+					onDoubleClick={toggleFullscreen}
 				>
 					<ButtonGroup>
 						{!processing ? (
-							<Button onClick={handleClickStart} variant="outline-primary" size="sm">
+							<Button variant="outline-primary" size="sm" onClick={handleClickStart}>
 								<Icon name="play_arrow" size="m" />
 							</Button>
 						) : (
-							<Button onClick={handleClickStop} variant="outline-primary" size="sm">
+							<Button variant="outline-primary" size="sm" onClick={handleClickStop}>
 								<Icon name="stop" size="m" />
 							</Button>
 						)}
@@ -305,12 +307,12 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 			<Modal show={inputCommandId !== undefined} onHide={handleCloseInputModal}>
 				<Modal.Body>
 					<Form.Control
-						autoFocus
 						ref={inputRef}
+						autoFocus
 						value={inputValue}
-						onChange={handleInputChange}
 						type="text"
 						placeholder="Enter command"
+						onChange={handleInputChange}
 					/>
 				</Modal.Body>
 			</Modal>

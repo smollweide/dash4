@@ -65,8 +65,6 @@ export const Window = ({
 			<div
 				className={className}
 				tabIndex={1}
-				onFocus={onFocus}
-				onBlur={onBlur}
 				css={[
 					css`
 						display: flex;
@@ -109,6 +107,8 @@ export const Window = ({
 							z-index: 99;
 						`,
 				]}
+				onFocus={onFocus}
+				onBlur={onBlur}
 			>
 				{children}
 			</div>

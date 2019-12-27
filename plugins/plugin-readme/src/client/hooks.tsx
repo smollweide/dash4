@@ -7,7 +7,7 @@ export function useMarkdownData(id: string) {
 	const handleRecieveData = (_data: string) => setData(_data);
 	useEffectAsync(async () => {
 		await subscribeToReadme(id, handleRecieveData);
-		return () => unsubscribeToReadme(id);
+		return async () => unsubscribeToReadme(id);
 	}, []);
 	return data;
 }

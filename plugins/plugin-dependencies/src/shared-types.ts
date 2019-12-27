@@ -21,12 +21,12 @@ export interface IClientConfig {
 }
 
 export interface IPackageJson {
+	[key: string]: any;
 	name?: string;
 	version?: string;
 	description?: string;
 	dependencies?: { [key: string]: string };
 	devDependencies?: { [key: string]: string };
-	[key: string]: any;
 }
 
 export interface IError {

@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable id-blacklist */
 /* globals: global */
 import { IConfig as IClientConfig } from '@dash4/client/build/index';
 import { error, success, warn } from '@dash4/log';
@@ -21,9 +23,9 @@ export interface IOptions {
 	serverRequestListeners: TServerRequest[];
 }
 
-export interface ISocketAction<Data = {}> {
+export interface ISocketAction<TData = {}> {
 	id: string;
-	data: Data;
+	data: TData;
 }
 
 export interface ISocketAbstract {
@@ -115,6 +117,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 		// catch plugin responses
 		let i = 0;
 		for (i = 0; i < serverRequestListeners.length; i += 1) {
+			// eslint-disable-next-line
 			if (await serverRequestListeners[i](req, res)) {
 				return;
 			}
@@ -225,7 +228,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 	function socketAbstract(): ISocketAbstract {
 		return {
 			send: (id: string, data: any) => {
-				wss.clients.forEach(function each(client) {
+				wss.clients.forEach((client) => {
 					if (client.readyState === WebSocket.OPEN) {
 						client.send(
 							JSON.stringify({
@@ -236,7 +239,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 					}
 				});
 			},
-			on: <CallbackType = any>(id: string, callback: (data: CallbackType) => {}) => {
+			on: <TCallbackType = any>(id: string, callback: (data: TCallbackType) => {}) => {
 				g.socket.listeners.push({ id, callback });
 			},
 		};
@@ -249,7 +252,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 			resolve(socketAbstract());
 		});
 
-		ws.on('message', function incoming(rawData: any) {
+		ws.on('message', (rawData: any) => {
 			const data = JSON.parse(rawData) as ISocketAction;
 
 			g.socket.listeners.forEach(({ id, callback }) => {
@@ -261,12 +264,12 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 		});
 	}
 
-	wss.on('connection', function connection(ws) {
+	wss.on('connection', (ws) => {
 		success('server', 'connection to a client established');
 		connected(ws);
 	});
 
-	wss.on('error', function wserror(err: Error) {
+	wss.on('error', (err: Error) => {
 		error('server', `connection error ${err}`);
 		g.socket.isReady = false;
 	});

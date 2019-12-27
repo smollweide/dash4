@@ -11,10 +11,10 @@ export async function getReadmeConfig({ packagePath, cwd }: IGetReadmeConfig) {
 	const packages: {
 		[key: string]: boolean;
 	} = {};
-	const configs: Array<{
+	const configs: {
 		pluginName: TPluginName;
 		options?: any;
-	}> = [];
+	}[] = [];
 
 	const hasReadmeLow = await hasFile(cwd, 'readme.md');
 	const hasReadmeUp = await hasFile(cwd, 'README.md');

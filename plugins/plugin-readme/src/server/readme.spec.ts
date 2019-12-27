@@ -67,7 +67,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.jpg';
 			// @ts-ignore
-			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -89,7 +89,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.png';
 			// @ts-ignore
-			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -111,7 +111,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.jpg';
 			// @ts-ignore
-			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -133,7 +133,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image';
 			// @ts-ignore
-			inst.fetchFile = () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(

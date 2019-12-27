@@ -7,8 +7,8 @@ export async function subscribeToTerminalDataChanges(
 	onStopped: () => void
 ) {
 	const socketData = await socket();
-	const on: IRecieveFromServer = (name: string, callback: (data: string) => void) => {
-		socketData.on(`plugin-terminal-${id}_${name}`, callback);
+	const on: IRecieveFromServer = (name: string, onRecieve: (data: string) => void) => {
+		socketData.on(`plugin-terminal-${id}_${name}`, onRecieve);
 	};
 	const send: ISendToServer = (name: string, data) => {
 		socketData.send(`plugin-terminal-${id}_${name}`, data);

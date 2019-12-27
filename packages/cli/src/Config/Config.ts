@@ -1,5 +1,4 @@
 import prettierConfig from '@namics/prettier-config';
-import fs from 'fs';
 import { format, Options as IPrettierOptions } from 'prettier';
 import { chunk } from '../chunk';
 import tmpl from './template';
@@ -47,23 +46,23 @@ export class Config {
 	private _tabs: { [key: string]: string[] } = {};
 	private _port: number;
 
-	constructor({ port }: { port: number }) {
+	public constructor({ port }: { port: number }) {
 		this._port = port;
 	}
 
-	public addPlugin = <O = any>(tabName: string, name: TPluginName, options?: O) => {
+	public addPlugin = <TOptions = any>(tabName: string, name: TPluginName, options?: TOptions) => {
 		this._imports[name] = `// ${pluginMap[name].url()}\n${pluginMap[name].import()}`;
 		if (!this._tabs[tabName]) {
 			this._tabs[tabName] = [];
 		}
-		this._tabs[tabName].push(pluginMap[name].content(options) as string);
+		this._tabs[tabName].push(pluginMap[name].content(options));
 	};
 
 	public get tabs() {
-		const tabs: Array<{
+		const tabs: {
 			title: string;
 			rows: string[][];
-		}> = [];
+		}[] = [];
 		Object.keys(this._tabs).forEach((tabName) => {
 			tabs.push({
 				title: tabName,

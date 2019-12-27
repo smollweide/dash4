@@ -10,6 +10,7 @@ jest.mock('chalk', () => ({
 		red: (text: string) => text,
 		blue: (text: string) => text,
 		bgBlack: (text: string) => text,
+		// eslint-disable-next-line
 		hex: (value: string) => (text: string) => text,
 	},
 }));
@@ -19,7 +20,6 @@ const oraFailMock = jest.fn();
 const oraSucceedMock = jest.fn();
 const oraWarnMock = jest.fn();
 const oraInfoMock = jest.fn();
-const oraTextMock = '';
 
 const oraMock = {
 	start: oraStartMock,
@@ -49,14 +49,14 @@ jest.mock('ora', () => ({
 }));
 
 const consoleLockMock = jest.fn();
-// tslint:disable-next-line
+// eslint-disable-next-line
 const consoleLog = console.log;
-// tslint:disable-next-line
+// eslint-disable-next-line
 console.log = consoleLockMock;
 
 describe('log', () => {
 	afterAll(() => {
-		// tslint:disable-next-line
+		// eslint-disable-next-line
 		console.log = consoleLog;
 	});
 

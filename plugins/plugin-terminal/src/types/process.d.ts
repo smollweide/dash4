@@ -1,6 +1,6 @@
 import { Process } from 'node';
 
-// tslint:disable-next-line
+// eslint-disable-next-line
 interface CustomProcess extends Process {
 	argv: string[];
 	cwd: () => string;

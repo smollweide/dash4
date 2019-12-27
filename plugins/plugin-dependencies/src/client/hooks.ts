@@ -9,7 +9,7 @@ export function useData(id: string, sendFactory: (send: ISendToServer) => void) 
 	useEffectAsync(async () => {
 		const _send = await subscribe(id, (_data) => setData(_data));
 		sendFactory(_send);
-		return () => unsubscribe(id);
+		return async () => unsubscribe(id);
 	}, []);
 
 	return data;

@@ -11,7 +11,7 @@ export function useCoverageData(id: string, sendFactory: (send: ISend) => void) 
 	useEffectAsync(async () => {
 		const _send = await subscribe(id, (_data: ICoverage) => setData(_data));
 		sendFactory(_send);
-		return () => unsubscribe(id);
+		return async () => unsubscribe(id);
 	}, []);
 
 	return data;

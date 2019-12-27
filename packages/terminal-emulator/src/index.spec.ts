@@ -1,5 +1,4 @@
 /// <reference types="@types/jest" />
-import os from 'os';
 import path from 'path';
 import { terminalEmulator } from '.';
 
@@ -8,7 +7,6 @@ describe('terminalEmulator', () => {
 		expect(typeof terminalEmulator).toBe('function');
 	});
 	test('execute-script and detect end of execution', (done) => {
-		const isWin = os.platform() === 'win32';
 		let log = '';
 		const term = terminalEmulator({
 			cwd: path.join(process.cwd(), 'src/__mocks__'),

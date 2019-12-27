@@ -40,7 +40,7 @@ export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<ICli
 	private _cwd: string;
 	private _threshold: IThresholdGuaranteed;
 
-	constructor(options: IOptions | undefined = {}) {
+	public constructor(options: IOptions | undefined = {}) {
 		super({
 			dark: options.dark,
 			width: options.width,
@@ -121,7 +121,7 @@ export class PluginCodeCoverage extends Dash4Plugin implements IDash4Plugin<ICli
 			const lcovReport = await fs.readFile(this._lcovHtmlPath, 'utf8');
 			return getCoverageFromDom(await htmlToDom(lcovReport));
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 			error('plugin-code-coverage', 'error in fetchCoverage: ', err.toString());
 			return {
 				error: true,

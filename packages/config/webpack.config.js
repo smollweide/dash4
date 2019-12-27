@@ -7,7 +7,7 @@ const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
 const ScssConfigWebpackPlugin = require('scss-config-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = (pluginName) => (_some, { mode }) => {
+module.exports = (pluginName) => () => {
 	const config = {
 		entry: './src/client/index.tsx',
 		optimization: {

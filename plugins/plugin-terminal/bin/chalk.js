@@ -2,7 +2,7 @@
 
 const chalk = require('chalk');
 
-// tslint:disable-next-line
+// eslint-disable-next-line
 const log = console.log;
 
 // Combine styled and normal strings

@@ -24,10 +24,10 @@ export interface INpmScriptProps {
 	script: IScriptWithId;
 }
 
-export const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
+export const wait = async (duration = 100) => new Promise((resolve) => setTimeout(resolve, duration));
 
 export class NpmScript extends React.Component<INpmScriptProps, IState> {
-	constructor(props: INpmScriptProps) {
+	public constructor(props: INpmScriptProps) {
 		super(props);
 		this.state = {
 			executing: false,
@@ -60,12 +60,12 @@ export class NpmScript extends React.Component<INpmScriptProps, IState> {
 			<Fragment>
 				<Button
 					size="sm"
-					onClick={this.handleOpenOverlay}
 					css={css`
 						position: relative;
 						width: 100%;
 					`}
 					variant={script.buttonVariant || 'outline-primary'}
+					onClick={this.handleOpenOverlay}
 				>
 					{this.state.executing && (
 						<Icon align="center-in-content" name="refresh" animation="rotation-clockwise" />
@@ -170,7 +170,7 @@ export class NpmScript extends React.Component<INpmScriptProps, IState> {
 		});
 	};
 
-	private setStateAsync = (data: object) => new Promise((resolve) => this.setState(data, resolve));
+	private setStateAsync = async (data: object) => new Promise((resolve) => this.setState(data, resolve));
 
 	private handleOpenOverlay = async () => {
 		await this.setStateAsync({

@@ -62,6 +62,7 @@ export const Readme = ({ id, title }: IReadmeProps) => {
 				onHide={disableFullscreen}
 			>
 				<Modal.Header
+					closeButton
 					css={css`
 						background: #fff;
 						color: #000;
@@ -73,7 +74,6 @@ export const Readme = ({ id, title }: IReadmeProps) => {
 							font-size: 18px;
 						}
 					`}
-					closeButton
 				/>
 				<Modal.Body
 					css={css`
@@ -181,6 +181,7 @@ export function ReadmeList({ clientConfig }: IProps) {
 								const percent = count > 1 ? 100 / count : 100;
 								return (
 									<li
+										key={fileItem.file}
 										css={css`
 											cursor: pointer;
 											flex-basis: ${percent}%;
@@ -188,7 +189,6 @@ export function ReadmeList({ clientConfig }: IProps) {
 											max-width: ${percent}%;
 											min-width: ${percent}%;
 										`}
-										key={fileItem.file}
 									>
 										<Readme {...fileItem} />
 									</li>

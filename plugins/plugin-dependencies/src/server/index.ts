@@ -42,6 +42,26 @@ export interface IOptions {
 
 const processCwd = fs.realpathSync(process.cwd());
 
+function isError(value: IPackageJson | IError): value is IError {
+	return typeof value === 'object' && Object.keys(value).includes('error');
+}
+
+async function fetchPackageJson(cwd: string): Promise<IError | IPackageJson> {
+	try {
+		return (await readPkg({
+			cwd,
+			normalize: false,
+		})) as IPackageJson;
+	} catch (err) {
+		// eslint-disable-next-line
+		error('plugin-dependencies', `error in fetchPackageJson (${cwd}): `, err.toString());
+		return {
+			error: true,
+			message: err.toString(),
+		};
+	}
+}
+
 export class PluginDependencies
 	extends Dash4Plugin<IRecieveFromClientEventNames, IRecieveFromClientCb, ISendToClientEventNames, ISendToClientData>
 	implements IDash4Plugin<IClientConfig> {
@@ -51,11 +71,11 @@ export class PluginDependencies
 	private _installProcess: IInstallProcessPrepared;
 	private _foundDependencies: IDependencyObj = {};
 	private _lerna?: string;
-	private _packages: Array<{ path: string; name: string }> = [];
+	private _packages: { path: string; name: string }[] = [];
 	private _exclude: RegExp[] = [];
-	private _isProcessing: boolean = false;
+	private _isProcessing = false;
 
-	constructor(options: IOptions | undefined = {}) {
+	public constructor(options: IOptions | undefined = {}) {
 		super({
 			dark: options.dark,
 			width: options.width,
@@ -133,7 +153,7 @@ export class PluginDependencies
 		try {
 			return this._foundDependencies[dependencyName].version;
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 		return;
 	};
@@ -261,24 +281,4 @@ export class PluginDependencies
 			isUpToDate: isVersionUpToDate(version, latestVersion),
 		};
 	};
-}
-
-function isError(value: IPackageJson | IError): value is IError {
-	return typeof value === 'object' && Object.keys(value).includes('error');
-}
-
-async function fetchPackageJson(cwd: string): Promise<IError | IPackageJson> {
-	try {
-		return (await readPkg({
-			cwd,
-			normalize: false,
-		})) as IPackageJson;
-	} catch (err) {
-		// tslint:disable-next-line
-		error('plugin-dependencies', `error in fetchPackageJson (${cwd}): `, err.toString());
-		return {
-			error: true,
-			message: err.toString(),
-		};
-	}
 }

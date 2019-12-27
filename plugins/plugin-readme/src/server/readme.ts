@@ -22,7 +22,7 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	private _file: string;
 	private _height?: number | string;
 
-	constructor({ file, width, height }: IReadmeOptions) {
+	public constructor({ file, width, height }: IReadmeOptions) {
 		super({
 			dark: false,
 			width,
@@ -56,7 +56,7 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 		const data = await this.fetchFile();
 		const reg = /src="(\.)?\/[^"]*"/g;
 		let result: any;
-		// tslint:disable-next-line
+		// eslint-disable-next-line
 		while ((result = reg.exec(data))) {
 			const imagePublicPath = result[0]
 				.toString()
@@ -69,6 +69,7 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 				res.writeHead(200, {
 					'Content-Type': getContentType(path.extname(imagePublicPath)) || '',
 				});
+				// eslint-disable-next-line
 				res.end(await fs.readFile(imageDiskPath));
 				return true;
 			}

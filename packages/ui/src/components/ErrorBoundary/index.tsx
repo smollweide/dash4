@@ -3,7 +3,6 @@ import { css, jsx } from '@emotion/core';
 import React, { ErrorInfo } from 'react';
 import { Alert } from 'react-bootstrap';
 
-// tslint:disable-next-line
 interface IProps {
 	title?: string;
 	message?: string;
@@ -22,14 +21,14 @@ const textHyphens = css`
 `;
 
 export class ErrorBoundary extends React.Component<IProps, IState> {
-	constructor(props: IProps) {
+	public constructor(props: IProps) {
 		super(props);
 		this.state = { hasError: false };
 	}
 
 	public componentDidCatch(error: Error, info: ErrorInfo) {
 		// You can also log the error to an error reporting service
-		// tslint:disable-next-line
+		// eslint-disable-next-line
 		console.error(error, info);
 		this.setState({
 			hasError: true,

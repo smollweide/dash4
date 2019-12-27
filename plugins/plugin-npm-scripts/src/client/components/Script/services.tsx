@@ -6,8 +6,8 @@ export async function subscribeToNpmScriptDataChanges(
 	onStopped: () => void
 ) {
 	const socketData = await socket();
-	const on = (name: string, callback: (data: string) => void) => {
-		socketData.on(`plugin-npm-scripts-${id}-${scriptId}_${name}`, callback);
+	const on = (name: string, onRecieve: (data: string) => void) => {
+		socketData.on(`plugin-npm-scripts-${id}-${scriptId}_${name}`, onRecieve);
 	};
 	const send = (name: string, data?: number) => {
 		socketData.send(`plugin-npm-scripts-${id}-${scriptId}_${name}`, data);

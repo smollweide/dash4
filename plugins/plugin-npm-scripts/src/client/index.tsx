@@ -7,9 +7,7 @@ import { Window, WindowBody, WindowHeader } from '@dash4/ui';
 import { IClientConfig } from '../shared-types';
 import { NpmScript } from './components/Script';
 
-export interface INpmScriptsProps extends IWidgetConfig<IClientConfig> {
-	// tslint:disable-next-line
-}
+type INpmScriptsProps = IWidgetConfig<IClientConfig>;
 
 const NpmScripts = ({ dark, clientConfig, id }: INpmScriptsProps) => {
 	return (
@@ -42,5 +40,5 @@ const NpmScripts = ({ dark, clientConfig, id }: INpmScriptsProps) => {
 	);
 };
 
-// tslint:disable-next-line
+// eslint-disable-next-line
 registerPlugin('PluginNpmScripts', NpmScripts);

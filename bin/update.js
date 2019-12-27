@@ -63,7 +63,7 @@ async function fetchDependencies() {
 }
 
 async function fetchUpdateDependencies(dependencies) {
-	let dependenciesKeys = Object.keys(dependencies);
+	const dependenciesKeys = Object.keys(dependencies);
 	let i = 0;
 
 	for (i = 0; i < dependenciesKeys.length; i += 1) {
@@ -103,6 +103,7 @@ async function selectDependencies(updateDependencies) {
 				),
 				value: key,
 			})),
+			// eslint-disable-next-line
 			initial: Array.apply(null, new Array(Object.keys(updateDependencies).length)).map((_x, index) => index),
 		});
 	} catch (err) {
@@ -146,7 +147,7 @@ async function updatePackage({ dependency, pathName, isDevDependency, newVersion
 	for (i = 0; i < selectedDependencies.length; i += 1) {
 		let k = 0;
 		const dependencyData = dependencies[selectedDependencies[i]];
-		const latestVersion = dependencyData.latestVersion;
+		const dependencyLatestVersion = dependencyData.latestVersion;
 
 		delete dependencyData.versions;
 		delete dependencyData.latestVersion;
@@ -158,7 +159,7 @@ async function updatePackage({ dependency, pathName, isDevDependency, newVersion
 				dependency: selectedDependencies[i],
 				pathName: dependencyKeys[k],
 				isDevDependency: dependencyData[dependencyKeys[k]].isDev,
-				newVersion: latestVersion,
+				newVersion: dependencyLatestVersion,
 			});
 		}
 	}

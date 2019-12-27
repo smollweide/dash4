@@ -79,6 +79,7 @@ describe('PluginNpmScripts', () => {
 					id: string,
 					scriptId: string,
 					onChange: (data: string, initial?: boolean) => void,
+					// eslint-disable-next-line
 					onStopped: () => void
 				) => {
 					await wait(200);

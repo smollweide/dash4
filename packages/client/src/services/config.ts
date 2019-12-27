@@ -1,3 +1,4 @@
+/* globals process */
 import { IConfig } from '..';
 
 export async function getConfig(): Promise<IConfig> {

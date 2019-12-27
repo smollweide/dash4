@@ -15,7 +15,7 @@ export function Readme({ id, clientConfig }: IProps) {
 	const { fullscreen, enableFullscreen, disableFullscreen } = useFullscreen();
 
 	return (
-		<Window onWillLeaveFullscreen={disableFullscreen} fullscreen={fullscreen} dark={false}>
+		<Window fullscreen={fullscreen} dark={false} onWillLeaveFullscreen={disableFullscreen}>
 			<WindowBody
 				className="window-body"
 				css={[

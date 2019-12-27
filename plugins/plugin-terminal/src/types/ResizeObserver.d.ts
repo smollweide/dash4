@@ -1,2 +1,2 @@
-// tslint:disable-next-line
+// eslint-disable-next-line
 declare var ResizeObserver: (cd: () => void) => void;

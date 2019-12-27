@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -35,6 +36,10 @@ export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenci
 		sendMap[id]('update', dependencyName);
 	}
 
+	function filterData() {
+		setFilteredData(filter(data, filterUpdateAvailable, filterQuery));
+	}
+
 	useEffect(() => {
 		setIsProcessing(false);
 	}, [data]);
@@ -42,10 +47,6 @@ export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenci
 	useEffect(() => {
 		filterData();
 	}, [data, filterQuery, filterUpdateAvailable]);
-
-	function filterData() {
-		setFilteredData(filter(data, filterUpdateAvailable, filterQuery));
-	}
 
 	function handleChangeFilterQuery(event: React.FormEvent<any>) {
 		setFilterQuery(event.currentTarget.value);
@@ -59,8 +60,8 @@ export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenci
 		<Window dark={dark}>
 			<WindowHeader title={clientConfig.title || 'Dependencies'}>
 				<OverlayTrigger
-					trigger="click"
 					key={`${id}-filter-overlay-trigger`}
+					trigger="click"
 					placement={'bottom'}
 					overlay={
 						<Popover id={`${id}-filter-popover`} title={'Filter'}>
@@ -74,16 +75,16 @@ export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenci
 								<Form.Group as={Row} controlId={`${id}_filter-form-search`}>
 									<Form.Control
 										value={filterQuery}
-										onChange={handleChangeFilterQuery}
 										type="search"
 										placeholder="search"
+										onChange={handleChangeFilterQuery}
 									/>
 								</Form.Group>
 								<Form.Group as={Row} controlId={`${id}_filter-form-no-up-to-date`}>
 									<Form.Check
 										checked={filterUpdateAvailable}
-										onChange={handleChangeFilterUpdateAvailable}
 										label="Update available"
+										onChange={handleChangeFilterUpdateAvailable}
 									/>
 								</Form.Group>
 							</Form>

@@ -1,3 +1,4 @@
+/* globals process */
 /** @jsx EmotionCore.jsx */
 import * as Dash4Log from '@dash4/log/build/browser';
 import * as ReactXterm from '@dash4/react-xterm/lib/ReactXterm';
@@ -25,13 +26,13 @@ import './polyfill';
 
 const { log } = Dash4Log;
 
-export interface IWidgetConfig<IClientConfig = {}> {
+export interface IWidgetConfig<TClientConfig = {}> {
 	id: string;
 	name: string;
 	lowerCaseName: string;
 	dark?: boolean;
 	width?: number[];
-	clientConfig: IClientConfig;
+	clientConfig: TClientConfig;
 }
 
 export interface IConfigTab {
@@ -45,9 +46,9 @@ export interface IConfig {
 }
 
 if (process.env.MOCK_ENV === 'true') {
-	// tslint:disable-next-line
+	// eslint-disable-next-line
 	log('client', 'mode develop');
-	// tslint:disable-next-line
+	// eslint-disable-next-line
 	require('./mock/Plugin');
 }
 

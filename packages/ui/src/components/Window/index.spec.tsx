@@ -37,7 +37,7 @@ describe('Window', () => {
 	});
 	test('onWillLeaveFullscreen', () => {
 		const { container } = render(
-			<Window onWillLeaveFullscreen={() => undefined} autoStretch={false}>
+			<Window autoStretch={false} onWillLeaveFullscreen={() => undefined}>
 				Hello
 			</Window>
 		);
@@ -51,10 +51,10 @@ describe('Window', () => {
 
 		render(
 			<Window
+				autoStretch={false}
 				onWillLeaveFullscreen={() => {
 					done();
 				}}
-				autoStretch={false}
 			>
 				Hello
 			</Window>
@@ -64,10 +64,10 @@ describe('Window', () => {
 	test('focus', (done) => {
 		const { container } = render(
 			<Window
+				autoStretch={false}
 				onFocus={() => {
 					done();
 				}}
-				autoStretch={false}
 			>
 				Hello
 			</Window>
@@ -87,10 +87,10 @@ describe('Window', () => {
 	test('blur', (done) => {
 		const { container } = render(
 			<Window
+				autoStretch={false}
 				onBlur={() => {
 					done();
 				}}
-				autoStretch={false}
 			>
 				Hello
 			</Window>

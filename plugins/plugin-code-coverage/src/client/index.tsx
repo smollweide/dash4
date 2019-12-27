@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -11,7 +12,7 @@ import { ISend, useCoverageData } from './hooks';
 
 type IProps = IWidgetConfig<IClientConfig>;
 
-const CoverageChart = lazy(() => import(/* webpackChunkName: "coverage-chart" */ './components/CoverageChart'));
+const CoverageChart = lazy(async () => import(/* webpackChunkName: "coverage-chart" */ './components/CoverageChart'));
 
 function getCoverageSectionValue(coverageSection: ICoverageSection | undefined, value: string) {
 	if (
@@ -59,7 +60,6 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig }: IProps) => {
 					) : data ? (
 						<Suspense fallback={<div>Loading ...</div>}>
 							<div
-								onClick={handleClick}
 								css={css`
 									display: flex;
 									flex-flow: row wrap;
@@ -67,6 +67,7 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig }: IProps) => {
 									align-items: center;
 									cursor: pointer;
 								`}
+								onClick={handleClick}
 							>
 								<div css={chartRow}>
 									<div>

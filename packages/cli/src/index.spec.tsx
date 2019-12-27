@@ -1,4 +1,5 @@
 /// <reference types="@types/jest" />
+// eslint-disable-next-line
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -22,6 +23,7 @@ jest.mock('@dash4/log', () => ({
 jest.mock('chalk', () => ({
 	__esModule: true,
 	default: {
+		// eslint-disable-next-line
 		hex: (vaui: string) => (text: string) => text,
 		bgBlack: (text: string) => text,
 		white: (text: string) => text,
@@ -46,14 +48,14 @@ const mockDir = path.join(__dirname, '../src/__mocks__');
 const isCI = ((process.env || {}).NODE_ENV || '').toLowerCase() === 'ci';
 
 const processKill = process.kill;
-// tslint:disable-next-line
+// eslint-disable-next-line
 const consoleLog = console.log;
 
 process.kill = jest.fn();
-// tslint:disable-next-line
+// eslint-disable-next-line
 console.log = jest.fn();
 
-const getOptions = (cwd: string, force: boolean = true) => ({
+const getOptions = (cwd: string, force = true) => ({
 	port: 4000,
 	config: path.join(cwd, 'dash4.config.js'),
 	force,
@@ -91,7 +93,7 @@ describe('cli', () => {
 	});
 
 	afterAll(async () => {
-		// tslint:disable-next-line
+		// eslint-disable-next-line
 		console.log = consoleLog;
 		process.kill = processKill;
 		// await del(tempDir);
@@ -197,7 +199,7 @@ describe('cli', () => {
 				rename: () => `package.json`,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 		try {
 			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
@@ -205,7 +207,7 @@ describe('cli', () => {
 				parents: true,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 
 		// create packages directory
@@ -217,7 +219,7 @@ describe('cli', () => {
 				rename: () => `package.json`,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 		try {
 			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
@@ -225,7 +227,7 @@ describe('cli', () => {
 				parents: true,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 
 		await init(cwd, getOptions(cwd));
@@ -269,7 +271,7 @@ describe('cli', () => {
 				rename: () => `package.json`,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 		try {
 			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/configs/`, {
@@ -277,7 +279,7 @@ describe('cli', () => {
 				parents: true,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 
 		// create packages directory
@@ -289,7 +291,7 @@ describe('cli', () => {
 				rename: () => `package.json`,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 		try {
 			await cpy([`*/README.md`], `../../../../__tmp__/${testId}/packages/`, {
@@ -297,7 +299,7 @@ describe('cli', () => {
 				parents: true,
 			});
 		} catch (err) {
-			// tslint:disable-next-line
+			// eslint-disable-next-line
 		}
 
 		await init(cwd, getOptions(cwd));

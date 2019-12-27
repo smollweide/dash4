@@ -47,7 +47,7 @@ async function getPackageData() {
 }
 
 function bumpVersion(currentVersion, releaseType) {
-	if (releaseType !== 'major' && releaseType !== 'minor' && releaseType != 'patch') {
+	if (releaseType !== 'major' && releaseType !== 'minor' && releaseType !== 'patch') {
 		return currentVersion;
 	}
 
@@ -69,7 +69,9 @@ async function writeChangelog(changelog) {
 
 	try {
 		oldChangelog = await fs.readFile(pathName, 'utf8');
-	} catch (err) {}
+	} catch (err) {
+		// eslint-disable-next-line
+	}
 
 	await fs.writeFile(pathName, `${changelog}\n\n${oldChangelog}`);
 }

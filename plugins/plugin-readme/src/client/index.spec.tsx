@@ -5,9 +5,7 @@ jest.mock('./services', () => ({
 	unsubscribeToReadme: jest.fn(),
 }));
 
-// tslint:disable-next-line
 const consoleLog = console.log;
-// tslint:disable-next-line
 console.log = () => {};
 
 import { Readme } from './components/Readme';
@@ -25,5 +23,4 @@ describe('PluginReadme', () => {
 	});
 });
 
-// tslint:disable-next-line
 console.log = consoleLog;

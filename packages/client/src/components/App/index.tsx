@@ -29,8 +29,8 @@ export function App() {
 									}
 									return (
 										<Route
-											exact={index === 0}
 											key={pathName}
+											exact={index === 0}
 											path={pathName}
 											component={() => <Widgets tab={tab} />}
 										/>

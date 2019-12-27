@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import path from 'path';
 
-const pGlop = (pattern: string, options: glob.IOptions = {}): Promise<string[]> => {
+const pGlop = async (pattern: string, options: glob.IOptions = {}): Promise<string[]> => {
 	return new Promise((resolve, reject) => {
 		glob(pattern, options, (err, files) => {
 			if (err) {
@@ -21,13 +21,11 @@ export interface IOptions {
 	exclude?: string[];
 }
 
-async function getJsonFile<P = any>(pathName: string) {
-	return JSON.parse(await fs.readFile(pathName, 'utf8')) as P;
+async function getJsonFile<TParams = any>(pathName: string) {
+	return JSON.parse(await fs.readFile(pathName, 'utf8')) as TParams;
 }
 
-/**
- * Returns all packages and it's path's in you project
- */
+// Returns all packages and it's path's in you project
 export async function getLernaPackages(projectRootDir: string, options?: IOptions): Promise<string[]> {
 	const lernaData = await getJsonFile<{ packages?: string[] }>(path.join(projectRootDir, 'lerna.json'));
 	const rootPkgData = await getJsonFile<{ workspaces?: string[] }>(path.join(projectRootDir, 'package.json'));
@@ -38,7 +36,7 @@ export async function getLernaPackages(projectRootDir: string, options?: IOption
 	}
 
 	const packagesRaw = await Promise.all(
-		packagesGlobs.map((packageGlob: string) =>
+		packagesGlobs.map(async (packageGlob: string) =>
 			pGlop(packageGlob, {
 				cwd: projectRootDir,
 			})

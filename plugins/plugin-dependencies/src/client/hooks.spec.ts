@@ -22,7 +22,6 @@ describe('PluginDependencies', () => {
 				expect(typeof useData).toBe('function');
 			});
 			test('default', () => {
-				const sendMock = jest.fn();
 				subscribeMock.mockImplementation(async (name: string, cb: (data: string) => void) => {
 					cb('test');
 					return () => undefined;

@@ -5,7 +5,7 @@ import { ErrorBoundary } from '.';
 import Readme from './README.md';
 
 function BuggyCounter({ initialCounter = 0 }: { initialCounter: any }) {
-	const [counter, setCounter] = useState(initialCounter);
+	const [counter, setCounter] = useState(initialCounter as number);
 
 	function handleClick() {
 		setCounter(counter + 1);

@@ -1,9 +1,10 @@
 import chalk from 'chalk';
+import ora from 'ora';
+import { toParamCase, TType, typeToColor } from './shared';
+
 type TPackageName = 'server' | 'terminal-emulator' | 'cli' | string;
 type TMessage = string | number | object | any[];
 type TConsoleFunc = (packageName: TPackageName, message: TMessage, ...args: TMessage[]) => void;
-import ora from 'ora';
-import { toParamCase, TType, typeToColor } from './shared';
 
 function getStyledMessage(type: TType, packageName: TPackageName, message: TMessage) {
 	return chalk.bgBlack(
@@ -14,7 +15,7 @@ function getStyledMessage(type: TType, packageName: TPackageName, message: TMess
 }
 
 const defaultLog = (type: TType, packageName: TPackageName, message: TMessage, ...args: TMessage[]) => {
-	// tslint:disable-next-line
+	// eslint-disable-next-line
 	console.log(getStyledMessage(type, packageName, message), ...args);
 };
 

@@ -26,7 +26,7 @@ export function Widgets({ tab }: IProps) {
 							const { id, name, lowerCaseName } = config;
 							if (!(window as any).dash4 || !(window as any).dash4.plugins) {
 								return (
-									<Cell width={config.width} key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`}>
+									<Cell key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`} width={config.width}>
 										<CouldNotLoad name={name} />
 									</Cell>
 								);
@@ -37,25 +37,25 @@ export function Widgets({ tab }: IProps) {
 								if (!Plugin) {
 									return (
 										<Cell
-											width={config.width}
 											key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`}
+											width={config.width}
 										>
 											<CouldNotLoad name={name} />
 										</Cell>
 									);
 								}
 								return (
-									<Cell width={config.width} key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`}>
+									<Cell key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`} width={config.width}>
 										<ErrorBoundary>
 											<Plugin {...config} />
 										</ErrorBoundary>
 									</Cell>
 								);
 							} catch (err) {
-								// tslint:disable-next-line
+								// eslint-disable-next-line
 								console.error(err);
 								return (
-									<Cell width={config.width} key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`}>
+									<Cell key={`${tab.title}-${rowIndex}-${lowerCaseName}-${id}`} width={config.width}>
 										<CouldNotLoad name={name} />
 									</Cell>
 								);

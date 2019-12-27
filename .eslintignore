@@ -1,0 +1,10 @@
+/.idea/
+**/node_modules/
+**/build/
+**/dist/
+**/__tmp__/
+**/storybook-static/
+**/__mocks__/
+/packages/react-xterm/lib/
+/packages/ui/lib/
+**/*.d.ts

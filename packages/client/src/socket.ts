@@ -1,4 +1,5 @@
-import { error as logError, success, warn } from '@dash4/log/build/browser';
+/* eslint id-blacklist: 0 */
+import { error as logError, warn } from '@dash4/log/build/browser';
 
 const win = window as any;
 const ws = new WebSocket(`ws://localhost:${win.dash4.port}`);
@@ -18,12 +19,12 @@ win.dash4.socket.listeners = {};
 
 const listeners: ISocketListeners = win.dash4.socket.listeners;
 let isReady: boolean = win.dash4.socket.isReady;
-const readyList: Array<(value?: ISocketAbstract | PromiseLike<ISocketAbstract> | undefined) => void> =
+const readyList: ((value?: ISocketAbstract | PromiseLike<ISocketAbstract> | undefined) => void)[] =
 	win.dash4.socket.readyList;
 
-export interface ISocketAction<Data = {}> {
+export interface ISocketAction<TData = {}> {
 	id: string;
-	data: Data;
+	data: TData;
 }
 
 export interface ISocketAbstract {
@@ -42,7 +43,7 @@ function socketAbstract(wsInstace: WebSocket): ISocketAbstract {
 				})
 			);
 		},
-		on: <CallbackType = any>(id: string, callback: (data: CallbackType) => void) => {
+		on: <TCallbackType = any>(id: string, callback: (data: TCallbackType) => void) => {
 			listeners[id] = { id, callback };
 		},
 		off: (id: string) => {

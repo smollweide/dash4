@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-require-imports */
 import program from 'commander';
 import fs from 'fs';
 import path from 'path';
@@ -5,8 +7,9 @@ import { IConfig, TServerRequest } from '.';
 import { start as startServer } from './server';
 
 async function getProgram() {
+	const pkg = await require(path.join(__dirname, '..', 'package.json'));
 	program
-		.version(((await require(path.join(__dirname, '..', 'package.json'))) as any).version)
+		.version(pkg.version)
 		.option('-p, --port [number]', 'number of port which should be used')
 		.option('-c, --config [string]', 'path to config file')
 		.parse((process as any).argv);
@@ -20,7 +23,7 @@ async function getProgram() {
 (async function start() {
 	const options = await getProgram();
 
-	const getConfig = ((await require(options.config)) as any) as () => Promise<IConfig>;
+	const getConfig = (await require(options.config)) as () => Promise<IConfig>;
 	const config = await getConfig();
 
 	config.port = options.port || config.port || 4000;

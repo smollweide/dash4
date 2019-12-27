@@ -2,7 +2,7 @@
 
 const sparkly = require('sparkly');
 
-// tslint:disable-next-line
+// eslint-disable-next-line
 process.stdout.write(sparkly([0, 3, 5, 8, 4, 3, 4, 10]) + '\n\n');
 // => '▁▃▄▇▄▃▄█'
 

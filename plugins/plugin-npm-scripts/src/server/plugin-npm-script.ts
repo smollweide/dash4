@@ -10,13 +10,13 @@ interface IOptions {
 export class PluginNpmScript {
 	private id: string;
 	private script: IScriptWithId;
-	private terminalLog: string = '';
+	private terminalLog = '';
 	private term?: ITerm;
-	private _on?: (id: string, callback: any) => void;
+	private _on?: (id: string, onRcieve: any) => void;
 	private _send?: (id: string, data?: any) => void;
-	private stopProcessingTriggered: boolean = false;
+	private stopProcessingTriggered = false;
 
-	constructor({ id, script }: IOptions) {
+	public constructor({ id, script }: IOptions) {
 		this.id = id;
 		this.script = script;
 	}
@@ -54,7 +54,7 @@ export class PluginNpmScript {
 		this._send(`plugin-npm-scripts-${this.id}-${this.script.id}_${eventName}`, data);
 	};
 
-	private on = <CbData = undefined>(eventName: string, cb: (data?: CbData) => void) => {
+	private on = <TCbData = undefined>(eventName: string, cb: (data?: TCbData) => void) => {
 		if (!this._on) {
 			return;
 		}

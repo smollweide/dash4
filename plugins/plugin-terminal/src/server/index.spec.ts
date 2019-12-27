@@ -10,7 +10,7 @@ jest.mock('@dash4/terminal-emulator', () => ({
 	terminalEmulator: jest.fn().mockImplementation(() => {
 		return {
 			write: () => {
-				// tslint:disable-next-line
+				// eslint-disable-next-line
 			},
 		};
 	}),
@@ -54,6 +54,7 @@ describe('PluginCodeCoverage', () => {
 		expect(inst.clientConfig.cwd).toBe(path.join(process.cwd(), 'test'));
 	});
 	test('autostart', async () => {
+		// eslint-disable-next-line
 		const inst = new PluginTerminal({
 			cmd: 'hello',
 			autostart: true,

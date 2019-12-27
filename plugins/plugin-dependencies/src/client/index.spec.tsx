@@ -30,8 +30,6 @@ jest.mock('@dash4/client/build/register-plugin', () => ({
 
 import { PluginDependencies } from './index';
 
-const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
-
 const exampleData = {
 	react: {
 		version: '16.8.4',

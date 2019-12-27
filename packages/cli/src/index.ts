@@ -4,6 +4,7 @@ import execa from 'execa';
 import fs from 'fs-extra';
 import path from 'path';
 import readPkg from 'read-pkg';
+// eslint-disable-next-line
 import { JsonObject } from 'type-fest';
 import writePkg from 'write-pkg';
 import { Config, TPluginName } from './Config/Config';
@@ -25,12 +26,10 @@ interface ICollect {
 	parentUsesYarn?: boolean;
 }
 
-async function asyncForEach<IITem = any>(
-	array: IITem[],
-	callback: (item: IITem, index: number, array: IITem[]) => void
-) {
+async function asyncForEach<TITem = any>(array: TITem[], onIt: (item: TITem, index: number, array: TITem[]) => void) {
 	for (let index = 0; index < array.length; index++) {
-		await callback(array[index], index, array);
+		// eslint-disable-next-line
+		await onIt(array[index], index, array);
 	}
 }
 

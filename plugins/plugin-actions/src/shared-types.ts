@@ -47,5 +47,5 @@ export interface IActionTeaserWithId extends IActionTeaser {
 
 export interface IClientConfig {
 	title?: string;
-	actions?: Array<IActionLinkWithId | IActionTeaserWithId>;
+	actions?: (IActionLinkWithId | IActionTeaserWithId)[];
 }

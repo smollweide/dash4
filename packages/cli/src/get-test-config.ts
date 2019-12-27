@@ -11,10 +11,10 @@ export async function getTestConfig({ usesYarn, packagePath, packageData }: IGet
 	const packages: {
 		[key: string]: boolean;
 	} = {};
-	const configs: Array<{
+	const configs: {
 		pluginName: TPluginName;
 		options?: any;
-	}> = [];
+	}[] = [];
 
 	const command = usesYarn ? 'yarn' : 'npm run';
 	const hasTest = hasScript(packageData, 'test');

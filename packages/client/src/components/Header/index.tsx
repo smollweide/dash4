@@ -76,6 +76,7 @@ const RawHeader = (props: IProps) => {
 			</a>
 			<Modal show={showInfoModal} onHide={handleHideInfoModal}>
 				<Modal.Header
+					closeButton
 					css={css`
 						border: 0;
 						padding: 10px 12px 0 0;
@@ -83,7 +84,6 @@ const RawHeader = (props: IProps) => {
 							font-weight: 200;
 						}
 					`}
-					closeButton
 				/>
 				<Modal.Body
 					css={css`
@@ -246,6 +246,7 @@ const RawHeader = (props: IProps) => {
 					}
 					return (
 						<li
+							key={tab}
 							style={{ width: `${100 / tabs.length}%` }}
 							css={css`
 								position: relative;
@@ -262,7 +263,6 @@ const RawHeader = (props: IProps) => {
 									background: #eaeaea;
 								}
 							`}
-							key={tab}
 						>
 							{isActive && (
 								<Fragment>
@@ -374,11 +374,6 @@ const RawHeader = (props: IProps) => {
 				/>
 				<select
 					value={selected}
-					onChange={(event) => {
-						const value = event.currentTarget.value;
-						setSelected(value);
-						history.push(value === tabs[0] ? '/' : `/${value}`);
-					}}
 					css={css`
 						cursor: pointer;
 						background: transparent;
@@ -394,10 +389,15 @@ const RawHeader = (props: IProps) => {
 						width: calc(100% - 65px - 15px);
 						top: 3px;
 					`}
+					onChange={(event) => {
+						const value = event.currentTarget.value;
+						setSelected(value);
+						history.push(value === tabs[0] ? '/' : `/${value}`);
+					}}
 				>
 					{tabs.map((tab) => {
 						return (
-							<option value={tab} key={tab}>
+							<option key={tab} value={tab}>
 								{tab}
 							</option>
 						);

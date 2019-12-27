@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffectAsync } from '../../react-hooks';
 import { DURATION_HIDE_ANIMATION } from './constants';
 
-const wait = (duration: number = 100) => new Promise((resolve) => setTimeout(resolve, duration));
+const wait = async (duration = 100) => new Promise((resolve) => setTimeout(resolve, duration));
 
 export function useMinimalWait({ visible, minWait }: { visible: boolean; minWait: number }) {
 	const [isMinimalWaitReached, setIsMinimalWaitReached] = useState(false);

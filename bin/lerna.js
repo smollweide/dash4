@@ -21,15 +21,15 @@ async function packages() {
 	);
 }
 
-async function packageDatas(packages) {
+async function packageDatas(packageDirNames) {
 	const infos = [];
 	let i = 0;
 
-	for (i = 0; i < packages.length; i += 1) {
-		const packageData = await require(path.join(cwd, packages[i]));
+	for (i = 0; i < packageDirNames.length; i += 1) {
+		const packageData = await require(path.join(cwd, packageDirNames[i]));
 		infos.push({
 			...packageData,
-			_path_: packages[i],
+			_path_: packageDirNames[i],
 		});
 	}
 

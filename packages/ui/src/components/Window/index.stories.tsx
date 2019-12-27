@@ -88,8 +88,8 @@ const WindowWithFullscreenHook = () => {
 	const { fullscreen, enableFullscreen, disableFullscreen, toggleFullscreen } = useFullscreen();
 
 	return (
-		<Window dark={dark} onWillLeaveFullscreen={disableFullscreen} fullscreen={fullscreen}>
-			<WindowHeader onDoubleClick={toggleFullscreen} title={'Title'} subTitle={'Subtitle'} />
+		<Window dark={dark} fullscreen={fullscreen} onWillLeaveFullscreen={disableFullscreen}>
+			<WindowHeader title={'Title'} subTitle={'Subtitle'} onDoubleClick={toggleFullscreen} />
 			<WindowBody>
 				{!fullscreen && (
 					<>
