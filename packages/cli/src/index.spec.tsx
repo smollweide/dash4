@@ -45,7 +45,6 @@ const tempDir = path.join(__dirname, '../__tmp__');
 const getTempFile = async (testId: string, fileName: string) =>
 	await fs.readFile(path.join(tempDir, testId, fileName), 'utf8');
 const mockDir = path.join(__dirname, '../src/__mocks__');
-const isCI = ((process.env || {}).NODE_ENV || '').toLowerCase() === 'ci';
 
 const processKill = process.kill;
 // eslint-disable-next-line
@@ -171,7 +170,7 @@ describe('cli', () => {
 		);
 	});
 
-	(isCI ? test.skip : test)('execute in lerna repo', async () => {
+	test.skip('execute in lerna repo', async () => {
 		const testId = 'lerna';
 		const cwd = path.join(tempDir, testId);
 		await makeDir(cwd);
