@@ -16,6 +16,9 @@ win.dash4.socket = win.dash4.socket || {};
 win.dash4.socket.isReady = false;
 win.dash4.socket.readyList = [];
 win.dash4.socket.listeners = {};
+win.dash4.connectionCounter = typeof win.dash4.connectionCounter === 'number' ? win.dash4.connectionCounter : 0;
+win.dash4.connectionLostCounter =
+	typeof win.dash4.connectionLostCounter === 'number' ? win.dash4.connectionLostCounter : 0;
 
 const listeners: ISocketListeners = win.dash4.socket.listeners;
 let isReady: boolean = win.dash4.socket.isReady;
@@ -54,9 +57,13 @@ function socketAbstract(wsInstace: WebSocket): ISocketAbstract {
 
 function connected() {
 	isReady = true;
+
+	win.dash4.connectionCounter += 1;
+
 	readyList.forEach((resolve: (sk: ISocketAbstract) => void) => {
 		resolve(socketAbstract(ws));
 	});
+
 	ws.onmessage = (rawData: any) => {
 		const data = JSON.parse(rawData.data) as ISocketAction;
 
@@ -70,9 +77,21 @@ function connected() {
 	};
 }
 
+win.onfocus = () => {
+	if (win.dash4.connectionCounter !== win.dash4.connectionLostCounter) {
+		return;
+	}
+
+	warn('client', `autoreload in 1 sec'}`);
+	setTimeout(() => {
+		window.location.reload();
+	}, 1000);
+};
+
 function disconnected() {
-	warn('client', 'connection closed');
+	warn('client', `connection closed`);
 	isReady = false;
+	win.dash4.connectionLostCounter += 1;
 }
 
 function error() {
