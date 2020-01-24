@@ -14,4 +14,10 @@ describe('htmlToDom', () => {
 		expect(Array.isArray(dom)).toBe(true);
 		expect(Array.isArray(dom[2].children)).toBe(true);
 	});
+	test('read index-jest-25.html and should have children', async () => {
+		const fileData = await fs.readFile(path.join(__dirname, '../__mocks__/index-jest-25.html'), 'utf8');
+		const dom = await htmlToDom(fileData);
+		expect(Array.isArray(dom)).toBe(true);
+		expect(Array.isArray(dom[2].children)).toBe(true);
+	});
 });

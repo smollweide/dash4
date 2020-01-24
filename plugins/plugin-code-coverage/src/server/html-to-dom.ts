@@ -13,6 +13,8 @@ export interface IDomElement {
 }
 
 export async function htmlToDom(html: string): Promise<IDomElement[]> {
+	// remove blnk lines
+	html = html.replace(/^(?:[\t ]*(?:\r?\n|\r))+/g, '');
 	return new Promise((resolve, reject) => {
 		const handler = new DomHandler((error: Error, dom: IDomElement[]) => {
 			/* istanbul ignore next */
