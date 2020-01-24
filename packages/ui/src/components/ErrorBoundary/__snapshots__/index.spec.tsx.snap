@@ -1,7 +1,146 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorBoundary render default 1`] = `"received is not a function"`;
+exports[`ErrorBoundary render default 1`] = `
+.emotion-0 {
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
 
-exports[`ErrorBoundary render error with custom message 1`] = `"received is not a function"`;
+<div
+  class="fade alert alert-danger show"
+  role="alert"
+>
+  <div
+    class="emotion-0 alert-heading h4"
+  >
+    Something went wrong.
+  </div>
+  <p
+    class="emotion-0"
+  >
+    Error: counter have to be a number type
+    at BuggyCounter (/Users/smollweide/Projects/dash4/packages/ui/src/components/ErrorBoundary/index.spec.tsx:15:9)
+    at renderWithHooks (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:16260:18)
+    at mountIndeterminateComponent (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:18794:13)
+    at beginWork$1 (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:20162:16)
+    at HTMLUnknownElement.callCallback (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:336:14)
+    at innerInvokeEventListeners (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:316:27)
+    at invokeEventListeners (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:267:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:214:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:87:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:144:23)
+    at Object.invokeGuardedCallbackDev (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:385:16)
+    at invokeGuardedCallback (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:440:31)
+    at beginWork$$1 (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:25780:7)
+    at performUnitOfWork (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24698:12)
+    at workLoopSync (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24671:22)
+    at performSyncWorkOnRoot (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24270:11)
+    at scheduleUpdateOnFiber (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:23698:7)
+    at updateContainer (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27103:3)
+    at /Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27528:7
+    at unbatchedUpdates (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24433:12)
+    at legacyRenderSubtreeIntoContainer (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27527:5)
+    at Object.render (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27608:10)
+    at /Users/smollweide/Projects/dash4/node_modules/@testing-library/react/dist/pure.js:86:25
+    at batchedUpdates$1 (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24386:12)
+    at act (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1092:14)
+    at Object.render (/Users/smollweide/Projects/dash4/node_modules/@testing-library/react/dist/pure.js:82:26)
+    at Object.&lt;anonymous&gt; (/Users/smollweide/Projects/dash4/packages/ui/src/components/ErrorBoundary/index.spec.tsx:28:11)
+    at Object.asyncJestTest (/Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:100:37)
+    at /Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/queueRunner.js:43:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (/Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/queueRunner.js:26:19)
+    at /Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/queueRunner.js:73:41
+  </p>
+</div>
+`;
 
-exports[`ErrorBoundary render error with custom title 1`] = `"received is not a function"`;
+exports[`ErrorBoundary render error with custom message 1`] = `
+.emotion-0 {
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+<div
+  class="fade alert alert-danger show"
+  role="alert"
+>
+  <div
+    class="emotion-0 alert-heading h4"
+  >
+    Something went wrong.
+  </div>
+  <p
+    class="emotion-0"
+  >
+    cunstom message
+  </p>
+</div>
+`;
+
+exports[`ErrorBoundary render error with custom title 1`] = `
+.emotion-0 {
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+<div
+  class="fade alert alert-danger show"
+  role="alert"
+>
+  <div
+    class="emotion-0 alert-heading h4"
+  >
+    cunstom title
+  </div>
+  <p
+    class="emotion-0"
+  >
+    Error: counter have to be a number type
+    at BuggyCounter (/Users/smollweide/Projects/dash4/packages/ui/src/components/ErrorBoundary/index.spec.tsx:15:9)
+    at renderWithHooks (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:16260:18)
+    at mountIndeterminateComponent (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:18794:13)
+    at beginWork$1 (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:20162:16)
+    at HTMLUnknownElement.callCallback (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:336:14)
+    at innerInvokeEventListeners (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:316:27)
+    at invokeEventListeners (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:267:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:214:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:87:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/smollweide/Projects/dash4/node_modules/jest-environment-jsdom/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:144:23)
+    at Object.invokeGuardedCallbackDev (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:385:16)
+    at invokeGuardedCallback (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:440:31)
+    at beginWork$$1 (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:25780:7)
+    at performUnitOfWork (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24698:12)
+    at workLoopSync (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24671:22)
+    at performSyncWorkOnRoot (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24270:11)
+    at scheduleUpdateOnFiber (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:23698:7)
+    at updateContainer (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27103:3)
+    at /Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27528:7
+    at unbatchedUpdates (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24433:12)
+    at legacyRenderSubtreeIntoContainer (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27527:5)
+    at Object.render (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:27608:10)
+    at /Users/smollweide/Projects/dash4/node_modules/@testing-library/react/dist/pure.js:86:25
+    at batchedUpdates$1 (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom.development.js:24386:12)
+    at act (/Users/smollweide/Projects/dash4/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1092:14)
+    at Object.render (/Users/smollweide/Projects/dash4/node_modules/@testing-library/react/dist/pure.js:82:26)
+    at Object.&lt;anonymous&gt; (/Users/smollweide/Projects/dash4/packages/ui/src/components/ErrorBoundary/index.spec.tsx:39:11)
+    at Object.asyncJestTest (/Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:100:37)
+    at /Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/queueRunner.js:43:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (/Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/queueRunner.js:26:19)
+    at /Users/smollweide/Projects/dash4/node_modules/jest-jasmine2/build/queueRunner.js:73:41
+  </p>
+</div>
+`;

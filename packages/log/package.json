@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@dash4/config": "0.7.1",
-    "jest": "24.9.0",
-    "ts-jest": "24.2.0",
-    "typescript": "3.7.4"
+    "jest": "25.1.0",
+    "ts-jest": "25.0.0",
+    "typescript": "3.7.5"
   }
 }

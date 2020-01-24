@@ -30,7 +30,7 @@ describe('ErrorBoundary', () => {
 				<BuggyCounter initialCounter="0" />
 			</ErrorBoundary>
 		);
-		expect(container.firstChild).toThrowErrorMatchingSnapshot();
+		expect(container.firstChild).toMatchSnapshot();
 		console.error = consoleError;
 	});
 	test('render error with custom title', () => {
@@ -41,7 +41,7 @@ describe('ErrorBoundary', () => {
 				<BuggyCounter initialCounter="0" />
 			</ErrorBoundary>
 		);
-		expect(container.firstChild).toThrowErrorMatchingSnapshot();
+		expect(container.firstChild).toMatchSnapshot();
 		console.error = consoleError;
 	});
 	test('render error with custom message', () => {
@@ -52,7 +52,7 @@ describe('ErrorBoundary', () => {
 				<BuggyCounter initialCounter="0" />
 			</ErrorBoundary>
 		);
-		expect(container.firstChild).toThrowErrorMatchingSnapshot();
+		expect(container.firstChild).toMatchSnapshot();
 		console.error = consoleError;
 	});
 });
