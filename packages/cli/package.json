@@ -1,6 +1,6 @@
 {
   "name": "@dash4/cli",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "private": false,
   "description": "dash4 cli",
   "repository": "https://github.com/smollweide/dash4",
@@ -32,7 +32,7 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/log": "0.7.1",
+    "@dash4/log": "0.8.0",
     "@namics/prettier-config": "0.4.3",
     "chalk": "3.0.0",
     "commander": "4.1.0",
@@ -46,7 +46,7 @@
     "write-pkg": "4.0.0"
   },
   "devDependencies": {
-    "@dash4/config": "0.7.1",
+    "@dash4/config": "0.8.0",
     "@namics/ts-config": "0.4.4",
     "@types/glob": "7.1.1",
     "@types/jest": "24.9.1",

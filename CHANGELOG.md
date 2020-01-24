@@ -1,3 +1,22 @@
+## 0.8.0 (2020-01-24)
+
+* fix: fresh install ([bbe50f9](https://github.com/smollweide/dash4/commit/bbe50f9))
+* fix: support jest 25 lcov-report html file ([faf1eb3](https://github.com/smollweide/dash4/commit/faf1eb3))
+* fix: update dependencies ([1965866](https://github.com/smollweide/dash4/commit/1965866))
+* fix: update dependencies ([39482b5](https://github.com/smollweide/dash4/commit/39482b5))
+* fix(client): auto reload after connection lost ([91d4f43](https://github.com/smollweide/dash4/commit/91d4f43))
+* chore: switch tslint to eslint and add license-checker ([7e25bbe](https://github.com/smollweide/dash4/commit/7e25bbe))
+* chore: update to node 12.14.1 ([1caf858](https://github.com/smollweide/dash4/commit/1caf858))
+* test: skip broken test on ci ([1ebe070](https://github.com/smollweide/dash4/commit/1ebe070))
+* test: skip broken test on ci ([8e6d322](https://github.com/smollweide/dash4/commit/8e6d322))
+* feat: switch to emotion ([8e6038e](https://github.com/smollweide/dash4/commit/8e6038e))
+* feat: switch to emotion ([f3ff223](https://github.com/smollweide/dash4/commit/f3ff223))
+* Merge branch 'master' into feature/emotion ([4bb892b](https://github.com/smollweide/dash4/commit/4bb892b))
+
+
+
+
+
 ## <small>0.7.1 (2019-12-20)</small>
 
 * fix: skip broken ci test and update lerna ([0c57a0b](https://github.com/smollweide/dash4/commit/0c57a0b))
