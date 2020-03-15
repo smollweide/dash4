@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import uuid from 'uuid/v1';
+import { v1 as uuid } from 'uuid';
 
 export type TOn = (id: string, onReady: any) => void;
 export type TSend = (id: string, data?: any) => void;

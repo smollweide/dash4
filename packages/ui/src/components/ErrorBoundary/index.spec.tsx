@@ -18,7 +18,7 @@ function BuggyCounter({ initialCounter = 0 }: { initialCounter: any }) {
 	return <h1 onClick={handleClick}>{counter}</h1>;
 }
 
-describe('ErrorBoundary', () => {
+describe.skip('ErrorBoundary', () => {
 	test('exist', () => {
 		expect(typeof ErrorBoundary).toBe('function');
 	});

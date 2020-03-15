@@ -6,14 +6,14 @@
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "main": "./lib/ReactXterm.js",
+  "typings": "./build/index.d.ts",
   "files": [
     "build",
     "lib",
     "LICENSE",
     "README.md"
   ],
-  "main": "./lib/ReactXterm.js",
-  "typings": "./build/index.d.ts",
   "scripts": {
     "analyze-bundle-size": "cross-env NODE_ENV=production ANALYZE_ENV=bundle webpack --config webpack.library.config.js --mode production",
     "build": "npm-run-all build:*",
@@ -32,24 +32,24 @@
   },
   "devDependencies": {
     "@dash4/config": "0.8.0",
-    "@namics/ts-config": "0.4.4",
-    "@types/core-js": "2.5.2",
-    "@types/react": "16.9.19",
+    "@namics/ts-config": "1.0.1",
+    "@types/core-js": "2.5.3",
+    "@types/react": "16.9.23",
     "@types/react-dom": "16.9.5",
     "asset-config-webpack-plugin": "1.4.0",
     "clean-webpack-plugin": "3.0.0",
     "core-js": "3.6.4",
-    "cross-env": "6.0.3",
+    "cross-env": "7.0.2",
     "html-webpack-plugin": "3.2.0",
     "npm-run-all": "4.1.5",
-    "react": "16.12.0",
+    "react": "16.13.0",
     "react-bootstrap": "1.0.0-beta.8",
-    "react-dom": "16.12.0",
+    "react-dom": "16.13.0",
     "scss-config-webpack-plugin": "1.4.0",
     "ts-config-webpack-plugin": "1.4.0",
     "typescript": "3.7.5",
-    "webpack": "4.41.5",
-    "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.10.1"
+    "webpack": "4.42.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3"
   }
 }

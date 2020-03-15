@@ -6,13 +6,13 @@
   "repository": "https://github.com/smollweide/dash4",
   "license": "MIT",
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
   "files": [
     "build",
     "LICENSE",
     "README.md"
   ],
-  "main": "./build/index.js",
-  "typings": "./build/index.d.ts",
   "scripts": {
     "build": "npm run build:build",
     "build:build": "tsc --outDir build --project tsconfig.server.json",
@@ -25,12 +25,12 @@
   "dependencies": {
     "chalk": "3.0.0",
     "ora": "4.0.3",
-    "tslib": "1.10.0"
+    "tslib": "1.11.1"
   },
   "devDependencies": {
     "@dash4/config": "0.8.0",
     "jest": "25.1.0",
-    "ts-jest": "25.0.0",
+    "ts-jest": "25.2.1",
     "typescript": "3.7.5"
   }
 }

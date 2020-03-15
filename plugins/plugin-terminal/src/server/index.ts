@@ -2,7 +2,7 @@ import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import { ITerm, terminalEmulator } from '@dash4/terminal-emulator';
 import fs from 'fs';
 import path from 'path';
-import uuid from 'uuid/v1';
+import { v1 as uuid } from 'uuid';
 import {
 	IAllowedCommand,
 	IClientConfig,
