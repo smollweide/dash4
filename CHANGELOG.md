@@ -1,3 +1,11 @@
+## <small>0.8.1 (2020-03-15)</small>
+
+* fix: update dependencies ([1f1d668](https://github.com/smollweide/dash4/commit/1f1d668))
+
+
+
+
+
 ## 0.8.0 (2020-01-24)
 
 * fix: fresh install ([bbe50f9](https://github.com/smollweide/dash4/commit/bbe50f9))
