@@ -1,10 +1,7 @@
 export function isVersionUpToDate(version: string, latestVersion?: string) {
 	const regCaret = /^\^/g;
 	const regTilde = /^~/g;
-	const versionSpl = version
-		.replace(regCaret, '')
-		.replace(regTilde, '')
-		.split('.');
+	const versionSpl = version.replace(regCaret, '').replace(regTilde, '').split('.');
 	const latestVersionSpl = (latestVersion || '').split('.');
 
 	if (!latestVersion) {
