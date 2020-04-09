@@ -21,7 +21,7 @@ const NpmScripts = ({ dark, clientConfig, id }: INpmScriptsProps) => {
 						margin: 0;
 					`}
 				>
-					{clientConfig.scripts.map((script) => (
+					{clientConfig?.scripts.map((script) => (
 						<li
 							key={script.id}
 							css={css`

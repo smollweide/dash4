@@ -34,7 +34,7 @@ export function Readme({ id, clientConfig }: IProps) {
 						!fullscreen &&
 							css`
 								position: relative;
-								height: ${clientConfig.height || 250}px;
+								height: ${clientConfig?.height || 250}px;
 								overflow: hidden;
 								&:after {
 									content: ' ';

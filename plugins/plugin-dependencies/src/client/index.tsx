@@ -58,7 +58,7 @@ export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenci
 
 	return (
 		<Window dark={dark}>
-			<WindowHeader title={clientConfig.title || 'Dependencies'}>
+			<WindowHeader title={clientConfig?.title || 'Dependencies'}>
 				<OverlayTrigger
 					key={`${id}-filter-overlay-trigger`}
 					trigger="click"
@@ -181,7 +181,7 @@ export const PluginDependencies = ({ id, dark, clientConfig }: IPluginDependenci
 							<div>No Dependencies found</div>
 						)}
 
-						{updatedCounter >= 1 && (
+						{updatedCounter >= 1 && clientConfig && (
 							<div
 								css={css`
 									text-align: center;

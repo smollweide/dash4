@@ -28,11 +28,12 @@ const { log } = Dash4Log;
 
 export interface IWidgetConfig<TClientConfig = {}> {
 	id: string;
+	cmd?: string;
 	name: string;
 	lowerCaseName: string;
 	dark?: boolean;
 	width?: number[];
-	clientConfig: TClientConfig;
+	clientConfig?: TClientConfig;
 }
 
 export interface IConfigTab {

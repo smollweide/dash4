@@ -12,13 +12,13 @@ type IPluginActionsProps = IWidgetConfig<IClientConfig>;
 export const PluginActions = ({ dark, clientConfig }: IPluginActionsProps) => {
 	return (
 		<Window dark={dark}>
-			{clientConfig.title && (
+			{clientConfig?.title && (
 				<WindowHeader
 					css={css`
 						position: relative;
 						padding: 15px 15px 0;
 					`}
-					title={clientConfig.title}
+					title={clientConfig?.title}
 				/>
 			)}
 			<WindowBody
@@ -34,8 +34,8 @@ export const PluginActions = ({ dark, clientConfig }: IPluginActionsProps) => {
 						margin: 0;
 					`}
 				>
-					{clientConfig.actions &&
-						clientConfig.actions.map((action) => {
+					{clientConfig?.actions &&
+						clientConfig?.actions.map((action) => {
 							if (action.type === 'link') {
 								return (
 									<li key={action.id}>

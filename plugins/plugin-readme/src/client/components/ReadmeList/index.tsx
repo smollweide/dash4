@@ -157,7 +157,7 @@ export function ReadmeList({ clientConfig }: IProps) {
 		<ContainerQuery query={query}>
 			{(params) => (
 				<Window dark={false}>
-					{clientConfig.title && <WindowHeader title={clientConfig.title} />}
+					{clientConfig?.title && <WindowHeader title={clientConfig?.title} />}
 					<WindowBody
 						css={[
 							css`
@@ -176,7 +176,7 @@ export function ReadmeList({ clientConfig }: IProps) {
 								padding: 0;
 							`}
 						>
-							{clientConfig.files.map((fileItem) => {
+							{clientConfig?.files.map((fileItem) => {
 								const count = parseInt(getMatchingQuery(params), 10);
 								const percent = count > 1 ? 100 / count : 100;
 								return (

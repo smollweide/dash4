@@ -102,10 +102,10 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	}
 
 	function getCommandById(commandId: string) {
-		if (!clientConfig.allowedCommands) {
+		if (!clientConfig?.allowedCommands) {
 			return;
 		}
-		return clientConfig.allowedCommands[commandId];
+		return clientConfig?.allowedCommands[commandId];
 	}
 
 	function proceedWithCommand(commandId: string) {
@@ -128,11 +128,11 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	}
 
 	function getCommandIdByKeyboardEvent(event: KeyboardEvent) {
-		if (!clientConfig.allowedCommands) {
+		if (!clientConfig?.allowedCommands) {
 			return;
 		}
-		return Object.keys(clientConfig.allowedCommands || {}).filter((commandId) => {
-			const keyCode = (clientConfig.allowedCommands || {})[commandId].keyCode;
+		return Object.keys(clientConfig?.allowedCommands || {}).filter((commandId) => {
+			const keyCode = (clientConfig?.allowedCommands || {})[commandId].keyCode;
 			return event.key === keyCode || event.keyCode === keyCode;
 		})[0];
 	}
@@ -165,7 +165,7 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	}
 
 	function ContextMenu() {
-		const allowedCommands = clientConfig.allowedCommands || {};
+		const allowedCommands = clientConfig?.allowedCommands || {};
 
 		return (
 			<ListGroup variant="flush">
@@ -234,8 +234,8 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 	});
 
 	useKey(
-		Object.keys(clientConfig.allowedCommands || {}).map(
-			(commandId) => (clientConfig.allowedCommands || {})[commandId].keyCode
+		Object.keys(clientConfig?.allowedCommands || {}).map(
+			(commandId) => (clientConfig?.allowedCommands || {})[commandId].keyCode
 		),
 		handleKeyDownCommand,
 		{
@@ -260,8 +260,8 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 				onWillLeaveFullscreen={toggleFullscreen}
 			>
 				<WindowHeader
-					title={clientConfig.title || name}
-					subTitle={clientConfig.subtitle || clientConfig.cmd}
+					title={clientConfig?.title || name}
+					subTitle={clientConfig?.subtitle || clientConfig?.cmd}
 					onDoubleClick={toggleFullscreen}
 				>
 					<ButtonGroup>
@@ -291,7 +291,7 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 				</WindowHeader>
 				<WindowBody
 					css={css`
-						height: ${clientConfig.height || 250}px;
+						height: ${clientConfig?.height || 250}px;
 					`}
 				>
 					<ErrorBoundary>

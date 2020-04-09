@@ -31,7 +31,14 @@ export const PluginCodeCoverage = ({ id, dark, clientConfig }: IProps) => {
 	const data = useCoverageData(id, (_send) => {
 		sendMap[id] = _send;
 	});
-	const { threshold } = clientConfig;
+	const { threshold } = clientConfig || {
+		threshold: {
+			statements: [60, 80],
+			branches: [60, 80],
+			functions: [60, 80],
+			lines: [60, 80],
+		},
+	};
 
 	function handleClick() {
 		if (sendMap[id]) {
