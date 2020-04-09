@@ -4,8 +4,6 @@ import execa from 'execa';
 import fs from 'fs-extra';
 import path from 'path';
 import readPkg from 'read-pkg';
-// eslint-disable-next-line
-import { JsonObject } from 'type-fest';
 import writePkg from 'write-pkg';
 import { Config, TPluginName } from './Config/Config';
 import { getLernaPackages } from './get-lerna-packages';
@@ -224,7 +222,7 @@ export async function init(cwd: string, options: IOptions) {
 	spin.text('add dash4 script');
 	packageData.scripts = packageData.scripts || {};
 	packageData.scripts.dash4 = 'dash4';
-	await writePkg(path.join(cwd, 'package.json'), packageData as JsonObject);
+	await writePkg(path.join(cwd, 'package.json'), packageData as any);
 
 	// write dash.config
 	spin.text('create dash4 configuration');

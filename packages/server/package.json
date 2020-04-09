@@ -30,18 +30,18 @@
   "dependencies": {
     "@dash4/client": "0.8.1",
     "@dash4/log": "0.8.1",
-    "commander": "4.1.0",
+    "commander": "5.0.0",
     "mime-types": "2.1.26",
     "open": "7.0.3",
     "tslib": "1.11.1",
-    "uuid": "7.0.2",
+    "uuid": "7.0.3",
     "ws": "7.2.3"
   },
   "devDependencies": {
     "@namics/ts-config": "1.0.1",
     "@types/mime-types": "2.1.0",
-    "@types/uuid": "7.0.0",
-    "@types/ws": "7.2.2",
+    "@types/uuid": "7.0.2",
+    "@types/ws": "7.2.3",
     "typescript": "3.7.5"
   }
 }

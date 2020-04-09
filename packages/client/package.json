@@ -35,12 +35,12 @@
     "@dash4/ui": "0.8.1",
     "@emotion/core": "10.0.28",
     "bootstrap": "4.4.1",
-    "core-js": "3.6.4",
+    "core-js": "3.6.5",
     "jquery": "3.4.1",
     "popper.js": "1.16.1",
     "react": "16.13.0",
     "react-bootstrap": "1.0.0-beta.8",
-    "react-container-query": "0.11.1",
+    "react-container-query": "0.11.2",
     "react-dom": "16.13.0",
     "react-router-dom": "5.1.2",
     "tslib": "1.11.1"
@@ -62,7 +62,7 @@
     "scss-config-webpack-plugin": "1.4.0",
     "ts-config-webpack-plugin": "1.4.0",
     "typescript": "3.7.5",
-    "webpack": "4.42.0",
+    "webpack": "4.42.1",
     "webpack-bundle-analyzer": "3.6.1",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"

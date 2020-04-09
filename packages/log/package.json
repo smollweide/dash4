@@ -23,7 +23,7 @@
     "watch-test": "jest --coverage --watchAll --config=jest.server.config.js"
   },
   "dependencies": {
-    "chalk": "3.0.0",
+    "chalk": "4.0.0",
     "ora": "4.0.3",
     "tslib": "1.11.1"
   },
