@@ -1,3 +1,15 @@
+## <small>0.8.2 (2020-04-09)</small>
+
+* fix: update dependencies ([8128195](https://github.com/smollweide/dash4/commit/8128195))
+* fix: update prettier ([76a7060](https://github.com/smollweide/dash4/commit/76a7060))
+* fix: update react ([7cf7937](https://github.com/smollweide/dash4/commit/7cf7937))
+* fix: update test dependencies ([f912bf1](https://github.com/smollweide/dash4/commit/f912bf1))
+* fix: update webpack plugins and typescript ([3513fb6](https://github.com/smollweide/dash4/commit/3513fb6))
+
+
+
+
+
 ## <small>0.8.1 (2020-03-15)</small>
 
 * fix: update dependencies ([1f1d668](https://github.com/smollweide/dash4/commit/1f1d668))

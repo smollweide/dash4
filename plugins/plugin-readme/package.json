@@ -1,6 +1,6 @@
 {
   "name": "@dash4/plugin-readme",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "private": false,
   "description": "dash4 plugin readme",
   "repository": "https://github.com/smollweide/dash4",
@@ -38,8 +38,8 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/log": "0.8.1",
-    "@dash4/server": "0.8.1",
+    "@dash4/log": "0.8.2",
+    "@dash4/server": "0.8.2",
     "fs-extra": "9.0.0",
     "highlight.js": "9.18.1",
     "markdown-to-jsx": "6.11.1",
@@ -47,9 +47,9 @@
     "node-emoji": "1.10.0"
   },
   "devDependencies": {
-    "@dash4/client": "0.8.1",
-    "@dash4/config": "0.8.1",
-    "@dash4/ui": "0.8.1",
+    "@dash4/client": "0.8.2",
+    "@dash4/config": "0.8.2",
+    "@dash4/ui": "0.8.2",
     "@emotion/core": "10.0.28",
     "@testing-library/react": "10.0.2",
     "@testing-library/react-hooks": "3.2.1",
