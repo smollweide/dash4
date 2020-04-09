@@ -8,7 +8,7 @@
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
   "dependencies": {
     "@namics/ts-config": "1.0.1",
-    "@testing-library/jest-dom": "5.1.1",
+    "@testing-library/jest-dom": "5.5.0",
     "@testing-library/react": "10.0.2",
     "@testing-library/react-hooks": "3.2.1",
     "asset-config-webpack-plugin": "2.0.0",
