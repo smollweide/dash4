@@ -1,6 +1,6 @@
 {
   "name": "@dash4/terminal-emulator",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "private": false,
   "description": "dash4 terminal emulator using node-pty",
   "repository": "https://github.com/smollweide/dash4",
@@ -27,7 +27,7 @@
     "tslib": "1.11.1"
   },
   "devDependencies": {
-    "@dash4/config": "0.8.2",
+    "@dash4/config": "0.8.3",
     "jest": "25.5.3",
     "ts-jest": "25.4.0",
     "typescript": "3.8.3"
