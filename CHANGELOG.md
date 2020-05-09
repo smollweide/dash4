@@ -1,3 +1,11 @@
+## <small>0.8.4 (2020-05-09)</small>
+
+* fix: update dependencies ([f565aa8](https://github.com/smollweide/dash4/commit/f565aa8))
+
+
+
+
+
 ## <small>0.8.3 (2020-05-01)</small>
 
 * fix: update dependencies ([c3951dd](https://github.com/smollweide/dash4/commit/c3951dd))

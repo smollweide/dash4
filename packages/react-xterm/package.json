@@ -1,6 +1,6 @@
 {
   "name": "@dash4/react-xterm",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "private": false,
   "description": "react xterm component",
   "repository": "https://github.com/smollweide/dash4",
@@ -31,7 +31,7 @@
     "xterm": "3.12.2"
   },
   "devDependencies": {
-    "@dash4/config": "0.8.3",
+    "@dash4/config": "0.8.4",
     "@namics/ts-config": "1.0.1",
     "@types/core-js": "2.5.3",
     "@types/react": "16.9.34",
