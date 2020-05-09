@@ -25,12 +25,12 @@
   "dependencies": {
     "chalk": "4.0.0",
     "ora": "4.0.4",
-    "tslib": "1.11.1"
+    "tslib": "1.11.2"
   },
   "devDependencies": {
     "@dash4/config": "0.8.3",
-    "jest": "25.5.3",
-    "ts-jest": "25.4.0",
+    "jest": "26.0.1",
+    "ts-jest": "25.5.1",
     "typescript": "3.8.3"
   }
 }
