@@ -20,7 +20,9 @@
   "scripts": {
     "build": "npm run build:build",
     "build:build": "tsc --outDir build",
-    "watch-build": "tsc --watch --outDir build"
+    "watch-build": "tsc --watch --outDir build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "browserslist": [
     "> 1%",
@@ -35,7 +37,8 @@
     "open": "7.0.3",
     "tslib": "1.11.2",
     "uuid": "8.0.0",
-    "ws": "7.2.5"
+    "ws": "7.2.5",
+    "snyk": "^1.319.2"
   },
   "devDependencies": {
     "@namics/ts-config": "1.0.1",
@@ -43,5 +46,6 @@
     "@types/uuid": "7.0.3",
     "@types/ws": "7.2.4",
     "typescript": "3.8.3"
-  }
+  },
+  "snyk": true
 }
