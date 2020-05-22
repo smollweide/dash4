@@ -42,7 +42,7 @@
     "@dash4/server": "0.8.4",
     "fs-extra": "9.0.0",
     "highlight.js": "10.0.2",
-    "markdown-to-jsx": "6.11.1",
+    "markdown-to-jsx": "6.11.4",
     "mime-types": "2.1.27",
     "node-emoji": "1.10.0"
   },
