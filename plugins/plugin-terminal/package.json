@@ -1,6 +1,6 @@
 {
   "name": "@dash4/plugin-terminal",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "private": false,
   "description": "dash4 plugin terminal",
   "repository": "https://github.com/smollweide/dash4",
@@ -37,17 +37,17 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/log": "0.8.4",
-    "@dash4/server": "0.8.4",
-    "@dash4/terminal-emulator": "0.8.4",
+    "@dash4/log": "0.8.5",
+    "@dash4/server": "0.8.5",
+    "@dash4/terminal-emulator": "0.8.5",
     "@rooks/use-key": "3.6.0",
     "uuid": "8.1.0"
   },
   "devDependencies": {
-    "@dash4/client": "0.8.4",
-    "@dash4/config": "0.8.4",
-    "@dash4/react-xterm": "0.8.4",
-    "@dash4/ui": "0.8.4",
+    "@dash4/client": "0.8.5",
+    "@dash4/config": "0.8.5",
+    "@dash4/react-xterm": "0.8.5",
+    "@dash4/ui": "0.8.5",
     "@testing-library/react": "10.2.0",
     "@types/core-js": "2.5.3",
     "@types/jest": "25.2.3",

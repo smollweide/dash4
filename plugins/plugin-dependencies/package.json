@@ -1,6 +1,6 @@
 {
   "name": "@dash4/plugin-dependencies",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "private": false,
   "description": "List of all dependencies and their version",
   "repository": "https://github.com/smollweide/dash4",
@@ -38,9 +38,9 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/log": "0.8.4",
-    "@dash4/plugin-npm-scripts": "0.8.4",
-    "@dash4/server": "0.8.4",
+    "@dash4/log": "0.8.5",
+    "@dash4/plugin-npm-scripts": "0.8.5",
+    "@dash4/server": "0.8.5",
     "fs-extra": "9.0.1",
     "globby": "11.0.1",
     "latest-version": "5.1.0",
@@ -48,9 +48,9 @@
     "tslib": "2.0.0"
   },
   "devDependencies": {
-    "@dash4/client": "0.8.4",
-    "@dash4/config": "0.8.4",
-    "@dash4/ui": "0.8.4",
+    "@dash4/client": "0.8.5",
+    "@dash4/config": "0.8.5",
+    "@dash4/ui": "0.8.5",
     "@emotion/core": "10.0.28",
     "@testing-library/react": "10.2.0",
     "@testing-library/react-hooks": "3.3.0",
