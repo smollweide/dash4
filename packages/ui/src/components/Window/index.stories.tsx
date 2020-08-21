@@ -1,12 +1,10 @@
 /// <reference types="../../types/markdown" />
-import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { useFullscreen, Window, WindowBody, WindowHeader } from '.';
 import Readme from './README.md';
 
 const stories = storiesOf('Window', module);
-stories.addDecorator(withKnobs);
 stories.add(
 	'docs',
 	() => (
@@ -84,11 +82,10 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ame
 ));
 
 const WindowWithFullscreenHook = () => {
-	const dark = boolean('dark', true);
 	const { fullscreen, enableFullscreen, disableFullscreen, toggleFullscreen } = useFullscreen();
 
 	return (
-		<Window dark={dark} fullscreen={fullscreen} onWillLeaveFullscreen={disableFullscreen}>
+		<Window dark fullscreen={fullscreen} onWillLeaveFullscreen={disableFullscreen}>
 			<WindowHeader title={'Title'} subTitle={'Subtitle'} onDoubleClick={toggleFullscreen} />
 			<WindowBody>
 				{!fullscreen && (

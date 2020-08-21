@@ -58,7 +58,7 @@
     "@types/jest": "26.0.10",
     "@types/markdown-to-jsx": "6.11.1",
     "@types/mime-types": "2.1.0",
-    "@types/node": "14.0.11",
+    "@types/node": "14.6.0",
     "@types/node-emoji": "1.8.1",
     "@types/react": "16.9.46",
     "@types/react-dom": "16.9.8",

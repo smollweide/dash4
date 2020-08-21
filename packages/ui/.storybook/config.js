@@ -1,7 +1,5 @@
-import { addDecorator, addParameters, configure } from '@storybook/react';
-import { addReadme } from 'storybook-readme';
+import { addParameters, configure } from '@storybook/react';
 
-addDecorator(addReadme);
 addParameters({
 	readme: {
 		codeTheme: 'atom-dark',
