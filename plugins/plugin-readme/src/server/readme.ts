@@ -49,11 +49,11 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 	}
 
 	public connected = async () => {
-		this.on('connected', this.sendFile);
+		this.on('connected', this._sendFile);
 	};
 
 	public serverRequest = async (req: IncomingMessage, res: ServerResponse) => {
-		const data = await this.fetchFile();
+		const data = await this._fetchFile();
 		const reg = /src="(\.)?\/[^"]*"/g;
 		let result: any;
 		// eslint-disable-next-line
@@ -78,11 +78,11 @@ export class PluginReadme extends Dash4Plugin implements IDash4Plugin<IReadmeCli
 		return false;
 	};
 
-	private sendFile = async () => {
-		this.send('data', await this.fetchFile());
+	private _sendFile = async () => {
+		this.send('data', await this._fetchFile());
 	};
 
-	private fetchFile = async () => {
+	private _fetchFile = async () => {
 		const markdown = await fs.readFile(this._file, 'utf8');
 		// fix not supported tsx https://github.com/highlightjs/highlight.js/issues/1155
 		return transformEmojis(markdown.replace(/```tsx/g, '```jsx'));

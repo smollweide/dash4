@@ -87,15 +87,15 @@ export class PluginTerminal
 		}
 
 		if (this._autostart) {
-			this.start();
+			this._start();
 		}
 	}
 
 	public create() {
 		this._term = terminalEmulator({
 			cwd: this._cwd,
-			onData: this.recieveData,
-			onStopProcessing: this.handleTermStopProcessing,
+			onData: this._recieveData,
+			onStopProcessing: this._handleTermStopProcessing,
 		});
 	}
 
@@ -130,35 +130,35 @@ export class PluginTerminal
 			return;
 		}
 
-		this.on('connected', this.handleConnected);
-		this.on('start', this.start);
-		this.on('stop', this.stop);
-		this.on('clean', this.clean);
-		this.on('command', this.appendCommand);
-		this.on('command-input', this.appendCommandInput);
+		this.on('connected', this._handleConnected);
+		this.on('start', this._start);
+		this.on('stop', this._stop);
+		this.on('clean', this._clean);
+		this.on('command', this._appendCommand);
+		this.on('command-input', this._appendCommandInput);
 	};
 
-	private handleConnected = () => {
+	private _handleConnected = () => {
 		this.send('connected', this._terminalLog);
 		if (this._stopProcessingTriggered) {
 			this.send('stopped');
 		}
 	};
 
-	private handleTermStopProcessing = () => {
+	private _handleTermStopProcessing = () => {
 		this._stopProcessingTriggered = true;
 		this.send('stopped');
 	};
 
-	private getCommandById = (commandId: string) => {
+	private _getCommandById = (commandId: string) => {
 		if (!this._allowedCommands || !this._allowedCommands[commandId]) {
 			return;
 		}
 		return this._allowedCommands[commandId];
 	};
 
-	private appendCommand = (commandId: string) => {
-		const command = this.getCommandById(commandId);
+	private _appendCommand = (commandId: string) => {
+		const command = this._getCommandById(commandId);
 		if (!command) {
 			return;
 		}
@@ -170,8 +170,8 @@ export class PluginTerminal
 		this._term.write(out);
 	};
 
-	private appendCommandInput = ({ value, commandId }: { value: string; commandId: string }) => {
-		const command = this.getCommandById(commandId);
+	private _appendCommandInput = ({ value, commandId }: { value: string; commandId: string }) => {
+		const command = this._getCommandById(commandId);
 		if (!command || !command.input || !value || !commandId) {
 			return;
 		}
@@ -189,7 +189,7 @@ export class PluginTerminal
 		}, 100);
 	};
 
-	private recieveData = (data: string) => {
+	private _recieveData = (data: string) => {
 		this._terminalLog += data.toString();
 		if (!this.send) {
 			return;
@@ -197,33 +197,33 @@ export class PluginTerminal
 		this.send('recieve', data.toString());
 	};
 
-	private kill = () => {
+	private _kill = () => {
 		if (!this._term) {
 			return;
 		}
 		this._term.kill();
 	};
 
-	private write = (cmd: string) => {
+	private _write = (cmd: string) => {
 		if (!this._term) {
 			return;
 		}
 		this._term.write(cmd);
 	};
 
-	private stop = () => {
+	private _stop = () => {
 		this._terminalLog = '';
-		this.kill();
+		this._kill();
 	};
 
-	private clean = () => {
-		this.write('\x1Bc');
+	private _clean = () => {
+		this._write('\x1Bc');
 		this._terminalLog = '';
 	};
 
-	private start = async () => {
+	private _start = async () => {
 		this.create();
 		this._stopProcessingTriggered = false;
-		this.write(`${this._cmd}\r`);
+		this._write(`${this._cmd}\r`);
 	};
 }

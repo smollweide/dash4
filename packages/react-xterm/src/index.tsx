@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { Terminal } from 'xterm';

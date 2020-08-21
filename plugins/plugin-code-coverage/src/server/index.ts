@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { error } from '@dash4/log';
 import { Dash4Plugin, IDash4Plugin } from '@dash4/server';
 import fs from 'fs-extra';

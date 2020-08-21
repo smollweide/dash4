@@ -1,7 +1,7 @@
 import { toParamCase, TType, typeToColor } from '../shared';
 
 type TPackageName = 'client' | 'react-xterm' | 'ui' | string;
-type TMessage = string | number | object | any[];
+type TMessage = string | number | Record<string, unknown> | any[];
 type TConsoleFunc = (packageName: TPackageName, message: TMessage, ...args: TMessage[]) => void;
 
 const defaultLog = (type: TType, packageName: TPackageName, message: TMessage, ...args: TMessage[]) => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /// <reference types="@types/jest" />
 import { PluginNpmScript } from './plugin-npm-script';
 

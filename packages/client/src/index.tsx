@@ -26,7 +26,7 @@ import './polyfill';
 
 const { log } = Dash4Log;
 
-export interface IWidgetConfig<TClientConfig = {}> {
+export interface IWidgetConfig<TClientConfig = Record<string, unknown>> {
 	id: string;
 	cmd?: string;
 	name: string;

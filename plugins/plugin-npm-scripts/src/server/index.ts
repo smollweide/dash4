@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Dash4Plugin, IDash4Plugin, TOn, TSend } from '@dash4/server';
 import fs from 'fs';
 import path from 'path';

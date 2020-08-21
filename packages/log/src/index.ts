@@ -3,7 +3,7 @@ import ora from 'ora';
 import { toParamCase, TType, typeToColor } from './shared';
 
 type TPackageName = 'server' | 'terminal-emulator' | 'cli' | string;
-type TMessage = string | number | object | any[];
+type TMessage = string | number | Record<string, unknown> | any[];
 type TConsoleFunc = (packageName: TPackageName, message: TMessage, ...args: TMessage[]) => void;
 
 function getStyledMessage(type: TType, packageName: TPackageName, message: TMessage) {

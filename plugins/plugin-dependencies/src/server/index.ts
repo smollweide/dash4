@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { error, warn } from '@dash4/log';
 import { PluginNpmScript } from '@dash4/plugin-npm-scripts/build/server/plugin-npm-script';
 import { Dash4Plugin, IDash4Plugin, TOn, TSend } from '@dash4/server';

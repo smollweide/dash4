@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { TOn, TSend } from '@dash4/server';
 import { ITerm, terminalEmulator } from '@dash4/terminal-emulator';
 import { IScriptWithId } from '../shared-types';

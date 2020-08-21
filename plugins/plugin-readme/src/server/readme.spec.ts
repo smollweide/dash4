@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /// <reference types="@types/jest" />
 jest.mock('fs-extra', () => ({
 	__esModule: true, // this property makes it work

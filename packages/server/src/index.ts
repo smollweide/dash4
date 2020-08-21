@@ -11,7 +11,7 @@ export interface IClientFile {
 
 export type TClientFile = string | IClientFile;
 
-export interface IDash4Plugin<TClientConfig = {}> {
+export interface IDash4Plugin<TClientConfig = Record<string, unknown>> {
 	clientFiles: TClientFile[];
 	dark: boolean;
 	width?: number[];

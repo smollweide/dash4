@@ -25,7 +25,7 @@ let isReady: boolean = win.dash4.socket.isReady;
 const readyList: ((value?: ISocketAbstract | PromiseLike<ISocketAbstract> | undefined) => void)[] =
 	win.dash4.socket.readyList;
 
-export interface ISocketAction<TData = {}> {
+export interface ISocketAction<TData = Record<string, unknown>> {
 	id: string;
 	data: TData;
 }

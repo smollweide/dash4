@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /// <reference types="@types/jest" />
 import { fireEvent, render } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
@@ -8,6 +9,7 @@ const useKeyMock = jest.fn();
 
 jest.mock('@rooks/use-key', () => ({
 	__esModule: true,
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	default: (...args: any[]) => useKeyMock(...args),
 }));
 

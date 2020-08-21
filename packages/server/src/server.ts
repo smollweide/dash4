@@ -23,7 +23,7 @@ export interface IOptions {
 	serverRequestListeners: TServerRequest[];
 }
 
-export interface ISocketAction<TData = {}> {
+export interface ISocketAction<TData = Record<string, unknown>> {
 	id: string;
 	data: TData;
 }
@@ -239,7 +239,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 					}
 				});
 			},
-			on: <TCallbackType = any>(id: string, callback: (data: TCallbackType) => {}) => {
+			on: <TCallbackType = any>(id: string, callback: (data: TCallbackType) => Record<string, unknown>) => {
 				g.socket.listeners.push({ id, callback });
 			},
 		};

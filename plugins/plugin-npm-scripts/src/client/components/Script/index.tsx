@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -170,7 +171,8 @@ export class NpmScript extends React.Component<INpmScriptProps, IState> {
 		});
 	};
 
-	private setStateAsync = async (data: object) => new Promise((resolve) => this.setState(data, resolve));
+	private setStateAsync = async (data: Partial<IState>) =>
+		new Promise((resolve) => this.setState(data as IState, resolve));
 
 	private handleOpenOverlay = async () => {
 		await this.setStateAsync({

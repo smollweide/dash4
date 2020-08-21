@@ -122,6 +122,7 @@ describe('log', () => {
 		expect(oraStartMock).toHaveBeenCalled();
 	});
 	test('spinner with given invlaid type', () => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		const spin = spinner('server', 'load content', 'bla');
 		expect(typeof spin.fail).toBe('function');
