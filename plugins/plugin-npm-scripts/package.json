@@ -1,6 +1,6 @@
 {
   "name": "@dash4/plugin-npm-scripts",
-  "version": "0.8.5",
+  "version": "0.9.0",
   "private": false,
   "description": "dash4 plugin npm scripts",
   "repository": "https://github.com/smollweide/dash4",
@@ -38,15 +38,15 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/log": "0.8.5",
-    "@dash4/server": "0.8.5",
-    "@dash4/terminal-emulator": "0.8.5"
+    "@dash4/log": "0.9.0",
+    "@dash4/server": "0.9.0",
+    "@dash4/terminal-emulator": "0.9.0"
   },
   "devDependencies": {
-    "@dash4/client": "0.8.5",
-    "@dash4/config": "0.8.5",
-    "@dash4/react-xterm": "0.8.5",
-    "@dash4/ui": "0.8.5",
+    "@dash4/client": "0.9.0",
+    "@dash4/config": "0.9.0",
+    "@dash4/react-xterm": "0.9.0",
+    "@dash4/ui": "0.9.0",
     "@emotion/core": "10.0.35",
     "@testing-library/react": "10.4.9",
     "@testing-library/react-hooks": "3.4.1",

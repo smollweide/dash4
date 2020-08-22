@@ -1,3 +1,13 @@
+## 0.9.0 (2020-08-22)
+
+* feat: add ssl support ([31b2b73](https://github.com/smollweide/dash4/commit/31b2b73))
+* fix: update dependencies ([c5956fd](https://github.com/smollweide/dash4/commit/c5956fd))
+* fix: update storybook ([9b3bab7](https://github.com/smollweide/dash4/commit/9b3bab7))
+
+
+
+
+
 ## <small>0.8.5 (2020-06-05)</small>
 
 * fix: update dependencies ([e52fa99](https://github.com/smollweide/dash4/commit/e52fa99))
