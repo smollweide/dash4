@@ -49,7 +49,7 @@ describe('PluginReadme', () => {
 			file: 'README.md',
 		});
 		// @ts-ignore
-		expect(await inst.fetchFile()).toBe('# Test');
+		expect(await inst._fetchFile()).toBe('# Test');
 	});
 	test('method sendFile should send data to socket', async () => {
 		const inst = new PluginReadme({
@@ -58,7 +58,7 @@ describe('PluginReadme', () => {
 		// @ts-ignore
 		const spy = jest.spyOn(inst, 'send');
 		// @ts-ignore
-		await inst.sendFile();
+		await inst._sendFile();
 		expect(spy).toBeCalledWith('data', '# Test');
 	});
 	describe('server requests with images from markdown where added', () => {
@@ -68,7 +68,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.jpg';
 			// @ts-ignore
-			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst._fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -90,7 +90,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.png';
 			// @ts-ignore
-			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst._fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -112,7 +112,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image.jpg';
 			// @ts-ignore
-			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst._fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(
@@ -134,7 +134,7 @@ describe('PluginReadme', () => {
 			});
 			const imagePublicPath = '/localpath/image';
 			// @ts-ignore
-			inst.fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
+			inst._fetchFile = async () => Promise.resolve(`# Test <img src="${imagePublicPath}" />`);
 			const resWriteHeaderMock = jest.fn();
 			const resEndMock = jest.fn();
 			await inst.serverRequest(

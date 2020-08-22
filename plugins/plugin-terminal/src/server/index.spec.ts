@@ -22,7 +22,7 @@ beforeEach(() => {
 	// @ts-ignore
 	terminalEmulator.mockClear();
 });
-describe('PluginCodeCoverage', () => {
+describe('PluginTerminal', () => {
 	test('exists', () => {
 		expect(typeof PluginTerminal).toBe('function');
 	});
@@ -72,9 +72,9 @@ describe('PluginCodeCoverage', () => {
 			// @ts-ignore
 			cwd: inst._cwd,
 			// @ts-ignore
-			onData: inst.recieveData,
+			onData: inst._recieveData,
 			// @ts-ignore
-			onStopProcessing: inst.handleTermStopProcessing,
+			onStopProcessing: inst._handleTermStopProcessing,
 		});
 		expect(terminalEmulator).toHaveBeenCalledTimes(2);
 	});
@@ -85,7 +85,7 @@ describe('PluginCodeCoverage', () => {
 		// @ts-ignore
 		const spy = jest.spyOn(inst, 'send');
 		// @ts-ignore
-		inst.handleConnected();
+		inst._handleConnected();
 		expect(spy).toHaveBeenCalled();
 		// @ts-ignore
 		expect(spy).toHaveBeenCalledWith('connected', inst._terminalLog);
@@ -100,7 +100,7 @@ describe('PluginCodeCoverage', () => {
 		// @ts-ignore
 		const spy = jest.spyOn(inst, 'send');
 		// @ts-ignore
-		inst.handleConnected();
+		inst._handleConnected();
 		expect(spy).toHaveBeenCalled();
 		// @ts-ignore
 		expect(spy).toHaveBeenNthCalledWith(1, 'connected', inst._terminalLog);
@@ -114,7 +114,7 @@ describe('PluginCodeCoverage', () => {
 		// @ts-ignore
 		const spy = jest.spyOn(inst, 'send');
 		// @ts-ignore
-		inst.handleTermStopProcessing();
+		inst._handleTermStopProcessing();
 		// @ts-ignore
 		expect(inst._stopProcessingTriggered).toBe(true);
 		expect(spy).toHaveBeenCalled();
@@ -128,7 +128,7 @@ describe('PluginCodeCoverage', () => {
 		// @ts-ignore
 		const spy = jest.spyOn(inst, 'send');
 		// @ts-ignore
-		inst.recieveData('test');
+		inst._recieveData('test');
 		// @ts-ignore
 		expect(inst._terminalLog).toBe('test');
 		expect(spy).toHaveBeenCalledWith('recieve', 'test');
@@ -140,9 +140,9 @@ describe('PluginCodeCoverage', () => {
 			cmd: 'hello',
 		});
 		// @ts-ignore
-		inst.send = undefined;
+		inst._send = undefined;
 		// @ts-ignore
-		inst.recieveData('test');
+		inst._recieveData('test');
 		// @ts-ignore
 		expect(inst._terminalLog).toBe('test');
 	});
@@ -157,7 +157,7 @@ describe('PluginCodeCoverage', () => {
 			},
 		};
 		// @ts-ignore
-		inst.stop();
+		inst._stop();
 	});
 	test('clean should write clean command and stored data', (done) => {
 		const inst = new PluginTerminal({
@@ -173,6 +173,6 @@ describe('PluginCodeCoverage', () => {
 		// @ts-ignore
 		expect(inst._terminalLog).toBe('');
 		// @ts-ignore
-		inst.clean();
+		inst._clean();
 	});
 });
