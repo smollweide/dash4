@@ -36,8 +36,13 @@ export interface IConfigTab {
 }
 
 export interface IConfig {
+	host?: string;
 	port?: number;
 	tabs: IConfigTab[];
+	cert?: {
+		key: string;
+		cert: string;
+	};
 }
 
 export interface IPluginOptions {

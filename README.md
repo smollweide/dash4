@@ -47,6 +47,26 @@ npx @dash4/cli
 
 run `npm run dash4` or `yarn dash4` if you are using yarn
 
+### SSL
+
+_dash4.config.js_
+
+```js
+const fs = require('fs');
+
+async function getConfig() {
+  return {
+    tabs: ...,
+    cert: {
+      key: fs.readFileSync('key.pem', 'utf8'),
+      cert: fs.readFileSync('cert.pem', 'utf8'),
+    },
+  };
+}
+
+module.exports = getConfig;
+```
+
 ## <a name="plugins">Plugins</a>
 
 ### Official plugins

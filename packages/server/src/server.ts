@@ -4,7 +4,8 @@
 import { IConfig as IClientConfig } from '@dash4/client/build/index';
 import { error, success, warn } from '@dash4/log';
 import fs from 'fs-extra';
-import { createServer } from 'http';
+import http, { IncomingMessage, ServerResponse } from 'http';
+import https from 'https';
 import { contentType as getContentType } from 'mime-types';
 import open from 'open';
 import path from 'path';
@@ -78,6 +79,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 	const pluginScripts: IScripts = {};
 	const pluginStyles: IScripts = {};
 	const pluginFiles: IScripts = {};
+	const host = config.host || 'localhost';
 
 	config.tabs.forEach((tab) => {
 		tab.rows.forEach((cells) => {
@@ -111,7 +113,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 		});
 	});
 
-	const server = createServer(async (req, res) => {
+	const serverCallback = async (req: IncomingMessage, res: ServerResponse) => {
 		const url = req.url;
 
 		// catch plugin responses
@@ -131,6 +133,7 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 				`<script type="text/javascript">
 					window.dash4 = window.dash4 || {};
 					window.dash4.port = ${config.port || 4000};
+					window.dash4.ssl = ${Boolean(config.cert)};
 				</script>
 				</body>`
 			);
@@ -203,7 +206,14 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 
 		res.writeHead(200, { 'Content-Type': contentType });
 		res.end(fs.readFileSync(pathName));
-	});
+	};
+
+	const server = (() => {
+		if (config.cert) {
+			return https.createServer(config.cert, serverCallback);
+		}
+		return http.createServer(serverCallback);
+	})();
 
 	const wss = new WebSocket.Server({
 		server,
@@ -275,9 +285,9 @@ export const start = async ({ port, serverRequestListeners }: IOptions, config: 
 	});
 
 	server.listen(port);
-	success('server', `started on http://localhost:${port}`);
+	success('server', `started on ${config.cert ? 'https' : 'http'}://${host}:${port}`);
 	if (process.env && process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
-		await open(`http://localhost:${port}`);
+		await open(`${config.cert ? 'https' : 'http'}://${host}:${port}`);
 	}
 
 	return new Promise((resolve) => {

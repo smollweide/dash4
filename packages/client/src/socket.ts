@@ -2,7 +2,7 @@
 import { error as logError, warn } from '@dash4/log/build/browser';
 
 const win = window as any;
-const ws = new WebSocket(`ws://localhost:${win.dash4.port}`);
+const ws = new WebSocket(`${win.dash4.ssl ? 'wss' : 'ws'}://${window.location.hostname}:${win.dash4.port}`);
 
 interface ISocketListeners {
 	[key: string]: {
