@@ -6,7 +6,7 @@ import { registerPlugin } from '@dash4/client/build/register-plugin';
 import { Term } from '@dash4/react-xterm';
 import { ErrorBoundary, Icon, Key, Keyboard, useFullscreen, Window, WindowBody, WindowHeader } from '@dash4/ui';
 import useKey from '@rooks/use-key';
-import { Fragment, SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { Fragment, MouseEvent, SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { Button, ButtonGroup, Form, ListGroup, Modal, OverlayTrigger, Popover } from 'react-bootstrap';
 import { IClientConfig, ISendToServer } from '../shared-types';
 import { subscribeToTerminalDataChanges, unsubscribeToTerminalDataChanges } from './services';
@@ -67,7 +67,7 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 		}
 	}
 
-	function handleClickStart(event: SyntheticEvent<HTMLButtonElement>) {
+	function handleClickStart(event: MouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
 		if (!sendMap[id]) {
 			return;
@@ -76,7 +76,7 @@ export const PluginTerminal = ({ id, dark, name, clientConfig }: IProps) => {
 		setProcessing(true);
 	}
 
-	function handleClickStop(event: SyntheticEvent<HTMLButtonElement>) {
+	function handleClickStop(event: MouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
 		setProcessing(false);
 		if (!sendMap[id] || !termMap[id]) {

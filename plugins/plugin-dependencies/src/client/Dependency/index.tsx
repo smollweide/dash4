@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core';
 
 import { Icon } from '@dash4/ui';
-import React, { Fragment } from 'react';
+import React, { Fragment, MouseEvent } from 'react';
 import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
 
 interface IDependencyRawProps {
@@ -15,7 +15,7 @@ interface IDependencyRawProps {
 }
 
 export function Dependency({ name, version, latestVersion, isUpToDate, onClick, packages }: IDependencyRawProps) {
-	function handleClick(event: React.SyntheticEvent<HTMLButtonElement>) {
+	function handleClick(event: MouseEvent<HTMLButtonElement>) {
 		onClick(event, name);
 	}
 

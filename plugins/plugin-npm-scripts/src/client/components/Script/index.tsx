@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/core';
 
 import { Term } from '@dash4/react-xterm';
 import { ErrorBoundary, Icon, WindowHeader } from '@dash4/ui';
-import React, { Fragment, SyntheticEvent } from 'react';
+import React, { Fragment, MouseEvent } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { IScriptWithId } from '../../../shared-types';
 import { subscribeToNpmScriptDataChanges, unsubscribeToNpmScriptDataChanges } from './services';
@@ -240,17 +240,17 @@ export class NpmScript extends React.Component<INpmScriptProps, IState> {
 		this.recieve(data);
 	};
 
-	private handleClickStart = (event: SyntheticEvent<HTMLButtonElement>) => {
+	private handleClickStart = (event: MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		this.start();
 	};
 
-	private handleClickStop = (event: SyntheticEvent<HTMLButtonElement>) => {
+	private handleClickStop = (event: MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		this.stop();
 	};
 
-	private handleClickClean = (event: SyntheticEvent<HTMLButtonElement>) => {
+	private handleClickClean = (event: MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		this.clean();
 	};
