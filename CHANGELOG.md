@@ -1,3 +1,12 @@
+## <small>0.9.1 (2020-11-18)</small>
+
+* fix: update dependencies ([9203e1f](https://github.com/smollweide/dash4/commit/9203e1f))
+* test: fix tests for plugins readme and terminal ([8254dad](https://github.com/smollweide/dash4/commit/8254dad))
+
+
+
+
+
 ## 0.9.0 (2020-08-22)
 
 * feat: add ssl support ([31b2b73](https://github.com/smollweide/dash4/commit/31b2b73))
