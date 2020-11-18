@@ -1,3 +1,11 @@
+## <small>0.9.2 (2020-11-18)</small>
+
+* fix: update react-bootstrap ([c4911ee](https://github.com/smollweide/dash4/commit/c4911ee))
+
+
+
+
+
 ## <small>0.9.1 (2020-11-18)</small>
 
 * fix: update dependencies ([9203e1f](https://github.com/smollweide/dash4/commit/9203e1f))
