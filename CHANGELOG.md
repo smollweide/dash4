@@ -1,3 +1,12 @@
+## <small>0.9.3 (2020-12-07)</small>
+
+* fix: update dependencies ([4a41e32](https://github.com/smollweide/dash4/commit/4a41e32))
+* chore: switch to node 14.15.1 ([93df8c3](https://github.com/smollweide/dash4/commit/93df8c3))
+
+
+
+
+
 ## <small>0.9.2 (2020-11-18)</small>
 
 * fix: update react-bootstrap ([c4911ee](https://github.com/smollweide/dash4/commit/c4911ee))

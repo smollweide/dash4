@@ -1,6 +1,6 @@
 {
   "name": "@dash4/server",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "private": false,
   "description": "dash4 server",
   "repository": "https://github.com/smollweide/dash4",
@@ -28,8 +28,8 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@dash4/client": "0.9.2",
-    "@dash4/log": "0.9.2",
+    "@dash4/client": "0.9.3",
+    "@dash4/log": "0.9.3",
     "commander": "6.2.0",
     "mime-types": "2.1.27",
     "open": "7.3.0",
