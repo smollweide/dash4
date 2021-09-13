@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "chalk": "4.1.0",
-    "ora": "5.1.0",
+    "ora": "6.0.0",
     "tslib": "2.0.3"
   },
   "devDependencies": {
