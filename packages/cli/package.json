@@ -39,11 +39,11 @@
     "execa": "5.0.0",
     "fs-extra": "9.0.1",
     "glob": "7.1.6",
-    "make-dir": "3.1.0",
+    "make-dir": "4.0.0",
     "prettier": "2.2.1",
     "read-pkg": "5.2.0",
     "tslib": "2.0.3",
-    "write-pkg": "4.0.0"
+    "write-pkg": "5.0.0"
   },
   "devDependencies": {
     "@dash4/config": "0.9.3",
