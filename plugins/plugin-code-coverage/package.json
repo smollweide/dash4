@@ -41,7 +41,7 @@
     "@dash4/server": "0.9.3",
     "fs-extra": "9.0.1",
     "htmlparser2": "3.10.1",
-    "make-dir": "3.1.0",
+    "make-dir": "4.0.0",
     "open": "7.3.0",
     "recharts": "1.8.5",
     "watch": "1.0.2"
