@@ -8,7 +8,7 @@
   "author": "Simon Mollweide<simon.mollweide@gmail.com>",
   "dependencies": {
     "@namics/ts-config": "1.0.1",
-    "@testing-library/jest-dom": "5.11.6",
+    "@testing-library/jest-dom": "6.0.0",
     "@testing-library/react": "10.4.9",
     "@testing-library/react-hooks": "3.4.2",
     "asset-config-webpack-plugin": "2.0.0",
@@ -26,11 +26,11 @@
     "react-test-renderer": "16.13.1",
     "rimraf": "3.0.2",
     "scss-config-webpack-plugin": "2.0.0",
-    "ts-config-webpack-plugin": "2.0.0",
+    "ts-config-webpack-plugin": "2.0.2",
     "typescript": "3.9.5",
-    "webpack": "4.44.1",
+    "webpack": "5.0.0",
     "webpack-bundle-analyzer": "3.8.0",
-    "webpack-cli": "3.3.12",
-    "webpack-dev-server": "3.11.0"
+    "webpack-cli": "4.0.0",
+    "webpack-dev-server": "4.0.0"
   }
 }
