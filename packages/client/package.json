@@ -34,7 +34,7 @@
     "@dash4/react-xterm": "0.9.3",
     "@dash4/ui": "0.9.3",
     "@emotion/core": "10.0.35",
-    "bootstrap": "4.5.3",
+    "bootstrap": "5.0.0",
     "core-js": "3.8.1",
     "jquery": "3.5.1",
     "react": "16.13.1",
